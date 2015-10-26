@@ -1,0 +1,22 @@
+CREATE TABLE files (
+   fname VARCHAR(255) NOT NULL,   
+   floc VARCHAR(255) NOT NULL,  
+   create_date DATE NOT NULL,
+   PRIMARY KEY (floc)
+);
+
+CREATE TABLE tags (
+   tname VARCHAR(255) NOT NULL,
+   create_date DATE NOT NULL, 
+   PRIMARY KEY (tname)
+);
+
+CREATE TABLE file_tags (
+   floc VARCHAR(255) NOT NULL, 
+   tname VARCHAR(255) NOT NULL,
+   create_date DATE NOT NULL, 
+   PRIMARY KEY (floc,tname),
+   FOREIGN KEY (floc) REFERENCES files (floc),
+   FOREIGN KEY (tname) REFERENCES tags (tname)
+);
+
