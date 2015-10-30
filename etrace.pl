@@ -115,8 +115,8 @@ sub processCallInfo {
 	        $thisSymbol = $UNDEFINED_SYMBOL;
 	    };
 	    print $TAB1 x $level . $TAB2 . $thisSymbol . "\n";
-	    $dbh->do('INSERT INTO tags(tname,create_date) VALUES(?, NOW())', undef, $thisSymbol);
-            $dbh->do('INSERT INTO file_tags(tname,floc, create_date) VALUES(?, ?, NOW())', undef, $thisSymbol, $testcase);
+	    $dbh->do('REPLACE INTO tags(tname,create_date) VALUES(?, NOW())', undef, $thisSymbol);
+            $dbh->do('REPLACE INTO file_tags(tname,floc, create_date) VALUES(?, ?, NOW())', undef, $thisSymbol, $testcase);
             $level++;
         }
         else {
@@ -133,6 +133,8 @@ sub processCallInfo {
   };
 }
 
+#use rlib '/m/mls/pkg/ix86-Linux-RHEL5/lib/mysql';
+
 # Main function
 if (@ARGV==0) {
     die "Usage: $0 OBJECT [TRACE]\n" .
@@ -141,8 +143,11 @@ if (@ARGV==0) {
 };
 
 use DBI;
-$dbh = DBI->connect('DBI:mysql:tutorial_db', 'tanch', 'tanch'
+$dbh = DBI->connect('DBI:mysql:tutorial_db;host=10.194.15.187', 'tanch', 'tanch'
           ) || die "Could not connect to database: $DBI::errstr";
+
+#$dbh = DBI->connect('DBI:JDBC:hostname=10.194.15.187:1521;url=jdbc:oracle:thin:\@10.194.15.187:1521:xe;jdbc_character_set=ASCII'
+#          ) || die "Could not connect to database: $DBI::errstr";
 
 $objectFile = shift @ARGV;
 $testcase = shift @ARGV;
@@ -152,7 +157,7 @@ if (-x $objectFile ) {
    system($objectFile . ' ' . $testcase);
 }
 
-$dbh->do('INSERT OR REPLACE INTO files(fname,floc, create_date) VALUES(?, ?, NOW())', undef, $testcase, $testcase);
+$dbh->do('REPLACE INTO files(fname,floc, create_date) VALUES(?, ?, NOW())', undef, $testcase, $testcase);
 
 readObjects $objectFile;
 #writeSymbolTable
