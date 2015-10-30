@@ -1,10 +1,8 @@
 #!/usr/bin/perl
 #
 # etrace.pl script
-# Author: Victor Chudnovsky
-# Date: March 8, 2004
 
-$NM  = 'nm ';     # unix nm utility to get symbol names and addresses
+$NM  = 'nm -l ';     # unix nm utility to get symbol names and addresses
                   # -l, --line-numbers Use debugging information to find a filename
 
 # Output format
@@ -22,6 +20,13 @@ $HEX_NUMBER = '0?x?[0-9a-fA-F]+'; # hex number
 $SYMBOL_NAME = '[\w@.]+';         # valid identifier characters
 $SRC_LOC = '[0-9a-fA-F]+';
 
+$exec;
+$testcase;
+
+$fhost = "10.194.15.187";
+$fuser = "chritan";
+$fpass = "welcome1";
+
 # Global identifiers
 # %SYMBOLTABLE : a hash array from relative offsets to symbol names
 # $IS_FIFO :     are we reading from a FIFO or a file?
@@ -31,7 +36,7 @@ sub readObjects {
   $objectFileName = shift;
   if (-x $objectFileName) {
     # Object code: extract symbol names via a pipe before parsing
-    $handleName = $NM.$objectFileName.'|';
+    $handleName = $NM.'./Page4 |';
   } else {
     # A symbol table: simply parse the symbol names
     $handleName = '<'.$objectFileName;
@@ -39,12 +44,12 @@ sub readObjects {
   
   open f, $handleName or die "$0: cannot open $objectFileName";
   while ($line = <f>) {
-    #print "line: " . $line ;
-    $line =~  m/^($HEX_NUMBER)\s+.*\s+($SYMBOL_NAME)$/;
+#    print $line ;
+    $line =~  m/^($HEX_NUMBER)\s+.*\s+($SYMBOL_NAME)\s+(.*)/g;
     $hexLocation = $1;
     $symbolName = $2;
     $location = hex $hexLocation;
-    $SYMBOLTABLE{$location} = $2
+    $SYMBOLTABLE{$location} = $2 . " " .$3;
   }
   close f;
 }
@@ -54,6 +59,35 @@ sub writeSymbolTable {
     print "[$location] => $name\n";
   }
 }; 
+
+sub dumpCallFunc {
+  while ( ($location,$name) = each %CALL_TABLE) {
+    print "[$location] => $name\n";
+  }
+}; 
+
+sub uploadfile {
+  use strict;
+  use warnings;
+  use Net::FTP;
+
+  my ($ftp, $host, $user, $pass, $dir, $fpath);
+
+  $dir = "";
+  $host = shift; 
+  $user = shift;
+  $pass = shift;
+  $fpath = shift;
+
+  $ftp = Net::FTP->new($host, Debug => 0);
+  $ftp->login($user, $pass) || die $ftp->message;
+  $ftp->cwd($dir);
+  $ftp->put($fpath) || die $ftp->message;
+  $ftp->quit;
+
+  print $ftp->message;
+}
+
 
 sub establishInput {
   $inputName = shift;
@@ -88,7 +122,7 @@ sub deleteFifo {
 
 
 sub processCallInfo {
-  
+
   $offsetLine = <CALL_DATA>;
   if ($offsetLine =~ m/^$REFERENCE_OFFSET\s+($SYMBOL_NAME)\s+($HEX_NUMBER)$/) {
 	   # This is a dynamic library; need to calculate the load offset
@@ -114,9 +148,12 @@ sub processCallInfo {
 	    if (! defined($thisSymbol)) {
 	        $thisSymbol = $UNDEFINED_SYMBOL;
 	    };
-	    print $TAB1 x $level . $TAB2 . $thisSymbol . "\n";
-	    $dbh->do('REPLACE INTO tags(tname,create_date) VALUES(?, NOW())', undef, $thisSymbol);
-            $dbh->do('REPLACE INTO file_tags(tname,floc, create_date) VALUES(?, ?, NOW())', undef, $thisSymbol, $testcase);
+
+            $thisSymbol =~  m/^(.*)\s+(.*)/g;
+            if (! exists $CALL_TABLE{$2}) {
+               $CALL_TABLE{$2} = $1;
+               print "[$2] => $1\n";
+            }
             $level++;
         }
         else {
@@ -133,7 +170,7 @@ sub processCallInfo {
   };
 }
 
-#use rlib '/m/mls/pkg/ix86-Linux-RHEL5/lib/mysql';
+use Getopt::Long qw(GetOptions);
 
 # Main function
 if (@ARGV==0) {
@@ -142,33 +179,33 @@ if (@ARGV==0) {
 	"       TRACE is either the etrace output file or of a FIFO to connect to etrace.\n";
 };
 
-use DBI;
-$dbh = DBI->connect('DBI:mysql:tutorial_db;host=10.194.15.187', 'tanch', 'tanch'
-          ) || die "Could not connect to database: $DBI::errstr";
+GetOptions(
+  'exec=s' => \$exec,
+  'file=s' => \$testcase,
+  'ftp=s' => \$fhost,
+  'user=s' => \$fuser,
+  'pass=s' => \$fpass,
+) or die "Usage: $0 --exec PROGRAM --file TESTCASE\n";
 
-#$dbh = DBI->connect('DBI:JDBC:hostname=10.194.15.187:1521;url=jdbc:oracle:thin:\@10.194.15.187:1521:xe;jdbc_character_set=ASCII'
-#          ) || die "Could not connect to database: $DBI::errstr";
+if ($exec) {
+    if (-x $exec ) {
+       print "invoking = " . $exec . ' ' . $testcase . "\n";
+       system($exec . ' < ' . $testcase);
+    }
 
-$objectFile = shift @ARGV;
-$testcase = shift @ARGV;
+    readObjects $exec;
+#    writeSymbolTable
 
-if (-x $objectFile ) {
-   print "invoking = " . $objectFile . ' ' . $testcase . "\n";
-   system($objectFile . ' ' . $testcase);
+    # $inputFile = establishInput $inputFile;
+    $inputFile = $FIFO_NAME;
+
+    open CALL_DATA,"<$inputFile";
+    processCallInfo;
+    close CALL_DATA;
+
+    deleteFifo $inputFile;
+    
+    uploadfile($fhost, $fuser, $fpass, "etrace.log");
 }
 
-$dbh->do('REPLACE INTO files(fname,floc, create_date) VALUES(?, ?, NOW())', undef, $testcase, $testcase);
-
-readObjects $objectFile;
-#writeSymbolTable
-
-# $inputFile = establishInput $inputFile;
-$inputFile = $FIFO_NAME;
-
-open CALL_DATA,"<$inputFile";
-processCallInfo;
-close CALL_DATA;
-
-deleteFifo $inputFile;
-$dbh->disconnect();
 print "Done: Exiting...\n";
