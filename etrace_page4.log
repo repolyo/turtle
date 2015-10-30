@@ -1,0 +1,1703 @@
+invoking = ./runpage4 < ~/testcases/hello_lexmark.pdf
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+OS DebugLog TraceControl: 0
+OS DebugLog ClientList: 
+LOG Init Complete
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+p_object.c ----------------- tanch@trace_begin: compile with -finstrument-functions called....
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+runpage4 Child(Page4) Pid(14364) Failed to set groupid(14335):Permission denied
+AUTH SETTINGS CODE VERSION: (3.00.00)
+AUTH SETTINGS FILE VERSION: (3.00.00)
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+runpage4 Child(Page4) Pid(14364) Failed to set groupid(14335):Permission denied
+
+
+AUDIT MAIN DIR: (./auditData)
+
+%!PS
+/=====EXIT_RENDERING {
+  currentfile 0 (=====ENTER RENDERING=====================================)
+  /SubFileDecode filter flushfile
+} def
+=====EXIT_RENDERING
+Page4 waiting for simulation code to respond with new configuration...
+Page4 has received the new new configuration...
+
+
+
+
+ SYNC: main_cmn() pc:0x6fc ep:0x5bc trayInfo:0x80 tonerInfo:0x2c 
+
+
+
+Created Page4 Message Queue Thread pid: -1208943728
+Created External Message Queue Thread pid: -1220543600
+STMsg: ST_SELF_TEST (0x138), 0x0, 0x0
+Created NVThread pid: -1231033456
+
+P4_NvramSize: 9307 bytes
+
+WARNING -- PNSVSIM_BACKING_DIR not specified.
+Pensive sim data will not be preserved across POR.
+Usb0 [usbCreateDevHdr] PORT_DEVICE_INFO
+genportInit(): UnixDomainSocket
+genportInit(): UnixDomainSocketInterruptCopy
+genportInit(): UnixDomainSocketLogs
+genportInit(): UnixDomainSocketPriorityJobgenportInit(): UnixDomainSocketUsbHostJobgenportInit(): StandardInput
+MMap Memory=00650000
+LOG: <3> Parallel0 [BSParNewConfig] no ID data
+MMap Memory=005fa000
+Usb0 IRing Ptr: 0x5fa000, Sz: 102400, fd: 1025
+Usb0 [BSUsbNewConfig] PORT_DEVICE_MANUFACTURERNAME, >Lexmark International<
+Usb0 [BSUsbNewConfig] PORT_DEVICE_PRINTERNAME, >Lexmark CS310<
+Usb0 [BSUsbNewConfig] PORT_DEVICE_SERIALNUM, >A26QI<
+Usb0 [BSUsbNewConfig] PORT_UUID, >00000000000000000000000000000000<
+Usb0 [BSUsbNewConfig] PORT_PNP_1284_PKG, sz: 0xffffd4e8 (-11032), >MANUFACTURER:Lexmark;COMMAND SET:PCL 6 Emulation, PostScript Level 3 Emulation, PDF, URF, PWG, NPAP, PJL;MODEL:X548 Series;CLS:PRINTER;DES:Lexmark CS310;CID:<
+Usb0 [BSUsbNewConfig] PORT_DEVICE_ID_EISA, >LMI011E<
+Usb0 [BSUsbNewConfig] PORT_VENDOR_ID_USB, >0x043d<
+Usb0 [BSUsbNewConfig] PORT_SCAN_CID, >LX41001<
+Usb0 [AddUsb] PORT_PRIVATE_DATA
+LOG: <6> AddUsb, pto: 90
+
+Usb0 [AddUsb] Online
+sbSimEngDoEngineCommand: No Handler Found for cmd(0x2e)
+EngineCmd: sbSimEngDoEngineCommand() failed
+sbSimEngDoEngineCommand: No Handler Found for cmd(0x2e)
+EngineCmd: sbSimEngDoEngineCommand() failed
+SimBios[SetEngineStatus:1092] Sending State Manager Message(0xbc:ST_BIOSIDLE, 0x0, 0x0)
+STMsg: ST_BIOSIDLE (0xbc), 0x0, 0x0
+sbPageTaskFieldMessage: Fielding Page Task Message:PT_CONFIG_CHANGE [0x0,0x0]
+SimBios[sbConfigChangeHandler:1014] Sending State Manager Message(0x12f:FORCEIDLE, 0x2, 0x0)
+STMsg: FORCEIDLE (0x12f), 0x2, 0x0
+SimBios[sbConfigChangeHandler:1026] Sending State Manager Message(0x130:CANCEL_FORCEIDLE, 0x2, 0x0)
+STMsg: CANCEL_FORCEIDLE (0x130), 0x2, 0x0
+Executed dumpEngineParams! 
+sbSimEngFieldEngineCommand: Fielding Engine Cmd:ENGCMD_ENABLE_NOTIFIES
+sbNotifyTaskFieldMessage: Fielding Engine Query:ENGQRY_CONFIG_KNOWN [0x0]
+sbPageTaskFieldMessage: Fielding Page Task Message:PT_CONFIG_CHANGE [0x0,0x0]
+SimBios[sbConfigChangeHandler:1014] Sending State Manager Message(0x12f:FORCEIDLE, 0x2, 0x0)
+STMsg: FORCEIDLE (0x12f), 0x2, 0x0
+SimBios[sbConfigChangeHandler:1026] Sending State Manager Message(0x130:CANCEL_FORCEIDLE, 0x2, 0x0)
+STMsg: CANCEL_FORCEIDLE (0x130), 0x2, 0x0
+
+lmd_get_value_from_features_with_rc: PROXY_OBJECT_NOT_FOUND
+Object not found
+
+
+lmd_get_value_from_features_with_rc: PROXY_OBJECT_NOT_FOUND
+Object not found
+
+
+lmd_get_value_from_features_with_rc: PROXY_OBJECT_NOT_FOUND
+Object not found
+
+00 00 8c 00 00 ff c6 1d 00 ee 08 7b 55 c0
+main_cmn() jumping to _run_() !! 
+STMsg: ST_POR_COMPLETE (0x14f), 0x0, 0x0
+jbInitPortIfs JBpif: 0xb74dcfa8
+jbInitPortIfs old_JBpif: 0xb74dcfa8, JBportList: 0xb74dcfa8
+
+jbInitialize: JB Inactive
+
+XI pool 0x11dfd000 bytes at 0xa0e02008
+../../../../page4/npap/vccAdminServiceHandler.cpp:162: VCC successfully registered applications.admin
+¥ @ÿ  +++ EM = Busy || PQS = Ready || BIOS = Ready +++
+STMsg: ENGINEIDLE (0x95), 0x0, 0x0
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+STMsg: ENGINEIDLE (0x95), 0x0, 0x0
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+ireqEngineIdle: new_stErrorInfo.event 0, stPqsEngineIdleLatch 2.
+                stAnyErrorsPending 0, Type1Error 0, Type2Error 0.
+STMsg: ENGINEIDLE (0x95), 0x0, 0x0
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+Usb0 [BSUsbOnline] PORT_ONLINE
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+ireqEngineIdle: new_stErrorInfo.event 0, stPqsEngineIdleLatch 0.
+                stAnyErrorsPending 0, Type1Error 0, Type2Error 0.
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+ireqEngineIdle: new_stErrorInfo.event 0, stPqsEngineIdleLatch 0.
+                stAnyErrorsPending 0, Type1Error 0, Type2Error 0.
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+ireqEngineIdle: new_stErrorInfo.event 0, stPqsEngineIdleLatch 0.
+                stAnyErrorsPending 0, Type1Error 0, Type2Error 0.
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+ireqEngineIdle: new_stErrorInfo.event 0, stPqsEngineIdleLatch 0.
+                stAnyErrorsPending 0, Type1Error 0, Type2Error 0.
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+ireqEngineIdle: new_stErrorInfo.event 0, stPqsEngineIdleLatch 0.
+                stAnyErrorsPending 0, Type1Error 0, Type2Error 0.
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Ready || PQS = Ready || BIOS = Ready +++
++++ EM = Ready || PQS = Ready || BIOS = Ready +++
++++ EM = Ready || PQS = Ready || BIOS = Ready +++
++++ EM = Ready || PQS = Ready || BIOS = Ready +++
+
+
+Garbage Collection
+Reclaimed Items = 0
+Reclaimed Space = 0
+
+
+
+Sub-Garbage Collection
+Sub-Reclaimed Items = 0
+Sub-Reclaimed Space = 0
+
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+Masterfilelist not present, no port I/O check
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+END OF PRINT.PS: *VM* Global=386068 Local=17901
+END DEFINE RESOURCES:*VM* Global=470573 Local=54632
+END STATUSDICT:*VM* Global=512943 Local=55952
+Lexmark CS310 3011.010.20151027
+Initialization complete.
+WARNING: Objects left on stack: 1
+BEFORE initial VMReclaim: *VM* Global=519088 Local=57916
+AFTER	initial VMReclaim: *VM* Global=482024 Local=55952
+USEOLDPDF=0
++++ EM = Waiting || PQS = Ready || BIOS = Ready +++
++++ EM = Waiting || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+PDF File Copied 612 bytes.
+Printing Page #1, (3 0 R)
+I_Optimize: 13 objects on display list
+	13 postscript opaque objects
+Devpage: Starting blit to device pmap
+DevPage: Finished blit to device pmap 0
+DevPage: 0 rectregion, 0(0) imgregion(lut0), 0 trapregion, 0 trapthreshregion 13 charbit, 0 picture
+DevPage: 48 totally cached tiles, 0 tiles cached, 0 tiles made
+				page 1
+
+  Page generated in 2551.0 msec using Level 1 compression
+  0 uncompressed, 0 compressed blocks.  Thrashed 0 times.
+Writing PAM format - PSPAGE01.pam.gz planes:4 bpp:4
+
+Page 1 committed to PQS
++++ EM = Busy || PQS = Waiting || BIOS = Ready +++
++++ EM = Busy || PQS = Waiting || BIOS = Ready +++
++++ EM = Busy || PQS = Waiting || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+-PDF Finished.
+
+
+Garbage Collection
+Reclaimed Items = 0
+Reclaimed Space = 0
+
+
+
+Sub-Garbage Collection
+Sub-Reclaimed Items = 0
+Sub-Reclaimed Space = 0
+
++++ EM = Busy || PQS = Busy || BIOS = Ready +++
++++ EM = Busy || PQS = Busy || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
++++ EM = Busy || PQS = Ready || BIOS = Ready +++
+----------------- tanch@trace_end: called....
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: pid=14334    pgid=14331    sid=10380  
+runpage4: ppid=14333   ppgid=14331   psid=10380  
+++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++
+WARNING: registration of new text library failed.
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Skipping -I for apps/runpage4/start-rob
+
+Skipping -I for apps/runpage4/start-vcc
+runpage4 Child(Page4) Pid(14364) Failed to set groupid(14335):Permission denied
+runpage4 monitoring child group:14335
+
+++++++++++++++++++++++++++++++++++++++++++++++++
+runpage4: Simulation Child Exited. Ending Simulation.
+child is Page4.
+++++++++++++++++++++++++++++++++++++++++++++++++
+rp4CleanSharedMemorySegments:Cleaning Shared Memory
+rp4CleanMessageQueues:Cleaning Queues
+rp4CleanSemaphores:Cleaning Semaphores
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/../../../devsim/ds_main.c:409] => dev_open
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/../../../devsim/ds_main.c:229] => InitializeFD
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/../../../devsim/ds_main.c:301] => GetNextFD
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/../../../devsim/ds_main.c:785] => dev_write
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/../../../devsim/ds_main.c:365] => ValidateFD
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/../../../devsim/ds_main.c:733] => dev_read
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/../../../devsim/ds_main.c:887] => dev_close
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexmch.c:2631] => pmap_set_output_form
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/../../../devsim/ds_main.c:615] => dev_ioctl
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1740] => GetPageSizePtr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1442] => GetPagePtr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/../../../devsim/ds_main.c:942] => dev_mmap
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1126] => page4_device_init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldskif.c:48] => LDPF_Init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldskutils.c:604] => LDPF_GetDevChar
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/cmpdcmp.c:192] => SetupCompressionTables
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:1729] => block_init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:1040] => swath_init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:239] => get_special_swath_size
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:726] => allocate_a_buffer
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:1710] => page4_register_pam_support
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:254] => page4_device_get
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:1016] => swath_mem_init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:4114] => pjlWriteBackTaskInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/bldacfpt.c:602] => SW_ACF_Init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/bldacfpt.c:586] => SW_ACF_GetSNString
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/bldacfpt.c:421] => SW_ACF_CreateOffsetTables
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/bldacfpt.c:669] => SW_ACF_GetOctalDigits
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/bldacfpt.c:726] => SW_ACF_GetHMParityBits
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/bldacfpt.c:1089] => SW_ACF_GetOffsets
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/bldacfpt.c:480] => SW_ACF_InitDotInfo
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/bldacfpt.c:1212] => SW_ACF_CreateDotTables
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/bldacfpt.c:1407] => SW_ACF_GenDot600
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/bldacfpt.c:640] => SW_ACF_SetDotPattern
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/bldacfpt.c:1551] => SW_ACF_GenDot1200
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:4732] => PJLCleanUP
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:322] => pjlWriteBack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlstat.c:1666] => pjlUstatusoff
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:183] => DebugStrFmt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:916] => _ZN8DebugFmt8InstanceEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:871] => _ZN8DebugFmtC1Ev
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:1271] => _ZN8DebugFmt11FindHeadingEPci
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:241] => _ZN5DebugC1Ev
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:771] => _ZN5Debug6BufferEPh
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:805] => _ZN5Debug4SizeEi
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:308] => _ZN5Debug9SetOutputEP8_IO_FILE
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:378] => _ZN5Debug11ClearOptionEi
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:359] => _ZN5Debug9SetOptionEi
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:436] => _ZN5Debug7HeadingEPc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:514] => _ZN5Debug4TextEPKc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:594] => _ZN5Debug8FileNameEPc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:479] => _ZN5Debug17Heading_SeparatorEc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:558] => _ZN5Debug14Text_SeparatorEc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:631] => _ZN5Debug18FileName_SeparatorEc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:700] => _ZN5Debug20LineNumber_SeparatorEc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:736] => _ZN5Debug3EOLEc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:938] => _ZN8DebugFmt8AddDebugEP5Debug
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:666] => _ZN5Debug10LineNumberEi
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:1013] => _ZN8DebugFmt5printEP5Debug
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:325] => _ZN5Debug9GetOutputEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:342] => _ZN5Debug9GetOptionEi
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:535] => _ZN5Debug4TextEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:395] => _ZN5Debug6TimingEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:497] => _ZN5Debug17Heading_SeparatorEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:457] => _ZN5Debug7HeadingEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:577] => _ZN5Debug14Text_SeparatorEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:614] => _ZN5Debug8FileNameEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:649] => _ZN5Debug18FileName_SeparatorEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:719] => _ZN5Debug20LineNumber_SeparatorEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:683] => _ZN5Debug10LineNumberEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:754] => _ZN5Debug3EOLEv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/debug/debugfmt.cpp:956] => _ZN8DebugFmt11printbufferEPc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjl.c:686] => pjlGetIp
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:924] => pjlGetPortIndex
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:2566] => pjlUnRegisterForDeviceChanges
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:942] => pjlClearCountDowns
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlregister.c:119] => pjlRegisterCommand
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:219] => pjlReset
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:283] => pjlCopyFromEnvToEnv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2867] => SafeNVGetDefault
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:3654] => SafeNVSet
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:3002] => pjlIntFloat
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlstat.c:255] => pjlInquires
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjljob.c:565] => pjlWarn
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:928] => pjlWeCopyingEnvironments
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:1261] => pjlSetOrDefault
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:1572] => pjlValidateRange
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:1735] => pjlBadPrecision
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:487] => GetFormLines
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:1864] => pjlFindTrayGroup
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:982] => SetFormLines
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:3620] => pjlWhichGetFcn
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2886] => SafeNVGet
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:3012] => GetIntFloat
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:1703] => pjlValidateEnum
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:1625] => pjlValidateSetting
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:714] => GetOutputBin
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlstat.c:1792] => pjlGetNVString
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlstat.c:1730] => pjlGetAllOptionsIndex
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:6133] => SetOutputBin
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlstat.c:1761] => pjlGetAllOptionsIndexByEnum
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:1599] => GetPjlHeldJobTimeOut
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:1659] => ConvertPjlJobTimeOutValueToStr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:833] => SetPjlHeldJobTimeOut
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:913] => ConvertPjlHeldJobTimeOutStrToValue
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:1614] => GetPjlRepeatJobTimeOut
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:853] => SetPjlRepeatJobTimeOut
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:1629] => GetPjlVerifyJobTimeOut
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:873] => SetPjlVerifyJobTimeOut
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:1644] => GetPjlReserveJobTimeOut
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:893] => SetPjlReserveJobTimeOut
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:1473] => pjlNotifyBios
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:4223] => GetResolution
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2054] => SetResolution
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:4739] => SetTimeout
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjl.c:946] => pjlSetTimeoutDelay
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:4300] => GetColorTrapping
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:7756] => SetColorTrapping
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:7575] => SetCustomPaperFeed
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:4051] => GetCustomPaperHeight
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2821] => pjlGet_Power
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:7385] => SetCustomPaperHeight
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:4089] => pjlGetCustomPaperSizeRange
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:4141] => GetCustomPaperWidth
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:7480] => SetCustomPaperWidth
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2252] => GetFeederPaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2710] => pjlTrayInstalled
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2805] => SetFeederPaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2733] => SetPaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2662] => CheckCustomNameString
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2190] => GetImageOrient
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2628] => SetImageOrient
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2663] => GetFeederSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2929] => SetFeederSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2857] => SetManualOrFeederSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2647] => GetMPFeederSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2922] => SetMPFeederSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:3672] => GetAssignTray1
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:3645] => GetAssignTrayx
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:5753] => SetAssignTray1
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:5706] => SetAssignTrayx
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:3703] => GetAssignMPTray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:5787] => SetAssignMPTray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:3720] => GetAssignManEnv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:5804] => SetAssignManEnv
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2617] => GetManualPaperSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2911] => SetManualPaperSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2632] => GetManualEnvSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2916] => SetManualEnvSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:1498] => GetJamRecovery
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:6101] => SetJamRecovery
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:3627] => GetPageMode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:6921] => SetPageMode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2208] => GetTray1PaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2303] => GetPaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlstat.c:1838] => pjlGetNVStringByEnum
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2764] => SetTray1PaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2214] => GetTray2PaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2770] => SetTray2PaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2224] => GetTray3PaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2777] => SetTray3PaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2281] => GetManualPaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2795] => SetManualPaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2289] => GetManualEnvType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2799] => SetManualEnvType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:2262] => GetMPFeederPaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:2812] => SetMPFeederPaperType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:1560] => SetTray1Renumber
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:1652] => SetLastTrayRenumber
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:1693] => SetMPFeederRenumber
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:7852] => SetType1Fonts
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:4766] => SetSeparatorSource
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlgetfn.c:4739] => GetPageRange
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:8231] => SetPageRange
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:1031] => pjlGetAndSetAllPorts
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:294] => pjlWriteBackInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:4088] => pjlMemReset
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjllexmk.c:744] => pjlResetOpenFileList
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjl.c:925] => pjlInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:2044] => pjlResetBinNames
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1062] => page4_device_new
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldskif.c:840] => LDPF_IsDiskEnable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldsif.c:2676] => PHRetrieveJobs
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldsif.c:1770] => LDSF_RestoreCurrentTime
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:4821] => pjlReadyHndlr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:4690] => pjlCleanUPNeeded
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldskif.c:1285] => LDPF_FreeSharedMemory
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1100] => page4_device_mark
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:3994] => pjlMark
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:3889] => pjlGarbageCollect
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:3839] => pjlDeleteOldJP
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjllexmk.c:768] => pjlMarkOpenFileList
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/pmdefrag.c:328] => PMAPMark
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:1660] => Mark_swathes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swathfx.c:232] => Mark_fax_swath
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldsif.c:2208] => PH_JobIDAlreadyUsed
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldsif.c:2471] => PHGetANewJob
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldsif.c:2540] => PHGetANewChildJob
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:4826] => pjlNotReadyHndlr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjl.c:799] => pjlValidPrefixPresent
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlattnd.c:236] => pjlGetRDYMSG
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:1862] => pjlBinNameChanges
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjljob.c:985] => pjlGetPjlCurrentNesting
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:2333] => pjlFindPjlJobNode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlenv.c:1825] => pjlTrayTypeMapping
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlsetfn.c:4692] => pjlGetDiagType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1907] => CheckIETBits
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1319] => FindResolutionPtr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjllexmk.c:4104] => pjlResetPasswordJ
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:677] => page4_device_set
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/pmapht.c:85] => _pmap_dtr_corrected_mark_stale
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_ps.c:1299] => PsStart
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_debug.h:102] => psDebugLog
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_debug.c:163] => psDebugLogWithContext
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_debug.c:294] => psDebugLogPreTrigger
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_debug.c:81] => BreakOnPsUp
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_debug.c:341] => psDebugLogPostTrigger
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_ps.c:1418] => Init_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_device.c:759] => Init_p_device_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_device.c:273] => PsMakePicture
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:4313] => Init_p_dict_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dparam.c:12128] => Init_p_dparam_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_error.c:948] => Init_p_error_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:5591] => Init_p_file_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:594] => Init_p_font_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontf1.c:1661] => Init_p_fontf1_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_forms.c:1364] => Init_p_forms_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:5132] => Init_p_gstate_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:1314] => Init_p_hash_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_image.c:7561] => Init_p_image_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_show.c:236] => Init_p_show_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l2grph.c:4120] => Init_p_l2grph_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pack.c:130] => Init_p_pack_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:12862] => Init_p_pparms_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:8012] => Init_p_pparms2_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pattrn.c:2199] => Init_p_pattrn_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_ps.c:1406] => Init_p_ps_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_stacks.c:163] => Init_p_stacks_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:5949] => Init_p_sysif_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:643] => Init_p_vm_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:791] => Init_p_vmrec_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_binobj.c:55] => Init_p_binobj_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_resrce.c:78] => Init_p_resrce_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:2640] => Init_p_contrl_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_compil.c:188] => Init_p_compil_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_profil.c:62] => Init_p_profil_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l3grph.c:4727] => Init_p_l3grph_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cmap.c:1073] => Init_p_cmap_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_shading.c:3894] => Init_p_shading_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:3404] => Init_p_token_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:588] => setjobP
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:668] => sysinit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gendec.c:206] => PostScript_InitMode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_ps.c:1087] => PostInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:563] => InitPSfileDirectory
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:440] => PsStdInCapture_ReadConfig
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:730] => MallocSaveStack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_uparam.c:537] => PORinit_userparams
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sparam.c:851] => GetSystemParam_int
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_uparam.c:1492] => SetUserParam_default
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_uparam.c:1112] => SetUserParam_int
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:1022] => vm_init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:7384] => NewVMBlockTable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:807] => GCInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3445] => VMInitGCStack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:1741] => vm_expand
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:576] => PSFillWithTrash
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:7511] => AddVMBlockToTable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_stacks.c:201] => Stack_Init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:241] => ht_init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3559] => Build
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3118] => CheckBuiltinsTable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:455] => ht_add_builtin
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:287] => _hash
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:1367] => ps_Malloc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:1175] => vm_psobj_len
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:1563] => vm_allocate2
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:378] => KeyMatch
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3266] => BuildSystemdict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:327] => GlobalNewDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4652] => Dosetglobal
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:2749] => switch_font_dir
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_object.c:305] => objFormatDictHeader
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_object.c:257] => objFormatDictionary
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:1233] => SearchAndPutToDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:378] => SearchDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:1040] => AddNewEntry
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3206] => AddOpersToDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3196] => AddToDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:1146] => AddToTopDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:826] => ht_get
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:582] => ht_def
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3096] => BuildAddBuiltinToTopDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:1592] => getProductName
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:298] => NewDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3078] => BuildAddToTopDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3456] => BuildStatusdict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4722] => Setvmbase
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3509] => BuildInternaldict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:787] => GetUndefItem
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:852] => ExpandDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_object.c:341] => GetFileAccess
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1631] => initGstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_device.c:418] => CopyDevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:3099] => PORinit_pagedevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:1791] => QueryJobState
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1249] => GetDevicePtrForJobDest
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:3448] => ModifyJobState
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1302] => GetDevicePtr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:2037] => PORinit_IAPriority
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:5624] => LoadInternalIAPriority
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:5516] => LoadInternalPriorityArray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_object.c:585] => checknumericarray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:2296] => init_pagedevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:2249] => Handle1200dpiBanner
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:1612] => ModifyResolution
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:460] => update_page_dimensions
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:1762] => map_tray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:2159] => rebuildPriorityArray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:2006] => source_installed
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:1979] => source_supported
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:1484] => SetMediaType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:1443] => MapMediaTypeEnumToString
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3546] => setpoundcopies
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:4436] => QueryDefaultState
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:1579] => setmanualfeedtimeout
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:1655] => convertNVNupToNup
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:3064] => InitNullCustomColors
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:394] => PORinitHalftoneSet
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:485] => ClearHalftoneSet
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:3153] => initGstateLUT
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3057] => GetBuiltinName
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1576] => initgraphics1
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1543] => resetGstateFillRender
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1559] => resetGstateStrokeRender
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:2208] => Color_Init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:1414] => Color_SetGrayValue
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:1860] => psGetInk
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:1322] => GetPScolorstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:503] => get_pscolorstate_from_linked_list
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:1242] => CreatePScolorstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:2833] => CIE_copy_PDFspace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:563] => add_pscolorstate_to_linked_list
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:3307] => Halftone_Dither
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:1942] => setnewInk
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l2colr.c:443] => L2colr_GetBaseinkmodel
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:1674] => Color_installcolorxforms
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:4090] => Halftone_CurrentScreenID
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:836] => KillCstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:584] => DeleteCstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l2colr.c:340] => L2colr_num_color_components
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1484] => fixlinestyle
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontinit.c:102] => _ps_init_fonts
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontinit.c:151] => ReadDirectory
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontinit.c:420] => tokcpy
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontinit.c:244] => RegisterHandler
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l2grph.c:3499] => InitUserPathCache
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_forms.c:1376] => InitFormsCache
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pattrn.c:2214] => Pattern_InitCache
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:1572] => PS_FileOpen
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:725] => GetPSfile
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:1215] => PS_OpenCFSFile
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_ps.c:932] => CallExecute
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_ps.c:499] => Execute
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_scan.c:238] => scan_object
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:3183] => scan_token
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:479] => skip_space
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1495] => NAME
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:946] => ht_getobject
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:2678] => PS_UnreadChar
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_ps.c:294] => debug_execute
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_plugin.c:178] => psPluginCallOperObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:1748] => PSbegin
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:450] => next_char
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1544] => LITERAL_NAME
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:607] => add_1st_digits
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:623] => add_digits
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:4076] => PSinternaldict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:2039] => PSdef
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1730] => LEFT_BRACE
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1749] => RIGHT_BRACE
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_stacks.c:648] => CountOperToExecutableMark
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2082] => vmImmedReclaim
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:6582] => FindVMBlock
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:1812] => PSbind
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:1706] => BindIt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_idiom.c:44] => FindIdiom
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:587] => getValueByString
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:661] => ht_find
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_idiom.c:69] => SearchForIdiomInOneResourceDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_compil.c:352] => CompileProc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1399] => DO_PS_STRING
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:1916] => vm_get_temp_space
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:1292] => vm_psobj_adj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:352] => PSeq
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:924] => PSor
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:1116] => PSif
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:5524] => PScurrentfilenameextend
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:5573] => PSsetfilenameextend
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:1929] => PSend
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:985] => ht_undef
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:2636] => PSget
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:553] => getValueByKey
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:1067] => PSexec
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dparam.c:6355] => PSdevcontrol
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dparam.c:5852] => makeCdevname
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:1050] => makeCname
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:199] => PSpop
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:3306] => PSfile
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:1144] => GetAccess
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_attrib.c:205] => PScvx
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4755] => PScurrentglobal
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4602] => PSsetglobal
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pack.c:785] => PSsetpacking
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:1570] => PSdict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1591] => IMMED_NAME
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:5568] => PS_FileIsPdfJobData
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1323] => decode_digraph
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:3401] => PScurrentdict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:244] => PSexch
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1157] => HEX_STRING
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:925] => PSmark
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_stacks.c:278] => ExpandOperStack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1680] => RIGHT_ANGLE
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:3951] => makedict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:489] => getValueNDXByKey
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:438] => NewSearchDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_attrib.c:316] => PSreadonly
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1768] => LEFT_BRACKET
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1787] => RIGHT_BRACKET
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:2621] => endarray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:304] => PSdup
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:589] => add_sign
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:3838] => PSundef
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:3889] => DOundef
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:748] => FindSaveItem
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:726] => add_1st_decpt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:742] => add_decpt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:759] => add_fraction
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1112] => REAL
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:464] => add_char
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:862] => add_e_sign
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:877] => add_exponent
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gendec.c:251] => PSreadonlyrecurse
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gendec.c:277] => DoReadonlyRecurse
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2208] => RestoreMemory
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:2956] => PSput
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:2773] => putit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:2612] => PS_ReadChar
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:2393] => PS_ReadBuffer
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:2250] => PS_FileClose
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sparam.c:607] => PScurrentsystemparams
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sparam.c:653] => BuildSystemParamsDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sparam.c:1138] => GetSystemParam_str
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dparam.c:7251] => setup_currentinputdevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sparam.c:2090] => NVstringToCstring
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_trace.c:104] => _psTrace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sparam.c:806] => GetSystemParam_name
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:3037] => PSknown
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:1178] => PSifelse
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:841] => PSand
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_compil.c:291] => PSdefinecompiled
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_object.c:472] => obj_Compare
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_attrib.c:238] => PSexecuteonly
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:12759] => PSinstalldefaultpagedeviceentries
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:2218] => PSload
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:3537] => PSstring
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:758] => PSroll
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:709] => RollGCD
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:7464] => OtherFindVMBlock
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:5306] => PSprint
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:2870] => PS_WriteData
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:2979] => PS_FileFlush
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4407] => PSvmstatus
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4472] => LocalVMStatus
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4544] => GlobalVMStatus
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_attrib.c:916] => PScvs
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_attrib.c:96] => PStype
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:1623] => PSlength
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:1015] => PSadd
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:652] => PSgt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:885] => PSnot
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:2090] => PSarray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:2505] => PSastore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pack.c:158] => PackIt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:722] => ht_name2index
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:1757] => BindItPacked
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pack.c:488] => UnPackIt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:766] => ht_index2name
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pack.c:417] => ReplacePackedNameWithOperator
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_build.c:3042] => GetOperCode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_resrce.c:155] => PSdefineresource
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_resrce.c:90] => exec_internaldict_string
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:892] => PScount
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:777] => PSlt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:681] => PSindex
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:358] => PScopy
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:1551] => PSstopped
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:470] => PSne
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contr2.c:365] => StopIt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_filter.c:2721] => PSknownfilters
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:12329] => PSgetdevices
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:3332] => PSforall
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contr2.c:393] => ForallArray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:12538] => PSgetresolutions
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1347] => GetResolutionPtr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:12446] => PSgetmanualpapersizes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:12369] => PSgetpapersizes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:12610] => PSgetcolormodels
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1800] => GetNumColorModels
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1821] => GetColorinfoPtr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1285] => FindDevicePtr2
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:7062] => PSCustomizeCRD
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_attrib.c:614] => PScvn
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_attrib.c:595] => DOcvn
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:3082] => PSsetblackgeneration
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:3213] => UpdateGstateLUT
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_compil.c:836] => obj_CRC
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_compil.c:272] => CRC_char
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:3378] => MakeLUT_PSFunct
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_compil.c:942] => CRC_string
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:3453] => ExecPSSpotFunct
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:1285] => PSmul
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:1349] => PSsub
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:3019] => PSsetundercolorremoval
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:2152] => PSgetinterval
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contr2.c:617] => ForallDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:1987] => PSrand
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:1510] => DictLength
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:1306] => CopyDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:1545] => FindOnDictStack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_resrce.c:207] => PSdefinefont
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:703] => ht_getName
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:1160] => PSdefinefont2
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:626] => getValueBySysNameEnc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_show.c:373] => getNextNumValue
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:1072] => getMatrix
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:667] => getValueNDXBySysNameEnc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:68] => readMatrix
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_resrce.c:227] => PSselectfont
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sparam.c:2183] => PSfontpriority
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:951] => PScleartomark
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:2299] => PSscalefont
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:2188] => DoMakeFont
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:2027] => CopyFont
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:1426] => CopyFontDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:2529] => PSsetfont
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:2465] => ScaleFontPS
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_resrce.c:175] => PSfindresource
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:3718] => PSsearch
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:3597] => SearchSubstr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:1429] => PSexit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:5354] => PSsetcolorrendering
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:4014] => CIE_verify_CIE_rendering
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:1241] => CIE_verify_Matrix_array
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:1067] => CIE_verify_numarray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:1040] => CIE_is_identity
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:1513] => CIE_verify_Decode_array
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:1197] => CIE_verify_Range_array
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:1122] => CIE_verify_procarray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_object.c:2088] => ConvertProcedureToString
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_object.c:1695] => ConvertObjectToString
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_object.c:1498] => strcpylen
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_object.c:1521] => jbfpprint
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_object.c:1570] => jbintprint
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:1375] => CIE_verify_WhitePoint_array
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:1406] => CIE_verify_BlackPoint_array
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:1833] => CIE_verify_RenderTable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:1959] => CIE_verify_RenderingIntent
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:2924] => CIE_free_CIErender
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:11240] => PSsetpagedevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:9699] => init_pagedevice_changes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:5378] => CheckAndMergePolicies
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contr2.c:716] => loopthrudict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:5302] => CheckOrMergePolicies
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:8243] => CheckOrMergePagedevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:5438] => getPolicy
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:3864] => select_media_source
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:3141] => setup_inputattributes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:3352] => select_highest_priority
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1377] => FindPagePtr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:11174] => checkConfiguration
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:2892] => doEndPage
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:1193] => eject_page
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:1188] => PrintThePage
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:515] => PrintThePage1
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:445] => reset_showpage_count
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:10051] => set_system_values
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:5393] => set_media_values
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:6015] => setDeviceBits
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:6089] => setDevicePlanes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:7779] => SetupGstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_device.c:440] => DestroyDevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_device.c:403] => PSCreateDevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_device.c:309] => PSCreateDeviceExt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_device.c:519] => SetPagePicture
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:546] => page4_device_page_create
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:772] => AllocDevPageMapPlane
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:520] => GetBlockParms
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:226] => QueryFaxPage
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:130] => allocate_pmap
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:2311] => NumSwathNeeded
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:1409] => create_swathes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:571] => FindPmapSwathBlocks
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:148] => CalculateSwathBlocks
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:820] => allocate_swath_buffer
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1239] => OpenDevicePMAP
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:1127] => page4_device_page_set_gen_mode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:1990] => page4_device_page_get_default_dither
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:2325] => block_pm_get_device
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/pmapht.c:1110] => _page4_device_get_dither
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/pmapht.c:166] => GetResolutionIndex
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/pmapht.c:943] => GetCorrectedArray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/pmapht.c:793] => GenerateCorrectedArray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/pmapht.c:760] => unpackAndCorrect
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:2014] => page4_device_page_set_dither
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:4513] => FrameIt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:1797] => DestroyTheNUPObjects
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:10767] => install_devicerenderinginfo
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:408] => PSsethalftone
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:506] => ReadHalftoneSet
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:1037] => ReadHalftone_Type100
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:777] => BuildHalftoneSet
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:466] => Halftone_PopMyOperands
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:609] => Halftone_RecognizeBuiltin
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/pmapht.c:1449] => Translate_Screen_ID
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:3398] => DestroyHalftoneSet
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:1613] => getprocesscolors
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1760] => PSinitgraphics
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:974] => DoGrestoreInitG
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:2047] => compare_PDFspace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:2011] => compare_CIEspace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:2081] => compare_CIErender
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:3518] => PSinitclip
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:3662] => PSerasepage
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:2695] => doBeginPage
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:702] => cleanup_pscolorstates
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:685] => init_colorxform
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:10891] => PScurrentpagedevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:3655] => BuildpagedeviceDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:3500] => OnlySupportedSourcesInIAPriority
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:1884] => map_traystring
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:3527] => lookupManualColorRGB
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:3552] => lookupManualColorCMYK
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:4562] => PSnulldevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:168] => PSinitmatrix
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:108] => DoTranslate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:994] => page4_color_device_page_kill
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:950] => page4_device_page_kill
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:1223] => p4kill_pmap
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swathes.c:245] => unreserve_swath_use
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:1414] => p4clr_pmap
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:12692] => PSpapersizesupported
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:4368] => PSflush
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:1047] => PS_FlushSTDOUT
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:778] => RemovePSfile
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:716] => Init_font2
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:1387] => PSloop
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contr2.c:318] => LoopIt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:4557] => PSstatus
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:3204] => StringtoFile
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:769] => UnWind
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:234] => StrMatch
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:4471] => limit_fname
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:917] => PSvmreclaim
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:998] => VMGarbageCollect
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:1176] => ClearAllBitmaps
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3530] => VMResizeGCStack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:1217] => ScanRoots
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:1318] => NewScanGstateChain
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:1427] => NewScanExtras
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:2446] => VMMarkObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5641] => MarkBitmap
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:6321] => ObjPBitmapAddress
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5983] => SetBitmapBits
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3605] => VMTravPush
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5712] => MarkPointerBitmap
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:6392] => GetBitmapOffset
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:2570] => GetNextComposObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:2780] => GetNextDictObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5784] => MarkObjInBitmaps
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5935] => SetBits
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5975] => SetBit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:2679] => GetNextArrayObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:2392] => VMTravPop
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pack.c:608] => SkipPackedArray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:2737] => GetNextPackedObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pack.c:648] => FindNextUnscannedComposite
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3344] => GetNextFontIDObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:915] => WalkTheCstateList
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:1937] => NewScanColorState
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:1601] => NewScanStacks
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:1406] => NewScanCachedForms
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:1644] => NewScanGstateStack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:1700] => NewScanGstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:2030] => NewScanSavedArrays
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:2086] => NewScanSavedDictEntries
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:2181] => NewScanSavedGstates
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:2206] => NewScanPSfiles
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_plugin.c:272] => psPluginCallHooks
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5097] => ScanBitmap1
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5121] => ScanBitmapChain
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5183] => BuildCompressInfo
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:6278] => GetBitmapAddress
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:6404] => GetVMAddress
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:6538] => FindBitmapBlock
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3705] => NewGCUpdatePointers
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3760] => ResetHashElemPointers
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3799] => ScanPointerBitmapChain
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4934] => UpdatePointerAddress
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:6040] => CountPrevOnes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3869] => UpdateStacksPointers
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3908] => UpdateGstateStack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3928] => UpdateGstatePointers
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4294] => UpdateFontIDs
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4372] => UpdateScaledFonts
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4391] => UpdateSavedArrayPointers
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4442] => NewUpdateSavedDictEntries
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4479] => NewUpdateGstateChain
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4532] => UpdateSavedGstates
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4545] => UpdatePSfiles
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4611] => NewUpdateStatics
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4769] => UpdateExtras
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4198] => NewUpdateColorState
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:4742] => UpdateCachedForms
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5323] => CompressMemory
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5356] => CompressMemoryChain
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:5418] => CompressBlock
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:6526] => FreeUnusedBlocks
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:6464] => FreeUnusedBlocksChain
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:7551] => RemoveVMBlockFromTable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:839] => RestoreFile
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:1033] => GCresetFiles
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:707] => ResetThePSFuncProcs
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:871] => PSclear
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4352] => PSrestoretozero
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_error.c:769] => PShandleolderror
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:4336] => PSbytesavailable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:4282] => PS_BytesAvailable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:715] => PSle
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:1349] => PSwaitforjob
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:511] => jobend_PS_File
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_lzw.c:1395] => _ps_jobend_lzw
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pattrn.c:2240] => Pattern_FreeCache
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:13135] => clearIPDSPaperJam
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:13213] => clearIPDSIncorrectMediaSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:13162] => unRegisterPaperJamListener
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:13250] => unRegisterIncorrectMediaSizeListener
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:3373] => jobinit_pagedevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:7925] => reinstantiate_pagedevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:10952] => FixupUniversalPageSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:3121] => getRequestedSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:1738] => convertNupToNVNup
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:13064] => IPDS_ejectOrStaplePages
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:5961] => setScreening
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjljob.c:655] => pjlInJob
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontfg.c:506] => InvalidateLastFontJob
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontfg.c:411] => InvalidateLastFont
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontf9.c:223] => free_type9_buffer_list_and_close_type9_file
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontfg.c:449] => VerifyFontMode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_uparam.c:594] => jobinit_userparams
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dparam.c:7624] => jobinit_devparams
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dparam.c:6979] => setup_printername
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dparam.c:6856] => setup_appletalktype
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dparam.c:5084] => checkSetName
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dparam.c:7115] => setup_delayedoutputclose
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:464] => jobinit_PS_File
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_trace.c:139] => _psTraceInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_trace.c:182] => _psTraceEnable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_trace.c:52] => parseTokenString
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_ps.c:1562] => updatePostscriptAdminEnabled
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:3557] => PSsave
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:3776] => Global_save
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2722] => ClearSavedArrayFlag
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:3670] => Local_save
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:842] => DoGsave
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:885] => CopyGstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:2738] => CIE_copy_CIEspace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:3072] => CIE_copy_CIErender
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:3375] => CopyHalftoneSet
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:3152] => SaveItemLocal
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:3208] => SaveItem
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2977] => SaveHdrLocal
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:3025] => SaveHdr
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_compat.c:1809] => PSquerycapabilityenabled
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:2262] => PSexecjob
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:1127] => PDFOP_runpdfjob
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:848] => staticTestAndSetupOldPdfproc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:244] => pdfInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:154] => Init_PDF_Statics_And_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:118] => pdfObjMgrInitStaticsAndGlobals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfstate.c:83] => pdfStateInitStaticsAndGlobals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdferror.c:509] => pdfErrorInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfdebug.c:105] => pdfDebugInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfdebug.c:206] => pdfDebugEnable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfdebug.c:153] => staticParseTokenString
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfstate.c:148] => pdfStateInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfgstate.c:137] => pdfGStateInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdferror.c:965] => pdfErrorIsPending
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdferror.c:978] => pdfErrorFatalCount
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfcolorstate.c:145] => pdfColorStateInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfbuild.c:659] => pdfBuiltinNameIdToHash
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfcolorstate.c:123] => pdfColorStateClearColor
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftstate.c:91] => pdfTStateInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfstate.c:101] => pdfStateInitCurPath
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:132] => pdfObjMgrInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_plugin.c:75] => psPluginNew
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfstate.c:237] => curPdfState
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_plugin.c:251] => psPluginAddHook
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfbuild.c:598] => pdfBuildDicts
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfbuild.c:563] => pdfAddOpersToDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_plugin.c:291] => psPluginAddNewOper
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:206] => pdfLoadProcs
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:168] => pdfOpenProcSetFile
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:270] => PDFOP_pdfmakedict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:4204] => PStoken
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:1320] => PDFOP_putpdfproc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:1344] => pdfPutToSpecialDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:1325] => PDFOP_putpdfstatics
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cmap.c:346] => PSbegincmap
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cmap.c:133] => make_cmap_dict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cmap.c:361] => PSbegincodespacerange
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cmap.c:180] => make_cmap_array
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cmap.c:421] => PSendcodespacerange
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cmap.c:530] => PSbegincidrange
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cmap.c:232] => begin_cmap_info
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cmap.c:535] => PSendcidrange
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cmap.c:279] => end_cmap_info
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cmap.c:356] => PSendcmap
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_resrce.c:239] => PSfindencoding
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contrl.c:1255] => PSfor
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_contr2.c:120] => EvalForLoop
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_oper.c:2269] => PSputinterval
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:401] => expand_mem
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2029] => vm_expand_temp_space
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_token.c:1826] => NO_TOKEN
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:944] => lfjt_init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_builtin.c:907] => _lfjt_builtin_check_options_table
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:338] => init_global_print_ticket
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1120] => lfjt_print_ticket_new
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:174] => set_defaults
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_pt.c:162] => _lfjt_duplex_validate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_pt.c:264] => _lfjt_nup_validate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:11957] => ps_icc_mgr_init
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:414] => pdfLoadJob
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:341] => pdf_try_to_setup_direct_job
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:1237] => ps_get_direct_job_cfs_filename
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:2746] => PS_ReadData
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:1188] => allocate_inbuf_if_needed
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:866] => PS_ReadDataSTDIN
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:13097] => isIPDSPaperJamPending
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:13182] => isIPDSIncorrectMediaSizePending
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:1831] => pdfConstructXRefTables
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:1535] => pdfLocateStartxref
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:1385] => pdfLocateLinearized
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:3774] => PS_FileSeek
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:113] => pdfScanPsObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:5553] => PS_FileSetIsPdfJobData
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:237] => PDFOP_R
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.h:77] => objFormatPdfObjRef
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:498] => psDictGetPsObjDeref
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:461] => psDictGetPsObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:218] => PS_FileReadLine
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:651] => pdfLoadXRefTablesAndTrailer
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:545] => pdfLoadTrailerFromPos
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:548] => psDictGetInteger
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.h:87] => objPIsPdfObjRef
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:943] => pdfObjMgrAllocRangeRun
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:884] => pdfObjMgrAllocRange
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:616] => pdfObjMgrReadXRefTables
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:572] => getNextNumber
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:547] => isSeparator
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:501] => pdfObjMgrIsValidObjStartFromPos
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:3709] => PS_FilePosition
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:430] => isValidObjStart
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:163] => pdfObjCreate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfdebug.c:67] => pdfDebugPrint
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:282] => pdfObjMgrFindPreviousXref
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjcatalog.c:80] => pdfObjCatalogCreate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:710] => psDictGetPdfObjRef
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:713] => pdfObjMgrGetPdfObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:268] => pdfObjGetPsObjP
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:181] => pdfObjIsCompressed
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:402] => staticPdfObjScanPsObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfcontext.c:155] => pdfContextPushImpl
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfcontext.c:101] => staticPdfContextNew
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfcontext.c:124] => pdfContextCurrent
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:664] => debugPdfObjGetTypeString
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:208] => pdfObjGetRev
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:195] => pdfObjGetNum
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfcontext.c:244] => pdfContextLevel
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:233] => pdfObjGetFile
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:220] => pdfObjGetPos
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:223] => PDFOP_obj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:391] => PDFOP_endobj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfcontext.c:207] => pdfContextPop
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:372] => pdfObjSetType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:461] => pdfObjSetPrivateData
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjcatalog.c:147] => pdfObjCatalogGetPagesRoot
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:318] => pdfObjGetPrivateData
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:485] => pdfObjTypeCheckImpl
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:1399] => pdfObjPagesBuildTree
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:250] => pdfObjPagesCreate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:245] => pdfObjGetType
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:2377] => pdfObjPagesInitPage
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:2156] => pdfObjPagesSetUserUnit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:2190] => pdfObjPagesSetPageBoundaries
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:2296] => pdfObjPagesSetRotate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:2339] => pdfObjPagesCheckResolution
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:480] => pdfObjPagesGetKidCount
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:1318] => pdfObjPagesGetKid
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:768] => psArrayReadFloats
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:1077] => buildPrintPageList
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:174] => pdfObjPagesInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:198] => executeCString
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:748] => pdfObjMgrCreateAnonymousPdfObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:853] => staticAnonymousTableGrow
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:382] => pdfObjSetPsObjP
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjgroupattribs.c:91] => pdfObjGroupAttribsCreate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1351] => InternalGsave
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfgstate.c:166] => pdfGStatePsGSaveHook
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfgstate.c:207] => staticGStatePush
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfcolorstate.c:162] => pdfColorStateCopy
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftstate.c:162] => pdfTStatePush
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfbuild.c:692] => pdfBuiltinHashToNameId
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfgstate.c:307] => PDFOP_cs
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfcolorstate.c:336] => pdfColorStateOperatorSetColorSpace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfcolorstate.c:1113] => pdfColorStateSyncPostScript
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:974] => pdfDereferencePsObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:915] => staticDoPdfDereferencePsObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l2colr.c:2277] => PSsetcolorspace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l2colr.c:376] => L2colr_get_colorspace_inkmodel
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:1516] => Color_SetCMYKValue
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:1166] => Color_RangeCheck
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1425] => InternalGrestore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1055] => DoGrestore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfgstate.c:183] => pdfGStatePsGRestoreHook
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfgstate.c:236] => staticGStatePop
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftstate.c:145] => pdfTStatePop
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:7900] => saveoldIAPageSizes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1002] => DestroyGstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:2613] => CIE_free_CIEspace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:2793] => CIE_free_PDFspace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:2046] => pdfProcessViewerPrefs
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:1473] => pdfObjPagesPrintTree
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:1339] => pdfObjPagesGetResources
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:1299] => pdfObjPagesIsLeaf
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfresourcemgr.c:126] => pdfResourceMgrPushResources
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfresourcemgr.c:394] => pdfResourcesMgrFindFirstAvailableResources
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:1913] => pdfObjPagesPrintLeaf
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfstate.c:263] => pdfStateSetCurPage
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1067] => lfjt_print_ticket_get
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1145] => lfjt_print_ticket_dup
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1170] => lfjt_print_ticket_assign
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:663] => add_print_ticket
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:630] => is_job_level
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:548] => print_ticket_soft_merge
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:478] => print_ticket_merge
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:581] => sort_and_insert_print_ticket
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1532] => lfjt_is_skip_print
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:1643] => pdfObjPagesSetPageDevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1403] => lfjt_print_ticket_get_pagesize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1427] => lfjt_print_ticket_set_pagesize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_builtin.c:1178] => _lfjt_builtin_is_standard_paper_size
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1233] => lfjt_print_ticket_diff
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:130] => is_diff
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_pt.c:550] => lfjt_debug_dump_print_ticket
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_builtin.c:1273] => _lfjt_builtin_debug_lookup_option_name
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_builtin.c:1086] => _lfjt_builtin_is_value_int
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_builtin.c:1235] => _lfjt_builtin_debug_lookup_value_name
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_builtin.c:842] => get_builtin_values
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1291] => lfjt_cur_page_device_diff
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_builtin.c:998] => _lfjt_builtin_is_diff_from_device
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:2056] => _lfjt_device_diff_no_op
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:313] => _lfjt_device_diff_collation
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:499] => _lfjt_device_diff_device_rendering_info
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:446] => diff_color_correction
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:474] => diff_DRI
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:365] => diff_image_enhancement
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:391] => diff_image_enhancement_type
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:419] => diff_toner_saver
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:654] => _lfjt_device_diff_copies
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_builtin.c:962] => _lfjt_builtin_create_device_dict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:682] => _lfjt_device_add_copies
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:65] => add_key_int
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:703] => _lfjt_device_diff_duplex
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:764] => _lfjt_device_diff_hole_punch
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:818] => _lfjt_device_diff_manual_feed
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:866] => _lfjt_device_diff_media_type
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1119] => _lfjt_device_diff_multipage_print
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1050] => diff_nup
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1090] => diff_nup_details
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:994] => diff_nup_rows
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1021] => diff_nup_columns
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:914] => diff_nup_border
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:942] => diff_nup_order
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:968] => diff_nup_view
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1288] => _lfjt_device_diff_output_bin
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1353] => _lfjt_device_diff_print_mode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1522] => _lfjt_device_diff_paper_size
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1489] => diff_page_size
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1653] => _lfjt_device_add_paper_size
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1628] => add_page_size
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:216] => add_key_array_real
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1475] => diff_policies
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1411] => diff_media_type_policy
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1444] => diff_page_size_policy
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1549] => add_policies
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:254] => add_key_dict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1685] => _lfjt_device_diff_paper_tray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1739] => _lfjt_device_diff_resolution
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1803] => _lfjt_device_diff_slip_sheets
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1849] => _lfjt_device_diff_separator_source
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1921] => _lfjt_device_diff_staple
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:1973] => _lfjt_device_diff_tumble
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_device.c:2015] => _lfjt_device_diff_fold
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:5417] => AddToPolicyReportDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:3839] => select_nearest_or_nextlargest_source
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:3752] => select_nearest_source
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:2749] => doNupEndPage
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1210] => lfjt_print_ticket_free
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:2442] => pdfObjPagesAddRfidTag
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:502] => pdfObjPagesGetPageSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:1079] => pdfObjPagesAdjustBBox
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:1148] => pdfObjPagesSubstituteSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1388] => lfjt_lookup_paper_size_by_pagesize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_builtin.c:1133] => _lfjt_builtin_lookup_paper_size_by_pagesize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:702] => pdfObjPagesRotate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:602] => pdfObjPagesGetRotateAngle
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:1332] => lfjt_print_ticket_get_scale_to_fit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:402] => PStranslate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:599] => PSrotate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:499] => PSscale
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:2335] => PSmoveto
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:2447] => PSlineto
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:3618] => PSclip
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:3560] => clipit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:2256] => PSnewpath
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfont.c:192] => pdfObjFontDefineResources
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfont.c:132] => staticFontResourceDefine
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfont.c:205] => pdfObjFontCreate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfont.c:1305] => pdfObjFontSetDescriptor
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfont.c:1261] => pdfObjFontSetFontName
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_resrce.c:249] => PSconcatstrings
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfont.c:363] => pdfObjFontDefineFont
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfontt1.c:197] => pdfObjFontDefineFont_T1
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfont.c:1346] => pdfObjFontIsEmbedded
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfont.c:423] => pdfObjFontIsBaseFontDefined
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2613] => DoSaveArray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2476] => SaveArrayElem
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfont.c:493] => pdfObjFontDoEncoding
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfont.c:768] => pdfObjFontDoWidths
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:3096] => SaveItemGlobal
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2925] => SaveHdrGlobal
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmem.c:87] => pdfMemSave
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:1361] => pdfObjPagesHasTransparency
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftransparencydetect.c:689] => _pdf_detect_transparency
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftransparencydetect.c:492] => detect_transparency_resources
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftransparencydetect.c:453] => loopthru_one_resource_type
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftransparencydetect.c:402] => detect_transparency_font
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftransparencydetect.c:111] => resolve_psobj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmem.c:141] => pdfMemRestore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:961] => pdfObjMgrForall
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmem.c:97] => staticRestoreSinglePdfObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4301] => PSrestore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:3880] => dorestore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4017] => CheckRestore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:873] => CheckTheCstateList
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4137] => PerformRestore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:3465] => RestoreGraphics
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:9828] => find_pagedevice_changes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2836] => RestoreChainFontID
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:3289] => RestoreDict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2671] => RestoreArray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l2grph.c:4046] => DestroyGstateChain
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l2grph.c:4098] => RestoreGstates
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2336] => RestoreLevel
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:2774] => SetSavedArrayFlag
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_uparam.c:1531] => RestoreUserParams
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_forms.c:1438] => FormRestore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1314] => PSgsave
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjstream.c:122] => pdfObjStreamCreate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:635] => psDictGetIntegerCheckLog
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:595] => psDictGetIntegerCheck
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfscan.c:414] => pdfRenderStream
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjstream.c:617] => pdfObjStreamOpen
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjstream.c:229] => pdfObjStreamOpenExt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_filter.c:2302] => PSfilter
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_filter.c:2532] => CheckFilterName
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_filter.c:2575] => CreateFilter
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_filter.c:2394] => GetFilterSrcTargObj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_filter.c:384] => subfiledecodeinit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjcatalog.c:202] => pdfObjCatalogGetDecrypt
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjstream.c:407] => pdfObjStreamSetFilters
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_filter.c:1643] => SubFileDecode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftstate.c:1069] => PDFOP_BT
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:135] => PSmatrix
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:306] => PScurrentmatrix
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:750] => PSconcatmatrix
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:736] => cMatrix
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:837] => PStransform
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjfont.c:273] => PDFOP_Tf
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftstate.c:223] => pdfTStateSetCurFontSize
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfresourcemgr.c:282] => pdfResourceMgrFindResource
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_resrce.c:124] => exec_systemdict_string
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftstate.c:255] => PDFOP_Td
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftstate.c:453] => PDFOP_Tj
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:2106] => PScurrentlinewidth
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:707] => PSconcat
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:689] => concat_it
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1783] => PSsetlinewidth
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjoc.c:587] => pdfOC_has_oc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftstate.c:353] => I_TjMoveXY
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:992] => PSitransform
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_show.c:1365] => PSawidthshow
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_show.c:774] => DoShow
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_show.c:631] => PaintText
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pattrn.c:704] => Pattern_IsShading
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:849] => CopyCstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontfg.c:1158] => generic_fontfcn
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontfg.c:2472] => getGlyphNameFromCode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontfg.c:2396] => HashedNameToGlyphName
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontf1.c:339] => ufst_fontfcn
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontft.c:949] => format_ttf_fc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontfg.c:833] => format_fc
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontfg.c:558] => handle_character
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:1217] => page4_device_estimate_give_back_bytes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:1486] => cleanup_swathes
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swathfx.c:170] => cleanup_fax_swath
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftstate.c:375] => I_TjRestoreXY
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:2285] => PScurrentpoint
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_xform.c:372] => PSsetmatrix
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftstate.c:1107] => PDFOP_ET
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjstream.c:659] => pdfObjStreamClose
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjstream.c:630] => pdfObjStreamGetOpenedFile
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:1385] => PSgrestore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmem.c:168] => pdfMemClear
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjstream.c:875] => pdfObjStreamRestore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:4339] => PSshowpage
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:4290] => doShowpage
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:2732] => RemoveExtraPaintGray
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4927] => SavePSEnvironment
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:7330] => GetPSEmulXform
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:5099] => IpsPrepare_rawtodevxform
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:3564] => PS_mono2device_cmyk
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:3531] => PS_mono2device
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:1040] => page4_device_page_set_tile
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blitmap.c:5958] => p4_page_device_color_plot_pattern
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blitmap.c:5856] => detect_and_set_trap_pels
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:2644] => page4_device_page_get_num_trap_pels
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blitmap.c:1602] => font_outlining_coverage_limit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blitmap.c:1637] => BlockPlotPattern
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blitmap.c:902] => BlockPlotPatternReal
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:551] => MakeCPMAvailable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:2321] => add_block
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blitmap.c:391] => PlotClippedPatternBlit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blitmap.c:5819] => ensure_trapped_data
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blitmap.c:5743] => TrapPattern
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blitmap.c:5944] => clear_trap_pels
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:7544] => FreePSEmulXform
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexmch.c:1981] => _page4_device_print_page
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:2630] => page4_device_page_get_pmap
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexmch.c:1291] => checkScanCapturePath
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexmch.c:2553] => undo_displaylist
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexmch.c:274] => pmapKillBlankBlocks
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexmch.c:2452] => update_pmap_status
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/analyze_mbit.c:50] => analMbit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexmch.c:2334] => PrintPMAP
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldskif.c:1508] => LDPF_InitFileInfo
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexmch.c:938] => HandleOutputMode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:362] => WritePMAP
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:990] => GimeBlockSpace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:826] => CompressPage
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/cmpdcmp.c:266] => pmap_compress
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/cmpdcmp.c:465] => compress_raw
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lzwalg.c:330] => lzw_comp
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lzwalg.c:149] => get_lzw_dict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lzwalg.c:248] => give_back_lzw_dict
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/cmpdcmp.c:212] => pmap_update_cpm
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:1584] => p4kill_block
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:2191] => WritePAM
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:1716] => open_file_for_gz
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:1941] => pmap_write_pmap_to_pam
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:1931] => ignore_margins
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:125] => get_device_from_pmap
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:1625] => pmap_output_stream_write_gz
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:1589] => write4planesCMYK
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:301] => copy_block_data_into_buffer
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:1521] => expand_scanline
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/cmpdcmp.c:802] => p4_getblockwidth
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/cmpdcmp.c:848] => p4_decompress_block
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lzwalg.c:668] => lzw_dcomp
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/mulblit.c:297] => bit_expand
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:1447] => p4kill_cpblock
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lextest.c:1639] => pmap_output_stream_close_gz
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/pdb.c:832] => DPBreset
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexmch.c:759] => BitmapOutputConf
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swathes.c:165] => register_swath_use
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjljob.c:719] => pjlNumCopiesThisSide
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexmch.c:420] => HandlingColorPages
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexmch.c:471] => HandlingPages
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldskp4.c:283] => LDPF_AssignIDs
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:805] => pmap_print
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:734] => pmap_PDBCharMode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swathes.c:214] => unregister_swath_use
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:4965] => RestorePSEnvironment
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l2grph.c:1470] => GetOperIndex
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfresourcemgr.c:206] => pdfResourceMgrPopResources
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfresourcemgr.c:228] => staticDoPopResources
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfresourcemgr.c:362] => pdfResourceMgrUninstallResources
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:2496] => pdfObjPagesRfidCleanup
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfmain.c:749] => pdfDeInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_plugin.c:320] => psPluginDelete
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_plugin.c:345] => psPluginRemoveHook
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:4800] => PSdeletefile
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:4751] => CheckPSfileExistsAndWriteable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjmgr.c:159] => pdfObjMgrDeInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:576] => pdfObjDestroy
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobj.c:530] => pdfObjDestroyBase
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjpages.c:1290] => pdfObjPagesDestroy
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfobjgroupattribs.c:286] => pdfObjGroupAttribsDestroy
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfstate.c:210] => pdfStateDeInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfgstate.c:288] => pdfGStateDeInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdftstate.c:207] => pdfTStateDeInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfstate.c:509] => pdfStateFreeCurrentPath
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdfdebug.c:148] => pdfDebugDeInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdferror.c:554] => pdfErrorDeInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/pdferror.c:483] => staticPdfErrorLogEntryFree
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pdf/../../../../page4/pdf/lfjt_main.c:966] => lfjt_deinit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:12153] => ps_icc_mgr_deinit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_error.c:819] => PSsetinerror
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_compat.c:1480] => PSdoeof
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:6134] => SourceIsAppleTalk
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:575] => ps_endofjobdlecallbacks
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms.c:11768] => PSnewsheet
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dparam.c:5587] => PSdodeferreddevparams
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_dict.c:3813] => PScleardictstack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:1023] => DestroyScaledFontIDFontObjs
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:1268] => ht_restore
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlkern.c:131] => pjlJobBoundary
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjljob.c:610] => pjlResetDeclaredPassword
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldcif.c:193] => LDCF_DiskCollateEnd
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldskif.c:200] => LDPF_EndOfJob
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:1458] => pjlNotifyParseComplete
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:2526] => pjlPrintingEmulatorJob
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:1542] => pjlAddEmJobNode
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:603] => page_to_page_optimization_cleanup_callback
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:1435] => pjlNotifyJobDone
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:1703] => pjlJobComplete
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pjl/../../../../page4/pjl/pjlwback.c:801] => pjlNextWakeUpTime
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:2287] => flush_blk_freelist
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:1707] => GetGiveBackBuffers
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swathfx.c:270] => GetGiveBackFaxBuffer
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:608] => PSMark
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/pmdefrag.c:436] => pmap_mark_for_defrag
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:787] => MarkPSvm
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:818] => MarkGCInfo
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3488] => VMMarkGCStack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:7423] => MarkVMBlockTable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:205] => MarkPShashtable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:630] => MarkPSGstack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:570] => MarkPSGstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hlfton.c:3414] => MarkPSHalftoneSet
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:2713] => CIE_mark_CIEspace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:3045] => CIE_mark_CIErender
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_cie.c:2820] => CIE_mark_PDFspace
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:648] => MarkVMGStates
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_device.c:200] => MarkPSdevicechain
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4lexmap.c:2299] => page4_device_page_mark
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/p4blocks.c:1277] => p4mark_pmap
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l2grph.c:314] => MarkPSusercache
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_forms.c:1389] => MarkPSformscache
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:907] => MarkPSfont
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:944] => MarkPSfiles
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:5287] => MarkPSinternaldata
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontft.c:297] => MarkPScid
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontf9.c:268] => mark_type9_buffer_list
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pattrn.c:2229] => Pattern_MarkCache
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_pparms2.c:1784] => MarkTheNUPObjects
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l3grph.c:2433] => MarkFunctionMemory
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:1210] => MarkCstateList
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:987] => Mark_swath
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:6105] => quit_the_interpreter
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:674] => sysdeinit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_ps.c:1237] => PostDeInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_device.c:259] => FreeTheDeviceChain
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_device.c:229] => FreeThepsdevice
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:702] => DeInitPSfileDirectory
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_file.c:636] => FreeTheFileStruct
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_font.c:779] => DeInit_p_font_Statics_and_Globals
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_gstate.c:709] => FreePSGstate
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_forms.c:1403] => FreePSformscache
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_l2grph.c:319] => FreePSusercache
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_hash.c:220] => ht_deinit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_stacks.c:185] => Stack_DeInit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:952] => FreePSvm
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vm.c:906] => FreeVM
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:824] => GCDeinit
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:3473] => VMDeinitGCStack
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_vmrec.c:7438] => DeleteVMBlockTable
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontinit.c:391] => _ps_cleanup_fonts
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontinit.c:325] => CleanupDirectory
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontf1.c:414] => ufst_modifyfcn
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_fontinit.c:290] => UnregisterHandler
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_color.c:782] => IpsColorKill
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_debug.c:84] => BreakOnPsDown
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/ps22/../../../../page4/ps22/p_sysif.c:598] => tell_EM_PS_is_dead
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/lexdev.c:1182] => page4_device_term
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldskif.c:865] => LDPF_ResetStates
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/ldcif.c:181] => LDCF_DiskCollateCancel
+[/bonus/scratch/tanch/lf-fut-qwc/sim_voy-ix86-Linux-RHEL5/page4/Page4/pmap2/../../../../page4/pmap2/swath1ls.c:1564] => Shutdown_Swathes
+[/bonus/scratch/t

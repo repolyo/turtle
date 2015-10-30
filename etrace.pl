@@ -22,7 +22,7 @@ $SRC_LOC = '[0-9a-fA-F]+';
 
 $exec;
 $testcase;
-
+$runpage4 = false;
 $fhost = "10.194.15.187";
 $fuser = "chritan";
 $fpass = "welcome1";
@@ -36,7 +36,12 @@ sub readObjects {
   $objectFileName = shift;
   if (-x $objectFileName) {
     # Object code: extract symbol names via a pipe before parsing
-    $handleName = $NM.'./Page4 |';
+    if ( $runpage4 eq true ) {
+       $handleName = $NM. ' Page4 |';
+    }
+    else {
+       $handleName = $NM.$objectFileName . '|';
+    }
   } else {
     # A symbol table: simply parse the symbol names
     $handleName = '<'.$objectFileName;
@@ -44,7 +49,7 @@ sub readObjects {
   
   open f, $handleName or die "$0: cannot open $objectFileName";
   while ($line = <f>) {
-#    print $line ;
+    #print $line ;
     $line =~  m/^($HEX_NUMBER)\s+.*\s+($SYMBOL_NAME)\s+(.*)/g;
     $hexLocation = $1;
     $symbolName = $2;
@@ -173,11 +178,6 @@ sub processCallInfo {
 use Getopt::Long qw(GetOptions);
 
 # Main function
-if (@ARGV==0) {
-    die "Usage: $0 OBJECT [TRACE]\n" .
-	"       OBJECT is either the object code or the output of $NM\n" .
-	"       TRACE is either the etrace output file or of a FIFO to connect to etrace.\n";
-};
 
 GetOptions(
   'exec=s' => \$exec,
@@ -185,12 +185,23 @@ GetOptions(
   'ftp=s' => \$fhost,
   'user=s' => \$fuser,
   'pass=s' => \$fpass,
-) or die "Usage: $0 --exec PROGRAM --file TESTCASE\n";
+) or die "Usage: $0 --exec PROGRAM --file TESTCASE --ftp HOST --user USER --pass PASSWD\n";
+
+$sniffer='pdls_sniff';
 
 if ($exec) {
     if (-x $exec ) {
-       print "invoking = " . $exec . ' ' . $testcase . "\n";
-       system($exec . ' < ' . $testcase);
+       if ( $runpage4 eq true ) {
+         print "invoking = " . $exec . ' < ' . $testcase . "\n";
+         system($exec . ' < ' . $testcase);
+       }
+       else {
+         open f, $sniffer.' '.$testcase.'|' or die "$0: cannot open $sniffer";
+         $type = <f>;
+         close f;
+         print "invoking = " . $exec . ' -e '. $type . ' ' . $testcase . "\n";
+         system($exec.' -e '.$type.' '.$testcase);
+       }
     }
 
     readObjects $exec;
