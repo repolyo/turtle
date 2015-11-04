@@ -178,6 +178,8 @@ sub processCallInfo {
 use Getopt::Long qw(GetOptions);
 
 # Main function
+use DBI;
+use File::Basename;
 
 GetOptions(
   'exec=s' => \$exec,
@@ -187,7 +189,14 @@ GetOptions(
   'pass=s' => \$fpass,
 ) or die "Usage: $0 --exec PROGRAM --file TESTCASE --ftp HOST --user USER --pass PASSWD\n";
 
-$sniffer='pdls_sniff';
+$sniffer='/users/chritan/bin/pdls_sniff';
+
+$dbh = DBI->connect('DBI:mysql:tutorial_db;host=10.194.15.187', 'tanch', 'tanch'
+          ) || die "Could not connect to database: $DBI::errstr";
+
+my $filename = fileparse($testcase);
+$dbh->do('REPLACE INTO files(fname,floc, create_date) VALUES(?, ?, NOW())', undef, $filename, $testcase);
+
 
 if ($exec) {
     if (-x $exec ) {
