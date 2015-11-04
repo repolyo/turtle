@@ -24,8 +24,8 @@ $exec;
 $testcase;
 $runpage4 = false;
 $fhost = "10.194.15.187";
-$fuser = "chritan";
-$fpass = "welcome1";
+$fuser = "anonymous";
+$fpass = "";
 
 # Global identifiers
 # %SYMBOLTABLE : a hash array from relative offsets to symbol names
