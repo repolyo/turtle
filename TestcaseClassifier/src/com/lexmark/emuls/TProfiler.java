@@ -1,0 +1,76 @@
+package com.lexmark.emuls;
+import static java.nio.file.StandardWatchEventKinds.*;
+
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+
+import com.lexmark.emuls.profiler.TImporter;
+
+public class TProfiler {
+
+	public static void main(String[] args) {
+		try {
+		
+		// TODO Auto-generated method stub
+		WatchService watcher = FileSystems.getDefault().newWatchService();
+		
+		Path dir = FileSystems.getDefault().getPath("C:/inetpub/ftproot");
+		
+	    WatchKey key = dir.register(watcher,
+	                           ENTRY_CREATE,
+	                           ENTRY_MODIFY);
+		for (;;) {
+
+		    // wait for key to be signaled
+		    try {
+		        key = watcher.take();
+		    } catch (InterruptedException x) {
+		        return;
+		    }
+
+		    for (WatchEvent<?> event: key.pollEvents()) {
+		        WatchEvent.Kind<?> kind = event.kind();
+
+		        // This key is registered only
+		        // for ENTRY_CREATE events,
+		        // but an OVERFLOW event can
+		        // occur regardless if events
+		        // are lost or discarded.
+		        if (kind == OVERFLOW) {
+		            continue;
+		        }
+
+
+		        // The filename is the
+		        // context of the event.
+		        WatchEvent<Path> ev = (WatchEvent<Path>)event;
+		        Path filename = ev.context();
+
+		        if (kind == ENTRY_MODIFY) {
+		        	System.out.format("modified file: %s, skipping... %n", filename);
+		        	continue;
+		        }
+		        
+		        TImporter.importFile(String.format("%s/%s",dir, filename));
+		    }
+
+		    // Reset the key -- this step is critical if you want to
+		    // receive further watch events.  If the key is no longer valid,
+		    // the directory is inaccessible so exit the loop.
+		    boolean valid = key.reset();
+		    if (!valid) {
+		        break;
+		    }
+		}
+		
+		} catch (IOException x) {
+		    System.err.println(x);
+		}
+		
+	}
+}
