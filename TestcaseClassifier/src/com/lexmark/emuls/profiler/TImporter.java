@@ -20,7 +20,7 @@ public class TImporter extends LinkedList<String> {
 	private static String TESTCASE = "^invoking =.*";
 	
 	// [/bonus/scratch/tanch/pdls/app/main.c:631] => main
-    private static String FUNC_HIT = "(.*)\\s+(.*)";
+    private static String FUNC_HIT = "^\\[.*(\\/.*\\/.*\\/.*):(\\d+)\\]\\s+=>\\s+(.*)";
     
 	private TImporter() { }
 	
@@ -52,16 +52,16 @@ public class TImporter extends LinkedList<String> {
 				            while (scanner.hasNextLine()) {
 				                String line = scanner.nextLine();
 				                if(line.matches(TESTCASE)) {
-				                	System.out.println(line);
+				                	System.out.println("SOURCE: " + line);
 				            	}
 				                else {
-				                	Matcher m = Pattern.compile(FUNC_HIT).matcher(line);
-				                	if (m.matches()) {
-				                		System.out.println(line);
-				                        System.out.println("Found value: " + m.group(1));
-				                        System.out.println("Found value: " + m.group(2));
-				                    }
-				                	break;
+				                	Pattern re = Pattern.compile(FUNC_HIT);
+				                	Matcher m = re.matcher(line);
+				                	if ( m.find() ) {
+				                	  String sql = String.format("INSERT INTO FUNC(source_file, line_no, func_name) VALUES('%s', %s, '%s');", 
+				                			  m.group(1), m.group(2), m.group(3));
+				                	  System.out.println(sql);
+			                	    }
 				                }
 				            }
 				            

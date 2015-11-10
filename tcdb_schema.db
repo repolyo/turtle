@@ -3,26 +3,6 @@ CREATE USER 'tanch'@'localhost' IDENTIFIED BY 'tanch';
 GRANT ALL PRIVILEGES ON * . * TO 'tanch'@'localhost';
 FLUSH PRIVILEGES;
 
-CREATE TABLE files (
-   fname VARCHAR(255) NOT NULL,   
-   floc VARCHAR(255) NOT NULL,  
-   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-   PRIMARY KEY (floc)
-);
-
-CREATE TABLE tags (
-   tname VARCHAR(255) NOT NULL,
-   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-   PRIMARY KEY (tname)
-);
-
-CREATE TABLE func (
-   source_file VARCHAR(255) NOT NULL,
-   func_name VARCHAR(255) NOT NULL,
-   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-   PRIMARY KEY (source_file, func_name)
-);
-
 CREATE TABLE platform (
    pid INT(11) NOT NULL AUTO_INCREMENT,
    codeline VARCHAR(255) NOT NULL,
@@ -35,24 +15,42 @@ CREATE TABLE platform (
    PRIMARY KEY (pid)
 );
 
-CREATE TABLE file_func_map (
-   pid INT(11) NOT NULL,
-   floc VARCHAR(255) NOT NULL, 
-   func VARCHAR(255) NOT NULL,
-   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-   PRIMARY KEY (pid,floc,func),
-   FOREIGN KEY (pid) REFERENCES platform (pid),
-   FOREIGN KEY (floc) REFERENCES files (floc),
-   FOREIGN KEY (func_name) REFERENCES func (func_name)
+CREATE TABLE testcase (
+   tname VARCHAR(255) NOT NULL,   
+   tloc VARCHAR(255) NOT NULL,  
+   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   PRIMARY KEY (tloc)
 );
 
-CREATE TABLE file_tags (
-   pid INT(11) NOT NULL,
-   floc VARCHAR(255) NOT NULL, 
-   tname VARCHAR(255) NOT NULL,
+CREATE TABLE tags (
+   tag_name VARCHAR(255) NOT NULL,
    create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-   PRIMARY KEY (pid,floc,tname),
-   FOREIGN KEY (pid) REFERENCES platform (pid),
-   FOREIGN KEY (floc) REFERENCES files (floc),
-   FOREIGN KEY (tname) REFERENCES tags (tname)
+   PRIMARY KEY (tname)
+);
+
+CREATE TABLE func (
+   fid INT(11) NOT NULL AUTO_INCREMENT,
+   source_file VARCHAR(255) NOT NULL,
+   line_no INT(10),
+   func_name VARCHAR(255) NOT NULL,
+   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+   PRIMARY KEY (source_file, func_name)
+);
+
+CREATE TABLE testcase_func_map (
+   tloc VARCHAR(255) NOT NULL, 
+   fid INT(11) NOT NULL,
+   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+   PRIMARY KEY (tloc,fid),
+   FOREIGN KEY (tloc) REFERENCES testcase (tloc),
+   FOREIGN KEY (fid) REFERENCES func (fid)
+);
+
+CREATE TABLE testcase_tags (
+   tag_name VARCHAR(255) NOT NULL,
+   tloc VARCHAR(255) NOT NULL, 
+   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+   PRIMARY KEY (tag_name,tloc),
+   FOREIGN KEY (tloc) REFERENCES testcase (tloc),
+   FOREIGN KEY (tag_name) REFERENCES tags (tag_name)
 );
