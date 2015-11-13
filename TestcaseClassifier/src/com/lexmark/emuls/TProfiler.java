@@ -55,8 +55,11 @@ public class TProfiler {
 		        	System.out.format("modified file: %s, skipping... %n", filename);
 		        	continue;
 		        }
-		        
-		        TImporter.importFile(String.format("%s/%s",dir, filename));
+		        try {
+		        	TImporter.importFile(String.format("%s/%s",dir, filename));
+			    } catch (Exception e) {
+        			e.printStackTrace();
+			    }
 		    }
 
 		    // Reset the key -- this step is critical if you want to

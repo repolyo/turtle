@@ -1,56 +1,47 @@
-CREATE DATABASE tutorial_db;
-CREATE USER 'tanch'@'localhost' IDENTIFIED BY 'tanch';
-GRANT ALL PRIVILEGES ON * . * TO 'tanch'@'localhost';
-FLUSH PRIVILEGES;
 
-CREATE TABLE platform (
-   pid INT(11) NOT NULL AUTO_INCREMENT,
-   codeline VARCHAR(255) NOT NULL,
-   persona VARCHAR(255) NOT NULL,
-   version VARCHAR(255) NOT NULL,
-   memory BIGINT(20) NOT NULL DEFAULT 0,
-   disk BIGINT(20) NOT NULL DEFAULT 0,
-   usb BOOLEAN not null default 0,
-   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-   PRIMARY KEY (pid)
-);
-
-CREATE TABLE testcase (
+DROP TABLE tc_profiler.testcase;
+CREATE TABLE tc_profiler.testcase (
    tname VARCHAR(255) NOT NULL,   
    tloc VARCHAR(255) NOT NULL,  
    create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    PRIMARY KEY (tloc)
 );
 
-CREATE TABLE tags (
+DROP TABLE tc_profiler.tags;
+CREATE TABLE tc_profiler.tags (
    tag_name VARCHAR(255) NOT NULL,
    create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-   PRIMARY KEY (tname)
+   PRIMARY KEY (tag_name)
 );
 
-CREATE TABLE func (
-   fid INT(11) NOT NULL AUTO_INCREMENT,
+DROP TABLE tc_profiler.func;
+CREATE TABLE tc_profiler.func (
+   fid INT NOT NULL,
    source_file VARCHAR(255) NOT NULL,
-   line_no INT(10),
+   line_no INT,
    func_name VARCHAR(255) NOT NULL,
    create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-   PRIMARY KEY (source_file, func_name)
+   PRIMARY KEY (fid)
 );
 
-CREATE TABLE testcase_func_map (
-   tloc VARCHAR(255) NOT NULL, 
-   fid INT(11) NOT NULL,
-   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-   PRIMARY KEY (tloc,fid),
-   FOREIGN KEY (tloc) REFERENCES testcase (tloc),
-   FOREIGN KEY (fid) REFERENCES func (fid)
-);
+CREATE SEQUENCE func_seq START WITH 1 INCREMENT BY 1;
+CREATE OR REPLACE TRIGGER func_trigger BEFORE INSERT ON tc_profiler.func
+REFERENCING NEW AS NEW
+FOR EACH ROW
+BEGIN
+  IF :NEW.fid IS NULL THEN
+    SELECT func_seq.nextval INTO :NEW.fid FROM dual;
+  END IF;
+END;
+/
 
-CREATE TABLE testcase_tags (
-   tag_name VARCHAR(255) NOT NULL,
+
+
+DROP TABLE tc_profiler.testcase_func_map;
+CREATE TABLE tc_profiler.testcase_func_map (
    tloc VARCHAR(255) NOT NULL, 
+   fid INT NOT NULL,
    create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-   PRIMARY KEY (tag_name,tloc),
-   FOREIGN KEY (tloc) REFERENCES testcase (tloc),
-   FOREIGN KEY (tag_name) REFERENCES tags (tag_name)
+   FOREIGN KEY (tloc) REFERENCES testcase(tloc),
+   FOREIGN KEY (fid) REFERENCES func(fid)
 );
