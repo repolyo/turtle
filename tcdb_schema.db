@@ -45,3 +45,12 @@ CREATE TABLE tc_profiler.testcase_func_map (
    FOREIGN KEY (tloc) REFERENCES testcase(tloc),
    FOREIGN KEY (fid) REFERENCES func(fid)
 );
+
+DROP TABLE tc_profiler.testcase_tags;
+CREATE TABLE tc_profiler.testcase_tags (
+   tloc VARCHAR(255) NOT NULL, 
+   tag_name VARCHAR(255) NOT NULL, 
+   create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+   FOREIGN KEY (tloc) REFERENCES testcase(tloc),
+   FOREIGN KEY (tag_name) REFERENCES tags(tag_name)
+);
