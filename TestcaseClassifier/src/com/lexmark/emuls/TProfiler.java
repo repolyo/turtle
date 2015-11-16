@@ -3,7 +3,6 @@ import static java.nio.file.StandardWatchEventKinds.*;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
@@ -22,8 +21,7 @@ public class TProfiler {
 		Path dir = FileSystems.getDefault().getPath("C:/inetpub/ftproot");
 		
 	    WatchKey key = dir.register(watcher,
-	                           ENTRY_CREATE,
-	                           ENTRY_MODIFY);
+	                           ENTRY_CREATE);
 		for (;;) {
 
 		    // wait for key to be signaled
@@ -51,10 +49,11 @@ public class TProfiler {
 		        WatchEvent<Path> ev = (WatchEvent<Path>)event;
 		        Path filename = ev.context();
 
-		        if (kind == ENTRY_MODIFY) {
-		        	System.out.format("modified file: %s, skipping... %n", filename);
-		        	continue;
-		        }
+//		        if (kind == ENTRY_MODIFY) {
+//		        	System.out.format("modified file: %s, skipping... %n", filename);
+////		        	new File(filename.toString()).delete();
+//		        	continue;
+//		        }
 		        try {
 		        	TImporter.importFile(String.format("%s/%s",dir, filename));
 			    } catch (Exception e) {
