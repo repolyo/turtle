@@ -22,6 +22,10 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class TImporter extends LinkedList<String> {
 	/**
@@ -32,8 +36,11 @@ public class TImporter extends LinkedList<String> {
 	private static TImporter queue = null;
 	private static boolean busy = false;
 	
+	// 11/27/15 20:03:19
+	static DateFormat DATE_FORMATTER = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
+		
 	// invoking = ./pdls -e PDF ~/testcases/hello_lexmark.pdf
-	private static String TESTCASE = "^invoking =\\s+(.*)-e\\s+\\w{1,10}\\b(.*)";
+	private static String TESTCASE = "^invoking =\\s+(.*)(-e\\s+\\w{1,10}\\b|\\s+)(.*)";
 	
 	// [/bonus/scratch/tanch/pdls/app/main.c:631] => main
     private static String FUNC_HIT = "^\\[.*(\\/.*\\/.*\\/.*):(\\d+)\\]\\s+=>\\s+(.*)";
@@ -42,10 +49,10 @@ public class TImporter extends LinkedList<String> {
     private static String TAG_HIT = "^\\[tag with:\\s+(.*)\\]";
     
     // [@startTime: 1447680618]
-    private static String START_TIME = "^\\[@startTime:\\s+([0-9]+)\\]";
+    private static String START_TIME = "^\\[@startTime:\\s+(\\d{2}\\/\\d{2}\\/\\d{2}\\s\\d{2}:\\d{2}:\\d{2})\\]";
     
     // [@endTime: 1447680618]
-    private static String END_TIME = "^\\[@endTime:\\s+([0-9]+)\\]";
+    private static String END_TIME = "^\\[@endTime:\\s+(\\d{2}\\/\\d{2}\\/\\d{2}\\s\\d{2}:\\d{2}:\\d{2})\\]";
     
 	private TImporter() throws Exception { 
 		try {
@@ -83,6 +90,9 @@ public class TImporter extends LinkedList<String> {
 			}
 			else if (param instanceof Number) {
 				stmt.setLong(i, ((Number)param).longValue() );		
+			}
+			else if (param instanceof Timestamp) {
+				stmt.setTimestamp(i, (Timestamp)param);
 			}
 			else if (param instanceof Date) {
 				stmt.setDate(i, (Date)param);
@@ -149,8 +159,8 @@ public class TImporter extends LinkedList<String> {
             				" WHEN NOT matched then INSERT (SOURCE_FILE, LINE_NO, FUNC_NAME) values (?,?,?)"+
             				" WHEN matched then update set line_no = ?");
 					
-					stmt3 = conn.prepareStatement("MERGE INTO TESTCASE_FUNC using dual on (FID=? AND TLOC=?)" +
-				            				" WHEN NOT matched then INSERT (FID, TLOC, SEQ) values (?,?,?)"+
+					stmt3 = conn.prepareStatement("MERGE INTO TESTCASE_FUNC using dual on (FID=? AND TID=?)" +
+				            				" WHEN NOT matched then INSERT (FID, TID, SEQ) values (?,?,?)"+
 				            				" WHEN matched then update set SEQ = ?");
 					
 					stmt4 = conn.prepareStatement("MERGE INTO TAGS using dual on (TAG_NAME=?)" +
@@ -173,15 +183,15 @@ public class TImporter extends LinkedList<String> {
 								String tloc = "";
 								Long tc_id = null;
 								Matcher matcher = null; 
-								Date startTime = null;
-								Date endTime = null;
+								Timestamp startTime = null;
+								Timestamp endTime = null;
 								File file = new File(testResult);
 								Scanner scanner = new Scanner(file);
 					            while ( scanner.hasNextLine() ) {
 					                String line = scanner.nextLine();
 					                matcher = tc.matcher(line);
 					                if ( matcher.find() ) {
-				                		String testcase = matcher.group(2);
+				                		String testcase = matcher.group(3);
 					                	String filename = testcase.substring(testcase.lastIndexOf('/')+1);
 					                	PreparedStatement tc_stmt = conn.prepareStatement("MERGE INTO TESTCASE using dual on (TLOC=?)" +
 					            				" WHEN NOT matched then INSERT (TNAME, TLOC) values (?,?)"+
@@ -205,9 +215,9 @@ public class TImporter extends LinkedList<String> {
 				                			setParameters(stmt2, src_file, func, src_file, lineNo, func, lineNo);
 				                			if (stmt2.executeUpdate() > 0) {
 				                				Long fid = (Long)sqlQuery(Long.class, conn, "select FID FROM FUNC WHERE SOURCE_FILE=? AND FUNC_NAME=?", src_file, func);
-							                	if( null != fid ) {
+							                	if( null != fid && null != tc_id) {
 							                		seqNo++;
-							                		setParameters(stmt3, fid, tloc, fid, tloc, seqNo, seqNo);
+							                		setParameters(stmt3, fid, tc_id, fid, tc_id, seqNo, seqNo);
 						                			stmt3.addBatch();
 							                	}
 				                			}
@@ -239,14 +249,25 @@ public class TImporter extends LinkedList<String> {
 				                	
 					                matcher = st.matcher(line);
 				                	if ( matcher.find() ) {
-				                		startTime = new Date(Long.valueOf(matcher.group(1)));
+				                		try {
+											startTime = new java.sql.Timestamp(DATE_FORMATTER.parse(matcher.group(1)).getTime());
+										} catch (ParseException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 				                		continue;
 				                	}
 				                	matcher = et.matcher(line);
-				                	if ( matcher.find() ) {
-				                		endTime = new Date(Long.valueOf(matcher.group(1)));
-				                		insert(conn, "INSERT INTO TESTCASE_RUN (TID, START_TIME, END_TIME) VALUES (?,?,?)", 
-				                				tc_id, startTime, endTime);
+				                	if (null != startTime && matcher.find() ) {
+				                		try {
+				                			endTime = new java.sql.Timestamp(DATE_FORMATTER.parse(matcher.group(1)).getTime());
+											insert(conn, "INSERT INTO TESTCASE_RUN (TID, START_TIME, END_TIME) VALUES (?,?,?)", 
+					                				tc_id, startTime, endTime);
+											
+										} catch (ParseException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
 				                		continue;
 				                	}
 					            }

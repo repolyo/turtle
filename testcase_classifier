@@ -8,10 +8,8 @@ pages=-1
 config="test"
 type="*"
 dir="/pfv/.firmwaretestcebu/pdf/v1_2"
-testdir="./tests"
-regex="([0-9a-z]+)*"
-hits=0
-outlog=""
+input_filter=""
+out_filter=""
 
 if [ -z "$1" ]; then
   module=v1_2
@@ -28,19 +26,21 @@ help ()
    echo "Input directory will be scanned and filtered based on the given key filter string.";
 
    echo " Usage: ";
-   echo "   Normal: testcase_tagger -t pdf -p `pwd` -s invalid_test -d /pfv/.firmwaretestcebu/pdf/v1_6/annotations";
+   echo "   Normal:          $0 [options] <filePath/testcase";
    echo "";
    echo " Options:";
    echo "    -d, --dir";
    echo "        intput testcase directory.";
-   echo "    -x, --exec";
-   echo "        executable (absolute path)";
+   echo "    -p, --pdls";
+   echo "        pdls test directory path.";
    echo "    -t, --type";
    echo "        document type to filter.";
    echo "    -c, --conf";
    echo "        config name";
    echo "    -s, --search";
    echo "        input search keyword";
+   echo "    -f, --filter";
+   echo "        output file search keyword";
    echo "    -n, --pages";
    echo "        number of pages to test";
    echo "";
@@ -62,11 +62,58 @@ filter_file()
   #fi
   
   echo "filtering $file for $search, result is: $contains"
-  if [ $contains -eq 1 ]; then
-    hits=$((hits+1))
-  fi
   
   return $contains
+}
+
+
+# parse output log for checksum
+# $1 - log file
+parse_checksum()
+{
+    err=0
+    logfile=$1
+    pdffile=$2
+    cksum=""
+    echo "parse_checksum: $logfile $pdffile"
+    rm -f $logfile.cksum
+    
+    if [ -f "$logfile" ]; then
+      while read -r line
+      do
+          #z="${line##*1-bit jpg2k image*}"
+          #if [ ${#line} -ne ${#z} ]; then
+          #  echo "================= 1-bit image dected, copying to /users/chritan/testcases/jpg2k/1-bit/$module/`basename $3` "
+          #fi
+          
+          a="${line##FATAL ERROR*}"
+          if [ ${#line} -ne ${#a} ]; then
+            #cksum+=" skip # $logfile"
+            cksum=""
+            err=1
+            break
+          fi
+          
+          b="${line##Page [0-50] checksum is:}"
+          if [ ${#line} -ne ${#b} ]; then
+            if [ -z "${cksum// }" ]; then 
+              cksum="${b}"
+            else
+              cksum+=",${b}"
+            fi
+          fi
+      done < $logfile
+      
+      # append checksum if its not empty
+      if [ "$err" -ne 1 -a ! -z "${cksum// }" ]; then 
+        echo "$pdffile ${cksum// } # $3" >> $testdir/$conf.config
+      else
+        echo "# $3 skip " >> $testdir/$conf.config
+      fi
+    else
+      echo "parse_checksum: ERROR: $logfile file not found!"
+    fi
+    return $err
 }
 
 # Parameters:
@@ -74,32 +121,38 @@ filter_file()
 runtest()
 {
     f=$1
-    filter=$2
-    fname=`basename $f | cut -d'.' -f1`
-    
+    fname=`basename $f | cut -d'.' -f1` 
     fullname=`basename $f`
     rm -f $fname.cksum
     mkdir -p $outpath/$conf
+    logfile=$outpath/$conf/$fname.sh.log
     
     if [ -f "$testdir/$fullname" ]; then
        echo " -- $f found skipping tests!"
        return
     fi
 
-    #$exec -e `pdls_sniff $f` -O checksum -o $testdir/$conf/$fname- $f &> $outlog
-    if [ $type == 'xps' ]; then
-       etrace.pl --exec $exec --file $f --ftp 10.194.15.187 --user chritan --pass welcome1 | tee $outlog
-    else
-       etrace.pl --exec ./pdls --file $f --ftp 10.194.15.187 --user chritan --pass welcome1 | tee $outlog
+    if [ ! -f $logfile ]; then
+      found=$(ls $fname-*.pam.gz 2> /dev/null | wc -l)
+      # generate pam if not found, else just checksum
+      if [ "$found" -eq 1 ]; then
+          echo "-- $f: pam found, just generate checksum"
+          ./pdls -e pdf -s $f &> $logfile
+      else
+          ./pdls -e pdf -O checkpam -o $testdir/$conf/$fname- $f &> $logfile
+      fi
     fi
     
-    # parse output log for keyword/tag      
-    if [ -f "$outlog" ]; then
-      if [ ${filter+defined} ]; then
-        filter_file $outlog $filter
-        if [ $? -eq 1 ]; then
-          echo "[tag with: $filter]" >> $outlog
-        fi
+    # parse output log for checksum      
+    if [ -f "$logfile" ]; then
+      filtered=1
+      if [ ${#output_filter} -gt 0 ]; then
+        filter_file $logfile $output_filter    
+        filtered=$?
+      fi
+      if [ $filtered -eq 1 ]; then
+        ln -s $f $testdir/$fullname
+        parse_checksum $logfile $fullname $f
       fi
     fi
 }
@@ -134,9 +187,9 @@ while [ "${1+defined}" ]; do
           exit 0
         fi 
         ;;
-      -x | --exec)
+      -p | --pdls)
         if [ "${2+defined}" ]; then
-          exec="$2"
+          testdir="$2"
           shift
         else
           echo "Error: testdir test directory!"
@@ -159,6 +212,15 @@ while [ "${1+defined}" ]; do
           shift
         else
           echo "Error: file search keyword missing!"
+          exit 0
+        fi
+        ;; 
+      -f | --filter)
+        if [ "${2+defined}" ]; then
+          output_filter="$2"
+          shift
+        else
+          echo "Error: output search keyword missing!"
           exit 0
         fi
         ;; 
@@ -191,69 +253,43 @@ while [ "${1+defined}" ]; do
     shift
 done
 
-SAVEIFS=$IFS
-
-if [ ! "${exec+defined}" ]; then
-   echo "ERROR: exec path (-x option) not specified!"
+if [ ! "${testdir+defined}" ]; then
+   echo "ERROR: pdls test path (-p option) not specified!"
    exit 0
 fi
 
-if [ ! -x "$exec" ]; then
-  echo "ERROR: invalid pdls binary (-p option)!"
+if [ ! -d "$testdir" ]; then
+  echo "ERROR: invalid pdls test path (-p option)!"
   exit 0
 fi
-
-if [ ! "${input_filter+defined}" ]; then
-  echo "ERROR: Filter not specified"
-  exit 0
-fi
-
-IFS='|' read -ra filters <<< "$input_filter"
-
+    
 echo "directory: $dir"
 echo "document type: $type"
 echo "config: $testdir/$conf.config"
-echo "pdls: $exec"
+echo "pdls: $testdir"
+
+if [ "${output_filter+defined}" ]; then
+  echo "output filter: $output_filter"
+fi
+
 
 #mysql --host=10.194.15.187 --user=tanch --password=tanch tutorial_db << EOF
 #insert into files (fname,floc) values('samplefile', 'http://www.site.com/'); << EOF
 #quit << EOF
 
+SAVEIFS=$IFS
 IFS=$(echo -en "\n\b")
 mkdir -p $testdir/$conf
-
 for f in `find $dir -type f -name "*.$type"` ; do
-  outlog=`echo "$f" | md5sum`
-  [[ $outlog =~ $regex ]]
-  outlog="${BASH_REMATCH[1]}.log"
-  if [ -f $outlog ]; then
-     echo "duplicate file: $outlog" 
-     continue
+  if [ "${input_filter+defined}" ]; then
+    filter_file $f $input_filter
+    run_test=$?
   fi
- 
-  START_TIME=$(date +"%D %T")
-
-  # step 1: run executable on testcase file!
-  runtest $f $filters
-
-  echo "[@startTime: $START_TIME]" >> $outlog  
-  # step 2: lookup tag/keywork inside testcase file
-  for i in "${filters[@]}"; do
-    filter_file $f $i
-    if [ $? -eq 1 ]; then
-      #echo "invoking = ./pdls -e `pdls_sniff $f` $f" > $outlog
-      echo "[tag with: $i]" >> $outlog
-    fi
-  done
-  
-  END_TIME=$(date +"%D %T") 
-  echo "[@endTime: $END_TIME]" >> $outlog
-  sendftp -h 10.194.15.187 -u chritan -p welcome1 -f $outlog
-#  break
+  if [ $run_test -eq 1 ]; then
+    runtest $f
+    #break
+  fi
 done
-
-echo "TOTAL HITS: $hits"
-
 IFS=$SAVEIFS 
 exit 0
 

@@ -187,29 +187,34 @@ GetOptions(
   'ftp=s' => \$fhost,
   'user=s' => \$fuser,
   'pass=s' => \$fpass,
-) or die "Usage: $0 --exec PROGRAM --file TESTCASE --ftp HOST --user USER --pass PASSWD\n";
+) or die "Usage: etrace.pl --exec ./pdls --file /bonus/scratch/tanch/tcases/PRNFile.JPG --ftp 10.194.15.187 --user chritan --pass **** | tee etrace.log\n";
 
 $sniffer='/users/chritan/bin/pdls_sniff';
 
-$dbh = DBI->connect('DBI:mysql:tutorial_db;host=10.194.15.187', 'tanch', 'tanch'
-          ) || die "Could not connect to database: $DBI::errstr";
+#$dbh = DBI->connect('DBI:mysql:tutorial_db;host=10.194.15.187', 'tanch', 'tanch') || die "Could not connect to database: $DBI::errstr";
 
 my $filename = fileparse($testcase);
-$dbh->do('REPLACE INTO files(fname,floc, create_date) VALUES(?, ?, NOW())', undef, $filename, $testcase);
+#$dbh->do('REPLACE INTO files(fname,floc, create_date) VALUES(?, ?, NOW())', undef, $filename, $testcase);
 
 
 if ($exec) {
     if (-x $exec ) {
        if ( $runpage4 eq true ) {
          print "invoking = " . $exec . ' < ' . $testcase . "\n";
-         system($exec . ' < ' . $testcase);
+         system($exec . ' -s < ' . $testcase);
        }
        else {
          open f, $sniffer.' '.$testcase.'|' or die "$0: cannot open $sniffer";
          $type = <f>;
          close f;
-         print "invoking = " . $exec . ' -e '. $type . ' ' . $testcase . "\n";
-         system($exec.' -e '.$type.' '.$testcase);
+         if ( $type eq 'XPS' or ($testcase =~ /\.xps$/i) ) {
+             print "invoking = " . $exec . ' -O checksum ' . $testcase . "\n";
+             system($exec.' -O checksum '.$testcase);
+         }
+         else {
+             print "invoking = " . $exec . ' -e '. $type . ' ' . $testcase . "\n";
+             system($exec.' -e '.$type.' -s '.$testcase);
+         }
        }
     }
 
@@ -224,8 +229,9 @@ if ($exec) {
     close CALL_DATA;
 
     deleteFifo $inputFile;
-    
-    uploadfile($fhost, $fuser, $fpass, "etrace.log");
+    if (!$fpass) {
+        uploadfile($fhost, $fuser, $fpass, "etrace.log");
+    }
 }
 
 print "Done: Exiting...\n";
