@@ -17,8 +17,9 @@ public class TProfiler {
 		
 		// TODO Auto-generated method stub
 		WatchService watcher = FileSystems.getDefault().newWatchService();
-		
-		Path dir = FileSystems.getDefault().getPath("C:/inetpub/ftproot");
+		String ftpHome = System.getenv("FTP_HOME");
+		System.out.format("Turtle: monitoring location: %s\n", ftpHome);
+		Path dir = FileSystems.getDefault().getPath(ftpHome);
 		
 	    WatchKey key = dir.register(watcher,
 	                           ENTRY_CREATE);

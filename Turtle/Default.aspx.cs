@@ -8,38 +8,39 @@ using System.Data;
 
 public partial class _Default : System.Web.UI.Page
 {
+    const string sql = "SELECT  *  FROM " +
+        "(SELECT ROW_NUMBER() OVER (ORDER BY a.tid) AS ROWNO, " +
+        "  a.tid, " +
+        "  tc.TNAME, " +
+        "  tc.TLOC " +
+        "FROM " +
+        " (SELECT " +
+        "   t.tid " +
+        "  FROM " +
+        "   TESTCASE_FUNC t, " +
+        "   FUNC f " +
+        "  WHERE " +
+        "    t.fid = f.fid " +
+        "    AND UPPER(f.FUNC_NAME) LIKE UPPER('{2}') " +
+        "  UNION " +
+        "   SELECT " +
+        "    tt.tid " +
+        "   FROM " +
+        "    TAGS t, " +
+        "    TESTCASE_TAGS tt " +
+        "   WHERE " +
+        "     t.tid = tt.tag_id " +
+        "     AND UPPER(t.TAG_NAME) LIKE UPPER('{2}') " +
+        "  ) a JOIN TESTCASE tc ON a.tid = tc.tid) " +
+        "WHERE ROWNO > {0} AND ROWNO <= ({0} + {1})";
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        DbConn.NewConnection();
-        DataTable table = DbConn.GetEmployees();
-        GridView1.DataSource = table;
-        GridView1.DataBind();
-        DbConn.Terminate();
+        EmployeesObjectDataSource.SelectParameters["Filter"].DefaultValue = "%";
     }
-
 
     protected void btnFiltering_Click(object sender, EventArgs e)
     {
-        DbConn.NewConnection();
-        DataTable table = DbConn.Query("SELECT TNAME, TLOC FROM TESTCASE WHERE UPPER(TNAME) LIKE '{0}' AND ROWNUM < 50",
-            txtFilter.Text.ToUpper());
-        GridView1.DataSource = table;
-        GridView1.DataBind();
-        DbConn.Terminate();
-    }
-
-    protected void grdData_PageIndexChanging(object sender, GridViewPageEventArgs e)
-    {
-        GridView1.PageIndex = e.NewPageIndex;
-        DbConn.NewConnection();
-        DataTable table = DbConn.Query(
-            "SELECT * FROM " + 
-            "(SELECT TNAME, TLOC FROM TESTCASE WHERE ROW_NUMBER() OVER (ORDER BY TNAME) AS IDX ) " +
-            "WHERE IDX = {0}",
-            GridView1.PageIndex * 10);
-
-        GridView1.DataSource = table;
-        GridView1.DataBind();
-        DbConn.Terminate();
+        EmployeesObjectDataSource.SelectParameters["Filter"].DefaultValue = txtFilter.Text;
     }
 }

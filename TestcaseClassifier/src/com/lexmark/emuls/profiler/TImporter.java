@@ -74,7 +74,7 @@ public class TImporter extends LinkedList<String> {
 		Connection connection = null;
 		try {
 			connection = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:xe", "tc_profiler", "tc_profiler");
+					"jdbc:oracle:thin:@emulator-win7:1521:xe", "tc_profiler", "tc_profiler");
 		} catch (SQLException e) {
 			System.out.println("Connection Failed! Check output console");
 			e.printStackTrace();
@@ -179,6 +179,7 @@ public class TImporter extends LinkedList<String> {
 								if (null == testResult) break;
 							}
 							synchronized( this ) {
+								boolean error = false;
 								long seqNo = 0; 
 								String tloc = "";
 								Long tc_id = null;
@@ -188,6 +189,7 @@ public class TImporter extends LinkedList<String> {
 								File file = new File(testResult);
 								Scanner scanner = new Scanner(file);
 					            while ( scanner.hasNextLine() ) {
+					            	error = false;
 					                String line = scanner.nextLine();
 					                matcher = tc.matcher(line);
 					                if ( matcher.find() ) {
@@ -223,6 +225,7 @@ public class TImporter extends LinkedList<String> {
 				                			}
 				                		}
 				                		catch (SQLException e) {
+				                			error = true;
 				                			System.out.println("Connection Failed! Check output console");
 				                			e.printStackTrace();
 				                		}
@@ -241,6 +244,7 @@ public class TImporter extends LinkedList<String> {
 				                			}
 			                			}
 				                		catch (SQLException e) {
+				                			error = true;
 				                			System.out.println("Connection Failed! Check output console");
 				                			e.printStackTrace();
 			                			}
@@ -252,7 +256,7 @@ public class TImporter extends LinkedList<String> {
 				                		try {
 											startTime = new java.sql.Timestamp(DATE_FORMATTER.parse(matcher.group(1)).getTime());
 										} catch (ParseException e) {
-											// TODO Auto-generated catch block
+											error = true;
 											e.printStackTrace();
 										}
 				                		continue;
@@ -265,21 +269,21 @@ public class TImporter extends LinkedList<String> {
 					                				tc_id, startTime, endTime);
 											
 										} catch (ParseException e) {
-											// TODO Auto-generated catch block
+											error = true;
 											e.printStackTrace();
 										}
 				                		continue;
 				                	}
 					            }
 					            scanner.close();
-					            
-					            Files.move(Paths.get(file.getPath()), 
+					            if ( error ) { // for review: backup file on error!
+					            	Files.move(Paths.get(file.getPath()), 
 					            		Paths.get(file.getParent() + "/tmp/"+ file.getName()), 
 					            		StandardCopyOption.REPLACE_EXISTING);
-					            
-//					            if ( !file.delete() ) {
-//					            	throw new FileNotFoundException("Unable to delete: " + testResult);
-//					            };
+					            }
+					            else if ( !file.delete() ) {
+					            	new FileNotFoundException("Unable to delete: " + testResult).printStackTrace();
+					            };
 	//				            stmt2.executeBatch();
 					            stmt3.executeBatch();
 					            stmt5.executeBatch();

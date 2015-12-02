@@ -17,6 +17,10 @@ public class DbConn
     private static OracleCommand cmd;
     private static OracleDataAdapter da;
     private static DataSet ds;
+    private static string oradb = "Data Source=(DESCRIPTION="
+            + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=chritan-win7)(PORT=1521)))"
+            + "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));"
+            + "User Id=tc_profiler;Password=tc_profiler;";
 
     public DbConn()
     {
@@ -27,14 +31,14 @@ public class DbConn
 
     public static string NewConnection()
     {
+        return NewConnection(oradb);
+    }
+
+    public static string NewConnection(string constr)
+    {
         try
         {
-            //string oradb = " Data Source = XE; User Id = hr; Password = hr; ";
-            string oradb = "Data Source=(DESCRIPTION="
-+ "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=chritan-win7)(PORT=1521)))"
-+ "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));"
-+ "User Id=tc_profiler;Password=tc_profiler;";
-            conn = new OracleConnection(oradb);
+            conn = new OracleConnection(constr);
             conn.Open();
         }
         catch (OracleException e)
@@ -45,10 +49,10 @@ public class DbConn
         return conn.State.ToString();
     }
 
-    public static DataTable GetEmployees()
-    {
-        string SQL = " SELECT TNAME, TLOC FROM TESTCASE WHERE ROWNUM < 50";
-        cmd = new OracleCommand(SQL, conn);
+    public static DataTable Query(String fmt, params Object [] args) {
+        string sql = String.Format(fmt, args);
+        Console.WriteLine(sql);
+        cmd = new OracleCommand(sql, conn);
         cmd.CommandType = CommandType.Text;
         da = new OracleDataAdapter(cmd);
         ds = new DataSet();
@@ -57,14 +61,21 @@ public class DbConn
         return ds.Tables[0];
     }
 
-    public static DataTable Query(String fmt, params Object [] args) {
-        cmd = new OracleCommand(String.Format(fmt, args), conn);
-        cmd.CommandType = CommandType.Text;
-        da = new OracleDataAdapter(cmd);
-        ds = new DataSet();
+    public static Object ExecuteScalar(String fmt, params Object [] args) {
+        Object ret = null;
+        string sql = String.Format(fmt, args);
 
-        da.Fill(ds);
-        return ds.Tables[0];
+        IDbCommand command = new OracleCommand(sql, conn);
+        command.CommandType = CommandType.Text;
+        /*
+        OracleParameter parameterSomeValue = new OracleParameter("SomeValue", OracleDbType.Varchar2, 40);
+        parameterSomeValue.Direction = ParameterDirection.Input;
+        parameterSomeValue.Value = "TheValueToLookFor";
+        command.Parameters.Add(parameterSomeValue);
+        command.Connection = conn;
+        */
+        ret = command.ExecuteScalar();
+        return ret;
     }
 
     public static void Terminate()
@@ -75,7 +86,7 @@ public class DbConn
     static void Main(string[] args)
     {
         string strConn = DbConn.NewConnection();
-        DataTable emp = DbConn.GetEmployees();
+        DataTable emp = DbConn.Query("SELECT * FROM TESTCASES");
         for (int i = 0; i < emp.Rows.Count; i++)
         {
             DataRow row = emp.Rows[i];
