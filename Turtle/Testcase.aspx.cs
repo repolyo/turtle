@@ -29,6 +29,15 @@ public partial class Testcase : System.Web.UI.Page
             break;
         }
 
+        List<string> checksums = new List<string>();
+        table = DbConn.Query(
+                String.Format("SELECT CHECKSUM FROM TESTCASE_CHECKSUM WHERE TID = {0} ORDER BY PAGE_NO", tid));
+        if (null != table) {
+            foreach (DataRow row in table.Rows) {
+                checksums.Add(row["CHECKSUM"].ToString());
+            }
+        }
+        tcCS.Text = String.Format("Checksums:  {0}", string.Join(", ", checksums.ToArray()) );
         DbConn.Terminate();
     }
 }

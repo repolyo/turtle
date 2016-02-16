@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -36,6 +37,8 @@ public class TImporter extends LinkedList<String> {
 	private static TImporter queue = null;
 	private static boolean busy = false;
 	
+	public static String dbHost = "localhost";
+	
 	// 11/27/15 20:03:19
 	static DateFormat DATE_FORMATTER = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
 		
@@ -44,6 +47,9 @@ public class TImporter extends LinkedList<String> {
 	
 	// [/bonus/scratch/tanch/pdls/app/main.c:631] => main
     private static String FUNC_HIT = "^\\[.*(\\/.*\\/.*\\/.*):(\\d+)\\]\\s+=>\\s+(.*)";
+    
+    // Page 1 checksum is: e66f977c
+    private static String CHECKSUM_HIT = "^Page (\\d+)\\s+checksum is:\\s+(.*)$";
     
     // [tag with: ASCII85Decode]
     private static String TAG_HIT = "^\\[tag with:\\s+(.*)\\]";
@@ -73,8 +79,10 @@ public class TImporter extends LinkedList<String> {
 	private static Connection getDbConn() {
 		Connection connection = null;
 		try {
+//			connection = DriverManager.getConnection(
+//					"jdbc:oracle:thin:@emulator-win7:1521:xe", "tc_profiler", "tc_profiler");
 			connection = DriverManager.getConnection(
-					"jdbc:oracle:thin:@emulator-win7:1521:xe", "tc_profiler", "tc_profiler");
+					"jdbc:oracle:thin:@"+dbHost+":1521:xe", "tc_profiler", "tc_profiler");
 		} catch (SQLException e) {
 			System.out.println("Connection Failed! Check output console");
 			e.printStackTrace();
@@ -82,7 +90,7 @@ public class TImporter extends LinkedList<String> {
 		return connection;
 	}
 	
-	private static void setParameters(PreparedStatement stmt, Object ... args) throws SQLException {
+	private static String setParameters(PreparedStatement stmt, Object ... args) throws SQLException {
 		int i = 1;
 		for (Object param : args) {
 			if (param instanceof String) {
@@ -99,34 +107,45 @@ public class TImporter extends LinkedList<String> {
 			}
 			i++;
 		}
+		return "";
 	}
 	
 	private static boolean insert(Connection conn, String sql, Object ... args) throws SQLException {
 		boolean ok = false;
-		PreparedStatement pst = conn.prepareStatement(sql);
-		setParameters(pst, args);
-		if ( pst.executeUpdate() > 0 ) {
-			ok = true;
-    	}
-		pst.close();
+		try {
+			PreparedStatement pst = conn.prepareStatement(sql);
+			setParameters(pst, args);
+			if ( pst.executeUpdate() > 0 ) {
+				ok = true;
+	    	}
+			pst.close();
+		}
+		catch (Exception e) {
+			throw new SQLException(sql + Arrays.toString(args) ,  e);
+		}
 		return ok;
 	}
 	
 	private static Object sqlQuery(Class<?> type, Connection conn, String sql, Object ... args) throws SQLException {
 		Object ret = null;
-		PreparedStatement pst = conn.prepareStatement(sql);
-		setParameters(pst, args);
-		ResultSet rs = pst.executeQuery();
-    	if( rs.next()) {
-    		if (Long.class == type) {
-    			ret = rs.getLong(1);
-    		}
-    		else if (String.class == type) {
-    			ret = rs.getString(1);
-    		}
-    	}
-    	rs.close();
-    	pst.close();
+		try {
+			PreparedStatement pst = conn.prepareStatement(sql);
+			setParameters(pst, args);
+			ResultSet rs = pst.executeQuery();
+	    	if( rs.next()) {
+	    		if (Long.class == type) {
+	    			ret = rs.getLong(1);
+	    		}
+	    		else if (String.class == type) {
+	    			ret = rs.getString(1);
+	    		}
+	    	}
+	    	rs.close();
+	    	pst.close();
+		}
+		catch (Exception e) {
+			throw new SQLException(sql,  e);
+		}
     	return ret;
 	}
 	
@@ -147,6 +166,9 @@ public class TImporter extends LinkedList<String> {
 				Pattern tg = Pattern.compile(TAG_HIT);
 				Pattern st = Pattern.compile(START_TIME);
 				Pattern et = Pattern.compile(END_TIME);
+				
+				Pattern cs = Pattern.compile(CHECKSUM_HIT);
+				
 				
 				Connection conn = null;
 				PreparedStatement stmt2 = null;
@@ -207,6 +229,20 @@ public class TImporter extends LinkedList<String> {
 					                	tc_stmt.close();
 					                	continue;
 					            	}
+					                
+					                matcher = cs.matcher(line);
+					                if ( matcher.find() ) {
+					                	Long page_no = Long.parseLong(matcher.group(1));
+					                	String checksum = matcher.group(2);
+					                	System.out.println(line + " : page" + page_no + ", checksum: " + checksum);
+					                	PreparedStatement cs_stmt = conn.prepareStatement("MERGE INTO TESTCASE_CHECKSUM using dual on (TID=? AND PAGE_NO=?)" +
+					            				" WHEN NOT matched then INSERT (TID, PAGE_NO, CHECKSUM) values (?,?,?)"+
+					            				" WHEN matched then update set CHECKSUM = ?");
+					                	setParameters(cs_stmt, tc_id, page_no, tc_id, page_no, checksum, checksum);
+					                	cs_stmt.executeUpdate();
+					                	cs_stmt.close();
+					                	continue;
+					                }
 					                
 					                matcher = re.matcher(line);
 					                if ( matcher.find() ) {

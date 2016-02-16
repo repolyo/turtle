@@ -18,11 +18,24 @@ public class TProfiler {
 		// TODO Auto-generated method stub
 		WatchService watcher = FileSystems.getDefault().newWatchService();
 		String ftpHome = System.getenv("FTP_HOME");
-		System.out.format("Turtle: monitoring location: %s\n", ftpHome);
 		Path dir = FileSystems.getDefault().getPath(ftpHome);
 		
 	    WatchKey key = dir.register(watcher,
 	                           ENTRY_CREATE);
+	    
+	    boolean host = false;
+	    for (String s: args) {
+	    	if (s != null && s.equalsIgnoreCase("-h")) {
+	    		host = true;
+	    		continue;
+	    	}
+	    	if (host) {
+	    		TImporter.dbHost = s;
+	    		continue;
+	    	}
+        }
+	    System.out.format("Turtle: monitoring location: %s, db: %s\n", ftpHome, TImporter.dbHost);
+	    
 		for (;;) {
 
 		    // wait for key to be signaled

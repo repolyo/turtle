@@ -15,10 +15,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:DropDownList ID="ddlGender" runat="server" Width="200px">
-            <asp:ListItem Text="All" Value="%"></asp:ListItem>
-            <asp:ListItem Text="Function name" Value="Func"></asp:ListItem>
-            <asp:ListItem Text="Tag/keyword" Value="Tag"></asp:ListItem>
+        <asp:DropDownList ID="ddlFilter" runat="server" Width="200px"
+            onselectedindexchanged="drp1_SelectedIndexChanged" AutoPostBack="True">
+            <asp:ListItem Text="All" Value="ALL"></asp:ListItem>
+            <asp:ListItem Text="Function name" Value="FUNC"></asp:ListItem>
+            <asp:ListItem Text="Tag/keyword" Value="TAG"></asp:ListItem>
         </asp:DropDownList>
         <asp:TextBox ID="txtFilter" runat="server" Columns="50" MaxLength="50"></asp:TextBox>
         <asp:Button ID ="btnFiltering" runat ="server" OnClick ="btnFiltering_Click" Text ="Search" Width ="103px" />
@@ -31,6 +32,8 @@
             DataKeyNames="Filter"
             AutoGenerateColumns='false'
             AllowPaging='true'
+            PagerSettings-Mode="NumericFirstLast" 
+            PagerSettings-PageButtonCount="10"
             EmptyDataText ="There are no data here yet!"
             HeaderStyle-BackColor="PapayaWhip"
             AlternatingRowStyle-BackColor="LightCyan" PageSize="25">
@@ -49,14 +52,14 @@
             </Columns>
             <RowStyle ForeColor ="#000066" />
             <SelectedRowStyle BackColor ="#669999" Font-Bold ="True" ForeColor ="White" />
-            <PagerStyle BackColor ="White" ForeColor ="#000066" HorizontalAlign ="Left" />
             <HeaderStyle BackColor ="#006699" Font-Bold ="True" ForeColor ="White" />
+            <PagerStyle HorizontalAlign="Right" />
         </asp:GridView>
 
         <asp:ObjectDataSource 
             ID="TObjectDataSource" 
             runat="server" 
-            TypeName="Samples.AspNet.ObjectDataSource.NorthwindData" 
+            TypeName="Samples.AspNet.ObjectDataSource.TestcaseProfileData" 
             SortParameterName="SortColumns"
             EnablePaging="true"
             SelectCountMethod="SelectCount"

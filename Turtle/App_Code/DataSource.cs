@@ -10,60 +10,102 @@ namespace Samples.AspNet.ObjectDataSource
     // 
     //  Northwind Employee Data Factory 
     // 
-    public class NorthwindData : DbConn
+    public class TestcaseProfileData : DbConn
     {
-        const string sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
-                "  a.tid, " +
-                "  a.CREATE_DATE, " +
-                "  ' ' as Filter, " +
-                "  tc.TNAME, " +
-                "  tc.TLOC " +
-                "FROM " +
-                " (SELECT " +
-                "   t.tid, " +
-                "   t.CREATE_DATE " +
+        const string queryFunc = "SELECT " +
+                "   t.tid " +
                 "  FROM " +
                 "   TESTCASE_FUNC t, " +
                 "   FUNC f " +
                 "  WHERE " +
                 "    t.fid = f.fid " +
-                "    AND UPPER(f.FUNC_NAME) LIKE UPPER('{0}')" +
-                "  UNION " +
-                "   SELECT " +
-                "    tt.tid, " +
-                "    tt.CREATE_DATE " +
+                "    AND UPPER(f.FUNC_NAME) LIKE UPPER('{0}')";
+
+        const string queryTags = "SELECT " +
+                "    tt.tid " +
                 "   FROM " +
                 "    TAGS t, " +
                 "    TESTCASE_TAGS tt " +
                 "   WHERE " +
                 "     t.tid = tt.tag_id " +
-                "     AND UPPER(t.TAG_NAME) LIKE UPPER('{0}') " +
-                "  ) a JOIN TESTCASE tc ON a.tid = tc.tid ";
+                "     AND UPPER(t.TAG_NAME) LIKE UPPER('{0}')";
 
-        public NorthwindData()
+        const string queryAll = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
+                "  a.tid, " +
+                "  a.CREATE_DATE, " +
+                "  ' ' as Filter, " +
+                "  a.TNAME, " +
+                "  a.TLOC " +
+                "FROM TESTCASE a WHERE a.tid IN (" + queryFunc + " UNION " + queryTags + " )";
+
+        public TestcaseProfileData()
         {
             NewConnection(Config.getConnectionString());
         }
 
-        ~NorthwindData()
+        ~TestcaseProfileData()
         {
             Terminate();
+        }
+
+        private string type = "";
+        public string Type {
+            set { type = value; }
+            get{ return "0"; }
         }
 
         // Select all employees. 
         public DataTable QueryTestcases(string Filter, string sortColumns, int startRecord, int maxRecords)
         {
-            DataTable table = Query(
-                String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
-                    sql, startRecord, maxRecords),
-                    (null == Filter) ? "%" : Filter);
-            return table;
+            string keyword = (null == Filter) ? "%" : Filter;
+            string sql = null;
+            switch (Config.filterType)
+            {
+                case FilterType.FUNC:
+                    sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
+                        "  a.tid, " +
+                        "  a.CREATE_DATE, " +
+                        "  ' ' as Filter, " +
+                        "  a.TNAME, " +
+                        "  a.TLOC " +
+                        "FROM TESTCASE a WHERE a.tid IN (" + queryFunc + ")";
+                    break;
+                case FilterType.TAG:
+                    sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
+                        "  a.tid, " +
+                        "  a.CREATE_DATE, " +
+                        "  ' ' as Filter, " +
+                        "  a.TNAME, " +
+                        "  a.TLOC " +
+                        "FROM TESTCASE a WHERE a.tid IN (" + queryTags + ")";
+                    break;
+                case FilterType.ALL:
+                default:
+                    sql = queryAll;
+                    break;
+            }
+            return Query(String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
+                                sql, startRecord, maxRecords), keyword);
         }
 
         public int SelectCount(string Filter)
         {
-            Object count = ExecuteScalar("SELECT count(*) FROM (" + sql + ")", 
-                (null == Filter) ? "%" : Filter);
+            Object count = null;
+            string keyword = (null == Filter) ? "%" : Filter;
+            switch (Config.filterType)
+            {
+                case FilterType.FUNC:
+                    count = ExecuteScalar("SELECT count(*) FROM (" +queryFunc+ ")", keyword);
+                    break;
+                case FilterType.TAG:
+                    count = ExecuteScalar("SELECT count(*) FROM ("+queryTags+")", keyword);
+                    break;
+                default:
+                case FilterType.ALL:
+                    count = ExecuteScalar("SELECT count(*) FROM (" + queryAll + ")", keyword);
+                    break;
+            }
+
             return int.Parse(count.ToString());
         }
     }

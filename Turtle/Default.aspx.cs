@@ -24,4 +24,17 @@ public partial class _Default : System.Web.UI.Page
     {
         TObjectDataSource.SelectParameters["Filter"].DefaultValue = txtFilter.Text;
     }
+
+    public static T ParseEnum<T>(string value)
+    {
+        return (T)Enum.Parse(typeof(T), value, true);
+    }
+
+    protected void drp1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Console.WriteLine("SelectedIndex = " + ddlFilter.SelectedIndex
+            + ", SelectedValue=" + ddlFilter.SelectedValue);
+        Config.filterType = ParseEnum<FilterType>(ddlFilter.SelectedValue);
+       // ((TestcaseProfileData)TObjectDataSource).Type = type;
+    }
 }

@@ -4,6 +4,16 @@ using System.Linq;
 using System.Web;
 using Oracle.ManagedDataAccess.Client;
 using System.Data;
+using System.Data.SqlClient;
+using System.Data.Common;
+
+public class DBException : System.Exception
+{
+   public DBException(Exception innerException, string message): base(message, innerException)
+   {
+   }
+}
+    
 
 /// <summary>
 /// Summary description for DbConn
@@ -50,31 +60,43 @@ public class DbConn
     }
 
     public static DataTable Query(String fmt, params Object [] args) {
+        DataTable tbl = null;
         string sql = String.Format(fmt, args);
-        Console.WriteLine(sql);
-        cmd = new OracleCommand(sql, conn);
-        cmd.CommandType = CommandType.Text;
-        da = new OracleDataAdapter(cmd);
-        ds = new DataSet();
-
-        da.Fill(ds);
-        return ds.Tables[0];
+        try
+        {
+            Console.WriteLine(sql);
+            cmd = new OracleCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+            da = new OracleDataAdapter(cmd);
+            ds = new DataSet();
+            if (da.Fill(ds) > 0) {
+                tbl = ds.Tables[0];
+            }
+        }
+        catch (Exception e) {
+            throw new DBException(e, sql);
+        }
+        return tbl;
     }
 
     public static Object ExecuteScalar(String fmt, params Object [] args) {
         Object ret = null;
         string sql = String.Format(fmt, args);
-
-        IDbCommand command = new OracleCommand(sql, conn);
-        command.CommandType = CommandType.Text;
-        /*
-        OracleParameter parameterSomeValue = new OracleParameter("SomeValue", OracleDbType.Varchar2, 40);
-        parameterSomeValue.Direction = ParameterDirection.Input;
-        parameterSomeValue.Value = "TheValueToLookFor";
-        command.Parameters.Add(parameterSomeValue);
-        command.Connection = conn;
-        */
-        ret = command.ExecuteScalar();
+        try {
+            IDbCommand command = new OracleCommand(sql, conn);
+            command.CommandType = CommandType.Text;
+            /*
+            OracleParameter parameterSomeValue = new OracleParameter("SomeValue", OracleDbType.Varchar2, 40);
+            parameterSomeValue.Direction = ParameterDirection.Input;
+            parameterSomeValue.Value = "TheValueToLookFor";
+            command.Parameters.Add(parameterSomeValue);
+            command.Connection = conn;
+            */
+            ret = command.ExecuteScalar();
+        }
+        catch (Exception e) {
+             throw new DBException(e, sql);
+        }
         return ret;
     }
 

@@ -26,6 +26,7 @@ $runpage4 = false;
 $fhost = "10.194.15.187";
 $fuser = "anonymous";
 $fpass = "";
+$emul = "-";
 
 # Global identifiers
 # %SYMBOLTABLE : a hash array from relative offsets to symbol names
@@ -183,6 +184,7 @@ use File::Basename;
 
 GetOptions(
   'exec=s' => \$exec,
+  'pdl=s' => \$emul,
   'file=s' => \$testcase,
   'ftp=s' => \$fhost,
   'user=s' => \$fuser,
@@ -196,6 +198,9 @@ $sniffer='/users/chritan/bin/pdls_sniff';
 my $filename = fileparse($testcase);
 #$dbh->do('REPLACE INTO files(fname,floc, create_date) VALUES(?, ?, NOW())', undef, $filename, $testcase);
 
+if (index($exec, "runpage4") != -1) {
+    $runpage4 = true;
+}
 
 if ($exec) {
     if (-x $exec ) {
@@ -204,9 +209,14 @@ if ($exec) {
          system($exec . ' -s < ' . $testcase);
        }
        else {
-         open f, $sniffer.' '.$testcase.'|' or die "$0: cannot open $sniffer";
-         $type = <f>;
-         close f;
+         if (length $emul > 1) {
+            $type=$emul;
+         }
+         else {
+            open f, $sniffer.' '.$testcase.'|' or die "$0: cannot open $sniffer";
+            $type = <f>;
+            close f;
+         }
          if ( $type eq 'XPS' or ($testcase =~ /\.xps$/i) ) {
              print "invoking = " . $exec . ' -O checksum ' . $testcase . "\n";
              system($exec.' -O checksum '.$testcase);
@@ -219,7 +229,7 @@ if ($exec) {
     }
 
     readObjects $exec;
-#    writeSymbolTable
+    # writeSymbolTable
 
     # $inputFile = establishInput $inputFile;
     $inputFile = $FIFO_NAME;
@@ -229,7 +239,7 @@ if ($exec) {
     close CALL_DATA;
 
     deleteFifo $inputFile;
-    if (!$fpass) {
+    if (length $fpass > 0) {
         uploadfile($fhost, $fuser, $fpass, "etrace.log");
     }
 }

@@ -5,12 +5,20 @@ using System.Web;
 using System.Collections.Specialized;
 using System.Web.Configuration;
 
+public enum FilterType
+{
+    ALL = 1,
+    FUNC = 2,
+    TAG = 3
+}
+
 /// <summary>
 /// Summary description for Class1
 /// </summary>
 public class Config
 {
     private static string conn_str = null;
+    public static FilterType filterType = FilterType.ALL;
 
     public static string getConnectionString() {
         if (null == conn_str) {

@@ -9,7 +9,8 @@
 <body>
     <form id="form1" runat="server">
     <asp:Label ID="tcName" runat="server" Text="Testcase: " /><br />
-    <asp:Label ID="tcLoc" runat="server" Text="Location: " />
+    <asp:Label ID="tcLoc" runat="server" Text="Location: " /><br />
+    <asp:Label ID="tcCS" runat="server" Text="Checksums: " />
     <br />
     <br />
     <div>
