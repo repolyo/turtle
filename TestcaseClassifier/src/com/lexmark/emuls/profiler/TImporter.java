@@ -220,7 +220,7 @@ public class TImporter extends LinkedList<String> {
 					                	PreparedStatement tc_stmt = conn.prepareStatement("MERGE INTO TESTCASE using dual on (TLOC=?)" +
 					            				" WHEN NOT matched then INSERT (TNAME, TLOC) values (?,?)"+
 					            				" WHEN matched then update set TNAME = ?");
-					                	tloc = testcase.toString();
+					                	tloc = testcase.toString().trim();
 					                	setParameters(tc_stmt, tloc, filename, tloc, filename);
 					                	System.out.println("SOURCE: " + tloc);
 					                	if ( tc_stmt.executeUpdate() > 0 ) {

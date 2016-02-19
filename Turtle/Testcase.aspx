@@ -4,13 +4,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Test-case</title>
 </head>
 <body>
     <form id="form1" runat="server">
     <asp:Label ID="tcName" runat="server" Text="Testcase: " /><br />
     <asp:Label ID="tcLoc" runat="server" Text="Location: " /><br />
-    <asp:Label ID="tcCS" runat="server" Text="Checksums: " />
+    <asp:Label ID="tcCS" runat="server" Text="Checksums: " /><br />
+    <asp:Label ID="tcTime" runat="server" Text="Took: " />
     <br />
     <br />
     <div>

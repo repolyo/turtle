@@ -19,7 +19,7 @@ namespace Samples.AspNet.ObjectDataSource
                 "   FUNC f " +
                 "  WHERE " +
                 "    t.fid = f.fid " +
-                "    AND UPPER(f.FUNC_NAME) LIKE UPPER('{0}')";
+                "    AND f.FUNC_NAME LIKE '{0}'";
 
         const string queryTags = "SELECT " +
                 "    tt.tid " +
@@ -148,7 +148,65 @@ namespace Samples.AspNet.ObjectDataSource
                 String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
                     query, startRecord, maxRecords),
                     (null == TID) ? "%" : TID);
+
             return table;
+        }
+    }
+
+    public class TagData : DbConn
+    {
+        private const string query = "SELECT " +
+            "   ROW_NUMBER() OVER (ORDER BY t.CREATE_DATE DESC) AS ROWNO, " +
+            "   t.TID, " +
+            "   t.TAG_NAME, " +
+            "   t.TAG_DESCR " +
+            " FROM " +
+            "   TAGS t " +
+            " WHERE " +
+            "   t.TAG_NAME LIKE {0} ";
+
+        public TagData()
+        {
+            NewConnection(Config.getConnectionString());
+        }
+
+        ~TagData()
+        {
+            Terminate();
+        }
+
+        public int SelectCount(string TAG_NAME)
+        {
+            Object count = ExecuteScalar("SELECT count(*) FROM (" + query + ")",
+                (null == TAG_NAME) ? "'%'" : TAG_NAME);
+            return int.Parse(count.ToString());
+        }
+
+        public DataTable QueryTags(string TAG_NAME, string sortColumns, int startRecord, int maxRecords)
+        {
+            DataTable table = Query(
+                String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
+                    query, startRecord, maxRecords),
+                    (null == TAG_NAME || 0 == TAG_NAME.Length) ? "'%'" : TAG_NAME);
+
+            return table;
+        }
+        
+        public static void UpdateTag(string TAG_NAME, string TAG_DESCR, string TID)
+        {
+            Update("UPDATE TAGS SET TAG_NAME='{0}', TAG_DESCR='{1}' WHERE TID = {2}",
+                TAG_NAME, TAG_DESCR, TID);
+        }
+
+        public static void DeleteTag(string TID)
+        {
+            Update("DELETE FROM TAGS WHERE TID = {0}", TID);
+        }
+
+        public static void InsertTag(string TAG_NAME, string TAG_DESCR)
+        {
+            Update("INSERT INTO TAGS (TAG_NAME, TAG_DESCR) VALUES ('{0}', '{1}')",
+                TAG_NAME, TAG_DESCR);
         }
     }
 }

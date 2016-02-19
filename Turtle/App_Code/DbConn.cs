@@ -9,7 +9,8 @@ using System.Data.Common;
 
 public class DBException : System.Exception
 {
-   public DBException(Exception innerException, string message): base(message, innerException)
+    public DBException(Exception innerException, string message, params Object[] args)
+        : base(String.Format(message, args), innerException)
    {
    }
 }
@@ -37,6 +38,45 @@ public class DbConn
         //
         // TODO: Add constructor logic 
         //
+    }
+
+    private int _startIndex = 0;
+    public int StartIndex
+    {
+        get
+        {
+            return _startIndex;
+        }
+        set
+        {
+            _startIndex = value;
+        }
+    }
+
+    private int _endIndex = 0;
+    public int EndIndex
+    {
+        get
+        {
+            return _endIndex;
+        }
+        set
+        {
+            _endIndex = value;
+        }
+    }
+
+    private int _total = 0;
+    public int TotalCount
+    {
+        get
+        {
+            return _total;
+        }
+        set
+        {
+            _total = value;
+        }
     }
 
     public static string NewConnection()
@@ -74,9 +114,52 @@ public class DbConn
             }
         }
         catch (Exception e) {
-            throw new DBException(e, sql);
+            throw new DBException(e, sql, args);
         }
         return tbl;
+    }
+
+    public static int Update(String fmt, params Object[] args)
+    {
+        int updated = 0;
+        string sql = String.Format(fmt, args);
+        try
+        {
+            Console.WriteLine(sql);
+            cmd = new OracleCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = sql;
+            /*cmd.CommandText = "update table set col1 = :param1, col2 = :param2 where key = :keyValue";
+            cmd.Parameters.AddWithValue("param1", 1);
+            cmd.Parameters.AddWithValue("param2", "Text data");
+            cmd.Parameters.AddWithValue("keyValue", "1");
+            */
+            updated = cmd.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            throw new DBException(e, sql, args);
+        }
+        return updated;
+    }
+
+    public static int Delete(String fmt, params Object[] args)
+    {
+        int deleted = 0;
+        string sql = String.Format(fmt, args);
+        try
+        {
+            Console.WriteLine(sql);
+            cmd = new OracleCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = sql;
+            deleted = cmd.ExecuteNonQuery();
+        }
+        catch (Exception e)
+        {
+            throw new DBException(e, sql, args);
+        }
+        return deleted;
     }
 
     public static Object ExecuteScalar(String fmt, params Object [] args) {
@@ -95,7 +178,7 @@ public class DbConn
             ret = command.ExecuteScalar();
         }
         catch (Exception e) {
-             throw new DBException(e, sql);
+             throw new DBException(e, sql, args);
         }
         return ret;
     }

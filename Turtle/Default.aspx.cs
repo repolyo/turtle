@@ -17,7 +17,9 @@ public partial class _Default : System.Web.UI.Page
         else {
             txtFilter.Text = filter;
         }
+        
         TObjectDataSource.SelectParameters["Filter"].DefaultValue = filter;
+        //lbl_message.Text = "Total Count: ";
     }
 
     protected void btnFiltering_Click(object sender, EventArgs e)

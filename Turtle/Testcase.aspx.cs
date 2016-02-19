@@ -20,8 +20,17 @@ public partial class Testcase : System.Web.UI.Page
     protected void QueryDetails(string tid)
     {
         DbConn.NewConnection(Config.getConnectionString());
-        DataTable table = DbConn.Query(
-                String.Format("SELECT * FROM TESTCASE WHERE TID = {0}", tid));
+        DataTable table = DbConn.Query(String.Format(
+            "SELECT TO_CHAR (START_TIME, 'MM/DD/YY') SDATE, " +
+            "(END_TIME - START_TIME) ELAPSE FROM TESTCASE_RUN WHERE TID = {0} ORDER BY START_TIME DESC", 
+            tid));
+        foreach (DataRow row in table.Rows)
+        {
+            tcTime.Text = String.Format("Last Run: {0}, Took: {1}", row["SDATE"], row["ELAPSE"]);
+            break;
+        }
+
+        table = DbConn.Query(String.Format("SELECT * FROM TESTCASE WHERE TID = {0}", tid));
         foreach(DataRow row in table.Rows)
         {
             tcName.Text = String.Format("Testcase: {0}", row["TNAME"]);
