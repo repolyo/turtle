@@ -11,14 +11,16 @@
 </script>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Turtool: Tanch Unified Resource Tool (aka turtle).</title>
+    <title>TUR-tool: Testcase Profiler/Cataloger (aka turtle).</title>
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:Label ID="totalLbl" runat="server" Text="Total Count: " /><br />
         <asp:DropDownList ID="ddlFilter" runat="server" Width="200px"
             onselectedindexchanged="drp1_SelectedIndexChanged" AutoPostBack="True">
             <asp:ListItem Text="All" Value="ALL"></asp:ListItem>
             <asp:ListItem Text="Function name" Value="FUNC"></asp:ListItem>
+            <asp:ListItem Text="Testcase type" Value="TYPE"></asp:ListItem>
             <asp:ListItem Text="Tag/keyword" Value="TAG"></asp:ListItem>
         </asp:DropDownList>
         <asp:TextBox ID="txtFilter" runat="server" Columns="50" MaxLength="50"></asp:TextBox>
@@ -46,9 +48,12 @@
                     DataTextField="TNAME"
                     HeaderText="TestCase"
                     HeaderStyle-Width="30%" />
-
+                <asp:BoundField HeaderText='Type' DataField='TTYPE' 
+                    HeaderStyle-Width="10%" ItemStyle-HorizontalAlign="Left" />
+                <asp:BoundField HeaderText='Size' DataField='TSIZE' 
+                    HeaderStyle-Width="10%" ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderText='Location' DataField='TLOC' 
-                    HeaderStyle-Width="65%" ItemStyle-HorizontalAlign="Left" />
+                    ItemStyle-HorizontalAlign="Left" />
             </Columns>
             <RowStyle ForeColor ="#000066" />
             <SelectedRowStyle BackColor ="#669999" Font-Bold ="True" ForeColor ="White" />
@@ -71,7 +76,6 @@
         </SelectParameters>
         </asp:ObjectDataSource>
     </div>
-    
     </form>
 </body>
 </html>

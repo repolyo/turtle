@@ -12,7 +12,7 @@ public partial class Testcase : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        string tid = Request.QueryString["TID"]; ;
+        string tid = Request.QueryString["TID"];
         TestcaseDS.SelectParameters["TID"].DefaultValue = tid;
         QueryDetails(tid);
     }
@@ -22,7 +22,7 @@ public partial class Testcase : System.Web.UI.Page
         DbConn.NewConnection(Config.getConnectionString());
         DataTable table = DbConn.Query(String.Format(
             "SELECT TO_CHAR (START_TIME, 'MM/DD/YY') SDATE, " +
-            "(END_TIME - START_TIME) ELAPSE FROM TESTCASE_RUN WHERE TID = {0} ORDER BY START_TIME DESC", 
+            "(END_TIME - START_TIME) ELAPSE FROM TESTCASE_RUN WHERE TGUID = '{0}' ORDER BY START_TIME DESC", 
             tid));
         foreach (DataRow row in table.Rows)
         {
@@ -30,7 +30,7 @@ public partial class Testcase : System.Web.UI.Page
             break;
         }
 
-        table = DbConn.Query(String.Format("SELECT * FROM TESTCASE WHERE TID = {0}", tid));
+        table = DbConn.Query(String.Format("SELECT * FROM TESTCASE WHERE TGUID = '{0}'", tid));
         foreach(DataRow row in table.Rows)
         {
             tcName.Text = String.Format("Testcase: {0}", row["TNAME"]);
@@ -40,7 +40,7 @@ public partial class Testcase : System.Web.UI.Page
 
         List<string> checksums = new List<string>();
         table = DbConn.Query(
-                String.Format("SELECT CHECKSUM FROM TESTCASE_CHECKSUM WHERE TID = {0} ORDER BY PAGE_NO", tid));
+                String.Format("SELECT CHECKSUM FROM TESTCASE_CHECKSUM WHERE TGUID = '{0}' ORDER BY PAGE_NO", tid));
         if (null != table) {
             foreach (DataRow row in table.Rows) {
                 checksums.Add(row["CHECKSUM"].ToString());

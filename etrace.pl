@@ -179,7 +179,7 @@ sub processCallInfo {
 use Getopt::Long qw(GetOptions);
 
 # Main function
-use DBI;
+# use DBI;
 use File::Basename;
 
 GetOptions(
@@ -217,13 +217,13 @@ if ($exec) {
             $type = <f>;
             close f;
          }
-         if ( $type eq 'XPS' or ($testcase =~ /\.xps$/i) ) {
-             print "invoking = " . $exec . ' -O checksum ' . $testcase . "\n";
+         if ( $emul eq 'XPS' or ($testcase =~ /\.xps$/i) ) {
+             print "invoking = " . $exec . ' -O checksum -e XPS ' . $testcase . "\n";
              system($exec.' -O checksum '.$testcase);
          }
          else {
-             print "invoking = " . $exec . ' -e '. $type . ' ' . $testcase . "\n";
-             system($exec.' -e '.$type.' -s '.$testcase);
+             print "invoking = " . $exec . ' -e '. $emul . ' ' . $testcase . "\n";
+             system($exec.' -e '.$emul.' -s '.$testcase);
          }
        }
     }

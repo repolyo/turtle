@@ -19,7 +19,9 @@ public partial class _Default : System.Web.UI.Page
         }
         
         TObjectDataSource.SelectParameters["Filter"].DefaultValue = filter;
-        //lbl_message.Text = "Total Count: ";
+        DbConn.NewConnection(Config.getConnectionString());
+        totalLbl.Text = "Testcases: " + DbConn.ExecuteScalar("SELECT count(*) FROM TESTCASE");
+        DbConn.Terminate();
     }
 
     protected void btnFiltering_Click(object sender, EventArgs e)

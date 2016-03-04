@@ -9,7 +9,8 @@ public enum FilterType
 {
     ALL = 1,
     FUNC = 2,
-    TAG = 3
+    TAG = 3,
+    TYPE
 }
 
 /// <summary>

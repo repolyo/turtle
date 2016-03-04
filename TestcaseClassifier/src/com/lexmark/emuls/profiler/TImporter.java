@@ -37,13 +37,15 @@ public class TImporter extends LinkedList<String> {
 	private static TImporter queue = null;
 	private static boolean busy = false;
 	
+	public static String dbUser = "tc_profiler";
+	public static String dbPasswd = "tc_profiler";
 	public static String dbHost = "localhost";
 	
 	// 11/27/15 20:03:19
 	static DateFormat DATE_FORMATTER = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
 		
 	// invoking = ./pdls -e PDF ~/testcases/hello_lexmark.pdf
-	private static String TESTCASE = "^invoking =\\s+(.*)(-e\\s+\\w{1,10}\\b|\\s+)(.*)";
+	private static String TESTCASE = "^invoking =\\s+(.*)-e\\s+(\\w{1,10}\\b|\\s+)(.*)";
 	
 	// [/bonus/scratch/tanch/pdls/app/main.c:631] => main
     private static String FUNC_HIT = "^\\[.*(\\/.*\\/.*\\/.*):(\\d+)\\]\\s+=>\\s+(.*)";
@@ -77,12 +79,13 @@ public class TImporter extends LinkedList<String> {
 	}
 	
 	private static Connection getDbConn() {
-		Connection connection = null;
+		Connection connection = null; 
 		try {
 //			connection = DriverManager.getConnection(
 //					"jdbc:oracle:thin:@emulator-win7:1521:xe", "tc_profiler", "tc_profiler");
 			connection = DriverManager.getConnection(
-					"jdbc:oracle:thin:@"+dbHost+":1521:xe", "tc_profiler", "tc_profiler");
+					"jdbc:oracle:thin:@"+dbHost+":1521:xe", dbUser, dbPasswd);
+			System.out.format(String.format("Connected to: %s@%s DB...", dbHost, dbUser));
 		} catch (SQLException e) {
 			System.out.println("Connection Failed! Check output console");
 			e.printStackTrace();
@@ -181,16 +184,16 @@ public class TImporter extends LinkedList<String> {
             				" WHEN NOT matched then INSERT (SOURCE_FILE, LINE_NO, FUNC_NAME) values (?,?,?)"+
             				" WHEN matched then update set line_no = ?");
 					
-					stmt3 = conn.prepareStatement("MERGE INTO TESTCASE_FUNC using dual on (FID=? AND TID=?)" +
-				            				" WHEN NOT matched then INSERT (FID, TID, SEQ) values (?,?,?)"+
+					stmt3 = conn.prepareStatement("MERGE INTO TESTCASE_FUNC using dual on (FID=? AND TGUID=?)" +
+				            				" WHEN NOT matched then INSERT (FID, TGUID, SEQ) values (?,?,?)"+
 				            				" WHEN matched then update set SEQ = ?");
 					
 					stmt4 = conn.prepareStatement("MERGE INTO TAGS using dual on (TAG_NAME=?)" +
             				" WHEN NOT matched then INSERT (TAG_NAME) values (?)"+
             				" WHEN matched then update set CREATE_DATE = ?");
 					
-					stmt5 = conn.prepareStatement("MERGE INTO TESTCASE_TAGS using dual on (TAG_ID=? AND TID=?)" +
-            				" WHEN NOT matched then INSERT (TAG_ID,TID) values (?,?)"+
+					stmt5 = conn.prepareStatement("MERGE INTO TESTCASE_TAGS using dual on (TAG_ID=? AND TGUID=?)" +
+            				" WHEN NOT matched then INSERT (TGUID,TAG_ID) values (?,?)"+
             				" WHEN matched then update set CREATE_DATE = ?");
 					
 					do {
@@ -202,43 +205,56 @@ public class TImporter extends LinkedList<String> {
 							}
 							synchronized( this ) {
 								boolean error = false;
+								boolean tc_inserted = false;
 								long seqNo = 0; 
 								String tloc = "";
-								Long tc_id = null;
+								//Long tc_id = null;
 								Matcher matcher = null; 
 								Timestamp startTime = null;
 								Timestamp endTime = null;
 								File file = new File(testResult);
 								Scanner scanner = new Scanner(file);
+								String tguid = file.getName();
+				                tguid = tguid.substring(0, tguid.lastIndexOf('.'));
+				                
 					            while ( scanner.hasNextLine() ) {
 					            	error = false;
 					                String line = scanner.nextLine();
+					                
+					                // "^invoking =\\s+(.*)-e\\s+(\\w{1,10}\\b|\\s+)(.*)";
 					                matcher = tc.matcher(line);
 					                if ( matcher.find() ) {
 				                		String testcase = matcher.group(3);
+				                		String type = matcher.group(2);
 					                	String filename = testcase.substring(testcase.lastIndexOf('/')+1);
-					                	PreparedStatement tc_stmt = conn.prepareStatement("MERGE INTO TESTCASE using dual on (TLOC=?)" +
-					            				" WHEN NOT matched then INSERT (TNAME, TLOC) values (?,?)"+
-					            				" WHEN matched then update set TNAME = ?");
+						                
+					                	PreparedStatement tc_stmt = conn.prepareStatement("MERGE INTO TESTCASE using dual on (TGUID=?)" +
+					            				" WHEN NOT matched then INSERT (TGUID,TNAME,TLOC,TTYPE) values (?,?,?,?)"+
+					            				" WHEN matched then update set TNAME=?,TTYPE=?,TLOC=?");
 					                	tloc = testcase.toString().trim();
-					                	setParameters(tc_stmt, tloc, filename, tloc, filename);
-					                	System.out.println("SOURCE: " + tloc);
-					                	if ( tc_stmt.executeUpdate() > 0 ) {
-					                		tc_id = (Long)sqlQuery(Long.class, conn, "SELECT TID from TESTCASE where TLOC=?", tloc);
-					                	}
+					                	setParameters(tc_stmt, tguid, tguid, filename, tloc, type, filename, type, tloc);
+					                	System.out.println(String.format("\nSOURCE(%s): %s", type, tloc));
+					                	tc_inserted = tc_stmt.executeUpdate() == 1;
 					                	tc_stmt.close();
+					                	
+//					                	tc_stmt = conn.prepareStatement("DELETE FROM TESTCASE_FUNC WHERE TGUID=?");
+//					                	setParameters(tc_stmt, tguid);
+//					                	tc_stmt.executeUpdate();
+//					                	tc_stmt.close();
 					                	continue;
 					            	}
+					                
+					                if ( !tc_inserted ) continue;
 					                
 					                matcher = cs.matcher(line);
 					                if ( matcher.find() ) {
 					                	Long page_no = Long.parseLong(matcher.group(1));
 					                	String checksum = matcher.group(2);
 					                	System.out.println(line + " : page" + page_no + ", checksum: " + checksum);
-					                	PreparedStatement cs_stmt = conn.prepareStatement("MERGE INTO TESTCASE_CHECKSUM using dual on (TID=? AND PAGE_NO=?)" +
-					            				" WHEN NOT matched then INSERT (TID, PAGE_NO, CHECKSUM) values (?,?,?)"+
+					                	PreparedStatement cs_stmt = conn.prepareStatement("MERGE INTO TESTCASE_CHECKSUM using dual on (TGUID=? AND PAGE_NO=?)" +
+					            				" WHEN NOT matched then INSERT (TGUID, PAGE_NO, CHECKSUM) values (?,?,?)"+
 					            				" WHEN matched then update set CHECKSUM = ?");
-					                	setParameters(cs_stmt, tc_id, page_no, tc_id, page_no, checksum, checksum);
+					                	setParameters(cs_stmt, tguid, page_no, tguid, page_no, checksum, checksum);
 					                	cs_stmt.executeUpdate();
 					                	cs_stmt.close();
 					                	continue;
@@ -253,9 +269,9 @@ public class TImporter extends LinkedList<String> {
 				                			setParameters(stmt2, src_file, func, src_file, lineNo, func, lineNo);
 				                			if (stmt2.executeUpdate() > 0) {
 				                				Long fid = (Long)sqlQuery(Long.class, conn, "select FID FROM FUNC WHERE SOURCE_FILE=? AND FUNC_NAME=?", src_file, func);
-							                	if( null != fid && null != tc_id) {
+							                	if( null != fid) {
 							                		seqNo++;
-							                		setParameters(stmt3, fid, tc_id, fid, tc_id, seqNo, seqNo);
+							                		setParameters(stmt3, fid, tguid, fid, tguid, seqNo, seqNo);
 						                			stmt3.addBatch();
 							                	}
 				                			}
@@ -271,13 +287,18 @@ public class TImporter extends LinkedList<String> {
 					                matcher = tg.matcher(line);
 					                if ( matcher.find() ) {
 			                			try {
-			                				String tag = matcher.group(1);
-			                				setParameters(stmt4, tag, tag, new Date(System.currentTimeMillis()));
-				                			if (stmt4.executeUpdate() > 0) {
-				                				Long tag_id = (Long)sqlQuery(Long.class, conn, "select TID FROM TAGS WHERE TAG_NAME=?", tag);
-				                				setParameters(stmt5, tag_id, tc_id, tag_id, tc_id, new Date(System.currentTimeMillis()));
-				                				stmt5.addBatch();
-				                			}
+			                				String tag = matcher.group(1).trim();
+			                				if (!tag.isEmpty()) {
+				                				setParameters(stmt4, tag, tag, new Date(System.currentTimeMillis()));
+					                			if (stmt4.executeUpdate() > 0) {
+					                				Long tag_id = (Long)sqlQuery(Long.class, conn, "select TID FROM TAGS WHERE TAG_NAME=?", tag);
+					                				/* "MERGE INTO TESTCASE_TAGS using dual on (TAG_ID=? AND TGUID=?)" +
+					                        				" WHEN NOT matched then INSERT (TGUID,TAG_ID) values (?,?)"+
+					                        				" WHEN matched then update set CREATE_DATE = ?"); */
+					                				setParameters(stmt5, tag_id, tguid, tguid, tag_id, new Date(System.currentTimeMillis()));
+					                				stmt5.addBatch();
+					                			}
+			                				}
 			                			}
 				                		catch (SQLException e) {
 				                			error = true;
@@ -298,11 +319,11 @@ public class TImporter extends LinkedList<String> {
 				                		continue;
 				                	}
 				                	matcher = et.matcher(line);
-				                	if (null != startTime && matcher.find() ) {
+				                	if (tc_inserted && null != startTime && matcher.find() ) {
 				                		try {
 				                			endTime = new java.sql.Timestamp(DATE_FORMATTER.parse(matcher.group(1)).getTime());
-											insert(conn, "INSERT INTO TESTCASE_RUN (TID, START_TIME, END_TIME) VALUES (?,?,?)", 
-					                				tc_id, startTime, endTime);
+											insert(conn, "INSERT INTO TESTCASE_RUN (TGUID, START_TIME, END_TIME) VALUES (?,?,?)", 
+													tguid, startTime, endTime);
 											
 										} catch (ParseException e) {
 											error = true;

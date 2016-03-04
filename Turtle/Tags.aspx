@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Tags</title>
+    <title>TUR-tool: Testcase Profiler/Cataloger (aka turtle).</title>
 <script type="text/javascript">
     function deleteConfirm(pubid) {
         var result = confirm('Do you want to delete ' + pubid + ' ?');

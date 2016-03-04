@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - Thursday-March-03-2016   
+--  File created - Wednesday-March-02-2016   
 --------------------------------------------------------
 DROP TABLE "FUNC" cascade constraints;
 DROP TABLE "PLATFORM" cascade constraints;
@@ -47,8 +47,8 @@ DROP TABLE "TESTCASE_TAGS" cascade constraints;
   CREATE TABLE "TAGS" 
    (	"TID" NUMBER(*,0), 
 	"TAG_NAME" VARCHAR2(80 BYTE), 
-	"TAG_DESCR" VARCHAR2(255 BYTE) DEFAULT '-', 
-	"CREATE_DATE" TIMESTAMP (6) DEFAULT CURRENT_TIMESTAMP
+	"TAG_DESCR" VARCHAR2(255 BYTE) DEFAULT '-',
+  "CREATE_DATE" TIMESTAMP (6) DEFAULT CURRENT_TIMESTAMP
    ) ;
 --------------------------------------------------------
 --  DDL for Table TAGS_FUNC
@@ -81,7 +81,8 @@ DROP TABLE "TESTCASE_TAGS" cascade constraints;
 --------------------------------------------------------
 
   CREATE TABLE "TESTCASE_CHECKSUM" 
-   (	"TGUID" VARCHAR2(32 BYTE), 
+   (	"TGUID" VARCHAR2(32 BYTE),
+   "TID" NUMBER(*,0), 
 	"PAGE_NO" NUMBER, 
 	"CHECKSUM" VARCHAR2(255 BYTE)
    ) ;
@@ -90,15 +91,15 @@ DROP TABLE "TESTCASE_TAGS" cascade constraints;
 --------------------------------------------------------
 
   CREATE TABLE "TESTCASE_FUNC" 
-   (	"TGUID" VARCHAR2(32 BYTE), 
-	"TID" NUMBER, 
+   (	"TGUID" VARCHAR2(32 BYTE),
+   "TID" NUMBER, 
 	"SEQ" NUMBER, 
 	"FID" NUMBER(*,0), 
-	"CREATE_DATE" TIMESTAMP (6) DEFAULT CURRENT_TIMESTAMP
+	"CREATE_DATE" TIMESTAMP (6) DEFAULT CURRENT_TIMESTAMP	
    ) ;
 
-   COMMENT ON COLUMN "TESTCASE_FUNC"."TGUID" IS 'testcase id';
    COMMENT ON COLUMN "TESTCASE_FUNC"."SEQ" IS 'order of invocation';
+   COMMENT ON COLUMN "TESTCASE_FUNC"."TGUID" IS 'testcase id';
 --------------------------------------------------------
 --  DDL for Table TESTCASE_RUN
 --------------------------------------------------------
@@ -107,9 +108,9 @@ DROP TABLE "TESTCASE_TAGS" cascade constraints;
    (	"RID" NUMBER, 
 	"PID" NUMBER(*,0) DEFAULT 1, 
 	"TID" NUMBER(*,0), 
-	"TGUID" VARCHAR2(32 BYTE), 
 	"START_TIME" TIMESTAMP (6), 
-	"END_TIME" TIMESTAMP (6)
+	"END_TIME" TIMESTAMP (6), 
+	"TGUID" VARCHAR2(32 BYTE)
    ) ;
 
    COMMENT ON COLUMN "TESTCASE_RUN"."RID" IS 'run id';
@@ -120,8 +121,8 @@ To be able to show testcase performance history across builds.';
 --------------------------------------------------------
 
   CREATE TABLE "TESTCASE_TAGS" 
-   (	"TGUID" VARCHAR2(32 BYTE), 
-	"TID" NUMBER(*,0), 
+   (	"TGUID" VARCHAR2(32 BYTE),
+   "TID" NUMBER(*,0), 
 	"TAG_ID" NUMBER, 
 	"CREATE_DATE" TIMESTAMP (6) DEFAULT CURRENT_TIMESTAMP
    ) ;
@@ -146,12 +147,6 @@ To be able to show testcase performance history across builds.';
   CREATE UNIQUE INDEX "SYS_C007060" ON "TAGS" ("TAG_NAME") 
   ;
 --------------------------------------------------------
---  DDL for Index TAGS_FUNC_PK
---------------------------------------------------------
-
-  CREATE UNIQUE INDEX "TAGS_FUNC_PK" ON "TAGS_FUNC" ("FID", "TID") 
-  ;
---------------------------------------------------------
 --  DDL for Index SYS_C007058
 --------------------------------------------------------
 
@@ -170,16 +165,10 @@ To be able to show testcase performance history across builds.';
   CREATE UNIQUE INDEX "SYS_C7074" ON "TESTCASE" ("TGUID") 
   ;
 --------------------------------------------------------
---  DDL for Index TESTCASE_CHECKSUM_PK1
+--  DDL for Index TESTCASE_FUNC_PK
 --------------------------------------------------------
 
-  CREATE UNIQUE INDEX "TESTCASE_CHECKSUM_PK1" ON "TESTCASE_CHECKSUM" ("TGUID", "PAGE_NO") 
-  ;
---------------------------------------------------------
---  DDL for Index TESTCASE_FUNC_PK1
---------------------------------------------------------
-
-  CREATE UNIQUE INDEX "TESTCASE_FUNC_PK1" ON "TESTCASE_FUNC" ("FID", "TGUID") 
+  CREATE UNIQUE INDEX "TESTCASE_FUNC_PK" ON "TESTCASE_FUNC" ("FID", "TID") 
   ;
 --------------------------------------------------------
 --  DDL for Index SYS_C007100
@@ -188,10 +177,10 @@ To be able to show testcase performance history across builds.';
   CREATE UNIQUE INDEX "SYS_C007100" ON "TESTCASE_RUN" ("RID") 
   ;
 --------------------------------------------------------
---  DDL for Index TESTCASE_TAGS_PK
+--  DDL for Index TESTCASE_TAGS_PK1
 --------------------------------------------------------
 
-  CREATE UNIQUE INDEX "TESTCASE_TAGS_PK" ON "TESTCASE_TAGS" ("TAG_ID", "TGUID") 
+  CREATE UNIQUE INDEX "TESTCASE_TAGS_PK1" ON "TESTCASE_TAGS" ("TID", "TAG_ID") 
   ;
 --------------------------------------------------------
 --  Constraints for Table FUNC
@@ -220,41 +209,27 @@ To be able to show testcase performance history across builds.';
   ALTER TABLE "TAGS" ADD PRIMARY KEY ("TAG_NAME") ENABLE;
   ALTER TABLE "TAGS" MODIFY ("TAG_NAME" NOT NULL ENABLE);
 --------------------------------------------------------
---  Constraints for Table TAGS_FUNC
---------------------------------------------------------
-
-  ALTER TABLE "TAGS_FUNC" ADD CONSTRAINT "TAGS_FUNC_PK" PRIMARY KEY ("FID", "TID") ENABLE;
-  ALTER TABLE "TAGS_FUNC" MODIFY ("FID" NOT NULL ENABLE);
-  ALTER TABLE "TAGS_FUNC" MODIFY ("TID" NOT NULL ENABLE);
---------------------------------------------------------
 --  Constraints for Table TESTCASE
 --------------------------------------------------------
 
   ALTER TABLE "TESTCASE" MODIFY ("TGUID" NOT NULL ENABLE);
+  ALTER TABLE "TESTCASE" MODIFY ("TID" NOT NULL ENABLE);
   ALTER TABLE "TESTCASE" MODIFY ("TLOC" NOT NULL ENABLE);
   ALTER TABLE "TESTCASE" MODIFY ("TNAME" NOT NULL ENABLE);
   ALTER TABLE "TESTCASE" ADD CONSTRAINT "SYS_C007073" PRIMARY KEY ("TGUID") ENABLE;
---------------------------------------------------------
---  Constraints for Table TESTCASE_CHECKSUM
---------------------------------------------------------
-
-  ALTER TABLE "TESTCASE_CHECKSUM" MODIFY ("PAGE_NO" NOT NULL ENABLE);
-  ALTER TABLE "TESTCASE_CHECKSUM" MODIFY ("TGUID" NOT NULL ENABLE);
-  ALTER TABLE "TESTCASE_CHECKSUM" ADD CONSTRAINT "TESTCASE_CHECKSUM_PK" PRIMARY KEY ("TGUID", "PAGE_NO") ENABLE;
-  ALTER TABLE "TESTCASE_CHECKSUM" MODIFY ("CHECKSUM" NOT NULL ENABLE);
 --------------------------------------------------------
 --  Constraints for Table TESTCASE_FUNC
 --------------------------------------------------------
 
   ALTER TABLE "TESTCASE_FUNC" MODIFY ("FID" NOT NULL ENABLE);
-  ALTER TABLE "TESTCASE_FUNC" ADD CONSTRAINT "TESTCASE_FUNC_PK" PRIMARY KEY ("FID", "TGUID") ENABLE;
-  ALTER TABLE "TESTCASE_FUNC" MODIFY ("TGUID" NOT NULL ENABLE);
+  ALTER TABLE "TESTCASE_FUNC" MODIFY ("TID" NOT NULL ENABLE);
+  ALTER TABLE "TESTCASE_FUNC" ADD CONSTRAINT "TESTCASE_FUNC_PK" PRIMARY KEY ("FID", "TID") ENABLE;
 --------------------------------------------------------
 --  Constraints for Table TESTCASE_RUN
 --------------------------------------------------------
 
   ALTER TABLE "TESTCASE_RUN" MODIFY ("PID" NOT NULL ENABLE);
-  ALTER TABLE "TESTCASE_RUN" MODIFY ("TGUID" NOT NULL ENABLE);
+  ALTER TABLE "TESTCASE_RUN" MODIFY ("TID" NOT NULL ENABLE);
   ALTER TABLE "TESTCASE_RUN" MODIFY ("START_TIME" NOT NULL ENABLE);
   ALTER TABLE "TESTCASE_RUN" MODIFY ("END_TIME" NOT NULL ENABLE);
   ALTER TABLE "TESTCASE_RUN" ADD CONSTRAINT "SYS_C007100" PRIMARY KEY ("RID") ENABLE;
@@ -263,38 +238,14 @@ To be able to show testcase performance history across builds.';
 --  Constraints for Table TESTCASE_TAGS
 --------------------------------------------------------
 
-  ALTER TABLE "TESTCASE_TAGS" MODIFY ("TGUID" NOT NULL ENABLE);
+  ALTER TABLE "TESTCASE_TAGS" ADD CONSTRAINT "TESTCASE_TAGS_PK" PRIMARY KEY ("TID", "TAG_ID") ENABLE;
   ALTER TABLE "TESTCASE_TAGS" MODIFY ("TAG_ID" NOT NULL ENABLE);
-  ALTER TABLE "TESTCASE_TAGS" ADD CONSTRAINT "TESTCASE_TAGS_PK" PRIMARY KEY ("TAG_ID", "TGUID") ENABLE;
---------------------------------------------------------
---  Ref Constraints for Table TESTCASE_CHECKSUM
---------------------------------------------------------
-
-  ALTER TABLE "TESTCASE_CHECKSUM" ADD CONSTRAINT "TESTCASE_CHECKSUM_FK1" FOREIGN KEY ("TGUID")
-	  REFERENCES "TESTCASE" ("TGUID") ON DELETE CASCADE ENABLE;
---------------------------------------------------------
---  Ref Constraints for Table TESTCASE_FUNC
---------------------------------------------------------
-
-  ALTER TABLE "TESTCASE_FUNC" ADD CONSTRAINT "TESTCASE_FUNC_FK1" FOREIGN KEY ("TGUID")
-	  REFERENCES "TESTCASE" ("TGUID") ON DELETE CASCADE ENABLE;
---------------------------------------------------------
---  Ref Constraints for Table TESTCASE_RUN
---------------------------------------------------------
-
-  ALTER TABLE "TESTCASE_RUN" ADD CONSTRAINT "TESTCASE_RUN_FK1" FOREIGN KEY ("TGUID")
-	  REFERENCES "TESTCASE" ("TGUID") ON DELETE CASCADE ENABLE;
---------------------------------------------------------
---  Ref Constraints for Table TESTCASE_TAGS
---------------------------------------------------------
-
-  ALTER TABLE "TESTCASE_TAGS" ADD CONSTRAINT "TESTCASE_TAGS_FK1" FOREIGN KEY ("TGUID")
-	  REFERENCES "TESTCASE" ("TGUID") ON DELETE CASCADE ENABLE;
+  ALTER TABLE "TESTCASE_TAGS" MODIFY ("TID" NOT NULL ENABLE);
 --------------------------------------------------------
 --  DDL for Trigger FUNC_TRIGGER
 --------------------------------------------------------
 
-  CREATE OR REPLACE TRIGGER "FUNC_TRIGGER" BEFORE INSERT ON func
+  CREATE OR REPLACE TRIGGER "FUNC_TRIGGER" BEFORE INSERT ON tc_profiler.func
 REFERENCING NEW AS NEW
 FOR EACH ROW
 BEGIN
@@ -308,7 +259,7 @@ ALTER TRIGGER "FUNC_TRIGGER" ENABLE;
 --  DDL for Trigger PLATFORM_SEQ
 --------------------------------------------------------
 
-  CREATE OR REPLACE TRIGGER "PLATFORM_SEQ" BEFORE INSERT ON platform
+  CREATE OR REPLACE TRIGGER "PLATFORM_SEQ" BEFORE INSERT ON tc_profiler.platform
 REFERENCING NEW AS NEW
 FOR EACH ROW
 BEGIN
@@ -322,7 +273,7 @@ ALTER TRIGGER "PLATFORM_SEQ" ENABLE;
 --  DDL for Trigger TAG_SEQ
 --------------------------------------------------------
 
-  CREATE OR REPLACE TRIGGER "TAG_SEQ" BEFORE INSERT ON TAGS
+  CREATE OR REPLACE TRIGGER "TAG_SEQ" BEFORE INSERT ON tc_profiler.TAGS
 REFERENCING NEW AS NEW
 FOR EACH ROW
 BEGIN
@@ -336,7 +287,7 @@ ALTER TRIGGER "TAG_SEQ" ENABLE;
 --  DDL for Trigger TESTCASE_TRIGGER
 --------------------------------------------------------
 
-  CREATE OR REPLACE TRIGGER "TESTCASE_TRIGGER" BEFORE INSERT ON testcase
+  CREATE OR REPLACE TRIGGER "TESTCASE_TRIGGER" BEFORE INSERT ON tc_profiler.testcase
 REFERENCING NEW AS NEW
 FOR EACH ROW
 BEGIN
@@ -350,7 +301,7 @@ ALTER TRIGGER "TESTCASE_TRIGGER" ENABLE;
 --  DDL for Trigger TC_RUN_SEQ
 --------------------------------------------------------
 
-  CREATE OR REPLACE TRIGGER "TC_RUN_SEQ" BEFORE INSERT ON TESTCASE_RUN
+  CREATE OR REPLACE TRIGGER "TC_RUN_SEQ" BEFORE INSERT ON tc_profiler.TESTCASE_RUN
 REFERENCING NEW AS NEW
 FOR EACH ROW
 BEGIN

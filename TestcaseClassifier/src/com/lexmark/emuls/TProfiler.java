@@ -24,6 +24,8 @@ public class TProfiler {
 	                           ENTRY_CREATE);
 	    
 	    boolean host = false;
+	    boolean user = false;
+	    boolean pass = false;
 	    for (String s: args) {
 	    	if (s != null && s.equalsIgnoreCase("-h")) {
 	    		host = true;
@@ -31,6 +33,27 @@ public class TProfiler {
 	    	}
 	    	if (host) {
 	    		TImporter.dbHost = s;
+	    		host = false;
+	    		continue;
+	    	}
+	    	
+	    	if (s != null && s.equalsIgnoreCase("-u")) {
+	    		user = true;
+	    		continue;
+	    	}
+	    	if (user) {
+	    		TImporter.dbUser = s;
+	    		user = false;
+	    		continue;
+	    	}
+	    	
+	    	if (s != null && s.equalsIgnoreCase("-p")) {
+	    		pass = true;
+	    		continue;
+	    	}
+	    	if (pass) {
+	    		TImporter.dbPasswd = s;
+	    		pass = false;
 	    		continue;
 	    	}
         }

@@ -13,7 +13,7 @@ namespace Samples.AspNet.ObjectDataSource
     public class TestcaseProfileData : DbConn
     {
         const string queryFunc = "SELECT " +
-                "   t.tid " +
+                "   t.TGUID " +
                 "  FROM " +
                 "   TESTCASE_FUNC t, " +
                 "   FUNC f " +
@@ -22,7 +22,7 @@ namespace Samples.AspNet.ObjectDataSource
                 "    AND f.FUNC_NAME LIKE '{0}'";
 
         const string queryTags = "SELECT " +
-                "    tt.tid " +
+                "    tt.TGUID " +
                 "   FROM " +
                 "    TAGS t, " +
                 "    TESTCASE_TAGS tt " +
@@ -30,13 +30,22 @@ namespace Samples.AspNet.ObjectDataSource
                 "     t.tid = tt.tag_id " +
                 "     AND UPPER(t.TAG_NAME) LIKE UPPER('{0}')";
 
+        const string queryType = "SELECT " +
+                "    t.TGUID " +
+                "   FROM " +
+                "    TESTCASE t " +
+                "   WHERE " +
+                "     UPPER(t.TTYPE) = UPPER('{0}')";
+
         const string queryAll = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
-                "  a.tid, " +
+                "  a.TGUID as TID, " +
                 "  a.CREATE_DATE, " +
                 "  ' ' as Filter, " +
                 "  a.TNAME, " +
+                "  a.TTYPE, " +
+                "  a.TSIZE, " +
                 "  a.TLOC " +
-                "FROM TESTCASE a WHERE a.tid IN (" + queryFunc + " UNION " + queryTags + " )";
+                "FROM TESTCASE a WHERE a.TGUID IN (" + queryFunc + " UNION " + queryTags + " )";
 
         public TestcaseProfileData()
         {
@@ -58,26 +67,25 @@ namespace Samples.AspNet.ObjectDataSource
         public DataTable QueryTestcases(string Filter, string sortColumns, int startRecord, int maxRecords)
         {
             string keyword = (null == Filter) ? "%" : Filter;
-            string sql = null;
+            string sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
+                        "  a.TGUID as TID," +
+                        "  a.CREATE_DATE, " +
+                        "  ' ' as Filter, " +
+                        "  a.TNAME, " +
+                        "  a.TTYPE, " +
+                        "  a.TSIZE, " +
+                        "  a.TLOC " +
+                        "FROM TESTCASE a WHERE a.TGUID IN ";
             switch (Config.filterType)
             {
                 case FilterType.FUNC:
-                    sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
-                        "  a.tid, " +
-                        "  a.CREATE_DATE, " +
-                        "  ' ' as Filter, " +
-                        "  a.TNAME, " +
-                        "  a.TLOC " +
-                        "FROM TESTCASE a WHERE a.tid IN (" + queryFunc + ")";
+                    sql += " (" + queryFunc + ")";
+                    break;
+                case FilterType.TYPE:
+                    sql += " (" + queryType + ")";
                     break;
                 case FilterType.TAG:
-                    sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
-                        "  a.tid, " +
-                        "  a.CREATE_DATE, " +
-                        "  ' ' as Filter, " +
-                        "  a.TNAME, " +
-                        "  a.TLOC " +
-                        "FROM TESTCASE a WHERE a.tid IN (" + queryTags + ")";
+                    sql += " (" + queryTags + ")";
                     break;
                 case FilterType.ALL:
                 default:
@@ -100,6 +108,9 @@ namespace Samples.AspNet.ObjectDataSource
                 case FilterType.TAG:
                     count = ExecuteScalar("SELECT count(*) FROM ("+queryTags+")", keyword);
                     break;
+                case FilterType.TYPE:
+                    count = ExecuteScalar("SELECT count(*) FROM (" + queryType + ")", keyword);
+                    break;
                 default:
                 case FilterType.ALL:
                     count = ExecuteScalar("SELECT count(*) FROM (" + queryAll + ")", keyword);
@@ -114,15 +125,15 @@ namespace Samples.AspNet.ObjectDataSource
     {
         private const string query = "SELECT " +
             "   ROW_NUMBER() OVER (ORDER BY tf.SEQ ASC) AS ROWNO, " +
-            "   t.tid, " +
+            "   t.TGUID as TID, " +
             "   f.* " +
             " FROM " +
             "   TESTCASE t, " +
             "   TESTCASE_FUNC tf, " +
             "   FUNC f " +
             " WHERE " +
-            "   t.tid = {0} " +
-            "   AND t.tid = tf.tid " +
+            "   t.TGUID = '{0}' " +
+            "   AND t.TGUID = tf.TGUID " +
             "   AND tf.fid = f.fid ";
 
         public TestcaseData()
