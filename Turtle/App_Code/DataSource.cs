@@ -12,7 +12,7 @@ namespace Samples.AspNet.ObjectDataSource
     // 
     public class TestcaseProfileData : DbConn
     {
-        const string queryFunc = "SELECT " +
+        public const string queryFunc = "SELECT " +
                 "   t.TGUID " +
                 "  FROM " +
                 "   TESTCASE_FUNC t, " +
@@ -21,7 +21,7 @@ namespace Samples.AspNet.ObjectDataSource
                 "    t.fid = f.fid " +
                 "    AND f.FUNC_NAME LIKE '{0}'";
 
-        const string queryTags = "SELECT " +
+        public const string queryTags = "SELECT " +
                 "    tt.TGUID " +
                 "   FROM " +
                 "    TAGS t, " +
@@ -30,14 +30,14 @@ namespace Samples.AspNet.ObjectDataSource
                 "     t.tid = tt.tag_id " +
                 "     AND UPPER(t.TAG_NAME) LIKE UPPER('{0}')";
 
-        const string queryType = "SELECT " +
+        public const string queryType = "SELECT " +
                 "    t.TGUID " +
                 "   FROM " +
                 "    TESTCASE t " +
                 "   WHERE " +
                 "     UPPER(t.TTYPE) = UPPER('{0}')";
 
-        const string queryAll = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
+        public const string queryAll = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
                 "  a.TGUID as TID, " +
                 "  a.CREATE_DATE, " +
                 "  ' ' as Filter, " +
