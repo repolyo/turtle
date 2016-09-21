@@ -1,7 +1,17 @@
-echo # turtle >> README.md
+Create Repository
+--------------------------------------
+mkdir turtle
+cd turtle
 git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/repolyo/turtle.git
+touch README
+git add README
+git commit -m 'first commit'
+git remote add origin git@gitlabfw.rds.lexmark.com:chritan/turtle.git
+git push -u origin master
+
+Existing Git Repo?
+---------------------------------------
+<MiddleMouse>cd existing_git_repo
+git remote add origin git@gitlabfw.rds.lexmark.com:chritan/turtle.git
 git push -u origin master
 

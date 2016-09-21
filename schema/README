@@ -1,0 +1,6 @@
+order of execution:
+
+1. create_db_user.sql (optional)
+2. sequences.sql
+3. tables.sql
+4. triggers.sql
