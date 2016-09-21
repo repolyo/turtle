@@ -27,6 +27,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void btnFiltering_Click(object sender, EventArgs e)
     {
+        totalLbl.Text = "Testcases: ";
         TObjectDataSource.SelectParameters["Filter"].DefaultValue = txtFilter.Text;
     }
 
@@ -41,6 +42,20 @@ public partial class _Default : System.Web.UI.Page
             + ", SelectedValue=" + ddlFilter.SelectedValue);
         Config.filterType = ParseEnum<FilterType>(ddlFilter.SelectedValue);
        // ((TestcaseProfileData)TObjectDataSource).Type = type;
+    }
+
+    protected void drp2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        try
+        {
+            Console.WriteLine("SelectedIndex = " + PersonaCbx.SelectedIndex
+                + ", SelectedValue=" + PersonaCbx.SelectedValue);
+            Config.personaId = int.Parse(PersonaCbx.SelectedValue);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ddlFilter.SelectedValue, ex);
+        }
     }
 
     protected void GridVIew_OnDataBound(object sender, EventArgs e) {

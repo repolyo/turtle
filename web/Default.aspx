@@ -15,7 +15,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:Label ID="totalLbl" runat="server" Text="Total Count: " /><br />
+        <asp:DropDownList ID="PersonaCbx" runat="server" Width="200px"
+            onselectedindexchanged="drp2_SelectedIndexChanged" AutoPostBack="True">
+            <asp:ListItem Text="sim-atlantis" Value="5"></asp:ListItem>
+            <asp:ListItem Text="sim_voy-ix86-Linux-RHEL5" Value="8"></asp:ListItem>
+        </asp:DropDownList><br />
         <asp:DropDownList ID="ddlFilter" runat="server" Width="200px"
             onselectedindexchanged="drp1_SelectedIndexChanged" AutoPostBack="True">
             <asp:ListItem Text="All" Value="ALL"></asp:ListItem>
@@ -24,9 +28,8 @@
             <asp:ListItem Text="Tag/keyword" Value="TAG"></asp:ListItem>
         </asp:DropDownList>
         <asp:TextBox ID="txtFilter" runat="server" Columns="50" MaxLength="50"></asp:TextBox>
-        <asp:Button ID ="btnFiltering" runat ="server" OnClick ="btnFiltering_Click" Text ="Search" Width ="103px" />
-        <br />
-        <br />
+        <asp:Button ID ="btnFiltering" runat ="server" OnClick ="btnFiltering_Click" Text ="Search" Width ="103px" /><br />
+        <asp:Label ID="totalLbl" runat="server" Text="Total Count: " /><br />
     <div>    
         <asp:GridView ID="GridView1" runat="server" 
             DataSourceID="TObjectDataSource"

@@ -14,30 +14,30 @@ namespace Samples.AspNet.ObjectDataSource
     {
         public static int fetchCount = 0;
 
-        public const string queryFunc = "SELECT " +
-                "   t.TGUID " +
+        public const string queryFunc = "SELECT UNIQUE" +
+                "    t.TGUID " +
                 "  FROM " +
-                "   TESTCASE_FUNC t, " +
+                "   TESTCASE_FUNC t _::_, " +
                 "   FUNC f " +
                 "  WHERE " +
                 "    t.fid = f.fid " +
                 "    AND f.FUNC_NAME LIKE '{0}'";
 
-        public const string queryTags = "SELECT " +
-                "    tt.TGUID " +
-                "   FROM " +
-                "    TAGS t, " +
-                "    TESTCASE_TAGS tt " +
-                "   WHERE " +
-                "     t.tid = tt.tag_id " +
-                "     AND UPPER(t.TAG_NAME) LIKE UPPER('{0}')";
-
-        public const string queryType = "SELECT " +
+        public const string queryTags = "SELECT UNIQUE" +
                 "    t.TGUID " +
                 "   FROM " +
-                "    TESTCASE t " +
+                "    TAGS tt , " +
+                "    TESTCASE_TAGS t _::_ " +
                 "   WHERE " +
-                "     UPPER(t.TTYPE) = UPPER('{0}')";
+                "     tt.tid = t.tag_id " +
+                "     AND UPPER(tt.TAG_NAME) LIKE UPPER('{0}')";
+
+        public const string queryType = "SELECT UNIQUE" +
+                "    t.TGUID " +
+                "   FROM " +
+                "    TESTCASE t _::_" +
+                "   WHERE " +
+                "     t.HIDDEN <> 'Y' AND UPPER(t.TTYPE) = UPPER('{0}')";
 
         public const string queryAll = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
                 "  a.TGUID as TID, " +
@@ -47,7 +47,7 @@ namespace Samples.AspNet.ObjectDataSource
                 "  a.TTYPE, " +
                 "  a.TSIZE, " +
                 "  a.TLOC " +
-                "FROM TESTCASE a WHERE a.TGUID IN (" + queryFunc + " UNION " + queryTags + " )";
+                "FROM TESTCASE a WHERE a.HIDDEN <> 'Y' AND a.TGUID IN (" + queryFunc + " UNION " + queryTags + " )";
 
         public TestcaseProfileData()
         {
@@ -77,49 +77,84 @@ namespace Samples.AspNet.ObjectDataSource
                         "  a.TTYPE, " +
                         "  a.TSIZE, " +
                         "  a.TLOC " +
-                        "FROM TESTCASE a WHERE a.TGUID IN ";
-            switch (Config.filterType)
+                        "FROM TESTCASE a WHERE a.HIDDEN <> 'Y' AND a.TGUID IN ";
+            try
             {
-                case FilterType.FUNC:
-                    sql += " (" + queryFunc + ")";
-                    break;
-                case FilterType.TYPE:
-                    sql += " (" + queryType + ")";
-                    break;
-                case FilterType.TAG:
-                    sql += " (" + queryTags + ")";
-                    break;
-                case FilterType.ALL:
-                default:
-                    sql = queryAll;
-                    break;
+                switch (Config.filterType)
+                {
+                    case FilterType.FUNC:
+                        sql += " (" + queryFunc + ")";
+                        break;
+                    case FilterType.TYPE:
+                        sql += " (" + queryType + ")";
+                        break;
+                    case FilterType.TAG:
+                        sql += " (" + queryTags + ")";
+                        break;
+                    case FilterType.ALL:
+                    default:
+                        sql = queryAll;
+                        break;
+                }
+
+                sql = sql.Replace("_::_", " JOIN TESTCASE_RUN r ON r.TGUID = t.TGUID AND r.pid = " + Config.personaId);
+
+                return Query(String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
+                                    sql, startRecord, maxRecords), keyword);
             }
-            return Query(String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
-                                sql, startRecord, maxRecords), keyword);
+            catch (Exception e)
+            {
+                throw new Exception(sql, e);
+            }
+            finally
+            {
+                //if (Config.personaId > 1)
+                // {
+                //    throw new Exception(sql);
+                //}
+            }
         }
 
         public int SelectCount(string Filter)
         {
             Object count = null;
             string keyword = (null == Filter) ? "%" : Filter;
-            switch (Config.filterType)
+            string sql = "";
+            try
             {
-                case FilterType.FUNC:
-                    count = ExecuteScalar("SELECT count(*) FROM (" +queryFunc+ ")", keyword);
-                    break;
-                case FilterType.TAG:
-                    count = ExecuteScalar("SELECT count(*) FROM ("+queryTags+")", keyword);
-                    break;
-                case FilterType.TYPE:
-                    count = ExecuteScalar("SELECT count(*) FROM (" + queryType + ")", keyword);
-                    break;
-                default:
-                case FilterType.ALL:
-                    count = ExecuteScalar("SELECT count(*) FROM (" + queryAll + ")", keyword);
-                    break;
+                switch (Config.filterType)
+                {
+                    case FilterType.FUNC:
+                        sql = String.Format("SELECT count(*) FROM ({0})", queryFunc);
+                        break;
+                    case FilterType.TAG:
+                        sql = String.Format("SELECT count(*) FROM ({0})", queryTags);
+                        break;
+                    case FilterType.TYPE:
+                        sql = String.Format("SELECT count(*) FROM ({0})", queryType);
+                        break;
+                    default:
+                    case FilterType.ALL:
+                        sql = String.Format("SELECT count(*) FROM ({0})", queryAll);
+                        break;
+                }
+
+                sql = sql.Replace("_::_", " JOIN TESTCASE_RUN r ON r.TGUID = t.TGUID AND r.pid = " + Config.personaId);
+                count = ExecuteScalar(sql, keyword);
+                fetchCount = int.Parse(count.ToString());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(sql, e);
+            }
+            finally
+            {
+                if (0 == fetchCount)
+                {
+                    throw new Exception(sql);
+                }
             }
 
-            fetchCount = int.Parse(count.ToString());
             return fetchCount;
         }
     }

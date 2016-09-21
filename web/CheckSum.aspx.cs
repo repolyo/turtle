@@ -18,15 +18,12 @@ public partial class CheckSum : System.Web.UI.Page
 
     protected string generateQuerySQL(string funcList, string pid)
     {
-        StringBuilder testcaseByFunc = new StringBuilder("SELECT UNIQUE" +
-        "   t.TGUID, listagg(cs.CHECKSUM, ',') within group (order by cs.PAGE_NO) as CHECKSUM" +
-        "  FROM " +
-        "   TESTCASE_FUNC t, " +
-        "   FUNC f, " +
-        "   TESTCASE_CHECKSUM cs " +
-        "  WHERE " +
-        "    t.tguid = cs.tguid AND t.fid = f.fid AND cs.pid = " + pid +
-        "    AND UPPER(f.FUNC_NAME) IN ( ");
+        StringBuilder testcaseByFunc = new StringBuilder("SELECT cs.TGUID, listagg(cs.CHECKSUM, ',') " +
+            " within GROUP (ORDER BY cs.PAGE_NO) AS CHECKSUM FROM TESTCASE_CHECKSUM cs WHERE " +
+            " cs.pid = " + pid +
+            " AND cs.TGUID IN (SELECT UNIQUE t.TGUID FROM TESTCASE_FUNC t, FUNC f WHERE t.fid = f.fid " +
+            " AND UPPER(f.FUNC_NAME) IN ( ");
+
         if (funcList == null) funcList = "%";
 
         string[] funcs = funcList.Split(',');
@@ -35,7 +32,7 @@ public partial class CheckSum : System.Web.UI.Page
             if (func == "main") continue;
             testcaseByFunc.Append(String.Format("UPPER('{0}'), ", func));
         }
-        testcaseByFunc.Append(" '__end__' ) GROUP BY t.tguid");
+        testcaseByFunc.Append(" '__end__' ) ) GROUP BY cs.tguid");
 
         return testcaseByFunc.ToString();
     }
@@ -64,18 +61,28 @@ public partial class CheckSum : System.Web.UI.Page
                     "  b.CHECKSUM " +
                     "FROM TESTCASE a, " + "(" + generateQuerySQL(func, platformId) + ") b " +
                     "WHERE a.TGUID=b.TGUID AND a.HIDDEN <> 'Y' AND a.TLOC LIKE '%" + filter + "%' ) WHERE ROWNO > {0} AND ROWNO <= ({0} + {1})", 0, fetchCount);
-        _testcases = "# testcase : #checksum\r\n";
+        _testcases = "# testcases located in /m/tcases/futures/next/wip/#testcase : #checksum\r\n";
 
-        DbConn.NewConnection(Config.getConnectionString());
-        DataTable tbl = DbConn.Query(sql);
-        if (null != tbl) foreach (DataRow row in tbl.Rows)
+        try
         {
-            string checksum = row["CHECKSUM"].ToString().Trim();
-            if (checksum.Length == 0) continue;
-            string tcase = String.Format("{0} : {1}\r\n", row["TLOC"], checksum);
-            _testcases += tcase.Replace("/m/tcases/futures/next/wip/", "");
+            DbConn.NewConnection(Config.getConnectionString());
+            DataTable tbl = DbConn.Query(sql);
+            if (null != tbl) foreach (DataRow row in tbl.Rows)
+                {
+                    string checksum = row["CHECKSUM"].ToString().Trim();
+                    if (checksum.Length == 0) continue;
+                    string tcase = String.Format("{0} : {1}\r\n", row["TLOC"], checksum);
+                    _testcases += tcase.Replace("/m/tcases/futures/next/wip/", "");
+                }
         }
-        DbConn.Terminate();
+        catch (Exception err)
+        {
+            _testcases = String.Format("# {0}\r\n", err.GetBaseException().Message);
+        }
+        finally
+        {
+            DbConn.Terminate();
+        }
 
         //sampleText.Text = _testcases;
         if (debug != null)
