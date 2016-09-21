@@ -31,6 +31,23 @@ public partial class _Default : System.Web.UI.Page
         TObjectDataSource.SelectParameters["Filter"].DefaultValue = txtFilter.Text;
     }
 
+    protected void btnExportToExcel_Click(object sender, EventArgs e)
+    {
+        Samples.AspNet.ObjectDataSource.TestcaseProfileData tcpd = new Samples.AspNet.ObjectDataSource.TestcaseProfileData();
+        string path = @"c:\Turtle-export.csv";
+        var lines = new List<string()>;
+
+        string[] columnNames = tcpd.QueryTestcases(txtFilter.Text, null, 0, 1000).Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray();
+
+        var header = string.Join(",", columnNames);
+        lines.Add(header);
+
+        var valueLines = tcpd.QueryTestcases(txtFilter.Text, null, 0, 1000).AsEnumerable().Select(row => string.Join(",", row.ItemArray));
+        lines.AddRange(valueLines);
+
+        File.WriteAllLines(path, lines);
+    }
+
     public static T ParseEnum<T>(string value)
     {
         return (T)Enum.Parse(typeof(T), value, true);
