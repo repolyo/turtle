@@ -13,6 +13,7 @@ namespace Samples.AspNet.ObjectDataSource
     public class TestcaseProfileData : DbConn
     {
         public static int fetchCount = 0;
+        public static string querySQL;
 
         public const string queryFunc = "SELECT UNIQUE" +
                 "    t.TGUID " +
@@ -37,7 +38,7 @@ namespace Samples.AspNet.ObjectDataSource
                 "   FROM " +
                 "    TESTCASE t _::_" +
                 "   WHERE " +
-                "     t.HIDDEN <> 'Y' AND UPPER(t.TTYPE) = UPPER('{0}')";
+                "     t.HIDDEN <> 'Y' AND UPPER(t.TTYPE) like UPPER('{0}')";
 
         public const string queryAll = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
                 "  a.TGUID as TID, " +
@@ -65,14 +66,27 @@ namespace Samples.AspNet.ObjectDataSource
             get{ return "0"; }
         }
 
+        private string normalizeFilter(string filter)
+        {
+            string keyword = (null == filter) ? "%" : filter.Trim();
+            return keyword.Replace('*', '%').Replace('?', '_');
+        }
+
         // Select all employees. 
         public DataTable QueryTestcases(string Filter, string sortColumns, int startRecord, int maxRecords)
         {
-            string keyword = (null == Filter) ? "%" : Filter;
-            string sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
+            string sql = "";
+            string keyword = normalizeFilter(Filter);
+
+            if ( 0 >= (startRecord + maxRecords) )
+            {
+                throw new Exception(String.Format("ERROR -- Invalid range: {0} to {1}", startRecord, maxRecords));
+            }
+
+            sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
                         "  a.TGUID as TID," +
                         "  a.CREATE_DATE, " +
-                        "  ' ' as Filter, " +
+                        "  '" + keyword + "' as Filter, " +
                         "  a.TNAME, " +
                         "  a.TTYPE, " +
                         "  a.TSIZE, " +
@@ -82,7 +96,9 @@ namespace Samples.AspNet.ObjectDataSource
             {
                 switch (Config.filterType)
                 {
+                    case FilterType.ALL:
                     case FilterType.FUNC:
+                    default:
                         sql += " (" + queryFunc + ")";
                         break;
                     case FilterType.TYPE:
@@ -91,16 +107,19 @@ namespace Samples.AspNet.ObjectDataSource
                     case FilterType.TAG:
                         sql += " (" + queryTags + ")";
                         break;
-                    case FilterType.ALL:
-                    default:
-                        sql = queryAll;
-                        break;
                 }
 
-                sql = sql.Replace("_::_", " JOIN TESTCASE_RUN r ON r.TGUID = t.TGUID AND r.pid = " + Config.personaId);
+                if (0 < Config.personaId)
+                {
+                    sql = sql.Replace("_::_", " JOIN TESTCASE_RUN r ON r.TGUID = t.TGUID AND r.pid like " + Config.personaId);
+                }
+                else {
+                    sql = sql.Replace("_::_", "");
+                }
 
-                return Query(String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
-                                    sql, startRecord, maxRecords), keyword);
+                querySQL = String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
+                                    sql, startRecord, maxRecords);
+                return Query(querySQL, keyword);
             }
             catch (Exception e)
             {
@@ -118,7 +137,7 @@ namespace Samples.AspNet.ObjectDataSource
         public int SelectCount(string Filter)
         {
             Object count = null;
-            string keyword = (null == Filter) ? "%" : Filter;
+            string keyword = normalizeFilter(Filter);
             string sql = "";
             try
             {
@@ -139,7 +158,15 @@ namespace Samples.AspNet.ObjectDataSource
                         break;
                 }
 
-                sql = sql.Replace("_::_", " JOIN TESTCASE_RUN r ON r.TGUID = t.TGUID AND r.pid = " + Config.personaId);
+                if (0 < Config.personaId)
+                {
+                    sql = sql.Replace("_::_", " JOIN TESTCASE_RUN r ON r.TGUID = t.TGUID AND r.pid like " + Config.personaId);
+                }
+                else
+                {
+                    sql = sql.Replace("_::_", "");
+                }
+
                 count = ExecuteScalar(sql, keyword);
                 fetchCount = int.Parse(count.ToString());
             }
@@ -186,9 +213,26 @@ namespace Samples.AspNet.ObjectDataSource
 
         public int SelectCount(string TID)
         {
-            Object count = ExecuteScalar("SELECT count(*) FROM (" + query + ")",
-                (null == TID) ? "%" : TID);
-            return int.Parse(count.ToString());
+            Exception e = null;
+            string sqlQuery = "SELECT count(*) FROM (" + query + ")";
+            try
+            {
+                Object count = ExecuteScalar(sqlQuery,
+                    (null == TID) ? "%" : TID);
+                TestcaseProfileData.fetchCount = int.Parse(count.ToString());
+            }
+            catch (Exception ex)
+            {
+                e = ex;
+            }
+            finally
+            {
+                if (0 == TestcaseProfileData.fetchCount)
+                {
+                    throw new Exception(sqlQuery, e);
+                }
+            }
+            return TestcaseProfileData.fetchCount;
         }
 
         public DataTable QueryFunctions(string TID, string sortColumns, int startRecord, int maxRecords)
@@ -228,7 +272,8 @@ namespace Samples.AspNet.ObjectDataSource
         {
             Object count = ExecuteScalar("SELECT count(*) FROM (" + query + ")",
                 (null == TAG_NAME) ? "'%'" : TAG_NAME);
-            return int.Parse(count.ToString());
+            TestcaseProfileData.fetchCount = int.Parse(count.ToString());
+            return TestcaseProfileData.fetchCount;
         }
 
         public DataTable QueryTags(string TAG_NAME, string sortColumns, int startRecord, int maxRecords)

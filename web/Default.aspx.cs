@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using Samples.AspNet.ObjectDataSource;
+using System.IO;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -13,12 +14,14 @@ public partial class _Default : System.Web.UI.Page
     {
         string filter = Request.QueryString["Filter"];
         if (null == filter) {
-            filter = "%";
+            filter = "xxx";
         }
         else {
             txtFilter.Text = filter;
         }
-        
+        Config.debug = (null != Request.QueryString["debug"]) ? true : false;
+        Config.personaId = 0;
+        TestcaseProfileData.fetchCount = 0;
         TObjectDataSource.SelectParameters["Filter"].DefaultValue = filter;
         DbConn.NewConnection(Config.getConnectionString());
         //totalLbl.Text = "Testcases: " + DbConn.ExecuteScalar("SELECT count(*) FROM TESTCASE");
@@ -34,8 +37,8 @@ public partial class _Default : System.Web.UI.Page
     protected void btnExportToExcel_Click(object sender, EventArgs e)
     {
         Samples.AspNet.ObjectDataSource.TestcaseProfileData tcpd = new Samples.AspNet.ObjectDataSource.TestcaseProfileData();
-        string path = @"c:\Turtle-export.csv";
-        var lines = new List<string()>;
+        string path = @"D:\Turtle-export.csv";
+        var lines = new List<string>();
 
         string[] columnNames = tcpd.QueryTestcases(txtFilter.Text, null, 0, 1000).Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray();
 
@@ -46,6 +49,58 @@ public partial class _Default : System.Web.UI.Page
         lines.AddRange(valueLines);
 
         File.WriteAllLines(path, lines);
+    }
+
+    protected void ExportToExcel(object sender, EventArgs e)
+    {
+        try
+        {
+            Response.Clear();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment;filename=Testcases.csv");
+            Response.Charset = "";
+            Response.ContentType = "text/csv";
+            using (StringWriter sw = new StringWriter())
+            {
+                HtmlTextWriter hw = new HtmlTextWriter(sw);
+                Samples.AspNet.ObjectDataSource.TestcaseProfileData tcpd = new Samples.AspNet.ObjectDataSource.TestcaseProfileData();
+
+                var lines = new List<string>();
+                int fetchCount = int.Parse(totalLbl.Text);
+                DataTable dt = (fetchCount > 0) ? tcpd.QueryTestcases(txtFilter.Text, null, 0, fetchCount) : null;
+                if (null != dt)
+                {
+                    string[] columnNames = dt.Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray();
+                    var header = string.Join(",", columnNames);
+                    lines.Add(header);
+
+                    var valueLines = tcpd.QueryTestcases(
+                        txtFilter.Text, null, 0, fetchCount).AsEnumerable().Select(row => string.Join(",", row.ItemArray));
+                    lines.AddRange(valueLines);
+
+                    foreach (string s in lines)
+                    {
+                        sw.WriteLine(s);
+                    }
+                }
+                else 
+                {
+                    sw.WriteLine("No results!");
+                }
+
+                //style to format numbers to string
+                //string style = @"<style> .textmode { } </style>";
+                //Response.Write(style);
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+            }
+        }
+        catch (Exception ex)
+        {
+            querySQL.Text = totalLbl.Text + " = " + TestcaseProfileData.querySQL;
+            throw new Exception(querySQL.Text, ex);
+        }
     }
 
     public static T ParseEnum<T>(string value)
@@ -67,7 +122,7 @@ public partial class _Default : System.Web.UI.Page
         {
             Console.WriteLine("SelectedIndex = " + PersonaCbx.SelectedIndex
                 + ", SelectedValue=" + PersonaCbx.SelectedValue);
-            Config.personaId = int.Parse(PersonaCbx.SelectedValue);
+            Config.personaId = int.Parse(PersonaCbx.SelectedItem.Value);
         }
         catch (Exception ex)
         {
@@ -76,6 +131,8 @@ public partial class _Default : System.Web.UI.Page
     }
 
     protected void GridVIew_OnDataBound(object sender, EventArgs e) {
-        totalLbl.Text = "Testcases: " + TestcaseProfileData.fetchCount;
+        totalLbl.Text = string.Format("{0}", TestcaseProfileData.fetchCount);
+        querySQL.Text = string.Empty;
+        if ( Config.debug ) querySQL.Text = TestcaseProfileData.querySQL;
     }
 }

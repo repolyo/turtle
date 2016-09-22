@@ -21,6 +21,7 @@ public class Config
     private static string conn_str = null;
     public static FilterType filterType = FilterType.ALL;
     public static int personaId = 1;
+    public static bool debug = false;
 
     public static string getConnectionString() {
         if (null == conn_str) {
