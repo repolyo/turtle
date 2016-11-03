@@ -29,7 +29,7 @@
         </asp:DropDownList>
         <asp:TextBox ID="txtFilter" runat="server" Columns="50" MaxLength="50"></asp:TextBox>
         <asp:Button ID ="btnFiltering" runat ="server" OnClick ="btnFiltering_Click" Text ="Search" Width ="103px" />
-        <asp:Button ID="btnExport" runat="server" Text="Export To Excel" OnClick = "ExportToExcel" /><br />
+        <asp:Button ID="btnExport" runat="server" Text="Export." OnClick = "ExportToExcel" /><br />
         <asp:Button ID ="btnExportToExcel" runat ="server" Text ="ExportToExcel" Width ="103px" onclick="btnExportToExcel_Click" Visible="false"/>
         <asp:Label ID="Label1" runat="server" Text="Total Count: " /><asp:Label ID="totalLbl" runat="server" Text="" /><br />
     <div>    

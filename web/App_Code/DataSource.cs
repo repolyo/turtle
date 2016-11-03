@@ -237,12 +237,10 @@ namespace Samples.AspNet.ObjectDataSource
 
         public DataTable QueryFunctions(string TID, string sortColumns, int startRecord, int maxRecords)
         {
-            DataTable table = Query(
-                String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
-                    query, startRecord, maxRecords),
-                    (null == TID) ? "%" : TID);
+            TestcaseProfileData.querySQL = String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
+                    query, startRecord, maxRecords);
 
-            return table;
+            return Query(TestcaseProfileData.querySQL, (null == TID) ? "%" : TID);
         }
     }
 

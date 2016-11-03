@@ -7,13 +7,16 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Collections.Specialized;
 using System.Web.Configuration;
+using Samples.AspNet.ObjectDataSource;
 
 public partial class Testcase : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Config.debug = (null != Request.QueryString["debug"]) ? true : Config.debug;
         string tid = Request.QueryString["TID"];
         TestcaseDS.SelectParameters["TID"].DefaultValue = tid;
+        
         QueryDetails(tid);
     }
 
@@ -45,7 +48,8 @@ public partial class Testcase : System.Web.UI.Page
         }
         List<string> checksums = new List<string>();
         table = DbConn.Query(
-                String.Format("SELECT CHECKSUM FROM TESTCASE_CHECKSUM WHERE TGUID = '{0}' and PID=1 ORDER BY PAGE_NO", tid));
+                String.Format("SELECT CHECKSUM FROM TESTCASE_CHECKSUM WHERE TGUID = '{0}' and PID=" + 
+                    Config.personaId + " ORDER BY PAGE_NO", tid));
         if (null != table) {
             foreach (DataRow row in table.Rows) {
                 checksums.Add(row["CHECKSUM"].ToString());
@@ -53,5 +57,11 @@ public partial class Testcase : System.Web.UI.Page
         }
         tcCS.Text = String.Format("Checksums:  {0}", string.Join(", ", checksums.ToArray()) );
         DbConn.Terminate();
+    }
+
+    protected void GridVIew_OnDataBound(object sender, EventArgs e)
+    {
+        querySQL.Text = string.Empty;
+        if (Config.debug) querySQL.Text = TestcaseProfileData.querySQL;
     }
 }

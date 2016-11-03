@@ -91,7 +91,11 @@ public partial class _Default : System.Web.UI.Page
                 //style to format numbers to string
                 //string style = @"<style> .textmode { } </style>";
                 //Response.Write(style);
-                Response.Output.Write(sw.ToString());
+                //Response.Output.Write(sw.ToString());
+
+                byte[] bytes = System.Text.Encoding.UTF8.GetBytes(sw.ToString());
+                Response.OutputStream.Write(bytes, 0, bytes.Length);
+
                 Response.Flush();
                 Response.End();
             }

@@ -22,7 +22,8 @@
             AllowPaging='true'
             EmptyDataText ="There are no data here yet!"
             HeaderStyle-BackColor="PapayaWhip"
-            AlternatingRowStyle-BackColor="LightCyan" PageSize="25">
+            AlternatingRowStyle-BackColor="LightCyan" PageSize="25"
+            OnDataBound="GridVIew_OnDataBound">
             <Columns>
                 <asp:BoundField HeaderText='' DataField='ROWNO' 
                     HeaderStyle-Width="5%" ItemStyle-HorizontalAlign="Center" />
@@ -61,6 +62,8 @@
         </SelectParameters>
         </asp:ObjectDataSource>
     </div>
+    <br />
+    <asp:Label ID="querySQL" runat="server" Text='' /><br />
     </form>
 </body>
 </html>

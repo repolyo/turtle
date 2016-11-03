@@ -20,7 +20,7 @@ public class Config
 {
     private static string conn_str = null;
     public static FilterType filterType = FilterType.ALL;
-    public static int personaId = 1;
+    public static int personaId = 5; // sim-atlantis
     public static bool debug = false;
 
     public static string getConnectionString() {
