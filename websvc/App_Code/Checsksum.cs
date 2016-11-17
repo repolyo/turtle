@@ -151,7 +151,7 @@ public class Checksum : System.Web.Services.WebService
                     "FROM TESTCASE a, " + "(" + generateQuerySQL(func, platformId) + ") b " +
                     "WHERE a.TGUID=b.TGUID AND a.HIDDEN <> 'Y' AND a.TLOC LIKE '%" + filter + "%' ) WHERE ROWNO > {0} AND ROWNO <= ({0} + {1})", 0, fetch);
         
-        writeResponse(Response, "#testcase : #checksum(s)");
+        writeResponse(Response, "/m/tcases/futures/next/wip/#testcase : #checksum(s)");
         try
         {
             DbConn.NewConnection(Config.getConnectionString());

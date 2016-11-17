@@ -1,7 +1,10 @@
 #!/usr/bin/perl
 #
 # etrace.pl script
+use threads;
 
+$num_threads;
+$thread_limit = 4;
 $NM  = 'nm -l ';     # unix nm utility to get symbol names and addresses
                   # -l, --line-numbers Use debugging information to find a filename
 
@@ -33,6 +36,7 @@ $emul = "-";
 # $IS_FIFO :     are we reading from a FIFO or a file?
 # CALL_DATA :    file handle to input file/FIFO
 
+# read and create addr-function mapping table from executable file via nm command.
 sub readObjects {
   $objectFileName = shift;
   if (-x $objectFileName) {
@@ -58,6 +62,9 @@ sub readObjects {
     $SYMBOLTABLE{$location} = $2 . " " .$3;
   }
   close f;
+  $count = keys %SYMBOLTABLE;
+  print "Hash table count: $count\n";
+
 }
 
 sub writeSymbolTable {
@@ -128,6 +135,14 @@ sub deleteFifo {
 
 
 sub processCallInfo {
+  my $myobject = threads->self;
+  my $mytid= $myobject->tid;
+
+  $SIG{'KILL'} = sub{ print "tid $mytid exiting\n"; threads->exit() };
+  $SIG{ALRM} = sub { 
+        print threads->self->tid(), " got SIGALRM. Good bye.\n";
+        threads->exit(1);
+  };
 
   $offsetLine = <CALL_DATA>;
   if ($offsetLine =~ m/^$REFERENCE_OFFSET\s+($SYMBOL_NAME)\s+($HEX_NUMBER)$/) {
@@ -172,7 +187,7 @@ sub processCallInfo {
             print "Unrecognized line format: $offsetLine\n";
         };
       }
-      $offsetLine = <CALL_DATA>;	
+      $offsetLine = <CALL_DATA>;
   };
 }
 
@@ -182,9 +197,13 @@ use Getopt::Long qw(GetOptions);
 # use DBI;
 use File::Basename;
 
+my $resolution = 600;
+
 GetOptions(
   'exec=s' => \$exec,
   'pdl=s' => \$emul,
+  'persona=s' => \$persona,
+  'resolution=i' => \$resolution,
   'file=s' => \$testcase,
   'ftp=s' => \$fhost,
   'user=s' => \$fuser,
@@ -204,38 +223,74 @@ if (index($exec, "runpage4") != -1) {
 
 if ($exec) {
     if (-x $exec ) {
-       if ( $runpage4 eq true ) {
-         print "invoking = " . $exec . ' -O c < ' . $testcase . "\n";
-         system($exec . ' -O c < ' . $testcase);
+       my $filesize = -s $testcase;
+       print "[\@persona: " . $persona . ']' . "\n";
+       print "[\@resolution: " . $resolution . ']' . "\n";
+
+       if (length $emul > 1) {
+           $type=$emul;
        }
        else {
-         if (length $emul > 1) {
-            $type=$emul;
-         }
-         else {
-            open f, $sniffer.' '.$testcase.'|' or die "$0: cannot open $sniffer";
-            $type = <f>;
-            close f;
-         }
+          open f, $sniffer.' '.$testcase.'|' or die "$0: cannot open $sniffer";
+          $type = <f>;
+          close f;
+       }
+
+       if ( $runpage4 eq true ) {
+         print "invoking = $exec  -O c -s $filesize -e $type $testcase \n";
+         system($exec . ' -O c < ' . "$testcase");
+       }
+       else {
+
          if ( $emul eq 'XPS' or ($testcase =~ /\.xps$/i) ) {
-             print "invoking = " . $exec . ' -O checksum -e XPS ' . $testcase . "\n";
+             print "invoking = $exec -O checksum -s $filesize -e XPS $testcase \n";
              system($exec.' -O checksum '.$testcase);
          }
          else {
-             print "invoking = " . $exec . ' -e '. $emul . ' -s < ' . $testcase . "\n";
-             system($exec.' -e '.$emul.' -s < '.$testcase);
+             print "invoking = $exec -s $filesize -e $emul $testcase \n";
+             system("$exec -R $resolution -s -e $emul < \Q$testcase\E");
          }
        }
     }
+    
+#    print "reading objects [$exec]... \n";
+#    readObjects $exec;
+#
+#    print "processing calls [$inputFile]... \n";
+#    $inputFile = $FIFO_NAME;
+#    open CALL_DATA,"<$inputFile";
+#    processCallInfo; 
+   
+    print "starting alarm for $t1... \n";
+    alarm 60;
 
-    readObjects $exec;
-    # writeSymbolTable
+    #my $pid :shared;
+    my ( $t1 ) = threads->create(
+       sub {
+          my $myobject = threads->self;
+          my $mytid= $myobject->tid;
 
-    # $inputFile = establishInput $inputFile;
-    $inputFile = $FIFO_NAME;
+          $SIG{'KILL'} = sub{ print "tid $mytid exiting\n"; threads->exit() };
+          $SIG{ALRM} = sub { 
+              print threads->self->tid(), " got SIGALRM. Good bye.\n";
+              threads->exit(1);
+          };
 
-    open CALL_DATA,"<$inputFile";
-    processCallInfo;
+          print "reading objects[$mytid] -- $exec... \n";
+          readObjects $exec;
+
+          print "processing calls [$inputFile]... \n";
+          $inputFile = $FIFO_NAME;
+          open CALL_DATA,"<$inputFile";
+          processCallInfo 
+       }
+    );
+
+    print " killing thread $t1... \n";
+
+    $t1->join;
+    $t1->kill('SIGKILL');
+
     close CALL_DATA;
 
     deleteFifo $inputFile;

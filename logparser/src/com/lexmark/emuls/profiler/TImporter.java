@@ -33,9 +33,9 @@ public class TImporter extends LinkedList<String> {
 	private static TImporter queue = null;
 	private static boolean busy = false;
 	
-	public static String dbUser = "tc_profiler";
-	public static String dbPasswd = "tc_profiler";
-	public static String dbHost = "localhost";
+	public static String dbUser = "tcprofiler";
+	public static String dbPasswd = "tcprofiler";
+	public static String dbHost = "157.184.66.215";
 	
 	// 11/27/15 20:03:19
 	static DateFormat DATE_FORMATTER = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
@@ -131,6 +131,10 @@ public class TImporter extends LinkedList<String> {
 		return ok;
 	}
 	
+	private static boolean update(Connection conn, String sql, Object ... args) throws SQLException {
+		return insert(conn, sql, args);
+	}
+	
 	private static Object sqlQuery(Class<?> type, Connection conn, String sql, Object ... args) throws SQLException {
 		Object ret = null;
 		try {
@@ -188,8 +192,8 @@ public class TImporter extends LinkedList<String> {
             				" WHEN NOT matched then INSERT (SOURCE_FILE, LINE_NO, FUNC_NAME) values (?,?,?)"+
             				" WHEN matched then update set line_no = ?");
 					
-					stmt3 = conn.prepareStatement("MERGE INTO TESTCASE_FUNC using dual on (FID=? AND TGUID=?)" +
-				            				" WHEN NOT matched then INSERT (FID, TGUID, SEQ) values (?,?,?)"+
+					stmt3 = conn.prepareStatement("MERGE INTO TESTCASE_FUNC using dual on (PID=? AND FID=? AND TGUID=?)" +
+				            				" WHEN NOT matched then INSERT (PID, FID, TGUID, SEQ, RID) values (?,?,?,?,?)"+
 				            				" WHEN matched then update set SEQ = ?");
 					
 					stmt4 = conn.prepareStatement("MERGE INTO TAGS using dual on (TAG_NAME=?)" +
@@ -219,6 +223,7 @@ public class TImporter extends LinkedList<String> {
 								File file = new File(testResult);
 								Scanner scanner = new Scanner(file);
 								long pid = 1; // default 
+								long rid = 0;
 								String resolution = "600";
 								String tguid = file.getName();
 				                tguid = tguid.substring(0, tguid.lastIndexOf('.'));
@@ -260,14 +265,15 @@ public class TImporter extends LinkedList<String> {
 					            				" WHEN matched then update set TNAME=?,TTYPE=?,TLOC=?,TSIZE=?");
 					                	tloc = testcase.toString().trim();
 					                	setParameters(tc_stmt, tguid, tguid, filename, tloc, type, size, filename, type, tloc, size);
-					                	System.out.println(String.format("\nSOURCE(%s): %s", type, tloc));
+					                	System.out.println(String.format("\nSOURCE(%s): %s\n", type, tloc));
 					                	tc_inserted = tc_stmt.executeUpdate() == 1;
 					                	tc_stmt.close();
 					                	
-//					                	tc_stmt = conn.prepareStatement("DELETE FROM TESTCASE_FUNC WHERE TGUID=?");
-//					                	setParameters(tc_stmt, tguid);
-//					                	tc_stmt.executeUpdate();
-//					                	tc_stmt.close();
+					                	// clean up old records! new records will have runtime id!!!
+					                	System.out.println(String.format(
+					                			"DELETE FROM TESTCASE_FUNC WHERE TGUID='%s' AND (PID=%d OR PID IS NULL)\n", tguid, pid));
+					                	update(conn, "DELETE FROM TESTCASE_FUNC WHERE TGUID=? AND (PID=%d OR PID IS NULL)", tguid, pid);
+					                	rid = (Long)sqlQuery(Long.class, conn, "SELECT TC_RUN_SEQ.nextval FROM dual");
 					                	continue;
 					            	}
 					                
@@ -298,7 +304,7 @@ public class TImporter extends LinkedList<String> {
 				                				Long fid = (Long)sqlQuery(Long.class, conn, "select FID FROM FUNC WHERE SOURCE_FILE=? AND FUNC_NAME=?", src_file, func);
 							                	if( null != fid) {
 							                		seqNo++;
-							                		setParameters(stmt3, fid, tguid, fid, tguid, seqNo, seqNo);
+							                		setParameters(stmt3, pid, fid, tguid, pid, fid, tguid, seqNo, rid, seqNo);
 						                			stmt3.addBatch();
 							                	}
 				                			}
@@ -374,8 +380,8 @@ public class TImporter extends LinkedList<String> {
 				                	if (tc_inserted && null != startTime && matcher.find() ) {
 				                		try {
 				                			endTime = new java.sql.Timestamp(DATE_FORMATTER.parse(matcher.group(1)).getTime());
-											insert(conn, "INSERT INTO TESTCASE_RUN (TGUID, START_TIME, END_TIME) VALUES (?,?,?)", 
-													tguid, startTime, endTime);
+											insert(conn, "INSERT INTO TESTCASE_RUN (RID, TGUID, PID, START_TIME, END_TIME) VALUES (?,?,?,?,?)", 
+													rid, tguid, pid, startTime, endTime);
 											
 										} catch (ParseException e) {
 											error = true;
