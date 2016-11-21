@@ -34,8 +34,8 @@ public class TImporter extends LinkedList<String> {
 	private static boolean busy = false;
 	
 	public static String dbUser = "tcprofiler";
-	public static String dbPasswd = "tcprofiler";
-	public static String dbHost = "157.184.66.215";
+	public static String dbPasswd = "********";
+	public static String dbHost = System.getenv("TURTLE_DB");//"157.184.66.215";
 	
 	// 11/27/15 20:03:19
 	static DateFormat DATE_FORMATTER = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
@@ -272,7 +272,7 @@ public class TImporter extends LinkedList<String> {
 					                	// clean up old records! new records will have runtime id!!!
 					                	System.out.println(String.format(
 					                			"DELETE FROM TESTCASE_FUNC WHERE TGUID='%s' AND (PID=%d OR PID IS NULL)\n", tguid, pid));
-					                	update(conn, "DELETE FROM TESTCASE_FUNC WHERE TGUID=? AND (PID=%d OR PID IS NULL)", tguid, pid);
+					                	update(conn, "DELETE FROM TESTCASE_FUNC WHERE TGUID=? AND (PID=? OR PID IS NULL)", tguid, pid);
 					                	rid = (Long)sqlQuery(Long.class, conn, "SELECT TC_RUN_SEQ.nextval FROM dual");
 					                	continue;
 					            	}
