@@ -40,7 +40,7 @@ namespace Samples.AspNet.ObjectDataSource
                 "   WHERE " +
                 "     t.HIDDEN <> 'Y' AND UPPER(t.TTYPE) like UPPER('{0}')";
 
-        public const string queryAll = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
+        public const string queryAll = "SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC, a.CREATE_DATE DESC) AS ROWNO, " +
                 "  a.TGUID as TID, " +
                 "  a.CREATE_DATE, " +
                 "  ' ' as Filter, " +
@@ -72,7 +72,7 @@ namespace Samples.AspNet.ObjectDataSource
             return keyword.Replace('*', '%').Replace('?', '_');
         }
 
-        // Select all employees. 
+        // Select testcases. 
         public DataTable QueryTestcases(string Filter, string sortColumns, int startRecord, int maxRecords)
         {
             string sql = "";
@@ -83,7 +83,7 @@ namespace Samples.AspNet.ObjectDataSource
                 throw new Exception(String.Format("ERROR -- Invalid range: {0} to {1}", startRecord, maxRecords));
             }
 
-            sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
+            sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC NULLS LAST, a.CREATE_DATE DESC) AS ROWNO, " +
                         "  a.TGUID as TID," +
                         "  a.CREATE_DATE, " +
                         "  '" + keyword + "' as Filter, " +
@@ -199,7 +199,8 @@ namespace Samples.AspNet.ObjectDataSource
             " WHERE " +
             "   t.TGUID = '{0}' " +
             "   AND t.TGUID = tf.TGUID " +
-            "   AND tf.fid = f.fid ";
+            "   AND tf.fid = f.fid " +
+            "   AND tf.pid = {1} ";
 
         public TestcaseData()
         {
@@ -217,8 +218,7 @@ namespace Samples.AspNet.ObjectDataSource
             string sqlQuery = "SELECT count(*) FROM (" + query + ")";
             try
             {
-                Object count = ExecuteScalar(sqlQuery,
-                    (null == TID) ? "%" : TID);
+                Object count = ExecuteScalar(sqlQuery, (null == TID) ? "%" : TID, Config.personaId);
                 TestcaseProfileData.fetchCount = int.Parse(count.ToString());
             }
             catch (Exception ex)
@@ -240,7 +240,7 @@ namespace Samples.AspNet.ObjectDataSource
             TestcaseProfileData.querySQL = String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
                     query, startRecord, maxRecords);
 
-            return Query(TestcaseProfileData.querySQL, (null == TID) ? "%" : TID);
+            return Query(TestcaseProfileData.querySQL, (null == TID) ? "%" : TID, Config.personaId);
         }
     }
 

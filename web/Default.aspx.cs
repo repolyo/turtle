@@ -19,8 +19,9 @@ public partial class _Default : System.Web.UI.Page
         else {
             txtFilter.Text = filter;
         }
-        Config.debug = (null != Request.QueryString["debug"]) ? true : false;
+
         Config.personaId = 0;
+        Config.debug = (null != Request.QueryString["debug"]) ? true : false;
         TestcaseProfileData.fetchCount = 0;
         TObjectDataSource.SelectParameters["Filter"].DefaultValue = filter;
         DbConn.NewConnection(Config.getConnectionString());

@@ -16,7 +16,7 @@ public partial class Testcase : System.Web.UI.Page
         Config.debug = (null != Request.QueryString["debug"]) ? true : Config.debug;
         string tid = Request.QueryString["TID"];
         TestcaseDS.SelectParameters["TID"].DefaultValue = tid;
-        
+        Config.personaId = 5;
         QueryDetails(tid);
     }
 
@@ -24,7 +24,7 @@ public partial class Testcase : System.Web.UI.Page
     {
         DbConn.NewConnection(Config.getConnectionString());
         DataTable table = DbConn.Query(String.Format(
-            "SELECT TO_CHAR (START_TIME, 'MM/DD/YY') SDATE, " +
+            "SELECT TO_CHAR (START_TIME, 'MM/DD/YY') SDATE, PID, " +
             "(END_TIME - START_TIME) ELAPSE FROM TESTCASE_RUN WHERE TGUID = '{0}' ORDER BY START_TIME DESC", 
             tid));
         if (null != table)
@@ -32,6 +32,9 @@ public partial class Testcase : System.Web.UI.Page
             foreach (DataRow row in table.Rows)
             {
                 tcTime.Text = String.Format("Last Run: {0}, Took: {1}", row["SDATE"], row["ELAPSE"]);
+
+                // update persona what's used in the last runtime.
+                Config.personaId = int.Parse(row["PID"].ToString());
                 break;
             }
         }
@@ -48,14 +51,14 @@ public partial class Testcase : System.Web.UI.Page
         }
         List<string> checksums = new List<string>();
         table = DbConn.Query(
-                String.Format("SELECT CHECKSUM FROM TESTCASE_CHECKSUM WHERE TGUID = '{0}' and PID=" + 
+                String.Format("SELECT CHECKSUM FROM TESTCASE_CHECKSUM WHERE TGUID = '{0}' and PID=" +
                     Config.personaId + " ORDER BY PAGE_NO", tid));
         if (null != table) {
             foreach (DataRow row in table.Rows) {
                 checksums.Add(row["CHECKSUM"].ToString());
             }
         }
-        tcCS.Text = String.Format("Checksums:  {0}", string.Join(", ", checksums.ToArray()) );
+        tcCS.Text = String.Format("Checksums:  {0}", string.Join(", ", checksums.ToArray()));
         DbConn.Terminate();
     }
 

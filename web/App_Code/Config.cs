@@ -32,6 +32,8 @@ public class Config
                                      "must exist in the <appSettings> configuration section for the application.");
              }
 
+             personaId = int.Parse(settings["persona_id"]);
+
              conn_str = String.Format(
                 "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST={0})(PORT=1521)))" +
                 "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME={1})));" +
