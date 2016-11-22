@@ -3,6 +3,7 @@ import static java.nio.file.StandardWatchEventKinds.*;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
@@ -17,8 +18,10 @@ public class TProfiler {
 		
 		// TODO Auto-generated method stub
 		WatchService watcher = FileSystems.getDefault().newWatchService();
+		
 		String ftpHome = System.getenv("FTP_HOME");
 		Path dir = FileSystems.getDefault().getPath(ftpHome);
+		if (!Files.exists(dir)) Files.createDirectories(dir);
 		
 	    WatchKey key = dir.register(watcher,
 	                           ENTRY_CREATE);

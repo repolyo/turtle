@@ -6,8 +6,8 @@ outpath=tests
 ret=1
 run_test=1
 
-# defaults to 3MB
-size_limit=3041112
+# defaults to 4MB
+size_limit=4194304
 config="test"
 type="*"
 dir="/pfv/.firmwaretestcebu/pdf/v1_2"
@@ -16,7 +16,11 @@ regex="([0-9a-z]+)*"
 hits=0
 outlog=""
 emul="-"
-user="chritan"
+user="anonymous"
+passwd="."
+persona="sim-atlantis"
+resolution=600
+skip_files="turtle.skip"
 sniffer=/users/chritan/bin/pdls_sniff
 if [ -f "./pdls_sniff" ]; then
    sniffer=./pdls_sniff
@@ -24,13 +28,54 @@ fi
 
 declare -a invalid_ext=('zip' 'bat' 'svn' 'ftp' 'exe' 'dl_' 'pcap' 'tmp' 'css' 'chm' 'mst' 'pdb'
   'pjl' 'log' 'fls' 'ucf' 'img' 'lnk' 'cfg' 'lst' 'vsd' 'dmg' 'db' 'dll' 'bin' 'js' 'pl' 'dat'
-  'xls' 'doc' 'ppt' 'xlsx' 'docx' 'pptx' 'pptx#' 'rtf' 'xml' 'sh' );
+  'xls' 'doc' 'ppt' 'xlsx' 'docx' 'pptx' 'pptx#' 'rtf' 'xml' 'sh' 'jar' 'bak' );
   
+declare -a ext_table=(
+        'pdf'  # PDF
+        'ps'  # Postscript
+        'ps2' # XPS
+        'jpg'          # jpeg
+        'gif' # GIF
+        'tiff' # tiff
+        'png' # png
+        'xl'      # XL
+        'txt'      # PPDS
+        'html'            # HTML
+);
+
+declare -a emul_table=(
+        'PDF/pdf' 
+        'PS/ps' 
+        'PS/ps' 
+        'DI/di' 'DI/di' 'DI/di' 'DI/di' 
+        'XL/xl'
+        'PCLXL/pcl'
+        'HTML/html'
+);
+
 if [ -z "$1" ]; then
   module=v1_2
 else
   module=$1
 fi
+
+pdl_type=""
+
+sniff_type()
+{
+    file=$1
+    echo "testing: $file"
+    pdl_type="XPS/ps"
+    for((i=0;i<${#ext_table[@]};i++))
+    do
+      echo "$i: ${ext_table[$i]}"
+      if [[ "$file" == *${ext_table[$i]} ]] 
+      then
+          pdl_type=${emul_table[$i]}
+          return
+      fi
+    done
+}
 
 
 # const char * program_name
@@ -42,7 +87,7 @@ help ()
    echo "Input directory will be scanned and filtered based on the given key filter string.";
 
    echo " Usage: ";
-   echo "   turtle -t pdf -x [xpsapp|pdls] -s invalid_test -d /pfv/.firmwaretestcebu/pdf/v1_6/annotations";
+   echo "   turtle -t pdf -x [xpsapp|pdls] -p sim-palazzo -s invalid_test -d /pfv/.firmwaretestcebu/pdf/v1_6/annotations";
    echo "";
    echo " Options:";
    echo "    -d, --dir";
@@ -51,6 +96,8 @@ help ()
    echo "        executable (absolute path)";
    echo "    -e, --emul=emulator";
    echo "        which Emulator to run.";
+   echo "    -p, --persona";
+   echo "        build persona";
    echo "    -f, --force rerun";
    echo "        will delete previous run log file";
    echo "    -t, --type";
@@ -59,6 +106,8 @@ help ()
    echo "        input search keyword";
    echo "    -l, --size";
    echo "        file size limit";
+   echo "    -R, --resolution";
+   echo "        Set default resolution in dots per inch. This can be overriden by the job.";
    echo "    -db ";
    echo "        target ftp host|ip address";
    echo "    -passwd ";
@@ -134,9 +183,14 @@ runtest()
       return
     fi
 
-if [ ! -x "pdls_sniff" ]; then
     pdl_type=`$sniffer $f`
     if [ -z "$pdl_type" ]; then
+       # determine by file extension
+       sniff_type $f   
+    fi
+
+    if [ -z "$pdl_type" ]; then
+       echo "ERROR: Unable to detect emulator type: $f"
        return
     fi
     file_type=`basename $pdl_type`
@@ -154,15 +208,23 @@ if [ ! -x "pdls_sniff" ]; then
     fi
 
     echo "emul = $emul"    
-    if [ $emul == 'XPS' ]; then
-       etrace.pl --pdl $emul --exec /users/chritan/bin/xpsapp --file $f | tee $outlog
-    else
-       etrace.pl --pdl $emul --exec "/users/chritan/bin/pdlsapp" --file $f | tee $outlog
+
+if [ ! -x "pdls_sniff" ]; then
+
+    if [ ! "${exec+defined}" ]; then
+       if [ $emul == 'XPS' ]; then
+          exec="/users/chritan/bin/xpsapp"
+       else
+          exec="/users/chritan/bin/pdlsapp"
+       fi
     fi
+    
 else
-    echo "etrace.pl --exec ./runpage4 --file $f | tee $outlog"
-    etrace.pl --exec ./runpage4 --file $f | tee $outlog
+    exec="./runpage4"
 fi
+
+    echo "etrace.pl --pdl $emul --exec $exec --resolution $resolution --file $f --persona $persona | tee $outlog"
+    etrace.pl --resolution $resolution --pdl $emul --exec $exec --file "$f" --persona $persona | tee $outlog
 
     # special case for PJL as its not part of emulator
     # we classify it manually here. 
@@ -225,6 +287,18 @@ while [ "${1+defined}" ]; do
           echo "Error: source testcase directory!"
           echo "e.g $0 -d /pfv/.firmwaretestcebu/pdf/v1_2"
           exit 0
+        fi 
+        ;;
+      -p | --persona)
+        if [ "${2+defined}" ]; then
+          persona="$2"
+          shift
+        fi 
+        ;;
+      -R | --resolution)
+        if [ "${2+defined}" ]; then
+          resolution="$2"
+          shift
         fi 
         ;;
       -sniffer)
@@ -339,7 +413,21 @@ echo "executable: $exec"
 IFS=$(echo -en "\n\b")
 mkdir -p $testdir/$conf
 
+blacklist_file=blacklist.txt
+declare -a blacklist
+
+if [ -f $blacklist_file ]; then
+   blacklist=( `cat "$blacklist_file"`)
+   printf "Blacklist: $blacklist_file\n"
+   for i in "${blacklist[@]}"
+   do
+       printf "\t $i\n"
+   done
+fi
+
+
 for f in `find $dir -type f -name "*$type"` ; do
+  loc=${f%/*}
   ext="${f##*.}"
   if [[ " ${invalid_ext[*]} " == *$ext* ]]; then
      if [ "${verbose+defined}" ]; then
@@ -352,7 +440,12 @@ for f in `find $dir -type f -name "*$type"` ; do
      echo "Skipping invalid: $f"
      continue
   fi
-  
+
+  if [[ " ${blacklist[*]} " == *$loc* ]]; then
+     echo "Blacklisted: Skipping $f ..."
+     continue
+  fi 
+
   outlog=`echo "$f" | md5sum`
   [[ $outlog =~ $regex ]]
   outlog="${BASH_REMATCH[1]}.log"
@@ -367,9 +460,8 @@ for f in `find $dir -type f -name "*$type"` ; do
   
   actualsize=$(wc -c <"$f")
   if [ $actualsize -ge $size_limit ]; then
-    if [ "${verbose+defined}" ]; then
-      echo Skipping: $f, size is over $size_limit bytes
-    fi
+    echo Skipping: $f, size is over $size_limit bytes
+    echo "$f" >> $skip_files
     continue
   fi
 
@@ -401,16 +493,11 @@ for f in `find $dir -type f -name "*$type"` ; do
   END_TIME=$(date +"%D %T") 
   echo "[@endTime: $END_TIME]" >> $outlog
   
-  if [ "${passwd+defined}" ]; then
-    echo "sendftp -h $dbhost -u $user -p $passwd -f $outlog -d turtle/data"
-    sendftp -h $dbhost -u $user -p $passwd -f $outlog -d turtle/data
-    if [ $? -ne 0 ]; then
-       echo "Error: FTP failed!"
-    fi
-  else
-    echo "Error: sendftp -h $dbhost -u $user -p $passwd -f $outlog -d turtle/data"
+  echo "sendftp -h $dbhost -f $outlog -d turtle/data"
+  sendftp -h $dbhost -u $user -p $passwd -f $outlog -d turtle/data
+  if [ $? -ne 0 ]; then
+     echo "Error: FTP failed!"
   fi
-#  break
 done
 
 echo "SEARCH HITS: $hits"

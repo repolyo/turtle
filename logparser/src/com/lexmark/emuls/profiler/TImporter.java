@@ -262,9 +262,10 @@ public class TImporter extends LinkedList<String> {
 						                
 					                	PreparedStatement tc_stmt = conn.prepareStatement("MERGE INTO TESTCASE using dual on (TGUID=?)" +
 					            				" WHEN NOT matched then INSERT (TGUID,TNAME,TLOC,TTYPE,TSIZE) values (?,?,?,?,?)"+
-					            				" WHEN matched then update set TNAME=?,TTYPE=?,TLOC=?,TSIZE=?");
+					            				" WHEN matched then update set TNAME=?,TTYPE=?,TLOC=?,TSIZE=?,UPDATE_DATE=?");
 					                	tloc = testcase.toString().trim();
-					                	setParameters(tc_stmt, tguid, tguid, filename, tloc, type, size, filename, type, tloc, size);
+					                	setParameters(tc_stmt, tguid, tguid, filename, tloc, type, size, 
+					                			filename, type, tloc, size, new java.sql.Timestamp(System.currentTimeMillis()));
 					                	System.out.println(String.format("\nSOURCE(%s): %s\n", type, tloc));
 					                	tc_inserted = tc_stmt.executeUpdate() == 1;
 					                	tc_stmt.close();
