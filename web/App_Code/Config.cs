@@ -10,7 +10,9 @@ public enum FilterType
     ALL = 1,
     FUNC = 2,
     TAG = 3,
-    TYPE
+    TYPE = 4,
+    FILE = 5,
+    SIZE
 }
 
 /// <summary>

@@ -40,6 +40,13 @@ namespace Samples.AspNet.ObjectDataSource
                 "   WHERE " +
                 "     t.HIDDEN <> 'Y' AND UPPER(t.TTYPE) like UPPER('{0}')";
 
+        public const string queryFile = "SELECT UNIQUE" +
+            "    t.TGUID " +
+            "   FROM " +
+            "    TESTCASE t _::_" +
+            "   WHERE " +
+            "     t.HIDDEN <> 'Y' AND UPPER(t.TLOC) like UPPER('{0}')";
+
         public const string queryAll = "SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC, a.CREATE_DATE DESC) AS ROWNO, " +
                 "  a.TGUID as TID, " +
                 "  a.CREATE_DATE, " +
@@ -85,7 +92,7 @@ namespace Samples.AspNet.ObjectDataSource
 
             sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC NULLS LAST, a.CREATE_DATE DESC) AS ROWNO, " +
                         "  a.TGUID as TID," +
-                        "  a.CREATE_DATE, " +
+                        //"  a.CREATE_DATE, " +
                         "  '" + keyword + "' as Filter, " +
                         "  a.TNAME, " +
                         "  a.TTYPE, " +
@@ -106,6 +113,9 @@ namespace Samples.AspNet.ObjectDataSource
                         break;
                     case FilterType.TAG:
                         sql += " (" + queryTags + ")";
+                        break;
+                    case FilterType.FILE:
+                        sql += " (" + queryFile + ")";
                         break;
                 }
 
@@ -143,18 +153,21 @@ namespace Samples.AspNet.ObjectDataSource
             {
                 switch (Config.filterType)
                 {
-                    case FilterType.FUNC:
-                        sql = String.Format("SELECT count(*) FROM ({0})", queryFunc);
-                        break;
                     case FilterType.TAG:
                         sql = String.Format("SELECT count(*) FROM ({0})", queryTags);
                         break;
                     case FilterType.TYPE:
                         sql = String.Format("SELECT count(*) FROM ({0})", queryType);
                         break;
-                    default:
+                    case FilterType.FILE:
+                        sql = String.Format("SELECT count(*) FROM ({0})", queryFile);
+                        break;
                     case FilterType.ALL:
                         sql = String.Format("SELECT count(*) FROM ({0})", queryAll);
+                        break;
+                    case FilterType.FUNC:
+                    default:
+                        sql = String.Format("SELECT count(*) FROM ({0})", queryFunc);
                         break;
                 }
 
@@ -191,16 +204,13 @@ namespace Samples.AspNet.ObjectDataSource
         private const string query = "SELECT " +
             "   ROW_NUMBER() OVER (ORDER BY tf.SEQ ASC) AS ROWNO, " +
             "   t.TGUID as TID, " +
-            "   f.* " +
+            "   f.FUNC_NAME, " +
+            "   f.SOURCE_FILE, " +
+            "   f.LINE_NO " +
             " FROM " +
-            "   TESTCASE t, " +
-            "   TESTCASE_FUNC tf, " +
-            "   FUNC f " +
+            "   TESTCASE t JOIN TESTCASE_FUNC tf ON t.tguid = tf.tguid JOIN FUNC f ON f.fid = tf.fid " +
             " WHERE " +
-            "   t.TGUID = '{0}' " +
-            "   AND t.TGUID = tf.TGUID " +
-            "   AND tf.fid = f.fid " +
-            "   AND tf.pid = {1} ";
+            "   t.TGUID = '{0}' AND tf.pid = {1} ";
 
         public TestcaseData()
         {
@@ -215,7 +225,8 @@ namespace Samples.AspNet.ObjectDataSource
         public int SelectCount(string TID)
         {
             Exception e = null;
-            string sqlQuery = "SELECT count(*) FROM (" + query + ")";
+            string sqlQuery = "SELECT count(t.TGUID) FROM TESTCASE t JOIN TESTCASE_FUNC tf ON t.tguid = tf.tguid JOIN FUNC f ON f.fid = tf.fid" +
+            "  WHERE t.TGUID = '{0}' AND tf.pid = {1}";
             try
             {
                 Object count = ExecuteScalar(sqlQuery, (null == TID) ? "%" : TID, Config.personaId);

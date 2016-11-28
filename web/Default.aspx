@@ -26,6 +26,8 @@
             <asp:ListItem Text="Function name" Value="FUNC"></asp:ListItem>
             <asp:ListItem Text="Testcase type" Value="TYPE"></asp:ListItem>
             <asp:ListItem Text="Tag/keyword" Value="TAG"></asp:ListItem>
+            <asp:ListItem Text="Filename" Value="FILE"></asp:ListItem>
+            <asp:ListItem Text="Size" Value="SIZE"></asp:ListItem>
         </asp:DropDownList>
         <asp:TextBox ID="txtFilter" runat="server" Columns="50" MaxLength="50"></asp:TextBox>
         <asp:Button ID ="btnFiltering" runat ="server" OnClick ="btnFiltering_Click" Text ="Search" Width ="103px" />
@@ -49,10 +51,8 @@
             <Columns>
                 <asp:BoundField HeaderText='' DataField='ROWNO' 
                     HeaderStyle-Width="5%" ItemStyle-HorizontalAlign="Center" />
-                <asp:HyperLinkField
-                    DataNavigateUrlFields="TID"
-                    DataNavigateUrlFormatString="Testcase.aspx?TID={0}"
-                    DataTextField="TNAME"
+                <asp:BoundField
+                    DataField="TNAME"
                     HeaderText="TestCase"
                     HeaderStyle-Width="30%" />
                 <asp:BoundField HeaderText='Type' DataField='TTYPE' 
