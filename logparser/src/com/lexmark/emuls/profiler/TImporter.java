@@ -193,7 +193,7 @@ public class TImporter extends LinkedList<String> {
             				" WHEN matched then update set line_no = ?");
 					
 					stmt3 = conn.prepareStatement("MERGE INTO TESTCASE_FUNC using dual on (PID=? AND FID=? AND TGUID=?)" +
-				            				" WHEN NOT matched then INSERT (PID, FID, TGUID, SEQ, RID) values (?,?,?,?,?)"+
+				            				" WHEN NOT matched then INSERT (PID, FID, TGUID, SEQ) values (?,?,?,?)"+
 				            				" WHEN matched then update set SEQ = ?");
 					
 					stmt4 = conn.prepareStatement("MERGE INTO TAGS using dual on (TAG_NAME=?)" +
@@ -222,9 +222,10 @@ public class TImporter extends LinkedList<String> {
 								Timestamp endTime = null;
 								File file = new File(testResult);
 								Scanner scanner = new Scanner(file);
-								long pid = 1; // default 
-								long rid = 0;
-								String resolution = "600";
+								long pid = 0; // default 
+								
+								String persona = "";
+								String resolution = "";
 								String tguid = file.getName();
 				                tguid = tguid.substring(0, tguid.lastIndexOf('.'));
 				                
@@ -234,15 +235,10 @@ public class TImporter extends LinkedList<String> {
 					                
 					                matcher = per.matcher(line);
 					                if ( matcher.find() ) {
-					                	String persona = matcher.group(1).trim();
-		                				if (!persona.isEmpty()) {
-		                					Long id = (Long)sqlQuery(Long.class, conn, "select PID FROM PLATFORM WHERE PERSONA=?", persona);
-						                	if( null != id) {
-						                		pid = id;
-						                	}
-		                				}
+					                	persona = matcher.group(1).trim();
 		                				continue;
 					                }
+					                
 					                matcher = res.matcher(line);
 					                if ( matcher.find() ) {
 					                	String dpi = matcher.group(1).trim();
@@ -252,6 +248,15 @@ public class TImporter extends LinkedList<String> {
 		                				continue;
 					                }
 					                
+					                if (0 == pid && !persona.isEmpty() && !resolution.isEmpty()) {
+	                					Long id = (Long)sqlQuery(Long.class, conn, "select PID FROM PLATFORM WHERE PERSONA=? AND RESOLUTION=?", persona, resolution);
+					                	if( null != id) {
+					                		pid = id;
+					                	}
+	                				}
+					                
+					                if (0 == pid) break; // bail out! invalid testcase
+					                
 					                // "^invoking =\\s+(.*)-e\\s+(\\w{1,10}\\b|\\s+)(.*)";
 					                matcher = tc.matcher(line);
 					                if ( matcher.find() ) {
@@ -259,7 +264,7 @@ public class TImporter extends LinkedList<String> {
 				                		String testcase = matcher.group(3);
 				                		String type = matcher.group(2);
 					                	String filename = testcase.substring(testcase.lastIndexOf('/')+1);
-						                
+					                	
 					                	PreparedStatement tc_stmt = conn.prepareStatement("MERGE INTO TESTCASE using dual on (TGUID=?)" +
 					            				" WHEN NOT matched then INSERT (TGUID,TNAME,TLOC,TTYPE,TSIZE) values (?,?,?,?,?)"+
 					            				" WHEN matched then update set TNAME=?,TTYPE=?,TLOC=?,TSIZE=?,UPDATE_DATE=?");
@@ -271,10 +276,10 @@ public class TImporter extends LinkedList<String> {
 					                	tc_stmt.close();
 					                	
 					                	// clean up old records! new records will have runtime id!!!
-					                	System.out.println(String.format(
-					                			"DELETE FROM TESTCASE_FUNC WHERE TGUID='%s' AND (PID=%d OR PID IS NULL)\n", tguid, pid));
-					                	update(conn, "DELETE FROM TESTCASE_FUNC WHERE TGUID=? AND (PID=? OR PID IS NULL)", tguid, pid);
-					                	rid = (Long)sqlQuery(Long.class, conn, "SELECT TC_RUN_SEQ.nextval FROM dual");
+					                	//System.out.println(String.format(
+					                	//		"DELETE FROM TESTCASE_FUNC WHERE TGUID='%s' AND (PID=%d OR PID IS NULL)\n", tguid, pid));
+					                	//update(conn, "DELETE FROM TESTCASE_FUNC WHERE TGUID=? AND (PID=? OR PID IS NULL)", tguid, pid);
+					                	//rid = (Long)sqlQuery(Long.class, conn, "SELECT TC_RUN_SEQ.nextval FROM dual");
 					                	continue;
 					            	}
 					                
@@ -285,10 +290,10 @@ public class TImporter extends LinkedList<String> {
 					                	Long page_no = Long.parseLong(matcher.group(1));
 					                	String checksum = matcher.group(2);
 					                	System.out.println(line + " : page" + page_no + ", checksum: " + checksum);
-					                	PreparedStatement cs_stmt = conn.prepareStatement("MERGE INTO TESTCASE_CHECKSUM using dual on (TGUID=? AND PAGE_NO=? AND PID=? AND RESOLUTION=?)" +
-					            				" WHEN NOT matched then INSERT (TGUID,PAGE_NO,CHECKSUM,PID,RESOLUTION) values (?,?,?,?,?)"+
+					                	PreparedStatement cs_stmt = conn.prepareStatement("MERGE INTO TESTCASE_CHECKSUM using dual on (TGUID=? AND PAGE_NO=? AND PID=?)" +
+					            				" WHEN NOT matched then INSERT (TGUID,PAGE_NO,CHECKSUM,PID) values (?,?,?,?)"+
 					            				" WHEN matched then update set CHECKSUM=?");
-					                	setParameters(cs_stmt, tguid, page_no, pid, resolution, tguid, page_no, checksum, pid, resolution, checksum);
+					                	setParameters(cs_stmt, tguid, page_no, pid, tguid, page_no, checksum, pid, checksum);
 					                	cs_stmt.executeUpdate();
 					                	cs_stmt.close();
 					                	continue;
@@ -305,7 +310,7 @@ public class TImporter extends LinkedList<String> {
 				                				Long fid = (Long)sqlQuery(Long.class, conn, "select FID FROM FUNC WHERE SOURCE_FILE=? AND FUNC_NAME=?", src_file, func);
 							                	if( null != fid) {
 							                		seqNo++;
-							                		setParameters(stmt3, pid, fid, tguid, pid, fid, tguid, seqNo, rid, seqNo);
+							                		setParameters(stmt3, pid, fid, tguid, pid, fid, tguid, seqNo, seqNo);
 						                			stmt3.addBatch();
 							                	}
 				                			}
@@ -381,9 +386,10 @@ public class TImporter extends LinkedList<String> {
 				                	if (tc_inserted && null != startTime && matcher.find() ) {
 				                		try {
 				                			endTime = new java.sql.Timestamp(DATE_FORMATTER.parse(matcher.group(1)).getTime());
-											insert(conn, "INSERT INTO TESTCASE_RUN (RID, TGUID, PID, START_TIME, END_TIME) VALUES (?,?,?,?,?)", 
-													rid, tguid, pid, startTime, endTime);
-											
+											insert(conn, "INSERT INTO TESTCASE_RUN (TGUID, PID, START_TIME, END_TIME) VALUES (?,?,?,?)", 
+													tguid, pid, startTime, endTime);
+											tc_inserted = false;
+											System.out.println("INSERT INTO TESTCASE_RUN: " + testResult);
 										} catch (ParseException e) {
 											error = true;
 											e.printStackTrace();
