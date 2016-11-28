@@ -23,15 +23,6 @@ public class Checksum : System.Web.Services.WebService
         //InitializeComponent(); 
     }
 
-    string[,] stocks = {
-      {"RELIND", "Reliance Industries", "1060.15"},
-      {"ICICI", "ICICI Bank", "911.55"},
-      {"JSW", "JSW Steel", "1201.25"},
-      {"WIPRO", "Wipro Limited", "1194.65"},
-      {"SATYAM", "Satyam Computers", "91.10"}
-   };
-
-
     private static void writeResponse(HttpResponse response, string text)
     {
         byte[] bytes = System.Text.Encoding.UTF8.GetBytes(text + "\r\n");
@@ -58,34 +49,6 @@ public class Checksum : System.Web.Services.WebService
         testcaseByFunc.Append(" '__end__' ) ) GROUP BY cs.tguid");
 
         return testcaseByFunc.ToString();
-    }
-
-    [WebMethod]
-    public double GetPrice(string symbol)
-    {
-        //it takes the symbol as parameter and returns price
-        for (int i = 0; i < stocks.GetLength(0); i++)
-        {
-            if (String.Compare(symbol, stocks[i, 0], true) == 0)
-                return Convert.ToDouble(stocks[i, 2]);
-        }
-
-        return 0;
-    }
-
-    // http://localhost:49163/ChecksumSVC/Checksum.asmx/GetName?symbol=SATYAM
-    [WebMethod]
-    public string GetName(string symbol)
-    {
-        // It takes the symbol as parameter and 
-        // returns name of the stock
-        for (int i = 0; i < stocks.GetLength(0); i++)
-        {
-            if (String.Compare(symbol, stocks[i, 0], true) == 0)
-                return stocks[i, 1];
-        }
-
-        return "Stock Not Found";
     }
 
     [WebMethod]
@@ -128,9 +91,9 @@ public class Checksum : System.Web.Services.WebService
     }
 
     // sample usage:
-    //  http://localhost/testcases/Checksum.asmx/Get?persona=sim-atlantis&func=pdflex_add_object&fetch=10&debug=true
+    //  http://localhost/testcases/Checksum.asmx/Get?persona=sim-atlantis&func=pdflex_add_object&dpi=600&fetch=10&debug=true
     [WebMethod]
-    public void Get(string persona, string func, int fetch = 50, bool debug = false)
+    public void Get(string persona, string func, int dpi = 600, int fetch = 50, bool debug = false)
     {
         HttpResponse Response = Context.Response;
         string filter = null;
@@ -145,13 +108,19 @@ public class Checksum : System.Web.Services.WebService
             platformId = String.Format("(select PID from PLATFORM where PERSONA='{0}')", persona);
         }
 
-        string sql = String.Format("SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
+        string sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
                     "  a.TLOC, " +
                     "  b.CHECKSUM " +
                     "FROM TESTCASE a, " + "(" + generateQuerySQL(func, platformId) + ") b " +
-                    "WHERE a.TGUID=b.TGUID AND a.HIDDEN <> 'Y' AND a.TLOC LIKE '%" + filter + "%' ) WHERE ROWNO > {0} AND ROWNO <= ({0} + {1})", 0, fetch);
-        
-        writeResponse(Response, "/m/tcases/futures/next/wip/#testcase : #checksum(s)");
+                    "WHERE a.TGUID=b.TGUID AND a.HIDDEN <> 'Y' AND a.TLOC LIKE '%" + filter + "%'";
+
+        if ( -1 < fetch ) {
+            sql = String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})", sql, 0, fetch);
+        }
+        writeResponse(Response, String.Format("# {0:F}", DateTime.Now));
+        writeResponse(Response, String.Format("# persona: {0}", persona));
+        writeResponse(Response, String.Format("# resolution: {0}", dpi));
+        writeResponse(Response, String.Format("# location: {0}", filter));
         try
         {
             DbConn.NewConnection(Config.getConnectionString());
