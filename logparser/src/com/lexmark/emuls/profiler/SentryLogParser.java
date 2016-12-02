@@ -137,6 +137,10 @@ public class SentryLogParser extends LinkedList<String> {
     	return ret;
 	}
 	
+	private static boolean update(Connection conn, String sql, Object ... args) throws SQLException {
+		return insert(conn, sql, args);
+	}
+	
 	public static boolean importFile(String filename) throws Exception { 
 		final Queue<String> q = getInstance();
 		synchronized (q) {
@@ -187,6 +191,13 @@ public class SentryLogParser extends LinkedList<String> {
 					            	error = false;
 					                String line = scanner.nextLine();
 					                
+					                if (0 == pid && !persona.isEmpty() && !resolution.isEmpty()) {
+	                					Long id = (Long)sqlQuery(Long.class, conn, "select PID FROM PLATFORM WHERE PERSONA=? AND RESOLUTION=?", persona, resolution);
+					                	if( null != id) {
+					                		pid = id;
+					                	}
+	                				}
+					                
 					                if (persona.isEmpty() && null != (matcher = per.matcher(line)) && matcher.find() ) {
 					                	persona = matcher.group(1).trim();
 		                				continue;
@@ -201,12 +212,6 @@ public class SentryLogParser extends LinkedList<String> {
 					                else if (location.isEmpty() && null != (matcher = loc.matcher(line)) && matcher.find() ) {
 					                	location = matcher.group(1).trim();
 					                }
-					                else if (0 == pid && !persona.isEmpty() && !resolution.isEmpty()) {
-	                					Long id = (Long)sqlQuery(Long.class, conn, "select PID FROM PLATFORM WHERE PERSONA=? AND RESOLUTION=?", persona, resolution);
-					                	if( null != id) {
-					                		pid = id;
-					                	}
-	                				}
 					                else if (0 != pid && null != (matcher = tc.matcher(line)) && matcher.find() ) {
 					                	int page = 1;
 					                	String testcase = matcher.group(1);
@@ -218,6 +223,7 @@ public class SentryLogParser extends LinkedList<String> {
 					                	if (null == tguid) {
 					                		continue;
 					                	}
+					                	
 					                	while(cs.hasMoreTokens()) {
 					                		String c = cs.nextToken().trim();
 					                		sql = String.format("MERGE INTO TESTCASE_CHECKSUM using dual on (TGUID='%s' AND PID=%d AND PAGE_NO=%d) WHEN NOT matched then " +
@@ -234,6 +240,8 @@ public class SentryLogParser extends LinkedList<String> {
 						                	statement.addBatch();
 						                	page++;
 					                	}
+					                	// delete previous records to replace them!
+					                	update(conn, "DELETE FROM TESTCASE_CHECKSUM WHERE TGUID=? AND PID=? AND PAGE_NO > ?", tguid, pid, page);
 					                }
 					            }
 					            statement.executeBatch();
