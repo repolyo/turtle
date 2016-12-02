@@ -27,14 +27,19 @@
             <asp:ListItem Text="Testcase type" Value="TYPE"></asp:ListItem>
             <asp:ListItem Text="Tag/keyword" Value="TAG"></asp:ListItem>
             <asp:ListItem Text="Filename" Value="FILE"></asp:ListItem>
-            <asp:ListItem Text="Size" Value="SIZE"></asp:ListItem>
+            <asp:ListItem Text="Size" Value="SIZE" Enabled=false></asp:ListItem>
         </asp:DropDownList>
-        <asp:TextBox ID="txtFilter" runat="server" Columns="50" MaxLength="50"></asp:TextBox>
+        <asp:TextBox ID="txtFilter" runat="server" Columns="100" MaxLength="150"></asp:TextBox>
         <asp:Button ID ="btnFiltering" runat ="server" OnClick ="btnFiltering_Click" Text ="Search" Width ="103px" />
         <asp:Button ID="btnExport" runat="server" Text="Export." OnClick = "ExportToExcel" /><br />
         <asp:Button ID ="btnExportToExcel" runat ="server" Text ="ExportToExcel" Width ="103px" onclick="btnExportToExcel_Click" Visible="false"/>
         <asp:Label ID="Label1" runat="server" Text="Total Count: " /><asp:Label ID="totalLbl" runat="server" Text="" /><br />
     <div>    
+         <!--EmptyDataTemplate
+                No Records Available
+                asp:Image ID="Image1" ImageUrl=""
+                a href="Default.aspx" Try to Reload a 
+            EmptyDataTemplate-->
         <asp:GridView ID="GridView1" runat="server" 
             DataSourceID="TObjectDataSource"
             OnPageIndexChanged="_OnPageIndexChanged"
@@ -43,11 +48,10 @@
             AllowPaging='true'
             PagerSettings-Mode="NumericFirstLast" 
             PagerSettings-PageButtonCount="10"
-            EmptyDataText ="There are no data here yet!"
             HeaderStyle-BackColor="PapayaWhip"
             AlternatingRowStyle-BackColor="LightCyan" PageSize="25"
             OnDataBound="GridVIew_OnDataBound"
-            >
+            EmptyDataText="No testcase found!">
             <Columns>
                 <asp:BoundField HeaderText='' DataField='ROWNO' 
                     HeaderStyle-Width="5%" ItemStyle-HorizontalAlign="Center" />

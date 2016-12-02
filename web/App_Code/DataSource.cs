@@ -14,6 +14,7 @@ namespace Samples.AspNet.ObjectDataSource
     {
         public static int fetchCount = 0;
         public static string querySQL;
+        public static string filter;
 
         public const string queryFunc = "SELECT UNIQUE" +
                 "    t.TGUID " +
@@ -90,6 +91,7 @@ namespace Samples.AspNet.ObjectDataSource
                 throw new Exception(String.Format("ERROR -- Invalid range: {0} to {1}", startRecord, maxRecords));
             }
 
+            TestcaseProfileData.filter = keyword;
             sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC NULLS LAST, a.CREATE_DATE DESC) AS ROWNO, " +
                         "  a.TGUID as TID," +
                         //"  a.CREATE_DATE, " +

@@ -136,6 +136,29 @@ public partial class _Default : System.Web.UI.Page
     }
 
     protected void GridVIew_OnDataBound(object sender, EventArgs e) {
+        Config.filterType = ParseEnum<FilterType>(ddlFilter.SelectedValue);
+        switch (Config.filterType)
+        {
+            case FilterType.TAG:
+                GridView1.EmptyDataText = String.Format("No testcase found for tag: {0}",
+                    TestcaseProfileData.filter);
+                break;
+            case FilterType.TYPE:
+                GridView1.EmptyDataText = String.Format("No testcase found testcase type: {0}",
+                    TestcaseProfileData.filter);
+                break;
+            case FilterType.FILE:
+                GridView1.EmptyDataText = String.Format("No testcase found for filename: {0}",
+                    TestcaseProfileData.filter);
+                break;
+            case FilterType.FUNC:
+                GridView1.EmptyDataText = String.Format("No testcase found for function: {0}",
+                    TestcaseProfileData.filter);
+                break;
+            default:
+                break;
+        }
+
         totalLbl.Text = string.Format("{0}", TestcaseProfileData.fetchCount);
         querySQL.Text = string.Empty;
         if ( Config.debug ) querySQL.Text = TestcaseProfileData.querySQL;
