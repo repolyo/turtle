@@ -31,7 +31,7 @@ public abstract class FolderWatcher implements Runnable {
 				Files.createDirectories(dir);
 
 			WatchKey key = dir.register(watcher, ENTRY_CREATE);
-			
+			String filename = null;
 			for (;;) {
 
 				// wait for key to be signaled
@@ -56,8 +56,14 @@ public abstract class FolderWatcher implements Runnable {
 					// The filename is the
 					// context of the event.
 					WatchEvent<Path> ev = (WatchEvent<Path>) event;
-					Path filename = ev.context();
-
+					String path = String.format("%s/%s", dir, ev.context());
+					if (path.endsWith(SentryLogParser.LOG_EXT)) {
+						continue; // our logparser scan log, skip
+					}
+					else if (null != filename && path.contains(filename)) {
+						continue;
+					}
+					filename = path;
 					// if (kind == ENTRY_MODIFY) {
 					// System.out.format("modified file: %s, skipping... %n",
 					// filename);
@@ -65,7 +71,7 @@ public abstract class FolderWatcher implements Runnable {
 					// continue;
 					// }
 					try {
-						importFile (String.format("%s/%s", dir, filename));
+						importFile (filename);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

@@ -91,24 +91,29 @@ public class Checksum : System.Web.Services.WebService
     }
 
     // sample usage:
-    //  http://localhost/testcases/Checksum.asmx/Get?persona=sim-atlantis&func=pdflex_add_object&dpi=600&fetch=10&debug=true
+    //  http://localhost/testcases/Checksum.asmx/Get?persona=sim-atlantis&func=pdflex_add_object&dpi=600&fetch=10&filter=x&debug=true
     [WebMethod]
-    public void Get(string persona, string func, int dpi = 600, int fetch = 50, bool debug = false)
+    public void Get(string persona, string func, int dpi = 600, int fetch = 50, string filter = null, bool debug = false)
     {
         HttpResponse Response = Context.Response;
-        string filter = null;
         string platformId = Config.personaId.ToString();
+        int xi_thread = 1;
+
+        writeResponse(Response, String.Format("# {0:F}", DateTime.Now));
         if (null == filter || filter.Length == 0)
         {
             filter = "/m/tcases/futures/next/wip/";
+            writeResponse(Response, String.Format("# location: {0}", filter));
         }
 
         if (null != persona && persona.Length > 0)
         {
-            platformId = String.Format("(select PID from PLATFORM where PERSONA='{0}')", persona);
+            platformId = String.Format("(select PID from PLATFORM where PERSONA='{0}' AND RESOLUTION={1})", 
+                persona, dpi, xi_thread);
+            writeResponse(Response, String.Format("# persona: {0}", persona));
         }
 
-        string sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
+        string sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC) AS ROWNO, " +
                     "  a.TLOC, " +
                     "  b.CHECKSUM " +
                     "FROM TESTCASE a, " + "(" + generateQuerySQL(func, platformId) + ") b " +
@@ -117,14 +122,15 @@ public class Checksum : System.Web.Services.WebService
         if ( -1 < fetch ) {
             sql = String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})", sql, 0, fetch);
         }
-        writeResponse(Response, String.Format("# {0:F}", DateTime.Now));
-        writeResponse(Response, String.Format("# persona: {0}", persona));
+
         writeResponse(Response, String.Format("# resolution: {0}", dpi));
-        writeResponse(Response, String.Format("# location: {0}", filter));
+        writeResponse(Response, String.Format("# xi threads: {0}", xi_thread));
+        
         try
         {
             DbConn.NewConnection(Config.getConnectionString());
             DataTable tbl = DbConn.Query(sql);
+            writeResponse(Response, String.Format("# testcases: {0}", tbl.Rows.Count));
             if (null != tbl) foreach (DataRow row in tbl.Rows)
                 {
                     string checksum = row["CHECKSUM"].ToString().Trim();

@@ -1,7 +1,9 @@
 package com.lexmark.emuls.profiler;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -29,6 +31,7 @@ public class SentryLogParser extends LinkedList<String> {
 	/**
 	 * 
 	 */
+	public static final String LOG_EXT = ".out";
 	private static final long serialVersionUID = 1L;
 	static String newLine = System.getProperty("line.separator");
 	private static SentryLogParser queue = null;
@@ -114,6 +117,20 @@ public class SentryLogParser extends LinkedList<String> {
 		return ok;
 	}
 	
+	private static int update(Connection conn, String sql, Object ... args) throws SQLException {
+		int updated = -1;
+		try {
+			PreparedStatement pst = conn.prepareStatement(sql);
+			setParameters(pst, args);
+			updated = pst.executeUpdate();
+			pst.close();
+		}
+		catch (Exception e) {
+			throw new SQLException(sql + Arrays.toString(args) ,  e);
+		}
+		return updated;
+	}
+	
 	private static Object sqlQuery(Class<?> type, Connection conn, String sql, Object ... args) throws SQLException {
 		Object ret = null;
 		try {
@@ -135,10 +152,6 @@ public class SentryLogParser extends LinkedList<String> {
 			throw new SQLException(sql,  e);
 		}
     	return ret;
-	}
-	
-	private static boolean update(Connection conn, String sql, Object ... args) throws SQLException {
-		return insert(conn, sql, args);
 	}
 	
 	public static boolean importFile(String filename) throws Exception { 
@@ -179,6 +192,7 @@ public class SentryLogParser extends LinkedList<String> {
 								boolean error = false;
 								Matcher matcher = null; 
 								File file = new File(testResult);
+								PrintWriter log = new PrintWriter(new FileWriter(testResult+LOG_EXT));
 								Scanner scanner = new Scanner(file);
 								long pid = 0; // default 
 								
@@ -240,8 +254,11 @@ public class SentryLogParser extends LinkedList<String> {
 						                	statement.addBatch();
 						                	page++;
 					                	}
+					                	
 					                	// delete previous records to replace them!
-					                	update(conn, "DELETE FROM TESTCASE_CHECKSUM WHERE TGUID=? AND PID=? AND PAGE_NO > ?", tguid, pid, page);
+					                	log.println(String.format("%d == DELETE FROM TESTCASE_CHECKSUM WHERE TGUID='%s' AND PID=%d AND PAGE_NO >= %d", 
+					                			update(conn, "DELETE FROM TESTCASE_CHECKSUM WHERE TGUID=? AND PID=? AND PAGE_NO >= ?", tguid, pid, page),
+					                			tguid, pid, page));
 					                }
 					            }
 					            statement.executeBatch();
@@ -254,6 +271,7 @@ public class SentryLogParser extends LinkedList<String> {
 					            else if ( !file.delete() ) {
 					            	new FileNotFoundException("Unable to delete: " + testResult).printStackTrace();
 					            };
+					            log.close();
 					            System.out.println(newLine);
 		//			            Thread.yield();
 							}

@@ -1,0 +1,137 @@
+From 498b17acd3bbf53907c5c208c59997588244a116 Mon Sep 17 00:00:00 2001
+From: Christopher Tan <chritan@lexmark.com>
+Date: Fri, 22 Jul 2016 15:50:03 +0800
+Subject: [PATCH] turtle: enable finstrument-functions
+
+- ufst
+- graphen
+- pdls
+
+external=no
+
+Change-Id: I6df6056749494a151d8b576321bd9adf821bdd61
+---
+ recipes-generic/graphen/graphen_git.bb             |   2 +-
+ recipes-graphics/ufst/ufst_git.bb                  |   3 +
+ app/main.c       | 55 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ master.mak       |  4 ++--
+ 4 files changed, 57 insertions(+), 12 deletions(-)
+
+diff --git a/app/main.c b/app/main.c
+index 9e871fd..841dc69 100644
+--- a/app/main.c
++++ b/app/main.c
+@@ -121,6 +121,61 @@ static const struct {
+    { NULL, NULL, NULL, NULL }
+ };
+ 
++
++#define __NON_INSTRUMENT_FUNCTION__    __attribute__((__no_instrument_function__))
++#define PTRACE_OFF        __NON_INSTRUMENT_FUNCTION__
++#define REFERENCE_OFFSET "REFERENCE:"
++#define FUNCTION_ENTRY   'E'
++#define FUNCTION_EXIT    'L'
++#define END_TRACE        "EXIT"
++
++static FILE *fp_trace = NULL;
++void
++__attribute__ ((constructor))
++__NON_INSTRUMENT_FUNCTION__
++trace_begin (void)
++{
++    fprintf(stdout, "p_object.c ----------------- tanch@%s: compile with -finstrument-functions called....\n", __func__);
++    if (NULL == fp_trace) {
++        fp_trace = fopen("trace.out", "w");
++    }
++}
++
++
++void
++__attribute__ ((destructor))
++__NON_INSTRUMENT_FUNCTION__
++trace_end (void)
++{
++    fprintf(stdout, "----------------- tanch@%s: called....\n", __func__);
++    if(fp_trace != NULL) {
++        fprintf(fp_trace, END_TRACE " %ld\n", (long)getpid());
++        fclose(fp_trace);
++     }
++}
++
++static int __stepper=0;
++
++void
++__NON_INSTRUMENT_FUNCTION__
++__cyg_profile_func_enter(void *this_fn, void *call_site) {
++    L_UNUSED_VAR(call_site);
++    if (NULL != fp_trace) {
++      fprintf(fp_trace, "%c %p\n", FUNCTION_ENTRY, this_fn);
++    }
++
++  __stepper ++;
++} /* __cyg_profile_func_enter */
++
++void
++__NON_INSTRUMENT_FUNCTION__
++__cyg_profile_func_exit(void *this_fn, void *call_site) {
++    L_UNUSED_VAR(this_fn);
++    L_UNUSED_VAR(call_site);
++  __stepper --;
++}
++
++
+ static bool
+ match_pjlname (const char * pjlname,
+                const char * teststr)
+diff --git a/recipes-generic/pdls/pdls_git.bb b/recipes-generic/pdls/pdls_git.bb
+index f835a5d..f0b5eb0 100644
+--- a/recipes-generic/pdls/pdls_git.bb
++++ b/recipes-generic/pdls/pdls_git.bb
+@@ -14,6 +14,7 @@ S = "${WORKDIR}/git"
+ #PATCHES
+ #SRC_URI += "file://filename.patch"
+ #Please add new patches as last line in this group
++SRC_URI += "file://0001-finstrument-functions.patch"
+ 
+ DEPENDS += "fixedids libtext llib-native graphen iapi"
+ DEPENDS += "zlib jpeg expat cryptlib"
+@@ -79,7 +80,7 @@ export HOST_LD
+ export SCREEN_CONTROL_FILE="${STAGING_DATADIR}/graphen/"
+ export inst_fontsdir = "${D}/${datadir}/${PN}/fonts"
+ 
+-OPT_CFLAGS_sim = "-O0"
++OPT_CFLAGS_sim = "-O0 -finstrument-functions"
+ OPT_CFLAGS     = ""
+ CFLAGS   += "${OPT_CFLAGS}"
+ CFLAGS   += "-fgnu89-inline"
+ 
+diff --git a/recipes-generic/graphen/graphen_git.bb b/recipes-generic/graphen/graphen_git.bb
+index 06fd2e9..1b9d4e9 100644
+--- a/recipes-generic/graphen/graphen_git.bb
++++ b/recipes-generic/graphen/graphen_git.bb
+@@ -21,7 +21,7 @@ export inst_datadir = "${D}/${datadir}/${PN}"
+ export inst_screendir = "${D}/${datadir}/${PN}/screens"
+ 
+ # XXX: unit tests fail if we enable the optimizer!
+-OPT_CFLAGS_sim = "-O0"
++OPT_CFLAGS_sim = "-O0 -finstrument-functions"
+ OPT_CFLAGS     = ""
+ CFLAGS += "${OPT_CFLAGS}"
+ 
+diff --git a/recipes-graphics/ufst/ufst_git.bb b/recipes-graphics/ufst/ufst_git.bb
+index 45186e4..4963b13 100644
+--- a/recipes-graphics/ufst/ufst_git.bb
++++ b/recipes-graphics/ufst/ufst_git.bb
+@@ -30,6 +30,9 @@ export EMPCL5 = "1"
+ export PS_LEVEL = "3"
+ export BLD_SUFFIX = "1"
+ 
++OPT_CFLAGS_sim = "-O0 -finstrument-functions"
++CFLAGS   += "-finstrument-functions"
++
+ ROM_FS2 = "1"
+ MICROTYPE_LEVEL = "2"
+ XIMALLOC = "1"
+-- 
+1.9.3
+
