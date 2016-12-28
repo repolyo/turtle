@@ -223,8 +223,8 @@ else
     exec="./runpage4"
 fi
 
-    echo "etrace.pl --pdl $emul --exec $exec --resolution $resolution --file $f --persona $persona | tee $outlog"
-    etrace.pl --resolution $resolution --pdl $emul --exec $exec --file "$f" --persona $persona | tee $outlog
+    echo "ftrace.pl --pdl $emul --exec $exec --resolution $resolution --file $f --persona $persona | tee $outlog"
+    ftrace.pl --resolution $resolution --pdl $emul --exec $exec --file "$f" --persona $persona | tee $outlog
 
     # special case for PJL as its not part of emulator
     # we classify it manually here. 

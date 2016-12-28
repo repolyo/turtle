@@ -214,7 +214,7 @@ $sniffer='/users/chritan/bin/pdls_sniff';
 
 #$dbh = DBI->connect('DBI:mysql:tutorial_db;host=10.194.15.187', 'tanch', 'tanch') || die "Could not connect to database: $DBI::errstr";
 
-my $filename = fileparse($testcase);
+#my $filename = fileparse($testcase);
 #$dbh->do('REPLACE INTO files(fname,floc, create_date) VALUES(?, ?, NOW())', undef, $filename, $testcase);
 
 if (index($exec, "runpage4") != -1) {
