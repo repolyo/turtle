@@ -262,7 +262,7 @@ if ($exec) {
 #    processCallInfo; 
    
     print "starting alarm for $t1... \n";
-    alarm 60;
+    alarm 120;
 
     #my $pid :shared;
     my ( $t1 ) = threads->create(

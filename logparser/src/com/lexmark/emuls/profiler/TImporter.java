@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.BatchUpdateException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -15,8 +16,6 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -24,18 +23,16 @@ import java.util.regex.Pattern;
 
 import org.omg.PortableInterceptor.ORBInitInfoPackage.DuplicateName;
 
-public class TImporter extends LinkedList<String> {
+public class TImporter extends DBConnection {
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	static String newLine = System.getProperty("line.separator");
 	private static TImporter queue = null;
 	private static boolean busy = false;
 	
-	public static String dbUser = "tcprofiler";
-	public static String dbPasswd = "********";
-	public static String dbHost = System.getenv("TURTLE_DB");//"157.184.66.215";
+	public static boolean checksum_update = false;
 	
 	// 11/27/15 20:03:19
 	static DateFormat DATE_FORMATTER = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
@@ -64,13 +61,11 @@ public class TImporter extends LinkedList<String> {
     
     private static String RESOLUTION = "^\\[@resolution:\\s+(.*)\\]";
     
-	private TImporter() throws Exception { 
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-		} catch (ClassNotFoundException e) {
-			System.out.println("Where is your Oracle JDBC Driver?");
-			throw e;
-		}
+    private static String GUID_REGEX = "^\\[@guid:\\s+([0-9a-z]+)*(.*)\\]";
+    
+	protected TImporter() throws Exception {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	public static TImporter getInstance() throws Exception { 
@@ -80,85 +75,7 @@ public class TImporter extends LinkedList<String> {
 		return queue;
 	}
 	
-	private static Connection getDbConn() {
-		Connection connection = null; 
-		try {
-//			connection = DriverManager.getConnection(
-//					"jdbc:oracle:thin:@emulator-win7:1521:xe", "tc_profiler", "tc_profiler");
-			connection = DriverManager.getConnection(
-					"jdbc:oracle:thin:@"+dbHost+":1521:xe", dbUser, dbPasswd);
-			System.out.format(String.format("Connected to: %s@%s DB...", dbHost, dbUser));
-		} catch (SQLException e) {
-			System.out.println("Connection Failed! Check output console");
-			e.printStackTrace();
-		}
-		return connection;
-	}
-	
-	private static String setParameters(PreparedStatement stmt, Object ... args) throws SQLException {
-		int i = 1;
-		for (Object param : args) {
-			if (param instanceof String) {
-				stmt.setString(i, param.toString());		
-			}
-			else if (param instanceof Number) {
-				stmt.setLong(i, ((Number)param).longValue() );		
-			}
-			else if (param instanceof Timestamp) {
-				stmt.setTimestamp(i, (Timestamp)param);
-			}
-			else if (param instanceof Date) {
-				stmt.setDate(i, (Date)param);
-			}
-			i++;
-		}
-		return "";
-	}
-	
-	private static boolean insert(Connection conn, String sql, Object ... args) throws SQLException {
-		boolean ok = false;
-		try {
-			PreparedStatement pst = conn.prepareStatement(sql);
-			setParameters(pst, args);
-			if ( pst.executeUpdate() > 0 ) {
-				ok = true;
-	    	}
-			pst.close();
-		}
-		catch (Exception e) {
-			throw new SQLException(sql + Arrays.toString(args) ,  e);
-		}
-		return ok;
-	}
-	
-	private static boolean update(Connection conn, String sql, Object ... args) throws SQLException {
-		return insert(conn, sql, args);
-	}
-	
-	private static Object sqlQuery(Class<?> type, Connection conn, String sql, Object ... args) throws SQLException {
-		Object ret = null;
-		try {
-			PreparedStatement pst = conn.prepareStatement(sql);
-			setParameters(pst, args);
-			ResultSet rs = pst.executeQuery();
-	    	if( rs.next()) {
-	    		if (Long.class == type) {
-	    			ret = rs.getLong(1);
-	    		}
-	    		else if (String.class == type) {
-	    			ret = rs.getString(1);
-	    		}
-	    	}
-	    	rs.close();
-	    	pst.close();
-		}
-		catch (Exception e) {
-			throw new SQLException(sql,  e);
-		}
-    	return ret;
-	}
-	
-	public static boolean importFile(String filename) throws Exception { 
+	public boolean importFile(String filename) throws Exception { 
 		final Queue<String> q = getInstance();
 		synchronized (q) {
 			if (q.contains(filename)) {
@@ -180,6 +97,7 @@ public class TImporter extends LinkedList<String> {
 				Pattern cs = Pattern.compile(CHECKSUM_HIT);
 				Pattern pjl = Pattern.compile(PJL_COMMAND);
 				Pattern res = Pattern.compile(RESOLUTION);
+				Pattern guid = Pattern.compile(GUID_REGEX);
 				
 				Connection conn = null;
 				PreparedStatement stmt2 = null;
@@ -232,6 +150,7 @@ public class TImporter extends LinkedList<String> {
 					            while ( scanner.hasNextLine() ) {
 					            	error = false;
 					                String line = scanner.nextLine();
+					                if (null == line || line.trim().isEmpty()) continue;
 					                
 					                matcher = per.matcher(line);
 					                if ( matcher.find() ) {
@@ -248,14 +167,21 @@ public class TImporter extends LinkedList<String> {
 		                				continue;
 					                }
 					                
+					                matcher = guid.matcher(line);
+					                if ( matcher.find() ) {
+					                	tguid = matcher.group(1).trim();
+		                				continue;
+					                }
+					                
 					                if (0 == pid && !persona.isEmpty() && !resolution.isEmpty()) {
 	                					Long id = (Long)sqlQuery(Long.class, conn, "select PID FROM PLATFORM WHERE PERSONA=? AND RESOLUTION=?", persona, resolution);
 					                	if( null != id) {
 					                		pid = id;
 					                	}
+					                	else break; // bail out! invalid testcase
 	                				}
 					                
-					                if (0 == pid) break; // bail out! invalid testcase
+					                if (0 == pid) continue;
 					                
 					                // "^invoking =\\s+(.*)-e\\s+(\\w{1,10}\\b|\\s+)(.*)";
 					                matcher = tc.matcher(line);
@@ -264,13 +190,16 @@ public class TImporter extends LinkedList<String> {
 				                		String testcase = matcher.group(3);
 				                		String type = matcher.group(2);
 					                	String filename = testcase.substring(testcase.lastIndexOf('/')+1);
-					                	
-					                	PreparedStatement tc_stmt = conn.prepareStatement("MERGE INTO TESTCASE using dual on (TGUID=?)" +
+					                	String sql = "MERGE INTO TESTCASE using dual on (TGUID=?)" +
 					            				" WHEN NOT matched then INSERT (TGUID,TNAME,TLOC,TTYPE,TSIZE) values (?,?,?,?,?)"+
-					            				" WHEN matched then update set TNAME=?,TTYPE=?,TLOC=?,TSIZE=?,UPDATE_DATE=?");
+					            				" WHEN matched then update set TNAME=?,TTYPE=?,TLOC=?,TSIZE=?,UPDATE_DATE=?";
+					                	
+					                	PreparedStatement tc_stmt = conn.prepareStatement(sql);
 					                	tloc = testcase.toString().trim();
-					                	setParameters(tc_stmt, tguid, tguid, filename, tloc, type, size, 
-					                			filename, type, tloc, size, new java.sql.Timestamp(System.currentTimeMillis()));
+					                	System.out.println(sql + " " + 
+					                			setParameters(tc_stmt, tguid, tguid, filename, tloc, type, size, 
+							                			filename, type, tloc, size, new java.sql.Timestamp(System.currentTimeMillis())));
+					                	
 					                	System.out.println(String.format("\nSOURCE(%s): %s\n", type, tloc));
 					                	tc_inserted = tc_stmt.executeUpdate() == 1;
 					                	tc_stmt.close();
@@ -287,15 +216,17 @@ public class TImporter extends LinkedList<String> {
 					                
 					                matcher = cs.matcher(line);
 					                if ( matcher.find() ) {
-					                	Long page_no = Long.parseLong(matcher.group(1));
-					                	String checksum = matcher.group(2);
-					                	System.out.println(line + " : page" + page_no + ", checksum: " + checksum);
-					                	PreparedStatement cs_stmt = conn.prepareStatement("MERGE INTO TESTCASE_CHECKSUM using dual on (TGUID=? AND PAGE_NO=? AND PID=?)" +
-					            				" WHEN NOT matched then INSERT (TGUID,PAGE_NO,CHECKSUM,PID) values (?,?,?,?)"+
-					            				" WHEN matched then update set CHECKSUM=?");
-					                	setParameters(cs_stmt, tguid, page_no, pid, tguid, page_no, checksum, pid, checksum);
-					                	cs_stmt.executeUpdate();
-					                	cs_stmt.close();
+					                	if ( checksum_update ) {
+						                	Long page_no = Long.parseLong(matcher.group(1));
+						                	String checksum = matcher.group(2);
+						                	System.out.println(line + " : page" + page_no + ", checksum: " + checksum);
+						                	PreparedStatement cs_stmt = conn.prepareStatement("MERGE INTO TESTCASE_CHECKSUM using dual on (TGUID=? AND PAGE_NO=? AND PID=?)" +
+						            				" WHEN NOT matched then INSERT (TGUID,PAGE_NO,CHECKSUM,PID) values (?,?,?,?)"+
+						            				" WHEN matched then update set CHECKSUM=?");
+						                	setParameters(cs_stmt, tguid, page_no, pid, tguid, page_no, checksum, pid, checksum);
+						                	cs_stmt.executeUpdate();
+						                	cs_stmt.close();
+					                	}
 					                	continue;
 					                }
 					                
@@ -414,10 +345,16 @@ public class TImporter extends LinkedList<String> {
 		//			            Thread.yield();
 							}
 						}
+						catch (BatchUpdateException e) {
+							e.printStackTrace();
+						}
 						catch (FileNotFoundException e) {
 				            e.printStackTrace();
-				        } catch (IOException e) {
-							// TODO Auto-generated catch block
+				        }
+						catch (IOException e) {
+							e.printStackTrace();
+						}
+						catch (Exception e) {
 							e.printStackTrace();
 						}
 						busy = !q.isEmpty();

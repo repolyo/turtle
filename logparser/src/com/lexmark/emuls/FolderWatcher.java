@@ -11,16 +11,26 @@ import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
+import com.lexmark.emuls.profiler.DBConnection;
 import com.lexmark.emuls.profiler.SentryLogParser;
 
 public abstract class FolderWatcher implements Runnable {
 	private String ftpHome;
+	protected DBConnection parser;
 	
-	public FolderWatcher(String ftpHome) {
+	public FolderWatcher(String ftpHome, DBConnection parser) {
 		this.ftpHome = ftpHome;
+		this.parser = parser;
 	}
 
 	protected abstract boolean importFile(String file) throws Exception;
+	
+	public void start(String host, String user, String pass) {
+		this.parser.setDbHost(host);
+		this.parser.setDbUser(user);
+		this.parser.setDbPasswd(pass);
+		this.run();
+	}
 	
 	@Override
 	public void run() {

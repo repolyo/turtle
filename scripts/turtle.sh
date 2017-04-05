@@ -469,34 +469,32 @@ for f in `find $dir -type f -name "*$type"` ; do
 
   # step 1: run executable on testcase file!
   runtest $f $filters
-  if [ $? -eq 0 ]; then
-     #rm -f $outlog
-     continue;
-  fi
+  filter_found=$?
+  END_TIME=$(date +"%D %T") 
 
   if [ ! -f "$outlog" -o ! -s "$outlog" ]; then
      continue;
   fi
-  
+
   echo "[@size: $actualsize]" >> $outlog
   echo "[@startTime: $START_TIME]" >> $outlog  
+  echo "[@endTime: $END_TIME]" >> $outlog
+
   # step 2: lookup tag/keywork inside testcase file
   for i in "${filters[@]}"; do
     filter_file $f $i
     if [ $? -eq 1 ]; then
       echo "[tag with: $i]" >> $outlog
-    else
-      continue
+      filter_found=1
     fi
   done
   
-  END_TIME=$(date +"%D %T") 
-  echo "[@endTime: $END_TIME]" >> $outlog
-  
-  echo "sendftp -h $dbhost -f $outlog -d turtle/data"
-  sendftp -h $dbhost -u $user -p $passwd -f $outlog -d turtle/data
-  if [ $? -ne 0 ]; then
-     echo "Error: FTP failed!"
+  if [ $filter_found -eq 1 ]; then
+     echo "sendftp -h $dbhost -f $outlog -d turtle/data"
+     sendftp -h $dbhost -u $user -p $passwd -f $outlog -d turtle/data
+     if [ $? -ne 0 ]; then
+        echo "Error: FTP failed!"
+     fi
   fi
 done
 

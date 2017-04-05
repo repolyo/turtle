@@ -1,0 +1,1 @@
+C:\oraclexe\app\oracle\product\11.2.0\server\bin> expdp tcprofiler/tcprofiler@157.184.66.215 schemas=tcprofiler directory=TEST_DIR dumpfile=turtle.11.22.16.dmp logfile=turtle.11.22.16.log

@@ -1,86 +1,103 @@
 package com.lexmark.emuls;
 
+import com.lexmark.emuls.profiler.FunctionLoader;
 import com.lexmark.emuls.profiler.SentryLogParser;
 import com.lexmark.emuls.profiler.TImporter;
 
-public class TProfiler extends FolderWatcher {
+public class TProfiler extends FolderWatcherImpl {
 
-	public TProfiler(String ftpHome, String host, String user, String pass) {
-		super(ftpHome);
-		TImporter.dbHost = host;
-		TImporter.dbUser = user;
-		TImporter.dbPasswd = pass;
-		
-		System.out.format("%s: monitoring location: %s, db: %s\n", 
-				this.getClass().getSimpleName(), ftpHome, host);
-	}
-	
-	@Override
-	protected boolean importFile(String file) throws Exception {
-		TImporter.importFile(file);
-		return true;
+	public TProfiler(String ftpHome) throws Exception {
+		super(ftpHome, TImporter.getInstance());
 	}
 	
 	public static void main(String[] args) {
-		boolean host = false;
-		boolean user = false;
-		boolean pass = false;
-		boolean watch = false;
-		
-		String hostname = "";
-		String username = "";
-		String passwd = "";
-		String tracker = "";
-		FolderWatcher instance = null;
-		
-		for (String s : args) {
-			if (s != null && s.equalsIgnoreCase("-h")) {
-				host = true;
-				continue;
-			}
-			if (host) {
-				hostname = s;
-				host = false;
-				continue;
-			}
+		try {
+			boolean host = false;
+			boolean user = false;
+			boolean pass = false;
+			boolean watch = false;
+			boolean checksum = false;
+			
+			String hostname = "";
+			String username = "";
+			String passwd = "";
+			String tracker = "";
+			String ftpHome = "";
+			FolderWatcher instance = null;
+			
+			for (String s : args) {
+				if (s != null && s.equalsIgnoreCase("-h")) {
+					host = true;
+					continue;
+				}
+				if (host) {
+					hostname = s;
+					host = false;
+					continue;
+				}
 
-			if (s != null && s.equalsIgnoreCase("-u")) {
-				user = true;
-				continue;
-			}
-			if (user) {
-				username = s;
-				user = false;
-				continue;
-			}
+				if (s != null && s.equalsIgnoreCase("-u")) {
+					user = true;
+					continue;
+				}
+				if (user) {
+					username = s;
+					user = false;
+					continue;
+				}
 
-			if (s != null && s.equalsIgnoreCase("-p")) {
-				pass = true;
-				continue;
-			}
-			if (pass) {
-				passwd = s;
-				pass = false;
-				continue;
+				if (s != null && s.equalsIgnoreCase("-p")) {
+					pass = true;
+					continue;
+				}
+				if (pass) {
+					passwd = s;
+					pass = false;
+					continue;
+				}
+				
+				if (s != null && s.equalsIgnoreCase("-w")) {
+					watch = true;
+					continue;
+				}
+				if (watch) {
+					tracker = s;
+					watch = false;
+					continue;
+				}
+				
+				if (s != null && s.equalsIgnoreCase("-c")) {
+					checksum = true;
+					continue;
+				}
+				if (checksum) {
+					System.out.println(String.format("Processing checksum: %s\n", s));
+					TImporter.checksum_update = Boolean.parseBoolean(s);
+					checksum = false;
+					continue;
+				}
 			}
 			
-			if (s != null && s.equalsIgnoreCase("-w")) {
-				watch = true;
-				continue;
+			if (null != tracker && tracker.equalsIgnoreCase("sentry")) {
+				ftpHome = System.getenv("SENTRY_LOGS_DIR");
+				instance = new SentryLogWatcher(ftpHome, hostname, username, passwd);
 			}
-			if (watch) {
-				tracker = s;
-				watch = false;
-				continue;
+			else if (null != tracker && tracker.equalsIgnoreCase("funcs")) {
+				ftpHome = System.getenv("FUNCS_DIR");
+				FunctionLoader loader = FunctionLoader.getInstance();
+				instance = new FolderWatcherImpl(ftpHome, loader);
 			}
+			else {
+				ftpHome = System.getenv("FTP_HOME");
+				instance = new TProfiler(ftpHome);
+			}
+			System.out.format("%s: monitoring location: %s, db: %s\n", 
+					instance.getClass().getSimpleName(), ftpHome, host);
+			instance.start(hostname, username, passwd);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		if (null != tracker && tracker.equalsIgnoreCase("sentry")) {
-			instance = new SentryLogWatcher(System.getenv("SENTRY_LOGS_DIR"), hostname, username, passwd);
-		}
-		else {
-			instance = new TProfiler(System.getenv("FTP_HOME"), hostname, username, passwd);
-		}
-		instance.run();
 	}
 }

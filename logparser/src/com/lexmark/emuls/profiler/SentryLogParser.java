@@ -27,19 +27,14 @@ import java.util.regex.Pattern;
 
 import org.omg.PortableInterceptor.ORBInitInfoPackage.DuplicateName;
 
-public class SentryLogParser extends LinkedList<String> {
+public class SentryLogParser extends DBConnection {
 	/**
 	 * 
 	 */
 	public static final String LOG_EXT = ".out";
 	private static final long serialVersionUID = 1L;
-	static String newLine = System.getProperty("line.separator");
 	private static SentryLogParser queue = null;
 	private static boolean busy = false;
-	
-	public static String dbUser = "tcprofiler";
-	public static String dbPasswd = "********";
-	public static String dbHost = System.getenv("TURTLE_DB");//"157.184.66.215";
 	
 	// 11/27/15 20:03:19
 	static DateFormat DATE_FORMATTER = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
@@ -53,12 +48,7 @@ public class SentryLogParser extends LinkedList<String> {
 	private static String TESTCASE = "^(?!#)(.*)\\s*:\\s+(.*)$";
 	
 	private SentryLogParser() throws Exception { 
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-		} catch (ClassNotFoundException e) {
-			System.out.println("Where is your Oracle JDBC Driver?");
-			throw e;
-		}
+		super();
 	}
 	
 	public static SentryLogParser getInstance() throws Exception { 
@@ -68,93 +58,7 @@ public class SentryLogParser extends LinkedList<String> {
 		return queue;
 	}
 	
-	private static Connection getDbConn() {
-		Connection connection = null; 
-		try {
-			connection = DriverManager.getConnection(
-					"jdbc:oracle:thin:@"+dbHost+":1521:xe", dbUser, dbPasswd);
-			System.out.format(String.format("Connected to: %s@%s DB...", dbHost, dbUser));
-		} catch (SQLException e) {
-			System.out.println("Connection Failed! Check output console");
-			e.printStackTrace();
-		}
-		return connection;
-	}
-	
-	private static String setParameters(PreparedStatement stmt, Object ... args) throws SQLException {
-		int i = 1;
-		for (Object param : args) {
-			if (param instanceof String) {
-				stmt.setString(i, param.toString());		
-			}
-			else if (param instanceof Number) {
-				stmt.setLong(i, ((Number)param).longValue() );		
-			}
-			else if (param instanceof Timestamp) {
-				stmt.setTimestamp(i, (Timestamp)param);
-			}
-			else if (param instanceof Date) {
-				stmt.setDate(i, (Date)param);
-			}
-			i++;
-		}
-		return "";
-	}
-	
-	private static boolean insert(Connection conn, String sql, Object ... args) throws SQLException {
-		boolean ok = false;
-		try {
-			PreparedStatement pst = conn.prepareStatement(sql);
-			setParameters(pst, args);
-			if ( pst.executeUpdate() > 0 ) {
-				ok = true;
-	    	}
-			pst.close();
-		}
-		catch (Exception e) {
-			throw new SQLException(sql + Arrays.toString(args) ,  e);
-		}
-		return ok;
-	}
-	
-	private static int update(Connection conn, String sql, Object ... args) throws SQLException {
-		int updated = -1;
-		try {
-			PreparedStatement pst = conn.prepareStatement(sql);
-			setParameters(pst, args);
-			updated = pst.executeUpdate();
-			pst.close();
-		}
-		catch (Exception e) {
-			throw new SQLException(sql + Arrays.toString(args) ,  e);
-		}
-		return updated;
-	}
-	
-	private static Object sqlQuery(Class<?> type, Connection conn, String sql, Object ... args) throws SQLException {
-		Object ret = null;
-		try {
-			PreparedStatement pst = conn.prepareStatement(sql);
-			setParameters(pst, args);
-			ResultSet rs = pst.executeQuery();
-	    	if( rs.next()) {
-	    		if (Long.class == type) {
-	    			ret = rs.getLong(1);
-	    		}
-	    		else if (String.class == type) {
-	    			ret = rs.getString(1);
-	    		}
-	    	}
-	    	rs.close();
-	    	pst.close();
-		}
-		catch (Exception e) {
-			throw new SQLException(sql,  e);
-		}
-    	return ret;
-	}
-	
-	public static boolean importFile(String filename) throws Exception { 
+	public boolean importFile(String filename) throws Exception { 
 		final Queue<String> q = getInstance();
 		synchronized (q) {
 			if (q.contains(filename)) {
