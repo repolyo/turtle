@@ -83,7 +83,7 @@ public class SentryLogParser extends DBConnection {
 					statement = conn.prepareStatement(
 							"MERGE INTO TESTCASE_CHECKSUM using dual on (TGUID=? AND PID=? AND PAGE_NO=?)" +
 							" WHEN NOT matched THEN " + 
-							" INSERT (TGUID,PID,PAGE_NO,CHECKSUM,DURATION) VALUES (?,?,?,?,NUMTODSINTERVAL(2.060018, 'SECOND'))"+
+							" INSERT (TGUID,PID,PAGE_NO,CHECKSUM) VALUES (?,?,?,?)"+
 							" WHEN matched then UPDATE SET CHECKSUM=?");
 					do {
 						String testResult = null;
@@ -145,7 +145,7 @@ public class SentryLogParser extends DBConnection {
 					                	while(cs.hasMoreTokens()) {
 					                		String c = cs.nextToken().trim();
 					                		sql = String.format("MERGE INTO TESTCASE_CHECKSUM using dual on (TGUID='%s' AND PID=%d AND PAGE_NO=%d) WHEN NOT matched then " +
-					                				"INSERT (TGUID,PID,PAGE_NO,CHECKSUM,DURATION) values ('%s',%d,%d,'%s',NUMTODSINTERVAL(2.060018, 'SECOND'))"+
+					                				"INSERT (TGUID,PID,PAGE_NO,CHECKSUM) values ('%s',%d,%d,'%s')"+
 					    							" WHEN matched then UPDATE SET CHECKSUM='%s';",
 					    							tguid, pid, page, tguid, pid, page, c, c);
 
@@ -160,7 +160,7 @@ public class SentryLogParser extends DBConnection {
 					                	}
 					                	
 					                	// delete previous records to replace them!
-					                	log.println(String.format("%d == DELETE FROM TESTCASE_CHECKSUM WHERE TGUID='%s' AND PID=%d AND PAGE_NO >= %d", 
+					                	log.println(String.format("%b == DELETE FROM TESTCASE_CHECKSUM WHERE TGUID='%s' AND PID=%d AND PAGE_NO >= %d", 
 					                			update(conn, "DELETE FROM TESTCASE_CHECKSUM WHERE TGUID=? AND PID=? AND PAGE_NO >= ?", tguid, pid, page),
 					                			tguid, pid, page));
 					                }

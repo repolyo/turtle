@@ -57,13 +57,15 @@ public class DBConnection extends LinkedList<String> {
 	}
 	
 	protected Connection getDbConn() {
+		return getDbConn (dbHost, dbUser, dbPasswd);
+	}
+	
+	protected Connection getDbConn(String host, String usr, String pass) {
 		Connection connection = null; 
 		try {
-//			connection = DriverManager.getConnection(
-//					"jdbc:oracle:thin:@emulator-win7:1521:xe", "tc_profiler", "tc_profiler");
 			connection = DriverManager.getConnection(
-					"jdbc:oracle:thin:@"+dbHost+":1521:xe", dbUser, dbPasswd);
-			System.out.format(String.format("Connected to: %s@%s DB...", dbHost, dbUser));
+					"jdbc:oracle:thin:@"+host+":1521:xe", usr, pass);
+			System.out.format(String.format("Connected to: %s@%s DB...", host, usr));
 		} catch (SQLException e) {
 			System.out.println("Connection Failed! Check output console");
 			e.printStackTrace();
@@ -132,6 +134,20 @@ public class DBConnection extends LinkedList<String> {
 			throw new SQLException(sql,  e);
 		}
     	return ret;
+	}
+	
+	protected ResultSet executeQuery(Connection conn, String sql, Object ... args) throws SQLException {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pst = conn.prepareStatement(sql);
+			sql += ": " + setParameters(pst, args);
+			
+			rs = pst.executeQuery();
+		}
+		catch (Exception e) {
+			throw new SQLException(sql,  e);
+		}
+    	return rs;
 	}
 	
 	public boolean importFile(String file) throws Exception {

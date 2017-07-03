@@ -43,7 +43,7 @@ public class FunctionLoader extends DBConnection {
 	protected static boolean busy = false;
 	
 	// [/bonus/scratch/tanch/pdls/app/main.c:631] => main
-	private static String FUNC_HIT = "^(.*)\\s[t|T]\\s+(.*)\\s+(\\/.*\\/.*\\/.*):(\\d+)";
+	private static String FUNC_HIT = "^(.*)\\s[t|T]\\s+(.*)\\s+(.*):(\\d+)";
 	
 	// 083f6194 T xiPolyPath	/usr/src/debug/graphen/0.0+gitAUTOINC+4340ab36d0-r0/git/xi/paths.c:3993
 	static Pattern func = Pattern.compile(FUNC_HIT);
@@ -91,8 +91,8 @@ public class FunctionLoader extends DBConnection {
 				PreparedStatement stmt2 = null;
 				try {
 					conn = getDbConn();
-					stmt2 = conn.prepareStatement("MERGE INTO FUNC f using dual on (source_file=? AND func_name = ?)" +
-            				" WHEN NOT matched then INSERT (SOURCE_FILE, LINE_NO, FUNC_NAME) values (?,?,?)"+
+					stmt2 = conn.prepareStatement("MERGE INTO FUNC f using dual on (fid=?)" +
+            				" WHEN NOT matched then INSERT (FID,SOURCE_FILE, LINE_NO, FUNC_NAME) values (?,?,?,?)"+
             				" WHEN matched then update set line_no = ?");
 					do {
 						String testResult = null;
@@ -117,9 +117,13 @@ public class FunctionLoader extends DBConnection {
 				                			String src_file = matcher.group(3);
 				                			Long lineNo = Long.parseLong(matcher.group(4));
 				                			String func = matcher.group(2);
-				                			src_file = src_file.replaceAll("(.*)(\\/.*\\/.*\\/.*)", "$2");
+				                			Long fid = Integer.toUnsignedLong(src_file.hashCode() + func.hashCode());
+				                			
+				                			//src_file = src_file.replaceAll("(.*)(\\/.*\\/.*\\/.*)", "$2");
 				                			if (!func.startsWith(".")) {
-					                			setParameters(stmt2, src_file, func, src_file, lineNo, func, lineNo);
+				                				// stmt2 = conn.prepareStatement("MERGE INTO FUNC f using dual on (fid=?)" +
+				                				// " WHEN NOT matched then INSERT (FID,SOURCE_FILE, LINE_NO, FUNC_NAME) values (?,?,?,?)"+
+					                			setParameters(stmt2, fid, fid, src_file, lineNo, func, lineNo);
 					                			int cnt = stmt2.executeUpdate();
 					                			if (cnt < 1) {
 					                				System.err.println("ERROR: Function inserte/update");

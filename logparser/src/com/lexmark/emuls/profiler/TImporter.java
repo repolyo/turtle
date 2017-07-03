@@ -43,7 +43,7 @@ public class TImporter extends DBConnection {
 	private static String TESTCASE = "^invoking =.*-s\\s+(.*)-e\\s+(\\w{1,10}\\b|\\s+)(.*)";
 	
 	// [/bonus/scratch/tanch/pdls/app/main.c:631] => main
-    private static String FUNC_HIT = "^\\[.*(\\/.*\\/.*\\/.*):(\\d+)\\]\\s+=>\\s+(.*)";
+    private static String FUNC_HIT = "^\\[(.*):(\\d+)\\]\\s+=>\\s+(.*)";
     
     // Page 1 checksum is: e66f977c
     private static String CHECKSUM_HIT = "^Page (\\d+)\\s+checksum is:\\s+(.*)$";
@@ -116,11 +116,11 @@ public class TImporter extends DBConnection {
 					
 					stmt4 = conn.prepareStatement("MERGE INTO TAGS using dual on (TAG_NAME=?)" +
             				" WHEN NOT matched then INSERT (TAG_NAME,TAG_DESCR) values (?,?)"+
-            				" WHEN matched then update set CREATE_DATE = ?");
+            				" WHEN matched then update set UPDATE_DATE = ?");
 					
 					stmt5 = conn.prepareStatement("MERGE INTO TESTCASE_TAGS using dual on (TAG_ID=? AND TGUID=?)" +
             				" WHEN NOT matched then INSERT (TGUID,TAG_ID) values (?,?)"+
-            				" WHEN matched then update set CREATE_DATE = ?");
+            				" WHEN matched then update set UPDATE_DATE = ?");
 					
 					do {
 						String testResult = null;
@@ -264,7 +264,7 @@ public class TImporter extends DBConnection {
 					                				Long tag_id = (Long)sqlQuery(Long.class, conn, "select TID FROM TAGS WHERE TAG_NAME=?", tag);
 					                				/* "MERGE INTO TESTCASE_TAGS using dual on (TAG_ID=? AND TGUID=?)" +
 					                        				" WHEN NOT matched then INSERT (TGUID,TAG_ID) values (?,?)"+
-					                        				" WHEN matched then update set CREATE_DATE = ?"); */
+					                        				" WHEN matched then update set UPDATE_DATE = ?"); */
 					                				setParameters(stmt5, tag_id, tguid, tguid, tag_id, new Date(System.currentTimeMillis()));
 					                				stmt5.addBatch();
 					                			}
@@ -289,7 +289,7 @@ public class TImporter extends DBConnection {
 					                				Long tag_id = (Long)sqlQuery(Long.class, conn, "select TID FROM TAGS WHERE TAG_NAME=?", pjlCmd);
 					                				/* "MERGE INTO TESTCASE_TAGS using dual on (TAG_ID=? AND TGUID=?)" +
 					                        				" WHEN NOT matched then INSERT (TGUID,TAG_ID) values (?,?)"+
-					                        				" WHEN matched then update set CREATE_DATE = ?"); */
+					                        				" WHEN matched then update set UPDATE_DATE = ?"); */
 					                				setParameters(stmt5, tag_id, tguid, tguid, tag_id, new Date(System.currentTimeMillis()));
 					                				stmt5.addBatch();
 					                			}

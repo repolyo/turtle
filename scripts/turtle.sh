@@ -189,10 +189,11 @@ runtest()
        sniff_type $f   
     fi
 
-    if [ -z "$pdl_type" ]; then
+    if [ -z "$pdl_type" -o $pdl_type == "x/PJL" ]; then
        echo "ERROR: Unable to detect emulator type: $f"
        return
     fi
+
     file_type=`basename $pdl_type`
     emul=`dirname $pdl_type`
     
