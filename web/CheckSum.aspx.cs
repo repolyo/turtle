@@ -56,7 +56,7 @@ public partial class CheckSum : System.Web.UI.Page
             platformId = String.Format("(select PID from PLATFORM where PERSONA='{0}')", persona);
         }
 
-        string sql = String.Format("SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY a.CREATE_DATE DESC) AS ROWNO, " +
+        string sql = String.Format("SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC) AS ROWNO, " +
                     "  a.TLOC, " +
                     "  b.CHECKSUM " +
                     "FROM TESTCASE a, " + "(" + generateQuerySQL(func, platformId) + ") b " +

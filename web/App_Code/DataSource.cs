@@ -48,9 +48,9 @@ namespace Samples.AspNet.ObjectDataSource
             "   WHERE " +
             "     t.HIDDEN <> 'Y' AND UPPER(t.TLOC) like UPPER('{0}')";
 
-        public const string queryAll = "SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC, a.CREATE_DATE DESC) AS ROWNO, " +
+        public const string queryAll = "SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC) AS ROWNO, " +
                 "  a.TGUID as TID, " +
-                "  a.CREATE_DATE, " +
+                "  a.UPDATE_DATE, " +
                 "  ' ' as Filter, " +
                 "  a.TNAME, " +
                 "  a.TTYPE, " +
@@ -92,9 +92,9 @@ namespace Samples.AspNet.ObjectDataSource
             }
 
             TestcaseProfileData.filter = keyword;
-            sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC NULLS LAST, a.CREATE_DATE DESC) AS ROWNO, " +
+            sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC NULLS LAST) AS ROWNO, " +
                         "  a.TGUID as TID," +
-                        //"  a.CREATE_DATE, " +
+                        //"  a.UPDATE_DATE, " +
                         "  '" + keyword + "' as Filter, " +
                         "  a.TNAME, " +
                         "  a.TTYPE, " +
@@ -260,7 +260,7 @@ namespace Samples.AspNet.ObjectDataSource
     public class TagData : DbConn
     {
         private const string query = "SELECT " +
-            "   ROW_NUMBER() OVER (ORDER BY t.CREATE_DATE DESC) AS ROWNO, " +
+            "   ROW_NUMBER() OVER (ORDER BY t.UPDATE_DATE DESC) AS ROWNO, " +
             "   t.TID, " +
             "   t.TAG_NAME, " +
             "   t.TAG_DESCR " +
