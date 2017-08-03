@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Initialize variables
-dbhost="10.194.15.241"
+dbhost="turtle.lrdc.lexmark.com"
 outpath=tests
 ret=1
 run_test=1
 
-# defaults to 4MB
-size_limit=4194304
+# defaults to 40MB
+size_limit=41943040
 config="test"
 type="*"
 dir="/pfv/.firmwaretestcebu/pdf/v1_2"
@@ -18,11 +18,14 @@ outlog=""
 emul="-"
 user="anonymous"
 passwd="."
-persona="sim-atlantis"
+persona="pdlsapp"
+input_filter="pdls"
 resolution=600
 skip_files="turtle.skip"
 sniffer=/users/chritan/bin/pdls_sniff
-if [ -f "./pdls_sniff" ]; then
+if [ -f "tests/snifftype" ]; then
+   sniffer=tests/snifftype
+elif [ -f "./pdls_sniff" ]; then
    sniffer=./pdls_sniff
 fi
 
@@ -82,7 +85,7 @@ sniff_type()
 # int exit_status
 help ()
 {
-   echo "Tanch Unified Resource Tool (tur-tool). a.k.a turtle"
+   echo "Emula[tors] tool (turtle)"
    echo "Test case document profiler/classifier and unit test automation tool.";
    echo "Input directory will be scanned and filtered based on the given key filter string.";
 
@@ -186,16 +189,22 @@ runtest()
     pdl_type=`$sniffer $f`
     if [ -z "$pdl_type" ]; then
        # determine by file extension
-       sniff_type $f   
+       sniff_type $f
     fi
 
-    if [ -z "$pdl_type" -o $pdl_type == "x/PJL" ]; then
-       echo "ERROR: Unable to detect emulator type: $f"
-       return
+    if [ $emul == "-" ]; then
+
+       if [ -z "$pdl_type" -o $pdl_type == "x/PJL" ]; then
+          echo "ERROR: Unable to detect emulator type($pdl_type): $f"
+          return
+       fi
+       emul=`dirname $pdl_type`
+       if [ $emul == "." ]; then
+          emul=$pdl_type
+       fi
     fi
 
     file_type=`basename $pdl_type`
-    emul=`dirname $pdl_type`
     
     #$exec -e `$sniffer $f` -O checksum -o $testdir/$conf/$fname- $f &> $outlog
     if [ $file_type == doc* -o $file_type == "MDOC" -o $file_type == "Office2007" -o $file_type == "ppds" ]; then
@@ -208,9 +217,13 @@ runtest()
        return
     fi
 
-    echo "emul = $emul"    
+    echo "emul = $emul $pdl_type"    
+    if [ "$emul" == "XPS" -a ! -f xpsapp/xpsapp ] ; then
+       echo "ERROR: could not find xpsapp binary"
+       return
+    fi
 
-if [ ! -x "pdls_sniff" ]; then
+if [ -x $sniffer ]; then
 
     if [ ! "${exec+defined}" ]; then
        if [ $emul == 'XPS' ]; then
@@ -224,8 +237,8 @@ else
     exec="./runpage4"
 fi
 
-    echo "ftrace.pl --pdl $emul --exec $exec --resolution $resolution --file $f --persona $persona | tee $outlog"
-    ftrace.pl --resolution $resolution --pdl $emul --exec $exec --file "$f" --persona $persona | tee $outlog
+    echo "/users/chritan/bin/ftrace.pl --pdl $emul --exec $exec --resolution $resolution --file $f --persona $persona | tee $outlog"
+    /users/chritan/bin/ftrace.pl --resolution $resolution --pdl $emul --exec $exec --file "$f" --persona $persona | tee $outlog
 
     # special case for PJL as its not part of emulator
     # we classify it manually here. 
@@ -427,7 +440,7 @@ if [ -f $blacklist_file ]; then
 fi
 
 
-for f in `find $dir -type f -name "*$type"` ; do
+for f in `find $dir -size -$size_limit -type f -name "*$type"` ; do
   loc=${f%/*}
   ext="${f##*.}"
   if [[ " ${invalid_ext[*]} " == *$ext* ]]; then
