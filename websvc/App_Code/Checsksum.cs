@@ -6,6 +6,8 @@ using System.Web.Services;
 using System.IO;
 using System.Text;
 using System.Data;
+using System.Web.Configuration;
+using System.Collections.Specialized;
 
 [WebService(Namespace = "https://turtle@lrdc.lexmark.com/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
@@ -31,25 +33,21 @@ public class Checksum : System.Web.Services.WebService
 
     protected string generateQuerySQL(string filter, string pid)
     {
+        NameValueCollection settings = WebConfigurationManager.AppSettings;
         string funcList = (null == filter) ? "%" : filter.Trim();
         funcList = funcList.Replace('*', '%').Replace('?', '_');
 
-        StringBuilder testcaseByFunc = new StringBuilder("SELECT cs.TGUID, listagg(cs.CHECKSUM, ',') " +
-            " within GROUP (ORDER BY cs.PAGE_NO) AS CHECKSUM FROM TESTCASE_CHECKSUM cs WHERE " +
-            " cs.pid = " + pid +
-            " AND cs.TGUID IN (SELECT UNIQUE t.TGUID FROM TESTCASE_FUNC t, FUNC f WHERE t.fid = f.fid " +
-            " AND UPPER(f.FUNC_NAME) IN ( ");
-
+        StringBuilder testcaseByFunc = new StringBuilder();
         string[] funcs = funcList.Split(',');
         foreach (string func in funcs)
         {
             if (func == "main") continue;
             testcaseByFunc.Append(String.Format("UPPER('{0}'), ", func));
         }
-        testcaseByFunc.Append(" '__end__' ) ) GROUP BY cs.tguid");
-
-        return testcaseByFunc.ToString();
+        
+        return String.Format(settings["query"], pid, testcaseByFunc);
     }
+
 
     [WebMethod]
     public bool SaveDocument(Byte[] docbinaryarray, string docname)
@@ -98,7 +96,7 @@ public class Checksum : System.Web.Services.WebService
         HttpResponse Response = Context.Response;
         string platformId = Config.personaId.ToString();
         int xi_thread = 1;
-
+        int hit_count = 0;
         writeResponse(Response, String.Format("# {0:F}", DateTime.Now));
         if (null == filter || filter.Length == 0)
         {
@@ -108,40 +106,62 @@ public class Checksum : System.Web.Services.WebService
 
         if (null != persona && persona.Length > 0)
         {
-            platformId = String.Format("(select PID from PLATFORM where PERSONA='{0}' AND RESOLUTION={1})", 
-                persona, dpi, xi_thread);
+            platformId = String.Format("(select PID from PLATFORM where PERSONA='{0}' AND RESOLUTION={1})",
+                persona.Replace("64", ""), // sim-color and sim64-color checksums are just the same.
+                dpi, xi_thread);
             writeResponse(Response, String.Format("# persona: {0}", persona));
         }
 
-        string sql = "SELECT ROW_NUMBER() OVER (ORDER BY a.UPDATE_DATE DESC) AS ROWNO, " +
-                    "  a.TLOC, " +
-                    "  b.CHECKSUM " +
-                    "FROM TESTCASE a, " + "(" + generateQuerySQL(func, platformId) + ") b " +
-                    "WHERE a.TGUID=b.TGUID AND a.HIDDEN <> 'Y' AND a.TLOC LIKE '%" + filter + "%'";
+        string sql = "\r\nSELECT ROW_NUMBER() OVER (ORDER BY a.TLOC ASC) AS ROWNO, " +
+                     "  a.TLOC, " +
+                     "  b.CHECKSUM " +
+                     "FROM TESTCASE a, " + "(" + generateQuerySQL(func, platformId) + ") b " +
+                     "WHERE a.TGUID=b.TGUID AND a.HIDDEN <> 'Y' AND a.TLOC LIKE '%" + filter + "%'";
 
         if ( -1 < fetch ) {
-            sql = String.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})", sql, 0, fetch);
+            sql = String.Format("\r\nSELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})", sql, 0, fetch);
         }
 
         writeResponse(Response, String.Format("# resolution: {0}", dpi));
         writeResponse(Response, String.Format("# xi threads: {0}", xi_thread));
-        
+
         try
         {
             DbConn.NewConnection(Config.getConnectionString());
             DataTable tbl = DbConn.Query(sql);
-            writeResponse(Response, String.Format("# testcases: {0}", tbl.Rows.Count));
-            if (null != tbl) foreach (DataRow row in tbl.Rows)
+            if (null != tbl)
+            {
+                hit_count = tbl.Rows.Count;
+                writeResponse(Response, String.Format("# testcases: {0}", hit_count));
+                foreach (DataRow row in tbl.Rows)
                 {
                     string checksum = row["CHECKSUM"].ToString().Trim();
                     if (checksum.Length == 0) continue;
                     string tcase = String.Format("{0} : {1}", row["TLOC"], checksum);
                     writeResponse(Response, tcase.Replace(filter, ""));
                 }
+
+                if (debug)
+                {
+                    writeResponse(Response, sql);
+                }
+            }
+        }
+        catch (EmptyResultException err)
+        {
+            writeResponse(Response, String.Format("# testcases: {0}", hit_count));
+            if (debug)
+            {
+                writeResponse(Response, FlattenException(err));
+            }
         }
         catch (Exception err)
         {
-            writeResponse(Response, String.Format("# {0}", err.GetBaseException().Message));
+            writeResponse(Response, "# Exception occured");
+            if (debug)
+            {
+                writeResponse(Response, String.Format("# Stacktrace: {0}", FlattenException(err)));
+            }
         }
         finally
         {
@@ -149,12 +169,23 @@ public class Checksum : System.Web.Services.WebService
         }
 
         //sampleText.Text = _testcases;
-        if (debug)
-        {
-            writeResponse(Response, "# -- SQL Query:  " + sql + ";\n\n\n");
-        }
-
+        
         Response.Flush();
         Response.End();
+    }
+
+    public static string FlattenException(Exception exception)
+    {
+        var stringBuilder = new StringBuilder();
+
+        while (exception != null)
+        {
+            stringBuilder.AppendLine(exception.Message);
+            stringBuilder.AppendLine(exception.StackTrace);
+
+            exception = exception.InnerException;
+        }
+
+        return stringBuilder.ToString();
     }
 }

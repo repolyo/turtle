@@ -14,7 +14,19 @@ public class DBException : System.Exception
    {
    }
 }
-    
+
+public class EmptyResultException : DBException
+{
+   public EmptyResultException(string message, params Object[] args)
+        : base(null, String.Format(message, args))
+   {
+   }
+
+   public EmptyResultException(Exception innerException, string message, params Object[] args)
+       : base(innerException, String.Format(message, args))
+   {
+   }
+}
 
 /// <summary>
 /// Summary description for DbConn
@@ -104,16 +116,25 @@ public class DbConn
         string sql = String.Format(fmt, args);
         try
         {
-            Console.WriteLine(sql);
             cmd = new OracleCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             da = new OracleDataAdapter(cmd);
             ds = new DataSet();
-            if (da.Fill(ds) > 0) {
+            if (da.Fill(ds) > 0)
+            {
                 tbl = ds.Tables[0];
             }
+            else
+            {
+                throw new EmptyResultException("No Result");
+            }
         }
-        catch (Exception e) {
+        catch (EmptyResultException e)
+        {
+            throw new EmptyResultException(e, sql, args);
+        }
+        catch (Exception e)
+        {
             throw new DBException(e, sql, args);
         }
         return tbl;
