@@ -1,20 +1,12 @@
 #!/usr/bin/env python
-################################################################################
-#
-#   Function Trace for Hydra
-#
-#   Copyright 2017 Lexmark International, Inc.
-#   All Rights Reserved. Proprietary and Confidential.
-#
-#   vgelig@lexmark.com, chritan@lexmark.com
-#   2017-07-27
-#
-################################################################################
 
-import sys, os, subprocess, re, atexit, time, threading, ftplib, argparse, traceback, shelve
+#
+#  08/04/17 18:27:26
+#  chritan@lexmark.com
 
-from optparse import OptionParser
+import sys, os, subprocess, re, atexit, time, ftplib, argparse, traceback, shelve
 import argparse
+from readobjectsymbol import ReadObjectSymbol, CLIParser
 
 #Defined variables
 #
@@ -44,13 +36,6 @@ def del_file (file):
 def to_key (key):
     return str (int(str (key), 16))
 
-def ishex(address):
-    try:
-        int(address, 16)
-        return True
-    except ValueError:
-        return False
-
 def md5sum (file):
     return shell_command ( "md5sum " +file ).split()[0].rstrip()
 
@@ -68,42 +53,15 @@ def shell_command(cmd):
        sys.exit("Error: %s" % (str(e)))
     return output
 
-def list_symbols (dict, object):
-    ret = 0
-    symbols = shell_command ("nm -l " + object)
-    if symbols:
-        func_pattern = re.compile(r'^(0?x?[0-9a-fA-F]+)\s+.*\s+([\w@.]+)\s+(.*)$')
-        lines = symbols.rstrip().split('\n')
-        for l in lines:
-            match = re.search(func_pattern, l)
-            if match:
-                ret += 1
-                key = to_key (match.group(1))
-                val = [ str(match.group(2)), str(match.group(3)) ]
-                print str (key) + "["+str(ret)+"] = " + str (val)
-                if key is None or val is None:
-                    continue
-                dict[key] = val
-
-    return ret
-
 def load_symbols (dict, bin):
     ret = 0
-    try:
-        lib_pattern = re.compile(r'(.*)=>\s(.*)(\.so|\.a) \((.*)')
-        libs = shell_command ("ldd " + bin)
-        lines = libs.rstrip().split('\n')
-        for l in lines:
-            match = re.search(lib_pattern, l)
-            if match:
-                so = (str(match.group(2)) + str(match.group(3))).rstrip()
-                ret += list_symbols (dict, so)
-            
-        ret += list_symbols (dict, bin)
-    except OSError as e:
-        print str(e)
-    finally:
-        return ret
+    readsymbol = ReadObjectSymbol()
+    symboltable = readsymbol.readobjects(bin)
+    for key in symboltable:
+        dict[key] = symboltable[key]
+        ret += 1
+
+    return ret
 
 def upload_file (host, user, passw, fpath):
     dir="turtle/data"
@@ -116,7 +74,6 @@ def upload_file (host, user, passw, fpath):
         ftp.quit()
     except ftplib.all_errors, e:
         print str(e)         
-
 
 def cleanup():
     timeout_sec = 5
@@ -192,8 +149,7 @@ def send_file (fdict, testcase, logfile):
                         continue
                     trace_dict[key] = 1
                     if fdict.has_key(key):
-                        func = fdict[key]
-                        line = "["+func[1]+"] => "+func[0]+"\n";
+                        line = fdict[key]+"\n";
                     else:
                         continue
                     myfile.write(line)
@@ -201,18 +157,9 @@ def send_file (fdict, testcase, logfile):
 
 def argsParser():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-d", "--directory",  default=None,       help="intput testcase directory.")
     parser.add_argument("-x", "--bin", default=[], type=str, nargs='+', help="executable/s (absolute path)")
-    parser.add_argument("-e", "--emul",       default=None,       help="which Emulator to run.")
-    parser.add_argument("-p", "--persona",    default=None,       help="build persona")
-    #parser.add_argument("-f", "--force",      default=None,       help="rerun - will delete previous run log file")
-    parser.add_argument("-t", "--type",       default=None,       help="document type to filter")
-    parser.add_argument("-s", "--search",     default=None,       help="input search keyword)") 
-    parser.add_argument("-l", "--size",       default=None,       help="file size limit")
     parser.add_argument("-R", "--resolution", default=None,       help="Set default resolution in dots per inch. This can be overriden by the job.")
-    parser.add_argument("-db","--database",   default=None,       help="target ftp host|ip address")
-    parser.add_argument("-pwd","--passwd",     default=None,       help="ftp user password")
-    parser.add_argument("-O", "--output-format", default=None,    help="defaults to checksum [pam|none|checksum] Ouput format)")
+    parser.add_argument("-F","--ftp",   default=None,       help="target ftp host|ip address")
     parser.add_argument("-f", "--file", default=None,    help="test file")
     return parser
 
@@ -257,9 +204,7 @@ def main():
     os.environ["SCAN_DISABLED"] = "1"
     os.environ["FAX_DISABLED"] = "1"
             
-    testRunRet =0
     atexit.register(cleanup)
-
     logfile = md5sum ( args.file ) + ".log"
         
     try:
