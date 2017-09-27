@@ -12,13 +12,12 @@
 ################################################################################
 
 import sys, os, subprocess, argparse, hashlib, re
-
+import turtleconfig as tconfig
 # TODO: move this to config file
-libsymlink      = "|awk '{print $3 \" \" $4}'"
-libfilter       = "|awk '/printservice|jobsystem|pullprint/'"
-#librmdup        = "|awk '!NF || !seen[$0]++'"
-#rmheader        = "|awk '!/..h:/'"
-unallowedtag    = 'R|r|U|u|W|w'
+libsymlink      = "|awk '{print $3 \" \" $1}'"
+libfilter       = "|awk '/" + ''.join(tconfig.lib_subsystems) + "/'"
+librmdup        = "|awk '!NF || !seen[$0]++'"
+unallowedtag    = 'R|r'
 pathallowed     = ':+[0-9]+$'
 
 
@@ -36,50 +35,67 @@ class ReadObjectSymbol:
 
     def getexecutable(self, executable):
         if "hydra" in executable:
-            exe = ['hydra', 'pagemaker/pagemaker']
+            exe = "hydra pagemaker/pagemaker"
         elif "./" in executable:
-            exe = executable[2:].split()
+            exe = executable[2:]
         else:
-            exe =   executable.split()
+            exe =   executable
         return exe
 
+    # Get the library paths
+    # Add manually defined offsets from turtleconfig.py
     def getliboffsets(self, executable):
         lddcommand  = "ldd "
-        lcommand    = lddcommand + executable + libsymlink + libfilter
-        libdict = {}
+        lcommand    = lddcommand + executable + libsymlink + libfilter + librmdup
+        libdict     = {}
+
         offset_address  = subprocess.check_output(lcommand, shell=True)
         for line in offset_address.splitlines():
             if line:
                 lib, addr = line.split()
-                libdict[lib] = str(addr[1:len(addr) -1])
+                libdict[lib] = tconfig.library_offset[addr]
         return libdict
 
+    # Read the demangled symbols from the executable and the libraries
     def readobjects(self, executable):
         symboltable = {}
-        nmcommand   = "nm -l --numeric-sort "
-        lddcommand  = "ldd "
+        nmcommand   = "nm -lC --print-file-name --numeric-sort "
         tpattern    = re.compile(unallowedtag)
         ppattern    = re.compile(pathallowed)
+        exe         = self.getexecutable(executable)
+        liboffset   = self.getliboffsets(exe)
 
-        exe = self.getexecutable(executable)
-        exe = ' '.join(exe)
+        rcommand    = ' ' + ' '.join(liboffset.keys())
+        lcommand    = nmcommand + exe + rcommand
+
         print("Reading objects from [" + exe + "]...")
-
-        lcommand = nmcommand + exe
         address_symbols = subprocess.check_output(lcommand, shell=True)
         for line in address_symbols.splitlines():
             if line:
                 words = line.split()
+                libaddr = words[0].split(':')[0]
+                libname = ''.join(libaddr.split('/')[-1:])
+                addr = words[0].split(':')[1]
                 if len(words) == 4 and words[3]:
                     tmatch = re.search(tpattern, words[1])
                     pmatch = re.search(ppattern, words[3])
-                    if tmatch or not pmatch or ".L" in words[2]:
+                    libaddr = words[0].split(':')[0]
+                    libname = ''.join(libaddr.split('/')[-1:])
+                    addr = words[0].split(':')[1]
+                    if tmatch or not pmatch or ".L" in words[2] or "::" in words[2]:
                         continue
-                    rop = words[0]
+                    if libname in tconfig.library_offset:
+                        lop = liboffset[libaddr]
+                        rop = addr
+                    else:
+                        lop = '00'
+                        rop = addr
+
                     value="[" + words[3] + "] => " + words[2]
-                    if self.ishex(rop):
-                        key=str(int(rop, 16))
+                    if self.ishex(lop) and self.ishex(rop):
+                        key=str(int(lop ,16) + int(rop, 16))
                         symboltable[key] = value
+
         return symboltable
 
     def parsesymboltable(self, symboltablefile):
@@ -103,8 +119,8 @@ class ReadObjectSymbol:
         exe     = self.getexecutable(executable)
         tee     = open(logfile, 'a')
 
-        print("Reading objects from [" + ' '.join(exe) + "]...")
-        tee.write("Reading objects from [" + ' '.join(exe) + "]...\n\n")
+        print("Reading objects from [" + exe + "]...")
+        tee.write("Reading objects from [" + exe + "]...\n\n")
 
         for key in sorted(symboltable):
             print "%s: %s" % (key, symboltable[key])

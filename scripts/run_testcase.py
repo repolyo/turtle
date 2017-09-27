@@ -7,6 +7,8 @@
 import sys, os, subprocess, re, atexit, time, ftplib, argparse, traceback, shelve
 import argparse
 from readobjectsymbol import ReadObjectSymbol, CLIParser
+from readlibtrace import LibraryMap
+import turtleconfig as tconfig
 
 #Defined variables
 #
@@ -125,6 +127,7 @@ def execute (dict, command):
 def send_file (fdict, testcase, logfile):
     trace_dict = { } # keep records to avoid duplicates
     func_addr_pattern = re.compile(r'^E (0?x?[0-9a-fA-F]+)$')
+    libmap           = LibraryMap()
     
     # simulate network stream 
     f = open('network0', 'w+')
@@ -138,6 +141,8 @@ def send_file (fdict, testcase, logfile):
     
     execute (fdict, [ hydra + " | tee " + logfile ])
 
+    offsetaddressdict = libmap.getmapaddresses()
+    libminmax         = libmap.sortoffsetaddresses(offsetaddressdict)
     with open(tracefile, 'r') as rfile:
         lines = rfile.readlines()
         with open(logfile, "a") as myfile:
@@ -148,6 +153,9 @@ def send_file (fdict, testcase, logfile):
                     if key in trace_dict:
                         continue
                     trace_dict[key] = 1
+
+                    if libminmax[0] <= key <= libminmax[-1]:
+                        key = libmap.checklibaddress(offsetaddressdict, key)
                     if fdict.has_key(key):
                         line = fdict[key]+"\n";
                     else:
@@ -161,6 +169,9 @@ def argsParser():
     parser.add_argument("-R", "--resolution", default=None,       help="Set default resolution in dots per inch. This can be overriden by the job.")
     parser.add_argument("-F","--ftp",   default=None,       help="target ftp host|ip address")
     parser.add_argument("-f", "--file", default=None,    help="test file")
+    if len(sys.argv) == 1:
+        parser.print_help()
+        sys.exit()
     return parser
 
 def main():
