@@ -139,6 +139,7 @@ public class SentryLogParser extends DBConnection {
 					                	
 					                	tguid = (String)sqlQuery(String.class, conn, "select TGUID FROM TESTCASE WHERE TLOC=?", filename.trim());
 					                	if (null == tguid) {
+					                		System.err.println ("Skipped: Couldn't find matching record for: " + filename);
 					                		continue;
 					                	}
 					                	

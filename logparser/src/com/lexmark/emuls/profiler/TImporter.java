@@ -42,8 +42,9 @@ public class TImporter extends DBConnection {
 	// invoking = ./pdls -e PDF ~/testcases/hello_lexmark.pdf
 	private static String TESTCASE = "^invoking =.*-s\\s+(.*)-e\\s+(\\w{1,10}\\b|\\s+)(.*)";
 	
-	// [/bonus/scratch/tanch/pdls/app/main.c:631] => main
-    private static String FUNC_HIT = "^\\[(.*):(\\d+)\\]\\s+=>\\s+(.*)";
+	// [/usr/src/debug/pdls/0.0+gitAUTOINC+13f3a51bac-r0/git/cfs/cfslinux_cache.c:330] => cfs_linux_cache_build_device_cache
+	// /bonus/scratch/tanch/build-bundle/poky/sim-color/tmp/work/i586-poky-linux/pdls/0.0+gitAUTOINC+13f3a51bac-r0/build/pdf/pdflex.c:396
+    private static String FUNC_HIT = "^\\[(.*)\\/(.*)\\/(.*)gitAUTOINC(.*)(git|build)\\/(.*):(\\d+)\\]\\s+=>\\s+(.*)";
     
     // Page 1 checksum is: e66f977c
     private static String CHECKSUM_HIT = "^Page (\\d+)\\s+checksum is:\\s+(.*)$";
@@ -178,7 +179,10 @@ public class TImporter extends DBConnection {
 					                	if( null != id) {
 					                		pid = id;
 					                	}
-					                	else break; // bail out! invalid testcase
+					                	else {
+					                		System.err.println("ERROR: Could not get a platform where this testcase war ran.");
+					                		break; // bail out! invalid testcase}
+					                	}
 	                				}
 					                
 					                if (0 == pid) continue;
@@ -205,10 +209,9 @@ public class TImporter extends DBConnection {
 					                	tc_stmt.close();
 					                	
 					                	// clean up old records! new records will have runtime id!!!
-					                	//System.out.println(String.format(
-					                	//		"DELETE FROM TESTCASE_FUNC WHERE TGUID='%s' AND (PID=%d OR PID IS NULL)\n", tguid, pid));
-					                	//update(conn, "DELETE FROM TESTCASE_FUNC WHERE TGUID=? AND (PID=? OR PID IS NULL)", tguid, pid);
-					                	//rid = (Long)sqlQuery(Long.class, conn, "SELECT TC_RUN_SEQ.nextval FROM dual");
+					                	System.out.println(String.format(
+					                			"DELETE FROM TESTCASE_FUNC WHERE TGUID=? AND (PID=?)", tguid, pid));
+					                	update(conn, "DELETE FROM TESTCASE_FUNC WHERE TGUID=? AND (PID=?)", tguid, pid);
 					                	continue;
 					            	}
 					                
@@ -233,9 +236,16 @@ public class TImporter extends DBConnection {
 					                matcher = re.matcher(line);
 					                if ( matcher.find() ) {
 				                		try {
-				                			String src_file = matcher.group(1);
-				                			Long lineNo = Long.parseLong(matcher.group(2));
-				                			String func = matcher.group(3);
+				            				String unit = matcher.group(2);
+				            				String src_file = String.format("%s@%s", unit, matcher.group(6));
+				                			Long lineNo = Long.parseLong(matcher.group(7));
+				                			String func = matcher.group(8);
+				                			
+//				                			System.out.println("unit: " + unit);
+//				                			System.out.println("src_file: " + src_file);
+//				                			System.out.println("lineNo: " + lineNo);
+//				                			System.out.println("func: " + func);
+				                			
 				                			setParameters(stmt2, src_file, func, src_file, lineNo, func, lineNo);
 				                			if (stmt2.executeUpdate() > 0) {
 				                				Long fid = (Long)sqlQuery(Long.class, conn, "select FID FROM FUNC WHERE SOURCE_FILE=? AND FUNC_NAME=?", src_file, func);
@@ -376,4 +386,32 @@ public class TImporter extends DBConnection {
 		}
 	    return busy;
 	}
+
+/*	
+	public static void main(String[] args) {
+		Matcher matcher = null; 
+		String [] samples = {
+			"[/usr/src/debug/pdls/0.0+gitAUTOINC+13f3a51bac-r0/git/cfs/cfslinux_cache.c:330] => cfs_linux_cache_build_device_cache",
+			"[/bonus/scratch/tanch/build-bundle/poky/sim-color/tmp/work/i586-poky-linux/pdls/0.0+gitAUTOINC+13f3a51bac-r0/build/pdf/pdflex.c:396] => xxx",
+			"[/usr/src/debug/ufst/0.0+gitAUTOINC+e5ef7b9603-r0/git/tt_if.c:9230] => ufst",
+			"[/usr/src/debug/graphen/0.0+gitAUTOINC+ab1da16696-r0/git/blockdevicepage/mulblit.c:6027] => xiTile"
+		};
+		for (int i=0; i < samples.length; i++) {
+			String line = samples[i];
+			matcher = Pattern.compile("^\\[(.*)\\/(.*)\\/(.*)gitAUTOINC(.*)(git|build)\\/(.*):(\\d+)\\]\\s+=>\\s+(.*)").matcher(line);
+			if ( matcher.find() ) {
+				String unit = matcher.group(2);
+				String src_file = String.format("%s@%s", unit, matcher.group(6));
+    			Long lineNo = Long.parseLong(matcher.group(7));
+    			String func = matcher.group(8);
+    			
+    			System.out.println("unit: " + unit);
+    			System.out.println("src_file: " + src_file);
+    			System.out.println("lineNo: " + lineNo);
+    			System.out.println("func: " + func);
+			}
+        }
+	}
+*/
+
 }
