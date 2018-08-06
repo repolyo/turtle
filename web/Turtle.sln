@@ -1,18 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Turtle", ".", "{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "web", ".", "{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{6996A423-3D3F-4112-8437-AA0D701BA82C}|TLib.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Turtle"
-		Debug.AspNetCompiler.PhysicalPath = "..\Turtle\"
+		Debug.AspNetCompiler.PhysicalPath = "..\web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Turtle\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/Turtle"
-		Release.AspNetCompiler.PhysicalPath = "..\Turtle\"
+		Release.AspNetCompiler.PhysicalPath = "..\web\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Turtle\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
@@ -22,13 +23,38 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Turtle", ".", "{2C6BDCC8-58
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLib", "..\TLib\TLib.csproj", "{6996A423-3D3F-4112-8437-AA0D701BA82C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2C6BDCC8-5868-41FC-AB8D-07EC6CF2CF6C}.Release|x86.ActiveCfg = Debug|Any CPU
+		{6996A423-3D3F-4112-8437-AA0D701BA82C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6996A423-3D3F-4112-8437-AA0D701BA82C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6996A423-3D3F-4112-8437-AA0D701BA82C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6996A423-3D3F-4112-8437-AA0D701BA82C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6996A423-3D3F-4112-8437-AA0D701BA82C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6996A423-3D3F-4112-8437-AA0D701BA82C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6996A423-3D3F-4112-8437-AA0D701BA82C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6996A423-3D3F-4112-8437-AA0D701BA82C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6996A423-3D3F-4112-8437-AA0D701BA82C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6996A423-3D3F-4112-8437-AA0D701BA82C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
