@@ -23,16 +23,16 @@ using TLib;
 /// </summary>
 public class PLATFORM : AbstractOracleDBTable<PLATFORM.Row>
 {
-    internal virtual void InitVars()
+    protected override void InitVars()
     {
-        this.pid = AddColumn("pid", typeof(int)); // PID	NUMBER(38,0)
-        this.persona = AddColumn("persona", typeof(string)); // PERSONA	VARCHAR2(255 BYTE)
-        this.resolution = AddColumn("resolution", typeof(int)); // RESOLUTION	NUMBER(38,0)
+        this.PID = AddColumn("PID", typeof(int)); // PID	NUMBER(38,0)
+        this.PERSONA = AddColumn("PERSONA", typeof(string)); // PERSONA	VARCHAR2(255 BYTE)
+        this.RESOLUTION = AddColumn("RESOLUTION", typeof(int)); // RESOLUTION	NUMBER(38,0)
     }
 
     public override string[] filters()
     {
-        return new string[] { "pid", "persona", "resolution" };
+        return new string[] { "PID", "PERSONA", "RESOLUTION" };
     }
 
     public new Row NewRow()
@@ -49,18 +49,18 @@ public class PLATFORM : AbstractOracleDBTable<PLATFORM.Row>
     public int lookup_pid(string persona, int resolution)
     {
         Row platform = ((Row)(base.NewRow()));
-        platform.persona = persona;
-        platform.resolution = resolution;
+        platform.PERSONA = persona;
+        platform.RESOLUTION = resolution;
 
-        platform = find(platform);
+        platform = findSingleResult(platform);
         if (null != platform)
         {
-            return platform.pid;
+            return platform.PID;
         }
         return -1;
     }
 
-    public class Row : DataRow
+    public class Row : AbstractDataRow
     {
         private PLATFORM table;
         internal Row(DataRowBuilder rb) : base(rb)
@@ -69,27 +69,27 @@ public class PLATFORM : AbstractOracleDBTable<PLATFORM.Row>
         }
 
         #region Properties
-        public int pid
+        public int PID
         {
-            get { return (int)this[table.pid]; }
-            set { this[table.pid] = value; }
+            get { return Int32.Parse (this[table.PID].ToString()); }
+            set { this[table.PID] = value; }
         }
-        public string persona
+        public string PERSONA
         {
-            get { return this[table.persona].ToString(); }
-            set { this[table.persona] = value; }
+            get { return this[table.PERSONA].ToString(); }
+            set { this[table.PERSONA] = value; }
         }
-        public int resolution
+        public int RESOLUTION
         {
-            get { return (int)this[table.resolution]; }
-            set { this[table.resolution] = value; }
+            get { return Int32.Parse(this[table.RESOLUTION].ToString()); }
+            set { this[table.RESOLUTION] = value; }
         }
         #endregion
     }
 
     #region Class Members
-    DataColumn pid;       // TGUID	VARCHAR2(32 BYTE)
-    DataColumn persona;
-    DataColumn resolution;
+    DataColumn PID;       // TGUID	VARCHAR2(32 BYTE)
+    DataColumn PERSONA;
+    DataColumn RESOLUTION;
     #endregion
 }

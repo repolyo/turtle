@@ -18,12 +18,12 @@ using TLib;
 /// </summary>
 public class FUNC : AbstractOracleDBTable<FUNC.Row>
 {
-    internal virtual void InitVars()
+    protected override void InitVars()
     {
-        this.function_id = AddColumn("FID", typeof(int));
-        this.source_file = AddColumn("SOURCE_FILE", typeof(int));
-        this.line_no = AddColumn("LINE_NO", typeof(int));
-        this.function_name = AddColumn("FUNC_NAME", typeof(string));
+        this.FID = AddColumn("FID", typeof(int));
+        this.SOURCE_FILE = AddColumn("SOURCE_FILE", typeof(int));
+        this.LINE_NO = AddColumn("LINE_NO", typeof(int));
+        this.FUNC_NAME = AddColumn("FUNC_NAME", typeof(string));
     }
 
     public override string[] filters()
@@ -47,33 +47,33 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
         }
 
         #region Properties
-        public string function_name
+        public string FUNC_NAME
         {
-            get { return this[table.function_name].ToString(); }
-            set { this[table.function_name] = value; }
+            get { return this[table.FUNC_NAME].ToString(); }
+            set { this[table.FUNC_NAME] = value; }
         }
-        public int line_no
+        public int LINE_NO
         {
-            get { return (int)this[table.line_no]; }
-            set { this[table.line_no] = value; }
+            get { return Int32.Parse (this[table.LINE_NO].ToString()); }
+            set { this[table.LINE_NO] = value; }
         }
-        public int function_id
+        public int FID
         {
-            get { return (int)this[table.function_id]; }
-            set { this[table.function_id] = value; }
+            get { return Int32.Parse (this[table.FID].ToString()); }
+            set { this[table.FID] = value; }
         }
-        public string source_file
+        public string SOURCE_FILE
         {
-            get { return this[table.source_file].ToString(); }
-            set { this[table.source_file] = value; }
+            get { return this[table.SOURCE_FILE].ToString(); }
+            set { this[table.SOURCE_FILE] = value; }
         }
         #endregion
     }
 
     #region Class Members
-    DataColumn function_name;
-    DataColumn line_no;
-    DataColumn function_id;
-    DataColumn source_file;
+    DataColumn FUNC_NAME;
+    DataColumn LINE_NO;
+    DataColumn FID;
+    DataColumn SOURCE_FILE;
     #endregion
 }

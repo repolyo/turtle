@@ -14,7 +14,7 @@ using TLib;
 public class OraclConnectionPool : AbstractPool<OraclConnectionPool.OracleDBConn>
 {
     public OraclConnectionPool()
-        : base(2)
+        : base(5)
     {
     }
 

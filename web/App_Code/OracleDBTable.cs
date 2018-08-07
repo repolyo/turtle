@@ -15,7 +15,7 @@ using System.Data.Common;
 public abstract class AbstractOracleDBTable<T> : AbstractTableDB<T>
 {
     private static string url = Config.getConnectionString();
-    private static OraclConnectionPool.OracleDBConn connection = null;
+    internal static OraclConnectionPool.OracleDBConn connection = null;
 
     protected AbstractOracleDBTable() : base() 
     {
@@ -56,7 +56,7 @@ public abstract class AbstractOracleDBTable<T> : AbstractTableDB<T>
         public OracleDbCommand(OracleCommand cmd) : base(cmd) { }
         ~OracleDbCommand()
         {
-            OraclConnectionPool.GetInstance().checkIn((OraclConnectionPool.OracleDBConn)this.Connection);
+            OraclConnectionPool.GetInstance().checkIn(connection);
             System.Console.WriteLine("In OracleDbCommand's destructor.");
         }
 

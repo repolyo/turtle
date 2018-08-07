@@ -17,12 +17,12 @@ using TLib;
 /// </summary>
 public class TESTCASE_FUNC : AbstractOracleDBTable<TESTCASE_FUNC.Row>
 {
-    internal virtual void InitVars()
+    protected override void InitVars()
     {
-        this.tguid = AddColumn("TGUID", typeof(string));
-        this.sequence_no = AddColumn("SEQ", typeof(int));
-        this.function_id = AddColumn("FID", typeof(int));
-        this.platform_id = AddColumn("PID", typeof(int));
+        this.TGUID = AddColumn("TGUID", typeof(string));
+        this.SEQ = AddColumn("SEQ", typeof(int));
+        this.FID = AddColumn("FID", typeof(int));
+        this.PID = AddColumn("PID", typeof(int));
     }
 
     public override string[] filters()
@@ -46,33 +46,33 @@ public class TESTCASE_FUNC : AbstractOracleDBTable<TESTCASE_FUNC.Row>
         }
 
         #region Properties
-        public string tguid
+        public string TGUID
         {
-            get { return this[table.tguid].ToString(); }
-            set { this[table.tguid] = value; }
+            get { return this[table.TGUID].ToString(); }
+            set { this[table.TGUID] = value; }
         }
-        public int sequence_no
+        public int SEQ
         {
-            get { return (int)this[table.sequence_no]; }
-            set { this[table.sequence_no] = value; }
+            get { return Int32.Parse (this[table.SEQ].ToString()); }
+            set { this[table.SEQ] = value; }
         }
-        public int function_id
+        public int FID
         {
-            get { return (int)this[table.function_id]; }
-            set { this[table.function_id] = value; }
+            get { return Int32.Parse (this[table.FID].ToString()); }
+            set { this[table.FID] = value; }
         }
-        public int platform_id
+        public int PID
         {
-            get { return (int)this[table.platform_id]; }
-            set { this[table.platform_id] = value; }
+            get { return Int32.Parse (this[table.PID].ToString()); }
+            set { this[table.PID] = value; }
         }
         #endregion
     }
 
     #region Class Members
-    DataColumn tguid;
-    DataColumn sequence_no;
-    DataColumn function_id;
-    DataColumn platform_id;
+    DataColumn TGUID;
+    DataColumn SEQ;
+    DataColumn FID;
+    DataColumn PID;
     #endregion
 }

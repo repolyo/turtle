@@ -40,6 +40,7 @@ namespace TLib
                     ret = Convert.ToInt16(value);
                     break;
                 case TypeCode.Int32:
+                case TypeCode.Decimal:
                     ret = Convert.ToInt32(value);
                     break;
                 case TypeCode.Int64:

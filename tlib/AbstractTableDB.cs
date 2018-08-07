@@ -11,7 +11,6 @@ using System.Reflection;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
-using MeridioTools;
 using TLib;
 using TLib.Interfaces;
 using TLib.Container;
@@ -63,11 +62,11 @@ namespace Tlib.Dao
             this.TableName = this.GetType().Name;
             
             // call this prior to initialize, we will load DB columns in real time.
-            //if (!string.IsNullOrEmpty(this.TableName))
-            //{
-            //    this.findAll(string.Format("SELECT * FROM {0} WHERE 1<>1",
-            //        this.TableName));
-            //}
+            if (!string.IsNullOrEmpty(this.TableName))
+            {
+                this.findAll(string.Format("SELECT * FROM {0} WHERE 1<>1",
+                    this.TableName));
+            }
 
             this.initialize();
         }
@@ -79,7 +78,7 @@ namespace Tlib.Dao
             this.PrimaryKey = primaryKeys.ToArray();
         }
 
-        internal virtual void InitVars() { /*throw new NotImplementedException();*/  }
+        protected virtual void InitVars() { /*throw new NotImplementedException();*/  }
 
         List<DataColumn> primaryKeys = new List<DataColumn>();
         protected DataColumn AddColumn(string name, Type type, bool primary = false)
@@ -236,6 +235,18 @@ namespace Tlib.Dao
             {
                 return AbstractTableDB<object>.Format(dc.ColumnName, value);
             }
+
+            public string FormattedColumnValuePair(string column)
+            {
+                DataColumn field = this.Find(delegate(DataColumn dc)
+                {
+                    return dc.ColumnName == column;
+                });
+                if (field != null) {
+                    return Format(field, field.DefaultValue);
+                }
+                return string.Empty;
+            }
         }
 
         public static string Format(string col, object value)
@@ -269,6 +280,8 @@ namespace Tlib.Dao
                     object val = getFieldValue(col, filter);
 
                     if (null == val) continue;
+
+                    col.DefaultValue = val;
                     cols.Add(col);
                 }
             }
@@ -309,6 +322,23 @@ namespace Tlib.Dao
             DateTime.TryParseExact(date.ToString(), "dd:MM:yyyy HH:mm:ss", null, DateTimeStyles.None, out parsedDate);
 
             return parsedDate;
+        }
+
+        protected object getFieldValue(string field, E obj)
+        {
+            object value = obj;
+            value = null;
+
+            foreach (DataColumn dc in this.Columns)
+            {
+                if (dc.ColumnName == field)
+                {
+                    value = getFieldValue(dc, obj);
+                    break;
+                }
+            }
+
+            return value;
         }
 
         protected object getFieldValue(DataColumn field, E obj)
@@ -500,6 +530,46 @@ namespace Tlib.Dao
                         //Console.WriteLine("command.Parameters({0}, {1});", key, value);
                         cmd.AddWithValue(string.Format("@{0}", key), value);
                     }
+                }
+
+                if (1 != cmd.ExecuteNonQuery())
+                {
+                    throw new DBInsertException<E>(sql);
+                }
+            }
+            return rec;
+        }
+
+        public E merge(E rec)
+        {
+            string sql = string.Empty;
+            string whereSQL = string.Empty;
+            TableColumns cols = this.columns(rec);
+            List<DataColumn> where = getDataColumns(this.filters());
+            cols.Remove("OBJECT");
+
+            foreach (DataColumn field in where)
+            {
+                object value = getFieldValue(field, rec);
+                if (null != value)
+                {
+                    whereSQL += string.Format("{0},", TableColumns.Format(field, value));
+                }
+            }
+
+            sql = string.Format("MERGE INTO {0} USING DUAL ON ({1}) WHEN NOT matched THEN INSERT ({2}) VALUES ({3}) WHEN matched then UPDATE SET {4}",
+                this.TableName,
+                whereSQL,
+                cols.ToString(),
+                cols.Flatten("@", string.Empty),
+                cols.FormattedColumnValuePair ("CHECKSUM"));
+
+            //Console.WriteLine("Executing: {0}", sql);
+            using (IDbCommand2 cmd = newCommand(sql))
+            {
+                foreach (DataColumn c in cols)
+                {
+                    cmd.AddWithValue(string.Format("@{0}", c.ColumnName), c.DefaultValue);
                 }
 
                 if (1 != cmd.ExecuteNonQuery())

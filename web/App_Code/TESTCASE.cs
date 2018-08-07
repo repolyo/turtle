@@ -12,20 +12,20 @@ using TLib;
 /// </summary>
 public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
 {
-    internal virtual void InitVars()
+    protected override void InitVars()
     {
-        this.tguid = AddColumn("tguid", typeof(string)); // TGUID	VARCHAR2(32 BYTE)
-        this.name = AddColumn("tname", typeof(string)); // TNAME	VARCHAR2(255 BYTE)
-        this.location = AddColumn("tloc", typeof(string)); // TLOC	VARCHAR2(255 BYTE)
-        this.type = AddColumn("ttype", typeof(string)); // TTYPE	VARCHAR2(20 BYTE)
-        this.size = AddColumn("tsize", typeof(int)); // TSIZE	NUMBER
-        this.hidden = AddColumn("hidden", typeof(bool)); // HIDDEN	CHAR(1 BYTE)
+        this.TGUID = AddColumn("TGUID", typeof(string)); // TGUID	VARCHAR2(32 BYTE)
+        this.TNAME = AddColumn("TNAME", typeof(string)); // TNAME	VARCHAR2(255 BYTE)
+        this.TLOC = AddColumn("TLOC", typeof(string)); // TLOC	VARCHAR2(255 BYTE)
+        this.TTYPE = AddColumn("TTYPE", typeof(string)); // TTYPE	VARCHAR2(20 BYTE)
+        this.TSIZE = AddColumn("TSIZE", typeof(int)); // TSIZE	NUMBER
+        this.HIDDEN = AddColumn("HIDDEN", typeof(bool)); // HIDDEN	CHAR(1 BYTE)
 // UPDATE_DATE	TIMESTAMP(6)
     }
 
     public override string[] filters()
     {
-        return new string[] { "tguid", "page_no" };
+        return new string[] { "TLOC" };
     }
 
     public new Row NewRow()
@@ -39,6 +39,20 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         return new Row(builder);
     }
 
+    public static string lookup_tguid(string testcase)
+    {
+        TESTCASE tbl = new TESTCASE();
+        Row row = tbl.NewRow();
+        row.TLOC = testcase;
+
+        row = tbl.findSingleResult(row);
+        if (null != row)
+        {
+            return row.TGUID;
+        }
+        return string.Empty;
+    }
+
     public class Row : DataRow
     {
         private TESTCASE table;
@@ -49,40 +63,40 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         }
 
         #region Properties
-        public string tguid
+        public string TGUID
         {
-            get { return this[table.tguid].ToString(); }
-            set { this[table.tguid] = value; }
+            get { return this[table.TGUID].ToString(); }
+            set { this[table.TGUID] = value; }
         }
-        public int name
+        public int TNAME
         {
-            get { return (int)this[table.name]; }
-            set { this[table.name] = value; }
+            get { return (int)this[table.TNAME]; }
+            set { this[table.TNAME] = value; }
         }
-        public string location
+        public string TLOC
         {
-            get { return this[table.location].ToString(); }
-            set { this[table.location] = value; }
+            get { return this[table.TLOC].ToString(); }
+            set { this[table.TLOC] = value; }
         }
-        public string type
+        public string TTYPE
         {
-            get { return this[table.type].ToString(); }
-            set { this[table.type] = value; }
+            get { return this[table.TTYPE].ToString(); }
+            set { this[table.TTYPE] = value; }
         }
-        public int size
+        public int TSIZE
         {
-            get { return (int)this[table.size]; }
-            set { this[table.size] = value; }
+            get { return Int32.Parse (this[table.TSIZE].ToString()); }
+            set { this[table.TSIZE] = value; }
         }
         #endregion
     }
 
     #region Class Members
-    DataColumn tguid;       // TGUID	VARCHAR2(32 BYTE)
-    DataColumn name;
-    DataColumn location;
-    DataColumn type;
-    DataColumn size;
-    DataColumn hidden;
+    DataColumn TGUID;       // TGUID	VARCHAR2(32 BYTE)
+    DataColumn TNAME;
+    DataColumn TLOC;
+    DataColumn TTYPE;
+    DataColumn TSIZE;
+    DataColumn HIDDEN;
     #endregion
 }

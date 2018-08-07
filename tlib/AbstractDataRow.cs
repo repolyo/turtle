@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-namespace MeridioTools.dao
+namespace Tlib.Dao
 {
     public abstract class AbstractDataRow : DataRow
     {
