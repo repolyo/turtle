@@ -515,9 +515,15 @@ namespace Tlib.Dao
             {
                 this.Clear();
                 this.Load(cmd.ExecuteReader());
-                if (this.Rows.Count == 1)
+                switch (this.Rows.Count)
                 {
-                    ret = this.Rows[0];
+                    case 0:
+                        throw new NotFoundException<E>(sql);
+                    case 1:
+                        ret = this.Rows[0];
+                        break;
+                    default:
+                        throw new MultipleMatchException<E>(sql);
                 }
             }
             return (E)ret;
@@ -573,14 +579,8 @@ namespace Tlib.Dao
                 cols.ValuesToString(),
                 cols.FormattedColumnValuePair ("CHECKSUM"));
 
-            Console.WriteLine("Executing: {0}", sql);
             using (IDbCommand2 cmd = newCommand(sql))
             {
-                foreach (DataColumn c in cols)
-                {
-                    cmd.AddWithValue(string.Format("@{0}", c.ColumnName), c.DefaultValue);
-                }
-
                 if (1 != cmd.ExecuteNonQuery())
                 {
                     throw new DBInsertException<E>(sql);

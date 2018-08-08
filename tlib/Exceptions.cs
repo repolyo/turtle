@@ -93,6 +93,14 @@ namespace TLib
             public NotFoundException(Exception e, string err, params object[] args) : base(e, err, args) { }
         }
 
+        public class MultipleMatchException<T> : AbstractException<T>
+        {
+            public MultipleMatchException() : base() { }
+            public MultipleMatchException(Exception e) : base(e) { }
+            public MultipleMatchException(string err, params object[] args) : base(err, args) { }
+            public MultipleMatchException(Exception e, string err, params object[] args) : base(e, err, args) { }
+        }
+
         internal class DateException : Exception
         {
             public DateException(string err, params object[] args) : base(string.Format(err, args)) { } 

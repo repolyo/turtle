@@ -32,7 +32,7 @@ public class PLATFORM : AbstractOracleDBTable<PLATFORM.Row>
 
     public override string[] filters()
     {
-        return new string[] { "PID", "PERSONA", "RESOLUTION" };
+        return new string[] { "PERSONA", "RESOLUTION" };
     }
 
     public new Row NewRow()
@@ -71,17 +71,17 @@ public class PLATFORM : AbstractOracleDBTable<PLATFORM.Row>
         #region Properties
         public int PID
         {
-            get { return Int32.Parse (this[table.PID].ToString()); }
+            get { return ToInteger(table.PID); }
             set { this[table.PID] = value; }
         }
         public string PERSONA
         {
-            get { return this[table.PERSONA].ToString(); }
+            get { return ToString(table.PERSONA); }
             set { this[table.PERSONA] = value; }
         }
         public int RESOLUTION
         {
-            get { return Int32.Parse(this[table.RESOLUTION].ToString()); }
+            get { return ToInteger(table.RESOLUTION); }
             set { this[table.RESOLUTION] = value; }
         }
         #endregion

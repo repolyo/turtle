@@ -52,6 +52,15 @@ public partial class _Default : System.Web.UI.Page
         File.WriteAllLines(path, lines);
     }
 
+    protected void AjaxFileUpload1_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
+    {
+        TESTCASE_CHECKSUM tbl = new TESTCASE_CHECKSUM();
+        string filePath = "C:/Users/chritan/Documents/turtle/output/" + e.FileName;
+        AjaxFileUpload1.SaveAs(filePath);
+
+        tbl.read_checksums(filePath);
+    }
+
     protected void ExportToExcel(object sender, EventArgs e)
     {
         try

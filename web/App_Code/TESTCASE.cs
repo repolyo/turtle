@@ -53,7 +53,7 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         return string.Empty;
     }
 
-    public class Row : DataRow
+    public class Row : AbstractDataRow
     {
         private TESTCASE table;
         internal Row(DataRowBuilder rb)
@@ -65,28 +65,33 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         #region Properties
         public string TGUID
         {
-            get { return this[table.TGUID].ToString(); }
+            get { return ToString(table.TGUID); }
             set { this[table.TGUID] = value; }
         }
-        public int TNAME
+        public string TNAME
         {
-            get { return (int)this[table.TNAME]; }
+            get { return ToString(table.TNAME); }
             set { this[table.TNAME] = value; }
         }
         public string TLOC
         {
-            get { return this[table.TLOC].ToString(); }
+            get { return ToString(table.TLOC); }
             set { this[table.TLOC] = value; }
         }
         public string TTYPE
         {
-            get { return this[table.TTYPE].ToString(); }
+            get { return ToString(table.TTYPE); }
             set { this[table.TTYPE] = value; }
         }
         public int TSIZE
         {
-            get { return Int32.Parse (this[table.TSIZE].ToString()); }
+            get { return ToInteger(table.TSIZE); }
             set { this[table.TSIZE] = value; }
+        }
+        public bool HIDDEN
+        {
+            get { return ToBoolean(table.HIDDEN); }
+            set { this[table.HIDDEN] = value; }
         }
         #endregion
     }

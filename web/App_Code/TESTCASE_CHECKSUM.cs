@@ -52,37 +52,44 @@ public class TESTCASE_CHECKSUM : AbstractOracleDBTable<TESTCASE_CHECKSUM.Row>
         string persona = "sim-color";
 
         StreamReader stream = new StreamReader(filename);
-        do
+        try
         {
-            line = stream.ReadLine().Trim();
-            // # location : /m/tcases/futures/next/wip/
-            MatchCollection matches = Regex.Matches(line, "# location : (?<location>.*)$");
-            foreach (Match match in matches)
+            do
             {
-                location = match.Groups["location"].Value;
-                break;
-            }
+                line = stream.ReadLine().Trim();
+                // # location : /m/tcases/futures/next/wip/
+                MatchCollection matches = Regex.Matches(line, "# location : (?<location>.*)$");
+                foreach (Match match in matches)
+                {
+                    location = match.Groups["location"].Value;
+                    break;
+                }
 
-            matches = Regex.Matches(line, "# persona : (?<persona>.*)$");
-            foreach (Match match in matches)
-            {
-                persona = match.Groups["persona"].Value;
-                break;
-            }
+                matches = Regex.Matches(line, "# persona : (?<persona>.*)$");
+                foreach (Match match in matches)
+                {
+                    persona = match.Groups["persona"].Value;
+                    break;
+                }
 
-            matches = Regex.Matches(line, "# resolution : (?<resolution>.*)$");
-            if (1 == matches.Count) 
-            {
-                resolution = Int32.Parse(matches[0].Groups["resolution"].Value);
-                break;
-            }
+                matches = Regex.Matches(line, "# resolution : (?<resolution>.*)$");
+                if (1 == matches.Count)
+                {
+                    resolution = Int32.Parse(matches[0].Groups["resolution"].Value);
+                    break;
+                }
 
-        } while (line == string.Empty || line.StartsWith("#"));
+            } while (line == string.Empty || line.StartsWith("#"));
 
-        PLATFORM platform_table = new PLATFORM();
-        PID = platform_table.lookup_pid(persona, resolution);
-        
-        return update_checksums(PID, location, stream);
+            PLATFORM platform_table = new PLATFORM();
+            PID = platform_table.lookup_pid(persona, resolution);
+
+            return update_checksums(PID, location, stream);
+        }
+        finally
+        {
+            stream.Close();
+        }
     }
 
     /// <summary>
@@ -101,9 +108,10 @@ public class TESTCASE_CHECKSUM : AbstractOracleDBTable<TESTCASE_CHECKSUM.Row>
 
         do
         {
-            line = stream.ReadLine().Trim();
+            line = stream.ReadLine();
             if (line != null)
             {
+                line = line.Trim();
                 if (line.StartsWith("#"))
                 {
                     Console.WriteLine("{0}\n", line);
@@ -120,25 +128,13 @@ public class TESTCASE_CHECKSUM : AbstractOracleDBTable<TESTCASE_CHECKSUM.Row>
                     MatchCollection matches = Regex.Matches(checksums, pattern);
                     foreach (Match match in matches)
                     {
-                        try
-                        {
-                            TESTCASE_CHECKSUM.Row rec = NewRow();
-                            rec.TGUID = tguid;
-                            rec.PAGE_NO = match.Index + 1;
-                            rec.PID = PID;
-                            rec.CHECKSUM = match.Value;
+                        TESTCASE_CHECKSUM.Row rec = NewRow();
+                        rec.TGUID = tguid;
+                        rec.PAGE_NO = match.Index + 1;
+                        rec.PID = PID;
+                        rec.CHECKSUM = match.Value;
 
-                            merge(rec);
-
-                            Console.WriteLine("Match: {0} at index [{1}, {2})",
-                                match.Value,
-                                match.Index,
-                                match.Index + match.Length);
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("Error: {0}\n", ex.ToString ());
-                        }
+                        merge(rec);
                     }
                 }
             }
@@ -174,7 +170,7 @@ public class TESTCASE_CHECKSUM : AbstractOracleDBTable<TESTCASE_CHECKSUM.Row>
     //    return updated;
     //}
 
-    public class Row : DataRow
+    public class Row : AbstractDataRow
     {
         private TESTCASE_CHECKSUM table;
         internal Row(DataRowBuilder rb) : base(rb)
@@ -185,22 +181,22 @@ public class TESTCASE_CHECKSUM : AbstractOracleDBTable<TESTCASE_CHECKSUM.Row>
         #region Properties
         public string TGUID
         {
-            get { return this[table.TGUID].ToString (); }
+            get { return ToString (table.TGUID); }
             set { this[table.TGUID] = value; }
         }
         public int PAGE_NO
         {
-            get { return Int32.Parse (this[table.PAGE_NO].ToString()); }
+            get { return ToInteger(table.PAGE_NO); }
             set { this[table.PAGE_NO] = value; }
         }
         public int PID
         {
-            get { return Int32.Parse (this[table.PID].ToString()); }
+            get { return ToInteger(table.PID); }
             set { this[table.PID] = value; }
         }
         public string CHECKSUM
         {
-            get { return this[table.CHECKSUM].ToString (); }
+            get { return ToString(table.CHECKSUM); }
             set { this[table.CHECKSUM] = value; }
         }
         #endregion
@@ -213,9 +209,3 @@ public class TESTCASE_CHECKSUM : AbstractOracleDBTable<TESTCASE_CHECKSUM.Row>
     DataColumn CHECKSUM;    // VARCHAR2(10 BYTE)
     #endregion
 }
-
-    //protected string TGUID;
-    //protected int PAGE_NO;
-    //protected string CHECKSUM;
-    //protected int PID;
-    //OracleConnection connection;

@@ -17,5 +17,26 @@ namespace Tlib.Dao
         {
             return this.IsNull(col) ? null : this[col];
         }
+
+        protected int ToInteger(DataColumn col)
+        {
+            if (this.IsNull(col))
+                return 0;
+
+            return Int32.Parse(this[col].ToString());
+        }
+
+        protected bool ToBoolean(DataColumn col)
+        {
+            if (this.IsNull(col))
+                return false;
+
+            return Boolean.Parse(this[col].ToString());
+        }
+
+        protected string ToString(DataColumn col)
+        {
+            return this.IsNull(col) ? null : this[col].ToString();
+        }
     }
 }
