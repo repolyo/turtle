@@ -209,6 +209,25 @@ namespace Tlib.Dao
                 return trimSQL(str);
             }
 
+            public string ValuesToString()
+            {
+                String str = string.Empty;
+                foreach (DataColumn col in this)
+                {
+                    object value = col.DefaultValue;
+                    if (value is string)
+                    {
+                        str += string.Format("'{0}', ", value.ToString());
+                    }
+                    else
+                    {
+                        str += string.Format("{0}, ", value);
+                    }
+                }
+
+                return trimSQL(str);
+            }
+
             public string Flatten(string prefix, string suffix)
             {
                 String str = string.Empty;
@@ -543,28 +562,18 @@ namespace Tlib.Dao
         public E merge(E rec)
         {
             string sql = string.Empty;
-            string whereSQL = string.Empty;
             TableColumns cols = this.columns(rec);
             List<DataColumn> where = getDataColumns(this.filters());
             cols.Remove("OBJECT");
 
-            foreach (DataColumn field in where)
-            {
-                object value = getFieldValue(field, rec);
-                if (null != value)
-                {
-                    whereSQL += string.Format("{0},", TableColumns.Format(field, value));
-                }
-            }
-
             sql = string.Format("MERGE INTO {0} USING DUAL ON ({1}) WHEN NOT matched THEN INSERT ({2}) VALUES ({3}) WHEN matched then UPDATE SET {4}",
                 this.TableName,
-                whereSQL,
+                whereSQL(rec, where),
                 cols.ToString(),
-                cols.Flatten("@", string.Empty),
+                cols.ValuesToString(),
                 cols.FormattedColumnValuePair ("CHECKSUM"));
 
-            //Console.WriteLine("Executing: {0}", sql);
+            Console.WriteLine("Executing: {0}", sql);
             using (IDbCommand2 cmd = newCommand(sql))
             {
                 foreach (DataColumn c in cols)

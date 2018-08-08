@@ -94,11 +94,11 @@ public class TESTCASE_CHECKSUM : AbstractOracleDBTable<TESTCASE_CHECKSUM.Row>
     /// <param name="PID"></param>
     /// <param name="stream"></param>
     /// <returns></returns>
-    public bool update_checksums(Decimal PID, string location, StreamReader stream)
+    public bool update_checksums(int PID, string location, StreamReader stream)
     {
         string pattern = @"([a-z\d]+)";
         string line;
-        int PAGE_NO = 1;
+
         do
         {
             line = stream.ReadLine().Trim();
@@ -120,11 +120,25 @@ public class TESTCASE_CHECKSUM : AbstractOracleDBTable<TESTCASE_CHECKSUM.Row>
                     MatchCollection matches = Regex.Matches(checksums, pattern);
                     foreach (Match match in matches)
                     {
-                        PAGE_NO++;
-                        Console.WriteLine("Match: {0} at index [{1}, {2})",
-                            match.Value,
-                            match.Index,
-                            match.Index + match.Length);
+                        try
+                        {
+                            TESTCASE_CHECKSUM.Row rec = NewRow();
+                            rec.TGUID = tguid;
+                            rec.PAGE_NO = match.Index + 1;
+                            rec.PID = PID;
+                            rec.CHECKSUM = match.Value;
+
+                            merge(rec);
+
+                            Console.WriteLine("Match: {0} at index [{1}, {2})",
+                                match.Value,
+                                match.Index,
+                                match.Index + match.Length);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error: {0}\n", ex.ToString ());
+                        }
                     }
                 }
             }
