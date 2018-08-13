@@ -1,0 +1,123 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+        }
+        .auto-style2 {
+            font-size: large;
+        }
+        .auto-style3 {
+            height: 611px;
+        }
+        .auto-style4 {
+            width: 312px;
+            height: 26px;
+        }
+        .auto-style5 {
+            height: 611px;
+            width: 312px;
+        }
+        .auto-style6 {
+            margin-top: 0px;
+        }
+        .auto-style7 {
+            height: 26px;
+        }
+        .auto-style8 {
+            width: 312px;
+        }
+        .auto-style9 {
+            width: 1396px;
+        }
+        /* Full-width inputs */
+        .inputtext {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+        }
+        /* Extra style for the cancel button (red) */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+        /* Set a style for all buttons */
+        .okbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Add a hover effect for buttons */
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    </div>
+    <table class="auto-style1">
+        <tr>
+            <td class="auto-style8">
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/lexmarklogo.png" Height="35px" Width="200px" />
+            </td>
+            <td class="auto-style9">
+                <asp:Label ID="ApplicationName" runat="server" Text="Label"></asp:Label>
+            </td>
+            <td>
+                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutPageUrl="~/Login.aspx" />
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style4" style="background-color: #008000">
+            </td>
+            <td class="auto-style7" style="background-color: #008000" colspan="2">
+                <asp:SiteMapPath ID="SiteMapPath1" runat="server" >
+                </asp:SiteMapPath>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style5">
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+                <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" CssClass="auto-style6" Height="590px" Width="296px" Visible="true">
+                    <RootNodeStyle BackColor="#66CCFF" />
+                </asp:TreeView>
+            </td>
+            <td class="auto-style3" colspan="2">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <h1>
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/lexmark-symbol-desktop-32x32.png" Height="17px" Width="16px" />
+            &nbsp;<span class="auto-style2" style="color: rgb(51, 51, 51); font-family: tpHerobold; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Lexmark © 2016 All rights reserved.</span></h1>
+            </td>
+        </tr>
+    </table>
+    </form>
+    </body>
+</html>
