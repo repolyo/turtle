@@ -28,7 +28,7 @@ namespace Tlib.Dao
     ///  @email chris.tan@beansgrp.com
     /// </summary>
     /// <typeparam name="E"></typeparam>
-    public abstract class AbstractTableDB<E> : DataTable, SQLCmd<E>, IAttributeBase<object, object>
+    public abstract class AbstractTableDB<E> : DataTable, SQLCmd<E>, IAttributeBase<object, object> where E: AbstractDataRow
     {
         protected const string SELECT = "SELECT";
         protected const string FROM = "FROM";
@@ -183,7 +183,7 @@ namespace Tlib.Dao
             return new string[] { };
         }
 
-        protected class StringArraySQL : StringArray
+        public class StringArraySQL : StringArray
         {
             public override string ToString()
             {
@@ -252,7 +252,7 @@ namespace Tlib.Dao
 
             public static string Format(DataColumn dc, object value)
             {
-                return AbstractTableDB<object>.Format(dc.ColumnName, value);
+                return AbstractTableDB<E>.Format(dc.ColumnName, value);
             }
 
             public string FormattedColumnValuePair(string column)
@@ -400,9 +400,30 @@ namespace Tlib.Dao
             }
             return trimSQL(whereSQL).Replace(",", " AND ");
         }
-
-        protected string buildSelectSQL(E filter, StringArraySQL cols = null, List<DataColumn> where = null, List<DataColumn> sorting = null)
+        protected virtual string buildWhereSQL(E filter, List<DataColumn> where = null)
         {
+            string whereSQL = string.Empty;
+            if (null != where && where.Count > 0)
+            {
+                foreach (DataColumn field in where)
+                {
+                    object value = getFieldValue(field, filter);
+                    if (null != value)
+                    {
+                        whereSQL += string.Format("{0},", TableColumns.Format(field, value));
+                    }
+                }
+            }
+
+            return whereSQL;
+        }
+
+        protected virtual string buildSelectSQL(E filter, StringArraySQL cols = null, List<DataColumn> where = null, List<DataColumn> sorting = null)
+        {
+            string sql = string.Empty;
+            string sortSQL = string.Empty;
+            string whereSQL = buildWhereSQL(filter, where);
+
             //if (null == cols)
             //{
             //    cols = new StringArraySQL();
@@ -420,38 +441,24 @@ namespace Tlib.Dao
             //        }
             //    }
             //}
-
-            String sql = string.Format("{0} {1} {2} {3}", SELECT, (null == cols) ? "*" : cols.ToString(), FROM, this.TableName);
-            if (null != where && where.Count > 0)
-            {
-                string whereSQL = string.Empty;
-                foreach (DataColumn field in where)
-                {
-                    object value = getFieldValue(field, filter);
-                    if (null != value)
-                    {
-                        whereSQL += string.Format("{0},", TableColumns.Format(field, value));
-                    }
-                }
-                if (!string.IsNullOrEmpty(whereSQL))
-                {
-                    sql += string.Format(" {0} {1}", WHERE, trimSQL(whereSQL).Replace(",", " AND "));
-                }
-            }
-
+            
             if (null != sorting && sorting.Count > 0)
             {
-                string sortSQL = string.Empty;
                 foreach (DataColumn field in sorting)
                 {
                     sortSQL += string.Format("{0},", field.ColumnName);
                 }
+            }
 
-                if (!string.IsNullOrEmpty(sortSQL))
-                {
-                    sql += string.Format(" ORDER BY {0} {1}", trimSQL(sortSQL), asc ? "ASC" : "DESC");
-                }
+            sql = string.Format("{0} {1} {2} {3}", SELECT, (null == cols) ? "*" : cols.ToString(), FROM, this.TableName);
+            if (!string.IsNullOrEmpty(whereSQL))
+            {
+                sql += string.Format(" {0} {1}", WHERE, trimSQL(whereSQL).Replace(",", " AND "));
+            }
 
+            if (!string.IsNullOrEmpty(sortSQL))
+            {
+                sql += string.Format(" ORDER BY {0} {1}", trimSQL(sortSQL), asc ? "ASC" : "DESC");
             }
 
             return sql;
@@ -477,7 +484,8 @@ namespace Tlib.Dao
             DataTable dt = null;
             List<DataColumn> where = getDataColumns(this.filters());
             List<DataColumn> sorting = getDataColumns(this.sort());
-            String sql = buildSelectSQL(filter, null, where, sorting);
+            
+            String sql = buildSelectSQL(filter, (StringArraySQL)filter.Columns(), where, sorting);
             using (IDbCommand2 cmd = newCommand(sql))
             {
                 this.Clear();
@@ -502,15 +510,10 @@ namespace Tlib.Dao
         public E find(E filter)
         {
             object ret = null;
-            StringArraySQL cols = new StringArraySQL();
-            foreach (DataColumn dc in this.Columns)
-            {
-                cols.Add(dc.ColumnName);
-            }
-
+            
             List<DataColumn> where = getDataColumns(this.filters());
             List<DataColumn> sorting = getDataColumns(this.sort());
-            String sql = buildSelectSQL(filter, null, where, sorting);
+            String sql = buildSelectSQL(filter, (StringArraySQL)filter.Columns(), where, sorting);
             using (IDbCommand2 cmd = newCommand(sql))
             {
                 this.Clear();
