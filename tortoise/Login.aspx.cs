@@ -14,6 +14,7 @@ public partial class Login : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["username"] = null;
+        Session["user"] = null;
     }
 
     public void ValidateUser(object sender, EventArgs e)
@@ -54,6 +55,7 @@ public partial class Login : System.Web.UI.Page
 
                     Master.VisibleWhenLoggedIn = true;
                     Session["username"] = Login1.UserName;
+                    Session["user"] = user;
                     FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
                 }
                 else

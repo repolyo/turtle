@@ -20,6 +20,7 @@
         .auto-style4 {
             width: 312px;
             height: 26px;
+            background-color: #008800;
         }
         .auto-style5 {
             height: 611px;
@@ -30,6 +31,7 @@
         }
         .auto-style7 {
             height: 26px;
+            background-color: #008800;
         }
         .auto-style8 {
             width: 312px;
@@ -79,20 +81,25 @@
     </div>
     <table class="auto-style1">
         <tr>
-            <td class="auto-style8">
+            <td class="auto-style8" rowspan="2">
                 <asp:Image ID="Image1" runat="server" ImageUrl="~/lexmarklogo.png" Height="35px" Width="200px" />
             </td>
-            <td class="auto-style9">
+            <td class="auto-style9" rowspan="2">
                 <asp:Label ID="ApplicationName" runat="server" Text="Label"></asp:Label>
             </td>
+            <td>
+                <asp:Label ID="UserName" runat="server"></asp:Label>
+            </td>
+        </tr>
+        <tr>
             <td>
                 <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutPageUrl="~/Login.aspx" />
             </td>
         </tr>
         <tr>
-            <td class="auto-style4" style="background-color: #008000">
+            <td class="auto-style4" style="background-color: #008800">
             </td>
-            <td class="auto-style7" style="background-color: #008000" colspan="2">
+            <td class="auto-style7" colspan="2">
                 <asp:SiteMapPath ID="SiteMapPath1" runat="server" >
                 </asp:SiteMapPath>
             </td>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,15 +17,25 @@ public partial class MasterPage : System.Web.UI.MasterPage
         get { return (String)ViewState["version"]; }
         set { ViewState["version"] = value; }
     }
+    public DataTable DataTable
+    {
+        get { return (DataTable)ViewState["DataTable"]; }
+        set { ViewState["DataTable"] = value; }
+    }
 
     void Page_Init(Object sender, EventArgs e)
     {
+        UserProfile profile = (UserProfile)Session["user"];
         this.Version = "v1.0";
         this.ApplicationName.Text = "Turtle v1.0";
+        if (null != profile) {
+            this.UserName.Text = profile.DisplayName;
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        UserProfile profile = (UserProfile)Session["user"];
         bool visible = !string.IsNullOrEmpty((string)Session["username"]);
         this.TreeView1.Visible = visible;
     }

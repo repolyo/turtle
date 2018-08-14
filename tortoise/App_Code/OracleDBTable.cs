@@ -12,7 +12,7 @@ using System.Data.Common;
 /// <summary>
 /// Summary description for AbstractOracleDBTable
 /// </summary>
-public abstract class AbstractOracleDBTable<T> : AbstractTableDB<T>
+public abstract class AbstractOracleDBTable<T> : AbstractTableDB<T> where T: AbstractDataRow
 {
     private static string url = Config.getConnectionString();
     internal static OraclConnectionPool.OracleDBConn connection = null;

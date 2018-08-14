@@ -36,7 +36,7 @@ public class TESTCASE_FUNC : AbstractOracleDBTable<TESTCASE_FUNC.Row>
         return newRow;
     }
 
-    public class Row : DataRow
+    public class Row : AbstractDataRow
     {
         private TESTCASE_FUNC table;
         internal Row(DataRowBuilder rb)

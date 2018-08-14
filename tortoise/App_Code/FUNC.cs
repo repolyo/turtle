@@ -37,7 +37,7 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
         return newRow;
     }
 
-    public class Row : DataRow
+    public class Row : AbstractDataRow
     {
         private FUNC table;
         internal Row(DataRowBuilder rb)

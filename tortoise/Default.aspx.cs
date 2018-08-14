@@ -9,7 +9,6 @@ public partial class _Default : System.Web.UI.Page
 {
     void Page_Load(Object sender, EventArgs e)
     {
-        Session["username"] = "chritan";
         Version.Text = "Turtle " + Master.Version;
     }
 }

@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Testcases" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Testcases.aspx.cs" Inherits="Testcases_Testcases" %>
+<%@ MasterType virtualpath="~/MasterPage.master" %>
 
 <script runat="server">
     void _OnPageIndexChanged(object sender, EventArgs e)
@@ -11,7 +12,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="inputtext">    
+    <div>
+        <asp:TextBox ID="txtFilter" runat="server" Columns="100" MaxLength="150"></asp:TextBox>
+        <asp:Button ID ="btnFiltering" runat ="server" OnClick ="btnFiltering_Click" Text ="Search" Width ="103px" />
+        <asp:Button ID="btnExport" runat="server" Text="Export" OnClick = "ExportToExcel" ToolTip="Download into CSV..." />
+    </div>
+    <div class="inputtext">
          <!--EmptyDataTemplate
                 No Records Available
                 asp:Image ID="Image1" ImageUrl=""
@@ -30,7 +36,8 @@
             OnDataBound="GridVIew_OnDataBound"
             EmptyDataText="No testcase found!" Width="100%">
             <Columns>
-                
+                <asp:BoundField HeaderText='' DataField='ROWNO' 
+                    HeaderStyle-Width="5%" ItemStyle-HorizontalAlign="Center" />
                 <asp:BoundField
                     DataField="TNAME"
                     HeaderText="TestCase"
@@ -57,11 +64,10 @@
             SelectCountMethod="SelectCount"
             StartRowIndexParameterName="StartRecord"
             MaximumRowsParameterName="MaxRecords"
-            SelectMethod="QueryTestcases"
-            >
-        <SelectParameters>
-          <asp:Parameter Name="Filter" Type="string" />  
-        </SelectParameters>
+            SelectMethod="QueryTestcases">
+            <SelectParameters>
+              <asp:Parameter Name="Filter" Type="string" />  
+            </SelectParameters>
         </asp:ObjectDataSource>
     </div>
 </asp:Content>
