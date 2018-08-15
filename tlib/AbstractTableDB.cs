@@ -415,7 +415,7 @@ namespace Tlib.Dao
                 }
             }
 
-            return whereSQL;
+            return trimSQL(whereSQL).Replace(",", " AND ");
         }
 
         protected virtual string buildSelectSQL(E filter, StringArraySQL cols = null, List<DataColumn> where = null, List<DataColumn> sorting = null)
@@ -453,7 +453,7 @@ namespace Tlib.Dao
             sql = string.Format("{0} {1} {2} {3}", SELECT, (null == cols) ? "*" : cols.ToString(), FROM, this.TableName);
             if (!string.IsNullOrEmpty(whereSQL))
             {
-                sql += string.Format(" {0} {1}", WHERE, trimSQL(whereSQL).Replace(",", " AND "));
+                sql += string.Format(" {0} {1}", WHERE, whereSQL);
             }
 
             if (!string.IsNullOrEmpty(sortSQL))
