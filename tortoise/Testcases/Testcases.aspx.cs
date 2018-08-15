@@ -9,20 +9,19 @@ using System.Web.UI.WebControls;
 
 public partial class Testcases_Testcases : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        TObjectDataSource.SelectParameters["Filter"].DefaultValue = "*";
-    }
-
     protected void GridVIew_OnDataBound(object sender, EventArgs e)
     {
         //DataTable dt = (DataTable)GridView1.DataSource;
         //Session["DataTable"] = sender;
+        //TObjectDataSource.SelectParameters["Filter"].DefaultValue = txtFilter.Text;
+        Console.WriteLine(txtFilter.Text);
+        Console.WriteLine(TObjectDataSource.SelectParameters["Filter"].DefaultValue);
     }
 
     protected void btnFiltering_Click(object sender, EventArgs e)
     {
         //totalLbl.Text = "Testcases: ";
+        Session["Filter"] = txtFilter.Text;
         TObjectDataSource.SelectParameters["Filter"].DefaultValue = txtFilter.Text;
     }
 

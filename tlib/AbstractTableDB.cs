@@ -467,9 +467,10 @@ namespace Tlib.Dao
         public long peekResultCount(E filter)
         {
             int ret = 0;
+            List<DataColumn> where = getDataColumns(this.filters());
             StringArraySQL args = new StringArraySQL();
             args.Add("COUNT(*)");
-            String sql = buildSelectSQL(filter, args);
+            String sql = buildSelectSQL(filter, args, where);
 
             using (IDbCommand2 cmd = newCommand(sql))
             {
@@ -580,7 +581,7 @@ namespace Tlib.Dao
                 whereSQL(rec, where),
                 cols.ToString(),
                 cols.ValuesToString(),
-                cols.FormattedColumnValuePair ("CHECKSUM"));
+                cols.FormattedColumnValuePair ("CHECKSUMS"));
 
             using (IDbCommand2 cmd = newCommand(sql))
             {

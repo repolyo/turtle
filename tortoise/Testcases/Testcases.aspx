@@ -4,7 +4,7 @@
 <script runat="server">
     void _OnPageIndexChanged(object sender, EventArgs e)
     {
-        TObjectDataSource.SelectParameters["Filter"].DefaultValue = "*";
+        TObjectDataSource.SelectParameters["Filter"].DefaultValue = (string)Session["Filter"];
         TObjectDataSource.DataBind();
     }
 
@@ -17,7 +17,7 @@
         <asp:Button ID ="btnFiltering" runat ="server" OnClick ="btnFiltering_Click" Text ="Search" Width ="103px" />
         <asp:Button ID="btnExport" runat="server" Text="Export" OnClick = "ExportToExcel" ToolTip="Download into CSV..." />
     </div>
-    <div class="inputtext">
+    <div class="testcases">
          <!--EmptyDataTemplate
                 No Records Available
                 asp:Image ID="Image1" ImageUrl=""

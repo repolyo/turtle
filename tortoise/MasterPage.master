@@ -16,6 +16,7 @@
         }
         .auto-style3 {
             height: 611px;
+            vertical-align: super;
         }
         .auto-style4 {
             width: 312px;
@@ -38,6 +39,12 @@
         }
         .auto-style9 {
             width: 1396px;
+        }
+        .testcases {
+            width: 100%;
+            padding: 5px 0px;
+            margin: 8px 0;
+            display: inline-block;
         }
         /* Full-width inputs */
         .inputtext {

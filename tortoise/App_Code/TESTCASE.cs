@@ -27,7 +27,7 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         this.TTYPE = AddColumn("TTYPE", typeof(string)); // TTYPE	VARCHAR2(20 BYTE)
         this.TSIZE = AddColumn("TSIZE", typeof(int)); // TSIZE	NUMBER
         this.HIDDEN = AddColumn("HIDDEN", typeof(char)); // HIDDEN	CHAR(1 BYTE)
-// UPDATE_DATE	TIMESTAMP(6)
+        // UPDATE_DATE	TIMESTAMP(6)
     }
 
     public override string[] filters()
@@ -69,6 +69,7 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
     {
         Row filter = this.NewRow();
         filter.HIDDEN = 'N';
+        filter.TNAME = Filter;
         filter.Range = new Range<int>(startRecord, 0, maxRecords);
 
         sort_columns.Clear();
@@ -80,25 +81,34 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
     public int SelectCount(string Filter)
     {
         Row filter = this.NewRow();
+        filter.HIDDEN = 'N';
+        filter.TNAME = Filter;
+
         return (int)base.peekResultCount(filter);
     }
 
+    /// <summary>
+    /// a.TGUID IN (SELECT UNIQUE t.TGUID FROM TESTCASE_FUNC t , FUNC f WHERE t.fid = f.fid AND f.FUNC_NAME LIKE '{0}'))
+    /// </summary>
+    /// <param name="filter"></param>
+    /// <param name="where"></param>
+    /// <returns></returns>
     protected override string buildWhereSQL(TESTCASE.Row filter, List<DataColumn> where = null)
     {
-        string whereSQL = string.Empty;
-        if (null != where && where.Count > 0)
-        {
-            foreach (DataColumn field in where)
-            {
-                object value = getFieldValue(field, filter);
-                if (null != value)
-                {
-                    whereSQL += string.Format("{0},", TableColumns.Format(field, value));
-                }
-            }
-        }
+        //string whereSQL = string.Empty;
+        //if (null != where && where.Count > 0)
+        //{
+        //    foreach (DataColumn field in where)
+        //    {
+        //        object value = getFieldValue(field, filter);
+        //        if (null != value)
+        //        {
+        //            whereSQL += string.Format("{0},", TableColumns.Format(field, value));
+        //        }
+        //    }
+        //}
 
-        return whereSQL;
+        return string.Format("TGUID IN (SELECT UNIQUE t.TGUID FROM TESTCASE_FUNC t, FUNC f WHERE t.fid = f.fid AND f.FUNC_NAME LIKE '{0}')", filter.TNAME);
     }
 
     protected override string buildSelectSQL(TESTCASE.Row filter, StringArraySQL cols = null, List<DataColumn> where = null, List<DataColumn> sorting = null)
@@ -121,7 +131,6 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
     public class Row : AbstractDataRow
     {
         private TESTCASE table;
-        private string filter;
 
         internal Row(DataRowBuilder rb)
             : base(rb)
@@ -144,12 +153,6 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         }
 
         #region Properties
-        public string Filter
-        {
-            get { return filter; }
-            set { filter = value; }
-        }
-
         public string TGUID
         {
             get { return ToString(table.TGUID); }
