@@ -5,10 +5,23 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Turtle;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
     bool login = false;
+
+    public UserProfile CurrentUser
+    {
+        get { return (UserProfile)Session["current_user"]; }
+        set { Session["current_user"] = value; }
+    }
+
+    public string CurrentUserName
+    {
+        get { return (string)Session["username"]; }
+        set { Session["username"] = value; }
+    }
 
     public bool VisibleWhenLoggedIn { get { return login; } set { login = value; } }
 

@@ -46,6 +46,6 @@ public partial class Testcases_Checksums : System.Web.UI.Page
         string filePath = Path.GetTempPath() + e.FileName;
         AjaxFileUpload1.SaveAs(filePath);
 
-        tbl.read_checksums(filePath);
+        tbl.update_checksums (Master.CurrentUserName, filePath);
     }
 }

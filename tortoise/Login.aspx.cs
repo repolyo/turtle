@@ -8,6 +8,7 @@ using System.Net;
 using System.DirectoryServices;
 using System.DirectoryServices.Protocols;
 using System.Web.Security;
+using Turtle;
 
 public partial class Login : System.Web.UI.Page
 {
@@ -29,14 +30,15 @@ public partial class Login : System.Web.UI.Page
             Master.VisibleWhenLoggedIn = true;
             user.DisplayName = form_login.UserName;
             Session["username"] = form_login.UserName;
-            Session["user"] = user;
+            Session["current_user"] = user;
             FormsAuthentication.RedirectFromLoginPage(form_login.UserName, form_login.RememberMeSet);
             return;
         }
 
         try
         {
-            LdapDirectoryIdentifier ldapDirectoryIdentifier = new LdapDirectoryIdentifier("dirservices.lexmark.com:389", true, false);
+            string ldap_host = string.Format("{0}:{1}", Config.LdapServer, Config.LdapPort);
+            LdapDirectoryIdentifier ldapDirectoryIdentifier = new LdapDirectoryIdentifier(ldap_host, true, false);
             NetworkCredential credentials = new NetworkCredential(ldapusr, passwd);
             using (LdapConnection ldapConnection = new LdapConnection(ldapDirectoryIdentifier, credentials, AuthType.Basic))
             {
@@ -63,8 +65,8 @@ public partial class Login : System.Web.UI.Page
                     }
 
                     Master.VisibleWhenLoggedIn = true;
-                    Session["username"] = form_login.UserName;
-                    Session["user"] = user;
+                    Master.CurrentUserName = form_login.UserName;
+                    Session["current_user"] = user;
                     FormsAuthentication.RedirectFromLoginPage(form_login.UserName, form_login.RememberMeSet);
                 }
                 else

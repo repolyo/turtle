@@ -24,6 +24,7 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
         this.TGUID = AddColumn("TGUID", typeof(string));
         this.TLOC = AddColumn("TLOC", typeof(string));
         this.PID = AddColumn("PID", typeof(int));
+        this.MODIFIED_BY = AddColumn("MODIFIED_BY", typeof(string));
         this.CHECKSUMS = AddColumn("CHECKSUMS", typeof(string));
     }
 
@@ -70,7 +71,7 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
         return dt;
     }
 
-    public bool read_checksums(string filename)
+    public bool update_checksums(string user_id, string filename)
     {
         string line;
         string location = string.Empty;
@@ -111,12 +112,17 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
             PLATFORM platform_table = new PLATFORM();
             PID = platform_table.lookup_pid(persona, resolution);
 
-            return update_checksums(PID, location, stream);
+            return update_checksums(user_id, PID, location, stream);
         }
         finally
         {
             stream.Close();
         }
+    }
+
+    protected override string mergeUpdateValues(TableColumns cols)
+    {
+        return string.Format ("{0}, {1}", cols.FormattedColumnValuePair("MODIFIED_BY"), cols.FormattedColumnValuePair("CHECKSUMS"));
     }
 
     /// <summary>
@@ -128,7 +134,7 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
     /// <param name="PID"></param>
     /// <param name="stream"></param>
     /// <returns></returns>
-    public bool update_checksums(int PID, string location, StreamReader stream)
+    public bool update_checksums(string user_id, int PID, string location, StreamReader stream)
     {
         string line;
         string table_name = this.TableName;
@@ -159,6 +165,7 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
                         TESTCASE_CHECKSUMS_VIEW.Row rec = NewRow();
                         rec.TGUID = tguid;
                         // rec.TNAME = match.Index + 1;
+                        rec.MODIFIED_BY = user_id;
                         rec.PID = PID;
                         rec.CHECKSUMS = checksums;
 
@@ -213,6 +220,11 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
             get { return ToInteger(table.PID); }
             set { this[table.PID] = value; }
         }
+        public string MODIFIED_BY
+        {
+            get { return ToString(table.MODIFIED_BY); }
+            set { this[table.MODIFIED_BY] = value; }
+        }
         public string CHECKSUMS
         {
             get { return ToString(table.CHECKSUMS); }
@@ -225,6 +237,7 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
     DataColumn TGUID;       // TGUID	VARCHAR2(32 BYTE)
     DataColumn TLOC;        // TLOC	VARCHAR2(255)
     DataColumn PID;         // PID	NUMBER
+    DataColumn MODIFIED_BY;
     DataColumn CHECKSUMS;   // CLOB
     #endregion
 }

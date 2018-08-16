@@ -4,6 +4,8 @@
     Namespace="AjaxControlToolkit"
     TagPrefix="ajaxToolkit" %>
 
+<%@ MasterType virtualpath="~/MasterPage.master" %>
+
 <script runat="server">
     void _OnPageIndexChanged(object sender, EventArgs e)
     {

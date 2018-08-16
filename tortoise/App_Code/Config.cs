@@ -24,8 +24,6 @@ public static class Config
     public static FilterType filterType = FilterType.ALL;
     public static int personaId = 5; // sim-atlantis
     public static bool debug = false;
-    private static readonly string app_name;
-    private static readonly string app_descr;
     private static NameValueCollection settings = null;
 
     // Static constructor is called at most one time, before any
@@ -33,8 +31,6 @@ public static class Config
     static Config()
     {
         settings = WebConfigurationManager.AppSettings;
-        app_name = settings["app_name"];
-        app_descr = settings["app_descr"];
     }
 
     public static string getConnectionString() {
@@ -61,11 +57,21 @@ public static class Config
 
     public static string ApplicationName
     {
-        get { return app_name; }
+        get { return settings["app_name"]; }
     }
 
     public static string ApplicationDescription
     {
-        get { return app_descr; }
+        get { return settings["app_descr"]; }
+    }
+
+    public static string LdapServer
+    {
+        get { return settings["ldap_server"]; }
+    }
+
+    public static string LdapPort
+    {
+        get { return settings["ldap_port"]; }
     }
 }
