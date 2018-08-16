@@ -569,6 +569,11 @@ namespace Tlib.Dao
             return rec;
         }
 
+        protected virtual string mergeUpdateValues (TableColumns cols)
+        {
+            return "";
+        }
+
         public E merge(E rec)
         {
             string sql = string.Empty;
@@ -581,7 +586,7 @@ namespace Tlib.Dao
                 whereSQL(rec, where),
                 cols.ToString(),
                 cols.ValuesToString(),
-                cols.FormattedColumnValuePair ("CHECKSUMS"));
+                mergeUpdateValues(cols));
 
             using (IDbCommand2 cmd = newCommand(sql))
             {
