@@ -4,7 +4,7 @@
 <script runat="server">
     void _OnPageIndexChanged(object sender, EventArgs e)
     {
-        TObjectDataSource.SelectParameters["Filter"].DefaultValue = (string)Session["Filter"];
+        TObjectDataSource.SelectParameters["Filter"].DefaultValue = (string)ViewState["Filter"];
         TObjectDataSource.DataBind();
     }
 
@@ -34,7 +34,7 @@
             HeaderStyle-BackColor="PapayaWhip"
             AlternatingRowStyle-BackColor="LightCyan" PageSize="25"
             OnDataBound="GridVIew_OnDataBound"
-            EmptyDataText="No testcase found!" Width="100%">
+            EmptyDataText="No testcase found!" Width="100%" EnableSortingAndPagingCallbacks="True" AllowSorting="True">
             <Columns>
                 <asp:BoundField HeaderText='' DataField='ROWNO' 
                     HeaderStyle-Width="5%" ItemStyle-HorizontalAlign="Center" />
@@ -51,9 +51,13 @@
             </Columns>
             <RowStyle ForeColor ="#000066" />
             <SelectedRowStyle BackColor ="#669999" Font-Bold ="True" ForeColor ="White" />
-            <HeaderStyle BackColor ="#006699" Font-Bold ="True" ForeColor ="White" />
+            <HeaderStyle BackColor ="#009900" Font-Bold ="True" ForeColor ="White" />
             <PagerStyle HorizontalAlign="Right" />
         </asp:GridView>
+         <strong>
+        <asp:Label ID="Label1" runat="server" Text="Total Count: "></asp:Label>
+         </strong>
+        <asp:Label ID="Count" runat="server" Text="0"></asp:Label>
         <br />
         <asp:ObjectDataSource 
             ID="TObjectDataSource" 
@@ -64,7 +68,8 @@
             SelectCountMethod="SelectCount"
             StartRowIndexParameterName="StartRecord"
             MaximumRowsParameterName="MaxRecords"
-            SelectMethod="QueryTestcases">
+            SelectMethod="QueryTestcases"
+            OnSelected="TObjectDataSource_OnSelected">
             <SelectParameters>
               <asp:Parameter Name="Filter" Type="string" />  
             </SelectParameters>

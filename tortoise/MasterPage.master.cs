@@ -27,7 +27,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         UserProfile profile = (UserProfile)Session["user"];
         this.Version = "v1.0";
-        this.ApplicationName.Text = "Turtle v1.0";
+        
+        this.ApplicationName.Text = Config.ApplicationName;
+        this.ApplicationName.ToolTip = Config.ApplicationDescription;
+
         if (null != profile) {
             this.UserName.Text = profile.DisplayName;
         }

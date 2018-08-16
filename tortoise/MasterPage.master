@@ -45,11 +45,14 @@
             padding: 5px 0px;
             margin: 8px 0;
             display: inline-block;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
         }
         /* Full-width inputs */
         .inputtext {
             width: 100%;
-            padding: 12px 20px;
+            padding: 12px 5px;
             margin: 8px 0;
             display: inline-block;
             border: 1px solid #ccc;
@@ -59,6 +62,16 @@
         .container {
             padding: 16px;
         }
+        .parent {
+            display: table;
+            width: 100%;
+        }
+        .form_login {
+           padding: 10% 20%;
+           display:flex;/* shrinks to fit content */
+           margin:auto;
+        }
+        
         /* Extra style for the cancel button (red) */
         .cancelbtn {
             width: auto;
@@ -75,10 +88,34 @@
             cursor: pointer;
             width: 100%;
         }
-
         /* Add a hover effect for buttons */
         button:hover {
             opacity: 0.8;
+        }
+        .modalbackground 
+        {
+            background-color:Gray;
+            opacity: 0.5;
+            filter:Alpha(opacity=50);
+        }
+        .modalpopup 
+        {
+            background-color:White;
+            padding:6px 6px 6px 6px;
+        }
+        .gridView
+        {
+          width:100%;
+          overflow:scroll;
+        }
+
+        .ellipsis {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 400px;
+            display:block;
+            border-bottom: 0px;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -89,10 +126,10 @@
     <table class="auto-style1">
         <tr>
             <td class="auto-style8" rowspan="2">
-                <asp:Image ID="Image1" runat="server" ImageUrl="~/lexmarklogo.png" Height="35px" Width="200px" />
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/lexmarklogo.png" Height="27px" Width="165px" />
             </td>
             <td class="auto-style9" rowspan="2">
-                <asp:Label ID="ApplicationName" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="ApplicationName" runat="server" Text="xxx" ToolTip="Config.ApplicationDescription" Font-Bold="True" Font-Names="Calibri"></asp:Label>
             </td>
             <td>
                 <asp:Label ID="UserName" runat="server"></asp:Label>
@@ -127,7 +164,7 @@
         <tr>
             <td colspan="3">
                 <h1>
-                <asp:Image ID="Image2" runat="server" ImageUrl="~/lexmark-symbol-desktop-32x32.png" Height="17px" Width="16px" />
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/lexmark-symbol-desktop-32x32.png" Height="17px" Width="16px" />
             &nbsp;<span class="auto-style2" style="color: rgb(51, 51, 51); font-family: tpHerobold; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;">Lexmark © 2016 All rights reserved.</span></h1>
             </td>
         </tr>

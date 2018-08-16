@@ -9,6 +9,6 @@ public partial class _Default : System.Web.UI.Page
 {
     void Page_Load(Object sender, EventArgs e)
     {
-        Version.Text = "Turtle " + Master.Version;
+        Version.Text = Config.ApplicationName;
     }
 }

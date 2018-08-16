@@ -11,18 +11,31 @@ public partial class Testcases_Testcases : System.Web.UI.Page
 {
     protected void GridVIew_OnDataBound(object sender, EventArgs e)
     {
-        //DataTable dt = (DataTable)GridView1.DataSource;
-        //Session["DataTable"] = sender;
-        //TObjectDataSource.SelectParameters["Filter"].DefaultValue = txtFilter.Text;
         Console.WriteLine(txtFilter.Text);
         Console.WriteLine(TObjectDataSource.SelectParameters["Filter"].DefaultValue);
+
     }
 
     protected void btnFiltering_Click(object sender, EventArgs e)
     {
-        //totalLbl.Text = "Testcases: ";
-        Session["Filter"] = txtFilter.Text;
+        ViewState["Filter"] = txtFilter.Text;
         TObjectDataSource.SelectParameters["Filter"].DefaultValue = txtFilter.Text;
+    }
+
+    protected void TObjectDataSource_OnSelected(object sender, ObjectDataSourceStatusEventArgs e)
+    {
+        if (null == e.Exception && null != e.ReturnValue)
+        {
+            Type type = e.ReturnValue.GetType();
+            if (type == typeof(TESTCASE) && !string.IsNullOrEmpty (txtFilter.Text))
+            {
+                TESTCASE tbl = (TESTCASE)e.ReturnValue;
+                Count.Text = "" + tbl.SelectCount(txtFilter.Text);
+            }
+
+            //Count.Text = "" + ((TESTCASE_CHECKSUMS_VIEW)e.ReturnValue).TotalCount;
+            //Count.Text = "" + e.ReturnValue;
+        }
     }
 
     DataTable GetDataTable(GridView dtg)

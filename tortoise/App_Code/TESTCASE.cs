@@ -12,11 +12,9 @@ using TLib;
 /// </summary>
 public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
 {
-    private List<string> sort_columns;
-
-    public TESTCASE ()
+    public TESTCASE()
     {
-        sort_columns = new List<string>();
+
     }
 
     protected override void InitVars()
@@ -35,11 +33,6 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         return new string[] { "TLOC" };
     }
 
-    protected override string[] sort()
-    {
-        return sort_columns.ToArray();
-    }
-
     public new Row NewRow()
     {
         Row newRow = ((Row)(base.NewRow()));
@@ -56,6 +49,7 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         TESTCASE tbl = new TESTCASE();
         Row row = tbl.NewRow();
         row.TLOC = testcase;
+        row.HIDDEN = 'N';
 
         row = tbl.findSingleResult(row);
         if (null != row)
@@ -65,27 +59,20 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         return string.Empty;
     }
 
-    public DataTable QueryTestcases(string Filter, string sortColumns, int startRecord, int maxRecords)
-    {
-        Row filter = this.NewRow();
-        filter.HIDDEN = 'N';
-        filter.TNAME = Filter;
-        filter.Range = new Range<int>(startRecord, 0, maxRecords);
-
-        sort_columns.Clear();
-        sort_columns.Add(sortColumns);
-
-        return findAll(filter);
-    }
-
-    public int SelectCount(string Filter)
+    protected override Row GetFilter(string Filter)
     {
         Row filter = this.NewRow();
         filter.HIDDEN = 'N';
         filter.TNAME = Filter;
 
-        return (int)base.peekResultCount(filter);
+        return filter;
     }
+
+    //public override DataTable QueryTestcases(string Filter, string sortColumns, int startRecord, int maxRecords)
+    //{
+    //    string keyword = string.IsNullOrEmpty(Filter) ? "*" : Filter;
+    //    return base.QueryTestcases(keyword, sortColumns, startRecord, maxRecords); ;
+    //}
 
     /// <summary>
     /// a.TGUID IN (SELECT UNIQUE t.TGUID FROM TESTCASE_FUNC t , FUNC f WHERE t.fid = f.fid AND f.FUNC_NAME LIKE '{0}'))
@@ -95,39 +82,16 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
     /// <returns></returns>
     protected override string buildWhereSQL(TESTCASE.Row filter, List<DataColumn> where = null)
     {
-        //string whereSQL = string.Empty;
-        //if (null != where && where.Count > 0)
-        //{
-        //    foreach (DataColumn field in where)
-        //    {
-        //        object value = getFieldValue(field, filter);
-        //        if (null != value)
-        //        {
-        //            whereSQL += string.Format("{0},", TableColumns.Format(field, value));
-        //        }
-        //    }
-        //}
-
-        return string.Format("TGUID IN (SELECT UNIQUE t.TGUID FROM TESTCASE_FUNC t, FUNC f WHERE t.fid = f.fid AND f.FUNC_NAME LIKE '{0}')", filter.TNAME);
-    }
-
-    protected override string buildSelectSQL(TESTCASE.Row filter, StringArraySQL cols = null, List<DataColumn> where = null, List<DataColumn> sorting = null)
-    {
-        string sql = string.Empty;
-        Range<int> range = filter.Range;
-        if (null != range)
+        if (string.IsNullOrEmpty(filter.TNAME))
         {
-            sql = string.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
-                            base.buildSelectSQL(filter, cols, where, sorting),
-                            range.Min, range.Max);
+            return base.buildWhereSQL(filter, where);
         }
-        else {
-            sql = base.buildSelectSQL(filter, cols, where, sorting);
+        else
+        {
+            return string.Format("TGUID IN (SELECT UNIQUE t.TGUID FROM TESTCASE_FUNC t, FUNC f WHERE t.fid = f.fid AND f.FUNC_NAME LIKE '{0}')", filter.TNAME);
         }
-
-        return sql;
     }
-
+    
     public class Row : AbstractDataRow
     {
         private TESTCASE table;

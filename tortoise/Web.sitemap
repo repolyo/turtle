@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap>
   <siteMapNode title="Home" description="Turtle on steroids" url="~/Default.aspx" >
-    <siteMapNode title="Testcases" description="Test files"
-         url="~/Testcases/Testcases.aspx">
-      <siteMapNode title="Checksums" description="Test case checksums"
-           url="~/Testcases/Checksums.aspx" />
+    <siteMapNode title="Testcases" description="Test files" url="~/Testcases/Testcases.aspx">
+      <siteMapNode title="Checksums" description="Test case checksums" url="~/Testcases/Checksums.aspx" />
     </siteMapNode>
-    <siteMapNode title="Codes" description="Source codes"
-        url="~/Codes/Files.aspx">
-      <siteMapNode title="Functions" description="Functions"
-          url="~/Codes/Functions.aspx" />
-      <siteMapNode title="Coverage" description="Coverage"
-          url="~/Codes/Coverage.aspx" />
+    <siteMapNode title="Source Files" description="Source codes" url="~/Codes/Files.aspx">
+      <siteMapNode title="Functions" description="Functions" url="~/Codes/Functions.aspx" />
+    </siteMapNode>
+    <siteMapNode title="Reports" description="Data analytics" url="~/Data/TestCoverage.aspx">
+      <siteMapNode title="Test coverage report" description="Test coverage" url="~/Codes/Coverage.aspx" />
+    </siteMapNode>
+    <siteMapNode title="Accounts" description="User acounts" url="~/Accounts/UserProfiles.aspx">
+      <siteMapNode title="User Roles" description="Permissions (access control list)" url="~/Accounts/UserRoles.aspx"/>
     </siteMapNode>
     <siteMapNode title="About" description="About" url="~/About.aspx" />
   </siteMapNode>

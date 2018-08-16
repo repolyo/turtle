@@ -16,15 +16,65 @@ public abstract class AbstractOracleDBTable<T> : AbstractTableDB<T> where T: Abs
 {
     private static string url = Config.getConnectionString();
     internal static OraclConnectionPool.OracleDBConn connection = null;
+    protected List<string> sort_columns;
+    private int total_count;
 
     protected AbstractOracleDBTable() : base() 
     {
+        sort_columns = new List<string>();
     }
 
     public AbstractOracleDBTable(DataTable tbl, string dbUrl)
         : base(tbl)
     {
         url = dbUrl;
+        sort_columns = new List<string>();
+    }
+
+    protected override string[] sort()
+    {
+        return sort_columns.ToArray();
+    }
+
+    protected virtual T GetFilter(string Filter)
+    {
+        return (T)this.NewRow();
+    }
+
+    protected override string buildSelectSQL(T filter, StringArraySQL cols = null, List<DataColumn> where = null, List<DataColumn> sorting = null)
+    {
+        string sql = string.Empty;
+        Range<int> range = filter.Range;
+        if (null != range)
+        {
+            sql = string.Format("SELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})",
+                            base.buildSelectSQL(filter, cols, where, sorting),
+                            range.Min, range.Max);
+        }
+        else
+        {
+            sql = base.buildSelectSQL(filter, cols, where, sorting);
+        }
+
+        return sql;
+    }
+
+    public virtual DataTable QueryTestcases(string Filter, string sortColumns, int startRecord, int maxRecords)
+    {
+        T filter = GetFilter(string.IsNullOrEmpty(Filter) ? "0" : Filter);
+        filter.Range = new Range<int>(startRecord, 0, maxRecords);
+
+        sort_columns.Clear();
+        sort_columns.Add(sortColumns);
+
+        return findAll(filter);
+    }
+
+    public int SelectCount(string Filter)
+    {
+        T filter = GetFilter(Filter);
+        total_count = (int)base.peekResultCount(filter);
+        return total_count;
     }
 
     protected override IDbCommand2 newCommand(string sql)
@@ -44,11 +94,9 @@ public abstract class AbstractOracleDBTable<T> : AbstractTableDB<T> where T: Abs
         return cln;
     }
 
-    public long peekResultCount()
+    public int TotalCount
     {
-        object obj = this.NewRow();
-        T filter = (T)obj;
-        return base.peekResultCount(filter);
+        get { return total_count; }
     }
 
     class OracleDbCommand : AbstractDbCommandBase, IDbCommand2
