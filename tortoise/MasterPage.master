@@ -69,7 +69,6 @@
         .form_login {
            padding: 10% 20%;
            display:flex;/* shrinks to fit content */
-           margin:auto;
         }
         
         /* Extra style for the cancel button (red) */

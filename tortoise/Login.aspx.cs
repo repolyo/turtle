@@ -14,8 +14,7 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["username"] = null;
-        Session["user"] = null;
+        Master.CurrentUser = null;
     }
 
     public void ValidateUser(object sender, EventArgs e)
@@ -25,15 +24,6 @@ public partial class Login : System.Web.UI.Page
         String basedn = "ou=Employees,o=lexmark";
         String ldapusr = string.Format("{0},{1}", uid, basedn);
         String passwd = form_login.Password;
-
-        if (!string.IsNullOrEmpty (Request.QueryString["debug"])) {
-            Master.VisibleWhenLoggedIn = true;
-            user.DisplayName = form_login.UserName;
-            Session["username"] = form_login.UserName;
-            Session["current_user"] = user;
-            FormsAuthentication.RedirectFromLoginPage(form_login.UserName, form_login.RememberMeSet);
-            return;
-        }
 
         try
         {
@@ -54,8 +44,13 @@ public partial class Login : System.Web.UI.Page
 
                 if (response.Entries.Count == 1)
                 {
+                    string [] keys = new string[]
+                    {
+                        "displayname",
+                        "lexorgpersonmail"
+                    };
                     SearchResultEntry entry = response.Entries[0];
-                    foreach (string key in entry.Attributes.AttributeNames)
+                    foreach (string key in keys)
                     {
                         DirectoryAttribute attr = entry.Attributes[key];
                         user[key] = attr.GetValues(typeof(string)).GetValue(0).ToString();

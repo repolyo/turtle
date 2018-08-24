@@ -13,5 +13,20 @@
     <br />
     One way to further distinguish tortoises from other turtles is to look for certain anatomical features. The testudinids (their family is Testudinidae) are easily recognized because all share a unique hind-limb anatomy made up of elephantine (or columnar) hind limbs and hind feet. Their forelimbs are not flipperlike, and their hind feet are not webbed. Each digit in their forefeet and hind feet contains two or fewer phalanges. Finally, if you can’t see their legs, try feeding them meat. Tortoises are generally vegetarians, while other turtles are omnivorous.
     </p>
+    <p>
+        &nbsp;</p>
+    <p>
+        Maintainer:</p>
+    <p>
+        Christopher Tan &lt;<a href="mailto:chritan@lexmark.com">chritan@lexmark.com</a>&gt; 
+        <br />
+        Emulators Team &lt;<a href="mailto:emulators@lexmark.com">emulators@lexmark.com</a>&gt;</p>
+    <p>
+        &nbsp;</p>
+    <p>
+        TODO:</p>
+    <p>
+        1. contact details, mailing group, maintainer <br/>
+        2. create request for vulnerability scan for turtle.lrdc.lexmark.com</p>
 </asp:Content>
 
