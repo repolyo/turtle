@@ -114,9 +114,9 @@ public class Checksum : System.Web.Services.WebService
 
         string sql = "\r\nSELECT ROW_NUMBER() OVER (ORDER BY a.TLOC ASC) AS ROWNO, " +
                      "  a.TLOC, " +
-                     "  b.CHECKSUM " +
-                     "FROM TESTCASE a, " + "(" + generateQuerySQL(func, platformId) + ") b " +
-                     "WHERE a.TGUID=b.TGUID AND a.HIDDEN <> 'Y' AND a.TLOC LIKE '%" + filter + "%'";
+                     "  cs.CHECKSUMS " +
+                     "FROM TESTCASE a join TESTCASE_CHECKSUMS cs on a.tguid = cs.tguid " +
+                     "WHERE a.HIDDEN <> 'Y' AND a.TLOC LIKE '%" + filter + "%' AND a.TGUID IN (" + generateQuerySQL (func, platformId) + ")";
 
         if ( -1 < fetch ) {
             sql = String.Format("\r\nSELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})", sql, 0, fetch);
@@ -135,7 +135,7 @@ public class Checksum : System.Web.Services.WebService
                 writeResponse(Response, String.Format("# testcases: {0}", hit_count));
                 foreach (DataRow row in tbl.Rows)
                 {
-                    string checksum = row["CHECKSUM"].ToString().Trim();
+                    string checksum = row["CHECKSUMS"].ToString().Trim();
                     if (checksum.Length == 0) continue;
                     string tcase = String.Format("{0} : {1}", row["TLOC"], checksum);
                     writeResponse(Response, tcase.Replace(filter, ""));
