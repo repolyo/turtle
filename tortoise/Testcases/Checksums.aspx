@@ -26,10 +26,10 @@
             <asp:ListItem Text="sim-mono" Value="2"></asp:ListItem>
             <asp:ListItem Text="sim64-color" Value="3"></asp:ListItem>
         </asp:DropDownList>
-        <asp:Button ID="btnShow" runat="server" Text="Update checksum..." style="float:right" ToolTip="Update master checksums..." /><br />
+        <asp:Button ID="update_checksum_btn" runat="server" Text="Update checksum..." style="float:right" ToolTip="Update master checksums..." /><br />
 
         <asp:ScriptManager ID="asm" runat="server"></asp:ScriptManager>
-        <ajaxToolkit:ModalPopupExtender ID="mdlpopup" BackgroundCssClass="modalbackground" runat="server" TargetControlID="btnShow"
+        <ajaxToolkit:ModalPopupExtender ID="mdlpopup" BackgroundCssClass="modalbackground" runat="server" TargetControlID="update_checksum_btn"
                 PopupControlID="pnl" OkControlID="btnok" Y="300" ></ajaxToolkit:ModalPopupExtender>
 
         <asp:Panel ID="pnl" runat="server" BorderColor="ActiveBorder" CssClass="modalpopup" BorderStyle="Solid" BorderWidth="2px">
@@ -37,6 +37,8 @@
             <ajaxToolkit:AjaxFileUpload ID="AjaxFileUpload1" runat="server"
                 Width="400" Height="150"
                 OnUploadComplete="AjaxFileUpload1_UploadComplete" AllowedFileTypes="txt,cs,checksum"
+                OnClientUploadComplete="OnClientUploadComplete"
+                OnClientUploadError="showUploadError"
                 ClearFileListAfterUpload="True" />
             <asp:Button ID="btnok" runat="server" Text="OK" />
         </asp:Panel>

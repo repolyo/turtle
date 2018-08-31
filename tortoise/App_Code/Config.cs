@@ -74,4 +74,9 @@ public static class Config
     {
         get { return settings["ldap_port"]; }
     }
+
+    public static string GetTempPath
+    {
+        get { return settings["tmp_dir"]; }
+    }
 }

@@ -86,21 +86,21 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
             {
                 line = stream.ReadLine().Trim();
                 // # location : /m/tcases/futures/next/wip/
-                MatchCollection matches = Regex.Matches(line, "# location : (?<location>.*)$");
+                MatchCollection matches = Regex.Matches(line, "#\\s*location\\s*:\\s*(?<location>.*)$", RegexOptions.IgnoreCase);
                 foreach (Match match in matches)
                 {
                     location = match.Groups["location"].Value;
                     break;
                 }
 
-                matches = Regex.Matches(line, "# persona : (?<persona>.*)$");
+                matches = Regex.Matches(line, "#\\s*persona\\s*:\\s*(?<persona>.*)$", RegexOptions.IgnoreCase);
                 foreach (Match match in matches)
                 {
                     persona = match.Groups["persona"].Value;
                     break;
                 }
 
-                matches = Regex.Matches(line, "# resolution : (?<resolution>.*)$");
+                matches = Regex.Matches(line, "#\\s*resolution\\s*:\\s*(?<resolution>.*)$", RegexOptions.IgnoreCase);
                 if (1 == matches.Count)
                 {
                     resolution = Int32.Parse(matches[0].Groups["resolution"].Value);

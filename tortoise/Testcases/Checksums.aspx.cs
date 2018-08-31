@@ -11,7 +11,10 @@ public partial class Testcases_Checksums : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        update_checksum_btn.Enabled = (null != Master.CurrentUser);
+        update_checksum_btn.ToolTip = update_checksum_btn.Enabled
+            ? "Update checksums..."
+            : "Login to udpate checkums...";
     }
 
     protected void ChecksumGrid_OnDataBound(object sender, EventArgs e)
@@ -42,10 +45,23 @@ public partial class Testcases_Checksums : System.Web.UI.Page
 
     protected void AjaxFileUpload1_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
     {
-        TESTCASE_CHECKSUMS_VIEW tbl = new TESTCASE_CHECKSUMS_VIEW();
-        string filePath = Path.GetTempPath() + e.FileName;
-        AjaxFileUpload1.SaveAs(filePath);
+        bool ret = false;
+        string filePath = Config.GetTempPath + e.FileName;
+        try
+        {
+            TESTCASE_CHECKSUMS_VIEW tbl = new TESTCASE_CHECKSUMS_VIEW();
+            AjaxFileUpload1.SaveAs(filePath);
 
-        tbl.update_checksums (Master.CurrentUserName, filePath);
+            ret = tbl.update_checksums(Master.CurrentUserName, filePath);
+        }
+        catch (Exception ex)
+        {
+            using (StreamWriter writer = new StreamWriter(filePath, true))
+            {
+                writer.WriteLine("Message :" + ex.Message + Environment.NewLine + "StackTrace :" + ex.StackTrace +
+                   "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
+            }
+        }
     }
 }

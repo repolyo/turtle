@@ -30,6 +30,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
         get { return (String)ViewState["version"]; }
         set { ViewState["version"] = value; }
     }
+
+    public string Status
+    {
+        get { return StatusTxtBox.Text; }
+        set { StatusTxtBox.Text = value; }
+    }
+
     public DataTable DataTable
     {
         get { return (DataTable)ViewState["DataTable"]; }
@@ -47,8 +54,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        bool visible = (null != CurrentUser);
-        this.TreeView1.Visible = visible;
-        this.UserName.Visible = visible;
+        this.UserName.Visible = (null != CurrentUser);
     }
 }
