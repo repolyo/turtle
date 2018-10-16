@@ -33,7 +33,6 @@ public class Checksum : System.Web.Services.WebService
 
     protected string generateQuerySQL(string filter, string pid)
     {
-        NameValueCollection settings = WebConfigurationManager.AppSettings;
         string funcList = (null == filter) ? "%" : filter.Trim();
         funcList = funcList.Replace('*', '%').Replace('?', '_');
 
@@ -44,8 +43,7 @@ public class Checksum : System.Web.Services.WebService
             if (func == "main") continue;
             testcaseByFunc.Append(String.Format("UPPER('{0}'), ", func));
         }
-        
-        return String.Format(settings["query"], pid, testcaseByFunc);
+        return testcaseByFunc.ToString ();
     }
 
 
@@ -88,16 +86,27 @@ public class Checksum : System.Web.Services.WebService
         return documentcontents;
     }
 
-    // sample usage:
-    //  http://localhost/testcases/Checksum.asmx/Get?persona=sim-atlantis&func=pdflex_add_object&dpi=600&fetch=10&filter=x&debug=true
+
     [WebMethod]
     public void Get(string persona, string func, int dpi = 600, int fetch = 50, string filter = null, bool debug = false)
     {
+        Fetch("firmware-6", persona, func, dpi, fetch, filter, debug);
+    }
+
+    // sample usage:
+    //  http://localhost/testcases/Checksum.asmx/Get?persona=sim-atlantis&func=pdflex_add_object&dpi=600&fetch=10&filter=x&debug=true
+    [WebMethod]
+    public void Fetch(string branch, string persona, string func, int dpi = 600, int fetch = 50, string filter = null, bool debug = false)
+    {
         HttpResponse Response = Context.Response;
+        NameValueCollection settings = WebConfigurationManager.AppSettings;
         string platformId = Config.personaId.ToString();
         int xi_thread = 1;
         int hit_count = 0;
+        bool trace = debug ;
+
         writeResponse(Response, String.Format("# {0:F}", DateTime.Now));
+        writeResponse(Response, String.Format("# branch: {0}", branch));
         if (null == filter || filter.Length == 0)
         {
             filter = "/m/tcases/futures/next/wip/";
@@ -106,17 +115,12 @@ public class Checksum : System.Web.Services.WebService
 
         if (null != persona && persona.Length > 0)
         {
-            platformId = String.Format("(select PID from PLATFORM where PERSONA='{0}' AND RESOLUTION={1})",
-                persona.Replace("64", ""), // sim-color and sim64-color checksums are just the same.
-                dpi, xi_thread);
+            platformId = String.Format(settings["platform"], branch, persona.Replace("64", ""), dpi);
+            
             writeResponse(Response, String.Format("# persona: {0}", persona));
         }
 
-        string sql = "\r\nSELECT ROW_NUMBER() OVER (ORDER BY a.TLOC ASC) AS ROWNO, " +
-                     "  a.TLOC, " +
-                     "  cs.CHECKSUMS " +
-                     "FROM TESTCASE a join TESTCASE_CHECKSUMS cs on a.tguid = cs.tguid " +
-                     "WHERE a.HIDDEN <> 'Y' AND a.TLOC LIKE '%" + filter + "%' AND a.TGUID IN (" + generateQuerySQL (func, platformId) + ")";
+        string sql = String.Format(settings["query"], branch, filter, platformId, generateQuerySQL(func, platformId));
 
         if ( -1 < fetch ) {
             sql = String.Format("\r\nSELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})", sql, 0, fetch);
@@ -141,7 +145,7 @@ public class Checksum : System.Web.Services.WebService
                     writeResponse(Response, tcase.Replace(filter, ""));
                 }
 
-                if (debug)
+                if (trace)
                 {
                     writeResponse(Response, sql);
                 }
@@ -150,7 +154,7 @@ public class Checksum : System.Web.Services.WebService
         catch (EmptyResultException err)
         {
             writeResponse(Response, String.Format("# testcases: {0}", hit_count));
-            if (debug)
+            if (trace)
             {
                 writeResponse(Response, FlattenException(err));
             }
@@ -158,7 +162,7 @@ public class Checksum : System.Web.Services.WebService
         catch (Exception err)
         {
             writeResponse(Response, "# Exception occured");
-            if (debug)
+            if (trace)
             {
                 writeResponse(Response, String.Format("# Stacktrace: {0}", FlattenException(err)));
             }
