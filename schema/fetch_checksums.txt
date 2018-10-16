@@ -3,4 +3,15 @@ SELECT ROW_NUMBER() OVER (ORDER BY a.TLOC ASC) AS ROWNO,   a.TLOC,   b.CHECKSUM 
              FROM TESTCASE_CHECKSUM cs WHERE cs.pid = (select PID from PLATFORM where PERSONA='pdlsapp' AND RESOLUTION=600)
              AND cs.TGUID IN (SELECT UNIQUE t.TGUID FROM TESTCASE_FUNC t, FUNC f WHERE t.fid = f.fid
              AND t.pid = (select PID from PLATFORM where PERSONA='pdlsapp' AND RESOLUTION=600)
-             AND UPPER(f.FUNC_NAME) IN ( UPPER('PCLbc_Print'), UPPER('PCLbc_TransferData'),  '__end__' ) ) GROUP BY cs.tguid) b WHERE a.TGUID=b.TGUID AND a.HIDDEN <> 'Y' AND a.TLOC LIKE '%/m/tcases/futures/next/wip/%'
+             AND UPPER(f.FUNC_NAME) IN ( UPPER('PCLbc_Print'), UPPER('PCLbc_TransferData'),  '__end__' ) ) GROUP BY cs.tguid) b WHERE a.TGUID=b.TGUID AND a.HIDDEN <> 'Y' AND a.TLOC LIKE '%/m/tcases/futures/next/wip/%';
+             
+
+INSERT INTO TESTCASE_CHECKSUMS (TGUID, PID, CHECKSUMS)
+SELECT
+    cs.TGUID, cs.pid, rtrim(xmlagg(XMLELEMENT(e,cs.CHECKSUM,',').EXTRACT('//text()') ORDER BY cs.PAGE_NO).GetClobVal() , ',') AS CHECKSUM
+FROM
+    TESTCASE_CHECKSUM cs
+WHERE 
+    --cs.tguid = 'a338bc81881b425655aa49c0851e40e3'
+    cs.pid = 1
+GROUP BY cs.pid, cs.tguid;
