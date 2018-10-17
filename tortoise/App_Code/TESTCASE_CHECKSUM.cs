@@ -50,39 +50,62 @@ public class TESTCASE_CHECKSUM : AbstractOracleDBTable<TESTCASE_CHECKSUM.Row>
         int PID = 4;
         int resolution = -1;
         string persona = "sim-color";
+        string branch = string.Empty;
 
         StreamReader stream = new StreamReader(filename);
         try
         {
             do
             {
+                MatchCollection matches;
                 line = stream.ReadLine().Trim();
-                // # location : /m/tcases/futures/next/wip/
-                MatchCollection matches = Regex.Matches(line, "# location : (?<location>.*)$");
-                foreach (Match match in matches)
+
+                if (branch == string.Empty)
                 {
-                    location = match.Groups["location"].Value;
-                    break;
+                    // # branch : firmware-6
+                    matches = Regex.Matches(line, "#\\s*branch\\s*:\\s*(?<branch>.*)$", RegexOptions.IgnoreCase);
+                    foreach (Match match in matches)
+                    {
+                        branch = match.Groups["branch"].Value;
+                        break;
+                    }
                 }
 
-                matches = Regex.Matches(line, "# persona : (?<persona>.*)$");
-                foreach (Match match in matches)
+                if (location == string.Empty)
                 {
-                    persona = match.Groups["persona"].Value;
-                    break;
+                    // # location : /m/tcases/futures/next/wip/
+                    matches = Regex.Matches(line, "#\\s*location\\s*:\\s*(?<location>.*)$", RegexOptions.IgnoreCase);
+                    foreach (Match match in matches)
+                    {
+                        location = match.Groups["location"].Value;
+                        break;
+                    }
                 }
 
-                matches = Regex.Matches(line, "# resolution : (?<resolution>.*)$");
-                if (1 == matches.Count)
+                if (persona == string.Empty)
                 {
-                    resolution = Int32.Parse(matches[0].Groups["resolution"].Value);
-                    break;
+                    matches = Regex.Matches(line, "#\\s*persona\\s*:\\s*(?<persona>.*)$", RegexOptions.IgnoreCase);
+                    foreach (Match match in matches)
+                    {
+                        persona = match.Groups["persona"].Value;
+                        break;
+                    }
                 }
 
-            } while (line == string.Empty || line.StartsWith("#"));
+                if (-1 == resolution)
+                {
+                    matches = Regex.Matches(line, "#\\s*resolution\\s*:\\s*(?<resolution>.*)$", RegexOptions.IgnoreCase);
+                    if (1 == matches.Count)
+                    {
+                        resolution = Int32.Parse(matches[0].Groups["resolution"].Value);
+                        break;
+                    }
+                }
+            }
+            while (line == string.Empty || line.StartsWith("#"));
 
             PLATFORM platform_table = new PLATFORM();
-            PID = platform_table.lookup_pid(persona, resolution);
+            PID = platform_table.lookup_pid (branch, persona, resolution);
 
             return update_checksums(PID, location, stream);
         }

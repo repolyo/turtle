@@ -77,40 +77,55 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
         string location = string.Empty;
         int PID = 4;
         int resolution = -1;
-        string persona = "sim-color";
+        string persona = string.Empty;
+        string branch = string.Empty;
 
         StreamReader stream = new StreamReader(filename);
         try
         {
             do
             {
+                MatchCollection matches;
                 line = stream.ReadLine().Trim();
-                // # location : /m/tcases/futures/next/wip/
-                MatchCollection matches = Regex.Matches(line, "#\\s*location\\s*:\\s*(?<location>.*)$", RegexOptions.IgnoreCase);
-                foreach (Match match in matches)
-                {
-                    location = match.Groups["location"].Value;
-                    break;
+
+                if (branch == string.Empty) {
+                    // # branch : firmware-6
+                    matches = Regex.Matches(line, "#\\s*branch\\s*:\\s*(?<branch>.*)$", RegexOptions.IgnoreCase);
+                    foreach (Match match in matches) {
+                        branch = match.Groups["branch"].Value;
+                        break;
+                    }
                 }
 
-                matches = Regex.Matches(line, "#\\s*persona\\s*:\\s*(?<persona>.*)$", RegexOptions.IgnoreCase);
-                foreach (Match match in matches)
-                {
-                    persona = match.Groups["persona"].Value;
-                    break;
+                if (location == string.Empty) {
+                    // # location : /m/tcases/futures/next/wip/
+                    matches = Regex.Matches(line, "#\\s*location\\s*:\\s*(?<location>.*)$", RegexOptions.IgnoreCase);
+                    foreach (Match match in matches) {
+                        location = match.Groups["location"].Value;
+                        break;
+                    }
                 }
 
-                matches = Regex.Matches(line, "#\\s*resolution\\s*:\\s*(?<resolution>.*)$", RegexOptions.IgnoreCase);
-                if (1 == matches.Count)
-                {
-                    resolution = Int32.Parse(matches[0].Groups["resolution"].Value);
-                    break;
+                if (persona == string.Empty) {
+                    matches = Regex.Matches(line, "#\\s*persona\\s*:\\s*(?<persona>.*)$", RegexOptions.IgnoreCase);
+                    foreach (Match match in matches) {
+                        persona = match.Groups["persona"].Value;
+                        break;
+                    }
                 }
 
-            } while (line == string.Empty || line.StartsWith("#"));
+                if (-1 == resolution) {
+                    matches = Regex.Matches(line, "#\\s*resolution\\s*:\\s*(?<resolution>.*)$", RegexOptions.IgnoreCase);
+                    if (1 == matches.Count) {
+                        resolution = Int32.Parse(matches[0].Groups["resolution"].Value);
+                        break;
+                    }
+                }
+            }
+            while (line == string.Empty || line.StartsWith("#"));
 
             PLATFORM platform_table = new PLATFORM();
-            PID = platform_table.lookup_pid(persona, resolution);
+            PID = platform_table.lookup_pid (branch, persona, resolution);
 
             return update_checksums(user_id, PID, location, stream);
         }
@@ -138,7 +153,7 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
     {
         string line;
         string table_name = this.TableName;
-
+        string testcase = string.Empty;
         try
         {
             this.TableName = "TESTCASE_CHECKSUMS";
@@ -146,7 +161,9 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
             do
             {
                 line = stream.ReadLine();
-                if (line != null)
+                if (line == null) continue;
+
+                try
                 {
                     line = line.Trim();
                     if (line.StartsWith("#"))
@@ -158,12 +175,13 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
                     String[] splitString = Regex.Split(line, @"\s*:\s*");
                     if (2 == splitString.Length)
                     {
-                        string testcase = location + splitString[0];
+                        testcase = location + splitString[0];
                         string checksums = splitString[1];
                         string tguid = TESTCASE.lookup_tguid(testcase);
                         
                         TESTCASE_CHECKSUMS_VIEW.Row rec = NewRow();
                         rec.TGUID = tguid;
+
                         // rec.TNAME = match.Index + 1;
                         rec.MODIFIED_BY = user_id;
                         rec.PID = PID;
@@ -171,6 +189,10 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
 
                         merge(rec);
                     }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(testcase + " ERROR: " + e.StackTrace);
                 }
             } while (line != null);
         }

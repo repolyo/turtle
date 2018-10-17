@@ -26,13 +26,14 @@ public class PLATFORM : AbstractOracleDBTable<PLATFORM.Row>
     protected override void InitVars()
     {
         this.PID = AddColumn("PID", typeof(int)); // PID	NUMBER(38,0)
+        this.BRANCH = AddColumn("BRANCH", typeof(string));
         this.PERSONA = AddColumn("PERSONA", typeof(string)); // PERSONA	VARCHAR2(255 BYTE)
         this.RESOLUTION = AddColumn("RESOLUTION", typeof(int)); // RESOLUTION	NUMBER(38,0)
     }
 
     public override string[] filters()
     {
-        return new string[] { "PERSONA", "RESOLUTION" };
+        return new string[] { "BRANCH", "PERSONA", "RESOLUTION" };
     }
 
     public new Row NewRow()
@@ -46,9 +47,10 @@ public class PLATFORM : AbstractOracleDBTable<PLATFORM.Row>
         return new Row(builder);
     }
 
-    public int lookup_pid(string persona, int resolution)
+    public int lookup_pid(string branch, string persona, int resolution)
     {
         Row platform = ((Row)(base.NewRow()));
+        platform.BRANCH = branch;
         platform.PERSONA = persona;
         platform.RESOLUTION = resolution;
 
@@ -74,6 +76,11 @@ public class PLATFORM : AbstractOracleDBTable<PLATFORM.Row>
             get { return ToInteger(table.PID); }
             set { this[table.PID] = value; }
         }
+        public string BRANCH
+        {
+            get { return ToString(table.BRANCH); }
+            set { this[table.BRANCH] = value; }
+        }
         public string PERSONA
         {
             get { return ToString(table.PERSONA); }
@@ -89,6 +96,7 @@ public class PLATFORM : AbstractOracleDBTable<PLATFORM.Row>
 
     #region Class Members
     DataColumn PID;       // TGUID	VARCHAR2(32 BYTE)
+    DataColumn BRANCH;
     DataColumn PERSONA;
     DataColumn RESOLUTION;
     #endregion
