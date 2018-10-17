@@ -40,7 +40,6 @@ public class Checksum : System.Web.Services.WebService
         string[] funcs = funcList.Split(',');
         foreach (string func in funcs)
         {
-            if (func == "main") continue;
             testcaseByFunc.Append(String.Format("UPPER('{0}'), ", func));
         }
         return testcaseByFunc.ToString ();
