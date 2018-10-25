@@ -172,7 +172,7 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
                         continue;
                     }
 
-                    String[] splitString = Regex.Split(line, @"\s*:\s*");
+                    String[] splitString = Regex.Split(line, @"\s*[: ]\s*");
                     if (2 == splitString.Length)
                     {
                         testcase = location + splitString[0];
