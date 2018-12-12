@@ -59,6 +59,28 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         return string.Empty;
     }
 
+    public Row lookup (Row tcase)
+    {
+        Row ret = null;
+        String sql = String.Format("SELECT * FROM TESTCASE WHERE TLOC = '{0}'", tcase.TLOC);
+        using (IDbCommand2 cmd = newCommand(sql))
+        {
+            this.Clear();
+            this.Load(cmd.ExecuteReader());
+            switch (this.Rows.Count)
+            {
+                case 0:
+                    throw new TLib.Exceptions.NotFoundException<Row>(sql);
+                case 1:
+                    ret = (Row)this.Rows[0];
+                    break;
+                default:
+                    throw new TLib.Exceptions.MultipleMatchException<Row>(sql);
+            }
+        }
+        return ret;
+    }
+
     protected override Row GetFilter(string Filter)
     {
         Row filter = this.NewRow();
@@ -91,7 +113,12 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
             return string.Format("TGUID IN (SELECT UNIQUE t.TGUID FROM TESTCASE_FUNC t, FUNC f WHERE t.fid = f.fid AND f.FUNC_NAME LIKE '{0}')", filter.TNAME);
         }
     }
-    
+
+    protected override string mergeUpdateValues(TableColumns cols)
+    {
+        return string.Format("{0}", cols.FormattedColumnValuePair("TNAME"));
+    }
+
     public class Row : AbstractDataRow
     {
         private TESTCASE table;
@@ -144,7 +171,8 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         }
         public char HIDDEN
         {
-            get { return (char)(IsNull(table.HIDDEN) ? null : this[table.HIDDEN]); }
+            get { return ToString(table.HIDDEN)[0]; }
+            //get { return (char)(IsNull(table.HIDDEN) ? null : this[table.HIDDEN]); }
             set { this[table.HIDDEN] = value; }
         }
         #endregion

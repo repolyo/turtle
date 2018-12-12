@@ -27,13 +27,33 @@ public class TESTCASE_FUNC : AbstractOracleDBTable<TESTCASE_FUNC.Row>
 
     public override string[] filters()
     {
-        return new string[] { "TGUID", "FID", "PID" };
+        return new string[] { "TGUID", "FID" };
     }
 
     public new Row NewRow()
     {
         Row newRow = ((Row)(base.NewRow()));
         return newRow;
+    }
+
+    protected override string mergeUpdateValues(TableColumns cols)
+    {
+        return string.Format("{0}", cols.FormattedColumnValuePair("PID"));
+    }
+
+    public bool update (string tguid, FUNC.Row func)
+    {
+        TESTCASE_FUNC.Row tfunc = NewRow();
+        tfunc.TGUID = tguid;
+        tfunc.FID = func.FID;
+
+        merge(tfunc);
+        return true;
+    }
+
+    protected override DataRow NewRowFromBuilder(DataRowBuilder builder)
+    {
+        return new Row(builder);
     }
 
     public class Row : AbstractDataRow
@@ -53,17 +73,17 @@ public class TESTCASE_FUNC : AbstractOracleDBTable<TESTCASE_FUNC.Row>
         }
         public int SEQ
         {
-            get { return Int32.Parse (this[table.SEQ].ToString()); }
+            get { return ToInteger(table.SEQ); }
             set { this[table.SEQ] = value; }
         }
-        public int FID
+        public Nullable<int> FID
         {
-            get { return Int32.Parse (this[table.FID].ToString()); }
+            get { return ToInteger(table.FID); }
             set { this[table.FID] = value; }
         }
         public int PID
         {
-            get { return Int32.Parse (this[table.PID].ToString()); }
+            get { return ToInteger(table.PID); }
             set { this[table.PID] = value; }
         }
         #endregion
