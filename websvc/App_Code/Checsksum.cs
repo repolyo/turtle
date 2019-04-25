@@ -113,16 +113,8 @@ public class Checksum : System.Web.Services.WebService
         }
 
         if (null != persona && persona.Length > 0)
-        {
-            platformId = String.Format(settings["platform"], branch, persona.Replace("64", ""), dpi);
-            
+        {            
             writeResponse(Response, String.Format("# persona: {0}", persona));
-        }
-
-        string sql = String.Format(settings["query"], branch, filter, platformId, generateQuerySQL(func, platformId));
-
-        if ( -1 < fetch ) {
-            sql = String.Format("\r\nSELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})", sql, 0, fetch);
         }
 
         writeResponse(Response, String.Format("# resolution: {0}", dpi));
@@ -131,6 +123,14 @@ public class Checksum : System.Web.Services.WebService
         try
         {
             DbConn.NewConnection(Config.getConnectionString());
+            platformId = DbConn.ExecuteScalar(settings["platform"], branch, persona.Replace("64", ""), dpi).ToString();
+            writeResponse(Response, String.Format("# platformId: {0}", platformId));
+            string sql = String.Format(settings["query"], branch, filter, platformId, generateQuerySQL(func, platformId));
+            if (-1 < fetch)
+            {
+                sql = String.Format("\r\nSELECT * FROM ({0}) WHERE ROWNO > {1} AND ROWNO <= ({1} + {2})", sql, 0, fetch);
+            }
+
             DataTable tbl = DbConn.Query(sql);
             if (null != tbl)
             {
@@ -139,7 +139,6 @@ public class Checksum : System.Web.Services.WebService
                 foreach (DataRow row in tbl.Rows)
                 {
                     string checksum = row["CHECKSUMS"].ToString().Trim();
-                    if (checksum.Length == 0) continue;
                     string tcase = String.Format("{0} : {1}", row["TLOC"], checksum);
                     writeResponse(Response, tcase.Replace(filter, ""));
                 }

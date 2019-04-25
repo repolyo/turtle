@@ -36,7 +36,7 @@ public class DbConn
 	//
 	// TODO: Add constructor logic here
 	//
-    private static OracleConnection conn;
+    private static OracleConnection conn = null;
     private static OracleCommand cmd;
     private static OracleDataAdapter da;
     private static DataSet ds;
@@ -100,8 +100,10 @@ public class DbConn
     {
         try
         {
-            conn = new OracleConnection(constr);
-            conn.Open();
+            if (null == conn) {
+                conn = new OracleConnection(constr);
+                conn.Open();
+            }
         }
         catch (OracleException e)
         {
@@ -207,6 +209,7 @@ public class DbConn
     public static void Terminate()
     {
         conn.Close();
+        conn = null;
     }
 
     static void Main(string[] args)
