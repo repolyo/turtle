@@ -1,7 +1,7 @@
 package com.lexmark.emuls;
 
 import com.lexmark.emuls.profiler.FunctionLoader;
-import com.lexmark.emuls.profiler.SentryLogParser;
+import com.lexmark.emuls.profiler.FunctionMapper;
 import com.lexmark.emuls.profiler.TImporter;
 
 public class TProfiler extends FolderWatcherImpl {
@@ -78,13 +78,17 @@ public class TProfiler extends FolderWatcherImpl {
 				}
 			}
 			
-			if (null != tracker && tracker.equalsIgnoreCase("sentry")) {
+			if (null != tracker && tracker.equalsIgnoreCase("pclm")) {
+                ftpHome = System.getenv("FTP_HOME");
+                instance = new PclmLogWatcher(ftpHome, hostname, username, passwd);
+            }
+			else if (null != tracker && tracker.equalsIgnoreCase("sentry")) {
 				ftpHome = System.getenv("SENTRY_LOGS_DIR");
 				instance = new SentryLogWatcher(ftpHome, hostname, username, passwd);
 			}
 			else if (null != tracker && tracker.equalsIgnoreCase("funcs")) {
 				ftpHome = System.getenv("FUNCS_DIR");
-				FunctionLoader loader = FunctionLoader.getInstance();
+				FunctionMapper loader = FunctionMapper.getInstance();
 				instance = new FolderWatcherImpl(ftpHome, loader);
 			}
 			else {
