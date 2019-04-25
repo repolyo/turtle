@@ -9,6 +9,11 @@ using System.Web.UI.WebControls;
 
 public partial class Testcases_Testcases : System.Web.UI.Page
 {
+    public static T ParseEnum<T>(string value)
+    {
+        return (T)Enum.Parse(typeof(T), value, true);
+    }
+
     protected void GridVIew_OnDataBound(object sender, EventArgs e)
     {
         Console.WriteLine(txtFilter.Text);
@@ -22,14 +27,27 @@ public partial class Testcases_Testcases : System.Web.UI.Page
         TObjectDataSource.SelectParameters["Filter"].DefaultValue = txtFilter.Text;
     }
 
+    protected void drp1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Console.WriteLine("SelectedIndex = " + ddlFilter.SelectedIndex
+            + ", SelectedValue=" + ddlFilter.SelectedValue);
+        Config.filterType = ParseEnum<FilterType>(ddlFilter.SelectedValue);
+    }
+
+    protected void Skip_CheckedChanged(object sender, EventArgs e)
+    {
+        Console.WriteLine("SelectedIndex = " + sender.ToString ()
+            + ", SelectedValue=" + e.ToString ());
+    }
+
     protected void TObjectDataSource_OnSelected(object sender, ObjectDataSourceStatusEventArgs e)
     {
         if (null == e.Exception && null != e.ReturnValue)
         {
             Type type = e.ReturnValue.GetType();
-            if (type == typeof(TESTCASE) && !string.IsNullOrEmpty (txtFilter.Text))
+            if (type == typeof(TESTCASE_VIEW) && !string.IsNullOrEmpty (txtFilter.Text))
             {
-                TESTCASE tbl = (TESTCASE)e.ReturnValue;
+                TESTCASE_VIEW tbl = (TESTCASE_VIEW)e.ReturnValue;
                 Count.Text = "" + tbl.SelectCount(txtFilter.Text);
             }
 

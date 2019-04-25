@@ -1,4 +1,9 @@
-﻿<%@ Page Title="Functions" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Files.aspx.cs" Inherits="Codes_Files" %>
+﻿<%@ Page Title="Functions" Language="C#" 
+        MasterPageFile="~/MasterPage.master"
+        AutoEventWireup="true"
+        CodeFile="Files.aspx.cs"
+        Inherits="Codes_Files"
+        EnableViewStateMac="false" %>
 <%@ Register
     Assembly="AjaxControlToolkit"
     Namespace="AjaxControlToolkit"
@@ -17,23 +22,9 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div>
-        <asp:Button ID="func_map_btn" runat="server" Text="Upload function maps..." style="float:right" ToolTip="Upload function maps..." /><br />
-        <asp:ScriptManager ID="asm" runat="server"></asp:ScriptManager>
-        <ajaxToolkit:ModalPopupExtender ID="mdlpopup" BackgroundCssClass="modalbackground" runat="server" TargetControlID="func_map_btn"
-                PopupControlID="pnl" OkControlID="btnok" Y="300" ></ajaxToolkit:ModalPopupExtender>
+        <asp:FileUpload id="FileUploadControl" runat="server"/>
+        <asp:Button runat="server" id="UploadButton" text="Upload" onclick="UploadButton_Click" />
 
-        <asp:Panel ID="pnl" runat="server" BorderColor="ActiveBorder" CssClass="modalpopup" BorderStyle="Solid" BorderWidth="2px">
-            
-            <ajaxToolkit:AjaxFileUpload ID="AjaxFileUpload1" runat="server"
-                Width="400" Height="150"
-                OnUploadComplete="AjaxFileUpload1_UploadComplete" AllowedFileTypes="txt,out"
-                OnClientUploadComplete="OnClientUploadComplete"
-                OnClientUploadError="showUploadError"
-                ClearFileListAfterUpload="True" />
-            <asp:Button ID="btnok" runat="server" Text="OK" />
-        </asp:Panel>
-    </div>
     <div class="testcases">
         <asp:GridView ID="GridView1" runat="server" 
             DataSourceID="TObjectDataSource"
@@ -75,7 +66,8 @@
             SelectCountMethod="SelectCount"
             StartRowIndexParameterName="StartRecord"
             MaximumRowsParameterName="MaxRecords"
-            SelectMethod="QueryTestcases">
+            SelectMethod="QueryTestcases"
+            OnSelected="Files_OnSelected">
             <SelectParameters>
               <asp:Parameter Name="Filter" Type="string" />  
             </SelectParameters>

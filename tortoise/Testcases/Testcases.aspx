@@ -13,6 +13,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div>
+        <asp:DropDownList ID="ddlFilter" runat="server" Width="200px"
+            onselectedindexchanged="drp1_SelectedIndexChanged" AutoPostBack="True">
+            <asp:ListItem Text="Function name" Value="FUNC"></asp:ListItem>
+            <asp:ListItem Text="Testcase type" Value="TYPE"></asp:ListItem>
+            <asp:ListItem Text="Tag/keyword" Value="TAG"></asp:ListItem>
+            <asp:ListItem Text="Filename" Value="FILE"></asp:ListItem>
+            <asp:ListItem Text="Size" Value="SIZE" Enabled="false"></asp:ListItem>
+        </asp:DropDownList>
         <asp:TextBox ID="txtFilter" runat="server" Columns="100" MaxLength="150"></asp:TextBox>
         <asp:Button ID ="btnFiltering" runat ="server" OnClick ="btnFiltering_Click" Text ="Search" Width ="103px" />
         <asp:Button ID="btnExport" runat="server" Text="Export" OnClick = "ExportToExcel" ToolTip="Download into CSV..." />
@@ -34,7 +42,7 @@
             HeaderStyle-BackColor="PapayaWhip"
             AlternatingRowStyle-BackColor="LightCyan" PageSize="25"
             OnDataBound="GridVIew_OnDataBound"
-            EmptyDataText="No testcase found!" Width="100%" EnableSortingAndPagingCallbacks="True" AllowSorting="True">
+            EmptyDataText="No testcase found!" Width="100%" EnableSortingAndPagingCallbacks="False" AllowSorting="True">
             <Columns>
                 <asp:BoundField HeaderText='' DataField='ROWNO' 
                     HeaderStyle-Width="5%" ItemStyle-HorizontalAlign="Center" />
@@ -46,6 +54,16 @@
                     HeaderStyle-Width="10%" ItemStyle-HorizontalAlign="Left" />
                 <asp:BoundField HeaderText='Size' DataField='TSIZE' 
                     HeaderStyle-Width="10%" ItemStyle-HorizontalAlign="Left" />
+                <asp:TemplateField HeaderText="Skip" HeaderStyle-Width="3%">  
+                    <EditItemTemplate>  
+                        <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("HIDDEN") %>'  oncheckedchanged="Skip_CheckedChanged"/>  
+                    </EditItemTemplate>  
+                    <ItemTemplate>  
+                        <asp:CheckBox ID="CheckBox1" AutoPostBack="true" runat="server"
+                            Checked='<%# Eval("HIDDEN").ToString().Equals("1") ? true : false %>'
+                            oncheckedchanged="Skip_CheckedChanged"/>  
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField HeaderText='Location' DataField='TLOC' 
                     ItemStyle-HorizontalAlign="Left" />
             </Columns>
@@ -62,7 +80,7 @@
         <asp:ObjectDataSource 
             ID="TObjectDataSource" 
             runat="server" 
-            TypeName="TESTCASE" 
+            TypeName="TESTCASE_VIEW" 
             SortParameterName="SortColumns"
             EnablePaging="true"
             SelectCountMethod="SelectCount"

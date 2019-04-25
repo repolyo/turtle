@@ -173,7 +173,7 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
                     }
 
                     String[] splitString = Regex.Split(line, @"\s*[: ]\s*");
-                    if (2 == splitString.Length)
+                    if (0 < splitString.Length)
                     {
                         testcase = location + splitString[0];
                         string checksums = splitString[1];

@@ -10,9 +10,9 @@ using TLib;
 /// <summary>
 /// Summary description for TESTCASE
 /// </summary>
-public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
+public class TESTCASE_VIEW : AbstractOracleDBTable<TESTCASE_VIEW.Row>
 {
-    public TESTCASE()
+    public TESTCASE_VIEW()
     {
 
     }
@@ -21,16 +21,17 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
     {
         this.TGUID = AddColumn("TGUID", typeof(string)); // TGUID	VARCHAR2(32 BYTE)
         this.TNAME = AddColumn("TNAME", typeof(string)); // TNAME	VARCHAR2(255 BYTE)
-        this.TLOC = AddColumn("TLOC", typeof(string)); // TLOC	VARCHAR2(255 BYTE)
+        this.TLOC = AddColumn("TLOC", typeof(string), false, "like"); // TLOC	VARCHAR2(255 BYTE)
         this.TTYPE = AddColumn("TTYPE", typeof(string)); // TTYPE	VARCHAR2(20 BYTE)
         this.TSIZE = AddColumn("TSIZE", typeof(int)); // TSIZE	NUMBER
         this.HIDDEN = AddColumn("HIDDEN", typeof(char)); // HIDDEN	CHAR(1 BYTE)
+        this.CHECKSUMS = AddColumn("CHECKSUMS", typeof(string));
         // UPDATE_DATE	TIMESTAMP(6)
     }
 
     public override string[] filters()
     {
-        return new string[] { "TLOC" };
+        return new string[] { "TLOC", "TTYPE" };
     }
 
     public new Row NewRow()
@@ -44,12 +45,11 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         return new Row(builder);
     }
 
-    public static string lookup_tguid(string testcase)
+    public static string lookup_tguid(string tloc)
     {
-        TESTCASE tbl = new TESTCASE();
+        TESTCASE_VIEW tbl = new TESTCASE_VIEW();
         Row row = tbl.NewRow();
-        row.TLOC = testcase;
-        row.HIDDEN = 'N';
+        row.TLOC = tloc;
 
         row = tbl.findSingleResult(row);
         if (null != row)
@@ -62,7 +62,7 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
     public Row lookup (Row tcase)
     {
         Row ret = null;
-        String sql = String.Format("SELECT * FROM TESTCASE WHERE TLOC = '{0}'", tcase.TLOC);
+        String sql = String.Format("SELECT * FROM TESTCASE_VIEW WHERE TLOC = '{0}'", tcase.TLOC);
         using (IDbCommand2 cmd = newCommand(sql))
         {
             this.Clear();
@@ -84,11 +84,14 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
     protected override Row GetFilter(string Filter)
     {
         Row filter = this.NewRow();
-        filter.HIDDEN = 'N';
+        //filter.HIDDEN = 'N';
         switch (Config.filterType)
         {
             case FilterType.FILE:
                 filter.TLOC = Filter;
+                break;
+            case FilterType.TYPE:
+                filter.TTYPE = Filter;
                 break;
             case FilterType.FUNC:
             default:
@@ -98,25 +101,19 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
         return filter;
     }
 
-    //public override DataTable QueryTestcases(string Filter, string sortColumns, int startRecord, int maxRecords)
+    //public override DataTable QueryTESTCASE_VIEWs(string Filter, string sortColumns, int startRecord, int maxRecords)
     //{
-    //    switch (Config.filterType)
-    //    {
-    //        case FilterType.FILE:
-    //            break;
-    //        case FilterType.FUNC:
-    //        default:
-    //            return base.QueryTestcases(Filter, sortColumns, startRecord, maxRecords);
-    //    }
+    //    string keyword = string.IsNullOrEmpty(Filter) ? "*" : Filter;
+    //    return base.QueryTESTCASE_VIEWs(keyword, sortColumns, startRecord, maxRecords); ;
     //}
 
     /// <summary>
-    /// a.TGUID IN (SELECT UNIQUE t.TGUID FROM TESTCASE_FUNC t , FUNC f WHERE t.fid = f.fid AND f.FUNC_NAME LIKE '{0}'))
+    /// a.TGUID IN (SELECT UNIQUE t.TGUID FROM TESTCASE_VIEW_FUNC t , FUNC f WHERE t.fid = f.fid AND f.FUNC_NAME LIKE '{0}'))
     /// </summary>
     /// <param name="filter"></param>
     /// <param name="where"></param>
     /// <returns></returns>
-    protected override string buildWhereSQL(TESTCASE.Row filter, List<DataColumn> where = null)
+    protected override string buildWhereSQL(TESTCASE_VIEW.Row filter, List<DataColumn> where = null)
     {
         if (string.IsNullOrEmpty(filter.TNAME))
         {
@@ -135,12 +132,12 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
 
     public class Row : AbstractDataRow
     {
-        private TESTCASE table;
+        private TESTCASE_VIEW table;
 
         internal Row(DataRowBuilder rb)
             : base(rb)
         {
-            this.table = ((TESTCASE)(this.Table));
+            this.table = ((TESTCASE_VIEW)(this.Table));
         }
 
         public override List<string> Columns()
@@ -189,6 +186,11 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
             //get { return (char)(IsNull(table.HIDDEN) ? null : this[table.HIDDEN]); }
             set { this[table.HIDDEN] = value; }
         }
+        public string CHECKSUMS
+        {
+            get { return ToString(table.CHECKSUMS); }
+            set { this[table.CHECKSUMS] = value; }
+        }
         #endregion
     }
 
@@ -199,5 +201,6 @@ public class TESTCASE : AbstractOracleDBTable<TESTCASE.Row>
     DataColumn TTYPE;
     DataColumn TSIZE;
     DataColumn HIDDEN;
+    DataColumn CHECKSUMS;
     #endregion
 }

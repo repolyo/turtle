@@ -23,10 +23,10 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
     protected override void InitVars()
     {
         this.FID = AddColumn("FID", typeof(int));
+        this.DEPRECATED = AddColumn("DEPRECATED", typeof(int));
         this.SOURCE_FILE = AddColumn("SOURCE_FILE", typeof(string));
         this.LINE_NO = AddColumn("LINE_NO", typeof(int));
         this.FUNC_NAME = AddColumn("FUNC_NAME", typeof(string));
-        this.OLD_ID = AddColumn("OLD_ID", typeof(int));
     }
 
     public override string[] filters()
@@ -36,7 +36,8 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
 
     public new Row NewRow()
     {
-        Row newRow = ((Row)(base.NewRow()));
+        FUNC.Row newRow = ((FUNC.Row)(base.NewRow()));
+        newRow.DEPRECATED = 0;
         return newRow;
     }
 
@@ -49,9 +50,8 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
     public Nullable<int> lookup_fid(Row rec)
     {
         try {
-            Row found = this.findSingleResult(rec);
-            //executeSQL("SELECT GENERATE_FID ('{0}', '{1}') FROM DUAL", rec.SOURCE_FILE, rec.FUNC_NAME);
-            return found.FID;
+            object value = ExecuteScalar(String.Format ("SELECT GENERATE_FID ('{0}', '{1}') FROM DUAL", rec.SOURCE_FILE, rec.FUNC_NAME) ); 
+            return (int)Converter.Format(value, TypeCode.Int32);
         }
         catch (Exception e)
         {
@@ -62,15 +62,16 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
 
     protected override string buildWhereSQL(Row filter, List<DataColumn> where = null)
     {
-        string whereSQL = string.Empty;
+        string whereSQL = "DEPRECATED = 0"; // base.buildWhereSQL (filter, where);
         string file = (string)getFieldValue("SOURCE_FILE", filter);
         string func = (string)getFieldValue("FUNC_NAME", filter);
 
         if (null != file && string.Empty != file && null != func && string.Empty != func)
         {
-            whereSQL += string.Format("FID IN (SELECT GENERATE_FID ('{0}',  '{1}') FROM DUAL) ", file, func);
+            whereSQL += string.Format("{} FID IN (SELECT GENERATE_FID ('{0}',  '{1}') FROM DUAL) ",
+                (whereSQL.Length > 0) ? "AND" : "", file, func);
         }
-        
+        //throw new Exception(whereSQL);
         return whereSQL;
     }
     
@@ -80,7 +81,7 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
         return string.Format("{0}, {1}, {2}",
             cols.FormattedColumnValuePair("SOURCE_FILE"),
             cols.FormattedColumnValuePair("FUNC_NAME"),
-            cols.FormattedColumnValuePair("OLD_ID"));
+            cols.FormattedColumnValuePair("DEPRECATED"));
     }
 
     public bool update_func_mappings (string user_id, string filename)
@@ -98,13 +99,14 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
                 MatchCollection matches;
                 if (string.Empty == testcase)
                 {
-                    // Profiled target:  ./pdls /users/chritan/testcases/2019_Main_Plan_A.pdf (PID 14681, part 1)
-                    matches = Regex.Matches(line, "Profiled target:\\s*(?<app>[^\\s]+)\\s*(?<testcase>[^\\s]+)", RegexOptions.IgnoreCase);
+                    // "Profiled target:  ./pdls -s -e pdf /m/tcases/futures/next/wip/pdf/fonts/report.pdf (PID 23196, part 1)"
+                    matches = Regex.Matches(line, "Profiled target:.*-e\\s*(?<emul>[^\\s]+)\\s*(?<testcase>[^\\s]+)", RegexOptions.IgnoreCase);
                     foreach (Match match in matches)
                     {
                         TESTCASE.Row t = tcases.NewRow();
                         t.TLOC = match.Groups["testcase"].Value;
-                        t.TNAME = t.TLOC.Substring(t.TLOC.LastIndexOf('/'));
+                        t.TTYPE =  match.Groups["emul"].Value.ToUpper();
+                        t.TNAME = t.TLOC.Substring(t.TLOC.LastIndexOf('/') + 1);
                         t.HIDDEN = 'N';
                         tcases.merge(t);
                         t = tcases.lookup (t);
@@ -127,10 +129,7 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
                             func.FUNC_NAME = name;
                             func.LINE_NO = 0;
                             func.FID = lookup_fid(func);
-                            //func.OLD_ID = (int)DateTime.UtcNow.Ticks;
-                            func.OLD_ID = -1;
-                            func.SOURCE_FILE = file;
-                            func.FUNC_NAME = name;
+
                             Console.WriteLine("{0} ==> {1}", func.SOURCE_FILE, func.FUNC_NAME);
 
                             merge(func);
@@ -177,11 +176,11 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
         {
             AbstractTableDB<Row>.StringArraySQL cols = new AbstractTableDB<Row>.StringArraySQL();
 
-            cols.Add("ROW_NUMBER() OVER(ORDER BY old_id ASC NULLS LAST) AS ROWNO");
+            cols.Add("ROW_NUMBER() OVER(ORDER BY FID ASC NULLS LAST) AS ROWNO");
 
             foreach (DataColumn dc in base.Table.Columns)
             {
-                if ("OLD_ID" == dc.ColumnName || "NEW_ID" == dc.ColumnName || "ROWNO" == dc.ColumnName)
+                if ("NEW_ID" == dc.ColumnName || "ROWNO" == dc.ColumnName)
                 {
                     continue;
                 } 
@@ -212,10 +211,10 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
             get { return this[table.SOURCE_FILE].ToString(); }
             set { this[table.SOURCE_FILE] = value; }
         }
-        public Nullable<int> OLD_ID
+        public Nullable<int> DEPRECATED
         {
-            get { return ToInt32(table.OLD_ID); }
-            set { this[table.OLD_ID] = value; }
+            get { return ToInt32(table.DEPRECATED); }
+            set { this[table.DEPRECATED] = value; }
         }
         #endregion
     }
@@ -225,6 +224,6 @@ public class FUNC : AbstractOracleDBTable<FUNC.Row>
     DataColumn LINE_NO;
     DataColumn FID;
     DataColumn SOURCE_FILE;
-    DataColumn OLD_ID;
+    DataColumn DEPRECATED;
     #endregion
 }

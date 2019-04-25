@@ -17,12 +17,13 @@ using TLib;
 /// </summary>
 public class TESTCASE_FUNC : AbstractOracleDBTable<TESTCASE_FUNC.Row>
 {
+    private int seqNo = 0;
+
     protected override void InitVars()
     {
         this.TGUID = AddColumn("TGUID", typeof(string));
         this.SEQ = AddColumn("SEQ", typeof(int));
         this.FID = AddColumn("FID", typeof(int));
-        this.PID = AddColumn("PID", typeof(int));
     }
 
     public override string[] filters()
@@ -38,7 +39,8 @@ public class TESTCASE_FUNC : AbstractOracleDBTable<TESTCASE_FUNC.Row>
 
     protected override string mergeUpdateValues(TableColumns cols)
     {
-        return string.Format("{0}", cols.FormattedColumnValuePair("PID"));
+        return string.Format("{0}",
+            cols.FormattedColumnValuePair("SEQ"));
     }
 
     public bool update (string tguid, FUNC.Row func)
@@ -46,7 +48,7 @@ public class TESTCASE_FUNC : AbstractOracleDBTable<TESTCASE_FUNC.Row>
         TESTCASE_FUNC.Row tfunc = NewRow();
         tfunc.TGUID = tguid;
         tfunc.FID = func.FID;
-
+        tfunc.SEQ = seqNo++;
         merge(tfunc);
         return true;
     }
@@ -81,11 +83,6 @@ public class TESTCASE_FUNC : AbstractOracleDBTable<TESTCASE_FUNC.Row>
             get { return ToInteger(table.FID); }
             set { this[table.FID] = value; }
         }
-        public int PID
-        {
-            get { return ToInteger(table.PID); }
-            set { this[table.PID] = value; }
-        }
         #endregion
     }
 
@@ -93,6 +90,5 @@ public class TESTCASE_FUNC : AbstractOracleDBTable<TESTCASE_FUNC.Row>
     DataColumn TGUID;
     DataColumn SEQ;
     DataColumn FID;
-    DataColumn PID;
     #endregion
 }

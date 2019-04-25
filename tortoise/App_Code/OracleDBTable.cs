@@ -110,7 +110,8 @@ public abstract class AbstractOracleDBTable<T> : AbstractTableDB<T> where T: Abs
 
         public System.Data.Common.DbParameter AddWithValue(string parameterName, object value)
         {
-            throw new NotImplementedException();
+            OracleCommand sqlCmd = (OracleCommand)cmd;
+            return sqlCmd.Parameters.Add(parameterName, value);
         }
 
         public object find(System.Data.DataTable tbl)
