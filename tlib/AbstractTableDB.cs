@@ -52,7 +52,7 @@ namespace Tlib.Dao
                 this.TableName = tbl.TableName;
                 foreach (DataColumn c in tbl.Columns)
                 {
-                    this.Columns.Add(c.ColumnName, c.DataType);
+                    this.Columns.Add (c.ColumnName, c.DataType, c.Expression);
                 }
             }
         }
@@ -81,13 +81,13 @@ namespace Tlib.Dao
         protected virtual void InitVars() { /*throw new NotImplementedException();*/  }
 
         List<DataColumn> primaryKeys = new List<DataColumn>();
-        protected DataColumn AddColumn(string name, Type type, bool primary = false)
+        protected DataColumn AddColumn(string name, Type type, bool primary = false, string expr = null)
         {
             //this.prefix = this.Columns[PREFIX];
             DataColumn col = this.Columns[name];
             if (null == col)
             {
-                col = new DataColumn(name, type, null, global::System.Data.MappingType.Element);
+                col = new DataColumn(name, type, expr, global::System.Data.MappingType.Element);
                 base.Columns.Add(col);
             }
             if (primary) primaryKeys.Add(col);
@@ -252,7 +252,7 @@ namespace Tlib.Dao
 
             public static string Format(DataColumn dc, object value)
             {
-                return AbstractTableDB<E>.Format(dc.ColumnName, value);
+                return AbstractTableDB<E>.Format(dc, value);
             }
 
             public string FormattedColumnValuePair(string column)
@@ -278,6 +278,21 @@ namespace Tlib.Dao
             else
             {
                 fmt = string.Format("{0} = {1}", col, value);
+            }
+            return fmt;
+        }
+
+        public static string Format(DataColumn col, object value)
+        {
+            string fmt = string.Empty;
+            string expr = "like"; // String.IsNullOrEmpty (col.Expression) ? "=" : col.Expression;
+            if (value is string)
+            {
+                fmt = string.Format("{0} {1} '{2}'", col.ColumnName, expr, new QueryString((string)value));
+            }
+            else
+            {
+                fmt = string.Format("{0} {1} {2}", col.ColumnName, expr, value);
             }
             return fmt;
         }
@@ -392,7 +407,7 @@ namespace Tlib.Dao
                 foreach (DataColumn field in where)
                 {
                     object value = getFieldValue(field, filter);
-                    if (null != value)
+                    if (null != value && value.ToString () != string.Empty)
                     {
                         whereSQL += string.Format("{0},", TableColumns.Format(field, value));
                     }
@@ -400,6 +415,7 @@ namespace Tlib.Dao
             }
             return trimSQL(whereSQL).Replace(",", " AND ");
         }
+
         protected virtual string buildWhereSQL(E filter, List<DataColumn> where = null)
         {
             string whereSQL = string.Empty;
@@ -408,7 +424,7 @@ namespace Tlib.Dao
                 foreach (DataColumn field in where)
                 {
                     object value = getFieldValue(field, filter);
-                    if (null != value)
+                    if (null != value && value.ToString () != string.Empty)
                     {
                         whereSQL += string.Format("{0},", TableColumns.Format(field, value));
                     }
@@ -577,23 +593,31 @@ namespace Tlib.Dao
         public E merge(E rec)
         {
             string sql = string.Empty;
-            TableColumns cols = this.columns(rec);
-            List<DataColumn> where = getDataColumns(this.filters());
-            cols.Remove("OBJECT");
+            try
+            {   
+                TableColumns cols = this.columns(rec);
+                List<DataColumn> where = getDataColumns(this.filters());
+                cols.Remove("OBJECT");
+                string update_values = mergeUpdateValues(cols);
 
-            sql = string.Format("MERGE INTO {0} USING DUAL ON ({1}) WHEN NOT matched THEN INSERT ({2}) VALUES ({3}) WHEN matched then UPDATE SET {4}",
-                this.TableName,
-                whereSQL(rec, where),
-                cols.ToString(),
-                cols.ValuesToString(),
-                mergeUpdateValues(cols));
+                sql = string.Format("MERGE INTO {0} USING DUAL ON ({1}) WHEN NOT matched THEN INSERT ({2}) VALUES ({3}) {4}",
+                    this.TableName,
+                    whereSQL(rec, where),
+                    cols.ToString(),
+                    cols.ValuesToString(),
+                    (string.Empty != update_values) ? "WHEN matched then UPDATE SET " + update_values : "");
 
-            using (IDbCommand2 cmd = newCommand(sql))
-            {
-                if (1 != cmd.ExecuteNonQuery())
+                using (IDbCommand2 cmd = newCommand(sql))
                 {
-                    throw new DBInsertException<E>(sql);
+                    if (1 != cmd.ExecuteNonQuery())
+                    {
+                        throw new DBInsertException<E>(sql);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                throw new DBInsertException<E>(e, sql);
             }
             return rec;
         }
@@ -940,7 +964,7 @@ namespace Tlib.Dao
         {
             Console.WriteLine(string.Format(sql, args));
             HashTableEx prop = parseJPQL(ref sql, args);
-            using (IDbCommand2 cmd = createQuery(sql, prop))
+            using ( IDbCommand2 cmd = createQuery(sql, prop))
             {
                 return cmd.ExecuteScalar();
             }
