@@ -59,8 +59,9 @@
                         <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("HIDDEN") %>'  oncheckedchanged="Skip_CheckedChanged"/>  
                     </EditItemTemplate>  
                     <ItemTemplate>  
-                        <asp:CheckBox ID="CheckBox1" AutoPostBack="true" runat="server"
-                            Checked='<%# Eval("HIDDEN").ToString().Equals("1") ? true : false %>'
+                        <asp:CheckBox ID='CheckBox1' AutoPostBack="true" runat="server"
+                            ToolTip='<%# Eval("TGUID").ToString() %>'
+                            Checked='<%# Eval("HIDDEN").ToString().Equals("Y") ? true : false %>'
                             oncheckedchanged="Skip_CheckedChanged"/>  
                     </ItemTemplate>
                 </asp:TemplateField>

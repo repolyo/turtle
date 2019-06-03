@@ -63,6 +63,14 @@ public partial class Testcases_Testcases : System.Web.UI.Page
 
     protected void Skip_CheckedChanged(object sender, EventArgs e)
     {
+        CheckBox check = ((CheckBox)sender);
+        
+        TESTCASE_VIEW tbl = new TESTCASE_VIEW();
+      
+        tbl.update (String.Format ("UPDATE TESTCASE SET HIDDEN='{0}' WHERE TGUID={1}",
+            check.Checked ? 'Y' : 'N',
+            check.ToolTip));
+
         Console.WriteLine("SelectedIndex = " + sender.ToString ()
             + ", SelectedValue=" + e.ToString ());
     }
