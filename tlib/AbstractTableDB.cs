@@ -34,6 +34,7 @@ namespace Tlib.Dao
         protected const string FROM = "FROM";
         protected const string WHERE = "WHERE";
         public const string COUNT = "COUNT";
+        public const string COMPARE_TO = "compareTo";
         protected bool asc = true;
         //protected IDbConnection2 con;
         protected DataTable insideTbl;
@@ -285,7 +286,7 @@ namespace Tlib.Dao
         public static string Format(DataColumn col, object value)
         {
             string fmt = string.Empty;
-            string expr = "like"; // String.IsNullOrEmpty (col.Expression) ? "=" : col.Expression;
+            string expr = col.ExtendedProperties.ContainsKey(COMPARE_TO) ? col.ExtendedProperties[COMPARE_TO].ToString() : "=";
             if (value is string)
             {
                 fmt = string.Format("{0} {1} '{2}'", col.ColumnName, expr, new QueryString((string)value));
