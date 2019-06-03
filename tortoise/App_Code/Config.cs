@@ -12,6 +12,7 @@ public enum FilterType
     TAG = 3,
     TYPE = 4,
     FILE = 5,
+    HIDDEN = 6,
     SIZE
 }
 

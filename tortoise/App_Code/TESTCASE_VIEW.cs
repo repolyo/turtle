@@ -33,7 +33,7 @@ public class TESTCASE_VIEW : AbstractOracleDBTable<TESTCASE_VIEW.Row>
 
     public override string[] filters()
     {
-        return new string[] { "TLOC", "TTYPE" };
+        return new string[] { "TLOC", "TTYPE", "HIDDEN" };
     }
 
     public new Row NewRow()
@@ -95,6 +95,13 @@ public class TESTCASE_VIEW : AbstractOracleDBTable<TESTCASE_VIEW.Row>
             case FilterType.TYPE:
                 filter.TTYPE = Filter;
                 break;
+            case FilterType.HIDDEN:
+                bool skipped = false;
+                if (Boolean.TryParse (Filter, out skipped))
+                    filter.HIDDEN = (skipped) ? 'Y' : 'N';
+                else
+                    Console.WriteLine("Unable to parse '{0}'.", Filter == null ? "<null>" : Filter);
+                break;
             case FilterType.FUNC:
             default:
                 filter.TNAME = Filter;
@@ -146,7 +153,7 @@ public class TESTCASE_VIEW : AbstractOracleDBTable<TESTCASE_VIEW.Row>
         {
             AbstractTableDB<Row>.StringArraySQL cols = new AbstractTableDB<Row>.StringArraySQL();
 
-            cols.Add("ROW_NUMBER() OVER(ORDER BY UPDATE_DATE DESC NULLS LAST) AS ROWNO");
+            cols.Add("ROW_NUMBER() OVER(ORDER BY HIDDEN ASC, UPDATE_DATE DESC NULLS LAST) AS ROWNO");
             
             foreach (DataColumn dc in base.Table.Columns)
             {
@@ -182,10 +189,10 @@ public class TESTCASE_VIEW : AbstractOracleDBTable<TESTCASE_VIEW.Row>
             get { return ToInteger(table.TSIZE); }
             set { this[table.TSIZE] = value; }
         }
-        public char HIDDEN
+        public Nullable<char> HIDDEN
         {
-            get { return ToString(table.HIDDEN)[0]; }
-            //get { return (char)(IsNull(table.HIDDEN) ? null : this[table.HIDDEN]); }
+            //get { return ToString(table.HIDDEN)[0]; }
+            get { return IsNull(table.HIDDEN) ? (char?)null : ToString(table.HIDDEN)[0]; }
             set { this[table.HIDDEN] = value; }
         }
         public string CHECKSUMS

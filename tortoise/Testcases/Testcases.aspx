@@ -19,6 +19,7 @@
             <asp:ListItem Text="Testcase type" Value="TYPE"></asp:ListItem>
             <asp:ListItem Text="Tag/keyword" Value="TAG"></asp:ListItem>
             <asp:ListItem Text="Filename" Value="FILE"></asp:ListItem>
+            <asp:ListItem Text="Skipped" Value="HIDDEN"></asp:ListItem>
             <asp:ListItem Text="Size" Value="SIZE" Enabled="false"></asp:ListItem>
         </asp:DropDownList>
         <asp:TextBox ID="txtFilter" runat="server" Columns="100" MaxLength="150"></asp:TextBox>
