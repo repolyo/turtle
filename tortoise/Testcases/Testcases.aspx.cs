@@ -3,28 +3,55 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class Testcases_Testcases : System.Web.UI.Page
 {
+    static string FILTER = "Filter";
+
     public static T ParseEnum<T>(string value)
     {
         return (T)Enum.Parse(typeof(T), value, true);
     }
 
+    private string getFilter ()
+    {
+        string filter = txtFilter.Text.Replace('*', '%').Replace('?', '_');
+        ViewState[FILTER] = filter;
+
+        return filter;
+    }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        string arg = Request.QueryString[FILTER];
+        if (!string.IsNullOrEmpty(arg)) {
+            PropertyInfo isreadonly = typeof(System.Collections.Specialized.NameValueCollection).GetProperty("IsReadOnly", BindingFlags.Instance | BindingFlags.NonPublic);
+
+            txtFilter.Text = arg;
+            ViewState[FILTER] = txtFilter.Text;
+            TObjectDataSource.SelectParameters[FILTER].DefaultValue = txtFilter.Text;
+
+            // make collection editable
+            isreadonly.SetValue(this.Request.QueryString, false, null);
+            // remove
+            this.Request.QueryString.Remove(FILTER);
+        }
+    }
+
     protected void GridVIew_OnDataBound(object sender, EventArgs e)
     {
         Console.WriteLine(txtFilter.Text);
-        Console.WriteLine(TObjectDataSource.SelectParameters["Filter"].DefaultValue);
+        Console.WriteLine(TObjectDataSource.SelectParameters[FILTER].DefaultValue);
 
     }
 
     protected void btnFiltering_Click(object sender, EventArgs e)
     {
-        ViewState["Filter"] = txtFilter.Text;
-        TObjectDataSource.SelectParameters["Filter"].DefaultValue = txtFilter.Text;
+        TObjectDataSource.SelectParameters[FILTER].DefaultValue = getFilter ();
     }
 
     protected void drp1_SelectedIndexChanged(object sender, EventArgs e)

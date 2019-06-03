@@ -27,6 +27,8 @@ public class TESTCASE_VIEW : AbstractOracleDBTable<TESTCASE_VIEW.Row>
         this.HIDDEN = AddColumn("HIDDEN", typeof(char)); // HIDDEN	CHAR(1 BYTE)
         this.CHECKSUMS = AddColumn("CHECKSUMS", typeof(string));
         // UPDATE_DATE	TIMESTAMP(6)
+
+        this.TLOC.ExtendedProperties[COMPARE_TO] = "like";
     }
 
     public override string[] filters()

@@ -26,6 +26,8 @@ public class TESTCASE_CHECKSUMS_VIEW : AbstractOracleDBTable<TESTCASE_CHECKSUMS_
         this.PID = AddColumn("PID", typeof(int));
         this.MODIFIED_BY = AddColumn("MODIFIED_BY", typeof(string));
         this.CHECKSUMS = AddColumn("CHECKSUMS", typeof(string));
+
+        this.TLOC.ExtendedProperties[COMPARE_TO] = "like"; 
     }
 
     public override string[] filters()
